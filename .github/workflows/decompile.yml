@@ -1,13 +1,10 @@
 name: Decompile xbpq
 
 on:
-  # ★ 自动触发：push JAR 或 workflow 本身
   push:
     paths:
       - '**/*.jar'
       - '.github/workflows/decompile.yml'
-
-  # ★ 手动触发：可以自定义参数
   workflow_dispatch:
     inputs:
       jar_file:
@@ -32,7 +29,6 @@ env:
   PROCYON_VERSION: '0.6.0'
 
 jobs:
-  # ==================== 探测 JAR ====================
   detect:
     runs-on: ubuntu-latest
     outputs:
@@ -41,7 +37,7 @@ jobs:
       is_manual: ${{ steps.find.outputs.is_manual }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 1
 
@@ -49,22 +45,19 @@ jobs:
         id: find
         run: |
           set -e
-          # 手动触发时优先用手动输入
           if [ -n "${{ github.event.inputs.jar_file }}" ]; then
             JAR="${{ github.event.inputs.jar_file }}"
             OUT="${{ github.event.inputs.output_dir }}"
             IS_MANUAL=true
           else
-            # 自动触发：自动探测
             if [ -f "xbpq.jar" ]; then
               JAR="xbpq.jar"
             else
-              JAR=$(find . -maxdepth 2 -name "*.jar" ! -path "./tools/*" | head -1)
+              JAR=$(find . -maxdepth 2 -name "*.jar" ! -path "./tools/*" ! -path "./.git/*" | head -1)
             fi
             OUT=""
             IS_MANUAL=false
           fi
-
           if [ -z "$JAR" ]; then
             echo "❌ 没找到 JAR"
             exit 1
@@ -73,20 +66,15 @@ jobs:
             echo "❌ 找不到 $JAR"
             exit 1
           fi
-
-          # 输出目录
           if [ -z "$OUT" ]; then
             OUT="$(basename "$JAR" .jar)-src"
           fi
-
           echo "jar_file=$JAR" >> $GITHUB_OUTPUT
           echo "out_dir=$OUT" >> $GITHUB_OUTPUT
           echo "is_manual=$IS_MANUAL" >> $GITHUB_OUTPUT
           echo "📦 JAR: $JAR"
           echo "📁 输出: $OUT"
-          echo "🖐 手动: $IS_MANUAL"
 
-  # ==================== 反编译 ====================
   decompile:
     needs: detect
     runs-on: ubuntu-latest
@@ -97,17 +85,16 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 1
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: '17'
-          cache: 'maven'
 
       - name: Setup
         run: |
@@ -117,7 +104,6 @@ jobs:
           echo "📦 $JAR_FILE"
           echo "📁 $OUT_DIR"
 
-      # ---------- 校验 ----------
       - name: Validate JAR
         id: validate
         run: |
@@ -129,7 +115,6 @@ jobs:
           echo "✅ 校验通过"
           echo "class_count=$(unzip -l "$JAR_FILE" | grep -c '\.class$' || true)" >> $GITHUB_OUTPUT
 
-      # ---------- 下载 CFR ----------
       - name: Download CFR
         id: cfr
         run: |
@@ -151,7 +136,6 @@ jobs:
           echo "cfr_ok=false" >> $GITHUB_OUTPUT
           echo "❌ CFR 下载失败"
 
-      # ---------- CFR 反编译 ----------
       - name: Decompile with CFR
         id: cfr_decompile
         if: steps.cfr.outputs.cfr_ok == 'true'
@@ -175,7 +159,6 @@ jobs:
             --silent true || echo "CFR 有警告，继续"
           echo "CFR 文件数: $(find "$OUT_DIR" -name '*.java' | wc -l)"
 
-      # ---------- 检查 CFR ----------
       - name: Check CFR
         id: check_cfr
         if: steps.cfr_decompile.outcome == 'success'
@@ -193,7 +176,6 @@ jobs:
             echo "cfr_good=true" >> $GITHUB_OUTPUT
           fi
 
-      # ---------- Fallback: Procyon ----------
       - name: Download Procyon
         id: procyon
         if: steps.check_cfr.outputs.cfr_good != 'true'
@@ -218,7 +200,6 @@ jobs:
           java -Xmx4g -jar tools/procyon.jar -jar "$JAR_FILE" -o "${OUT_DIR}_procyon" || true
           echo "Procyon 文件数: $(find "${OUT_DIR}_procyon" -name '*.java' | wc -l)"
 
-      # ---------- 选最佳 ----------
       - name: Pick best
         id: pick
         run: |
@@ -245,7 +226,6 @@ jobs:
             cp -r "$BEST" "$OUT_DIR"
           fi
 
-      # ---------- 深度检查 ----------
       - name: Deep check
         id: deep
         run: |
@@ -263,13 +243,6 @@ jobs:
           echo "xbpq_unsup=$UNSUP" >> $GITHUB_OUTPUT
           echo "📄 XBPQ.java: $LINES 行, $UNSUP 处缺失"
 
-          echo ""
-          echo "=== 关键方法 ==="
-          for m in "W(" "detailContent(" "playerContent(" "searchContent(" "homeContent(" "categoryContent("; do
-            grep -q "$m" "$XBPQ_FILE" && echo "✅ $m" || echo "❌ $m"
-          done
-
-      # ---------- 生成报告 ----------
       - name: Report
         if: always()
         run: |
@@ -299,7 +272,6 @@ jobs:
           } > DECOMPILE_REPORT.md
           cat DECOMPILE_REPORT.md
 
-      # ---------- 自动提交 ----------
       - name: Auto commit
         if: steps.deep.outputs.found == 'true'
         run: |
@@ -322,7 +294,6 @@ jobs:
             echo "✅ 已推送"
           fi
 
-      # ---------- 上传 artifact ----------
       - name: Zip
         if: always()
         run: |
@@ -330,8 +301,8 @@ jobs:
           ls -lh decompiled.zip || true
 
       - name: Upload artifact
-        if: always() && (github.event.inputs.upload_artifact != 'false' || github.event_name != 'workflow_dispatch')
-        uses: actions/upload-artifact@v4
+        if: always()
+        uses: actions/upload-artifact@v5
         with:
           name: decompiled-${{ github.run_id }}
           path: |
@@ -341,7 +312,7 @@ jobs:
 
       - name: Upload XBPQ.java
         if: steps.deep.outputs.found == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: XBPQ-java-${{ github.run_id }}
           path: ${{ steps.deep.outputs.xbpq_file }}
