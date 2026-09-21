@@ -3,13 +3,27 @@
  */
 package com.github.catvod.spider.merge.v0;
 
-import com.github.catvod.spider.merge.cYh;
-import java.io.IOException;
+public final class a {
+    private String a;
+    private String b;
+    private int c;
 
-public final class a
-extends IOException {
-    public a() {
-        super(cYh.d("24312239327A15352035773C06392D3433"));
+    public a(String string, String string2, int n2) {
+        this.a = string;
+        this.b = string2;
+        this.c = n2;
+    }
+
+    public final String a() {
+        return this.b;
+    }
+
+    public final String b() {
+        return this.a;
+    }
+
+    public final int c() {
+        return this.c;
     }
 }
 

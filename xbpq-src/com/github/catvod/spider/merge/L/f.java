@@ -2,40 +2,127 @@
  * Decompiled with CFR 0.152.
  * 
  * Could not load the following classes:
- *  kotlinx.coroutines.CoroutineExceptionHandler
+ *  android.text.TextUtils
+ *  com.google.gson.annotations.SerializedName
  */
 package com.github.catvod.spider.merge.L;
 
-import com.github.catvod.spider.merge.J.c;
-import com.github.catvod.spider.merge.cYh;
-import com.github.catvod.spider.merge.x.a;
-import com.github.catvod.spider.merge.z.k;
+import android.text.TextUtils;
+import com.github.catvod.spider.merge.C.a;
+import com.github.catvod.spider.merge.I.r;
+import com.github.catvod.spider.merge.i0.m;
+import com.google.gson.annotations.SerializedName;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import java.util.ServiceLoader;
-import kotlinx.coroutines.CoroutineExceptionHandler;
 
 public final class f {
-    private static final List<CoroutineExceptionHandler> a = c.b(c.a(ServiceLoader.load(CoroutineExceptionHandler.class, CoroutineExceptionHandler.class.getClassLoader()).iterator()));
+    @SerializedName(value="items")
+    private List<f> a;
+    @SerializedName(value="next_marker")
+    private String b;
+    @SerializedName(value="file_id")
+    private String c;
+    @SerializedName(value="share_id")
+    private String d;
+    @SerializedName(value="name")
+    private String e;
+    @SerializedName(value="type")
+    private String f;
+    @SerializedName(value="file_extension")
+    private String g;
+    @SerializedName(value="category")
+    private String h;
+    @SerializedName(value="size")
+    private double i;
+    @SerializedName(value="parent")
+    private String j;
+    @SerializedName(value="parent_file_id")
+    private String k;
+    @SerializedName(alternate={"thumbnail"}, value="thumb")
+    private String l;
 
-    public static final void a(k object, Throwable throwable) {
-        for (Object object2 : a) {
-            try {
-                object2.handleException((k)object, throwable);
-            }
-            catch (Throwable throwable2) {
-                Thread thread = Thread.currentThread();
-                Thread.UncaughtExceptionHandler uncaughtExceptionHandler = thread.getUncaughtExceptionHandler();
-                if (throwable == throwable2) {
-                    object2 = throwable;
-                } else {
-                    object2 = new RuntimeException(cYh.d("22282234272E0E3F2F7120320E3C247123281E392F36772E08702930393E0B356132382808253538393F47353932322A13392E3F"), throwable2);
-                    com.github.catvod.spider.merge.x.a.a((Throwable)object2, throwable);
-                }
-                uncaughtExceptionHandler.uncaughtException(thread, (Throwable)object2);
-            }
+    public f(String string) {
+        this.c = string;
+    }
+
+    public final String a() {
+        String string = TextUtils.isEmpty((CharSequence)this.h) ? "" : this.h;
+        return string;
+    }
+
+    public final String b() {
+        CharSequence charSequence;
+        String string = m.x(this.f());
+        if (this.i == 0.0) {
+            charSequence = "";
+        } else {
+            charSequence = com.github.catvod.spider.merge.C.a.c("[");
+            ((StringBuilder)charSequence).append(m.o(this.i));
+            ((StringBuilder)charSequence).append("]");
+            charSequence = ((StringBuilder)charSequence).toString();
         }
-        object = Thread.currentThread();
-        ((Thread)object).getUncaughtExceptionHandler().uncaughtException((Thread)object, throwable);
+        return TextUtils.join((CharSequence)" ", Arrays.asList(string, charSequence, this.h(), this.f())).trim();
+    }
+
+    public final String c() {
+        String string = TextUtils.isEmpty((CharSequence)this.g) ? "" : this.g;
+        return string;
+    }
+
+    public final String d() {
+        String string = TextUtils.isEmpty((CharSequence)this.c) ? "" : this.c;
+        return string;
+    }
+
+    public final List<f> e() {
+        List<f> list;
+        List<f> list2 = list = this.a;
+        if (list == null) {
+            list2 = Collections.emptyList();
+        }
+        return list2;
+    }
+
+    public final String f() {
+        String string = TextUtils.isEmpty((CharSequence)this.e) ? "" : m.A(this.e);
+        return string;
+    }
+
+    public final String g() {
+        String string = TextUtils.isEmpty((CharSequence)this.b) ? "" : this.b;
+        return string;
+    }
+
+    public final String h() {
+        String string = TextUtils.isEmpty((CharSequence)this.j) ? "" : r.c(com.github.catvod.spider.merge.C.a.c("["), this.j, "]");
+        return string;
+    }
+
+    public final String i() {
+        return this.k;
+    }
+
+    public final String j() {
+        return this.d;
+    }
+
+    public final String k() {
+        return TextUtils.join((CharSequence)" ", Arrays.asList(this.h(), m.x(this.f()))).trim();
+    }
+
+    public final String l() {
+        return this.l;
+    }
+
+    public final String m() {
+        String string = TextUtils.isEmpty((CharSequence)this.f) ? "" : this.f;
+        return string;
+    }
+
+    public final f n(String string) {
+        this.j = string;
+        return this;
     }
 }
 

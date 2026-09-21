@@ -1,95 +1,88 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.text.TextUtils
+ *  com.google.gson.Gson
+ *  com.google.gson.annotations.SerializedName
  */
 package com.github.catvod.spider.merge.R;
 
-import com.github.catvod.spider.merge.P.H;
-import com.github.catvod.spider.merge.P.I;
-import com.github.catvod.spider.merge.R.a;
-import com.github.catvod.spider.merge.R.b;
-import com.github.catvod.spider.merge.R.e;
-import com.github.catvod.spider.merge.cYh;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
+import android.text.TextUtils;
+import com.github.catvod.spider.Init;
+import com.github.catvod.spider.merge.I.H;
+import com.github.catvod.spider.merge.i0.m;
+import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 
 public final class c {
-    private final b a;
-    private final H b;
+    @SerializedName(value="expire")
+    private String a;
+    @SerializedName(value="login_type")
+    private String b;
+    @SerializedName(value="thread_num")
+    public Integer c;
+    @SerializedName(value="refresh_token_expire_time")
+    private String d;
+    @SerializedName(value="token")
+    private String e;
+    @SerializedName(value="cookie")
+    private String f;
+    @SerializedName(value="user_name")
+    private String g;
+    @SerializedName(value="user_password")
+    private String h;
 
-    public c(b b2, H h2) {
-        this.a = b2;
-        this.b = h2;
+    public final c a() {
+        this.a = "";
+        this.b = "";
+        this.e = "";
+        this.g = "";
+        this.h = "";
+        m.y("p123\u672c\u5730\u6388\u6743\u4fe1\u606f\u5df2\u6e05\u7a7a\uff01\u5c06\u4f18\u5148\u8bfb\u53d6\u5728\u7ebf\u914d\u7f6e");
+        return this;
     }
 
-    protected final String a(e object) {
-        int n2 = ((e)object).a;
-        CharSequence charSequence = new StringBuilder();
-        boolean bl = ((e)object).d;
-        String string = "";
-        Object object2 = bl ? cYh.d("5D") : "";
-        charSequence.append((String)object2);
-        charSequence.append(cYh.d("14"));
-        charSequence.append(n2);
-        object2 = string;
-        if (((e)object).g) {
-            object2 = cYh.d("39");
-        }
-        charSequence.append((String)object2);
-        charSequence = charSequence.toString();
-        if (((e)object).d) {
-            object2 = ((e)object).h;
-            string = cYh.d("5A6E");
-            if (object2 != null) {
-                object2 = new StringBuilder();
-                ((StringBuilder)object2).append((String)charSequence);
-                ((StringBuilder)object2).append(string);
-                ((StringBuilder)object2).append(Arrays.toString(((e)object).h));
-                object = object2;
-            } else {
-                object2 = new StringBuilder();
-                ((StringBuilder)object2).append((String)charSequence);
-                ((StringBuilder)object2).append(string);
-                ((StringBuilder)object2).append(((e)object).e);
-                object = object2;
-            }
-            return ((StringBuilder)object).toString();
-        }
-        return charSequence;
+    public final String b() {
+        String string = TextUtils.isEmpty((CharSequence)this.a) ? "" : this.a;
+        return string;
+    }
+
+    public final String c() {
+        return this.e;
+    }
+
+    public final String d() {
+        return this.g;
+    }
+
+    public final String e() {
+        return this.h;
+    }
+
+    public final c f() {
+        Init.execute(new H(this, 2));
+        return this;
+    }
+
+    public final void g(String string) {
+        this.a = string;
+    }
+
+    public final void h(String string) {
+        this.e = string;
+    }
+
+    public final void i(String string) {
+        this.g = string;
+    }
+
+    public final void j(String string) {
+        this.h = string;
     }
 
     public final String toString() {
-        if (this.a.b == null) {
-            return null;
-        }
-        CharSequence charSequence = new StringBuilder();
-        Iterator iterator = this.a;
-        iterator.getClass();
-        iterator = new ArrayList(((HashMap)((b)((Object)iterator)).a).keySet());
-        Collections.sort(iterator, new a());
-        iterator = ((ArrayList)((Object)iterator)).iterator();
-        while (iterator.hasNext()) {
-            e e2 = (e)iterator.next();
-            Object object = e2.c;
-            int n2 = object != null ? ((e[])object).length : 0;
-            for (int i2 = 0; i2 < n2; ++i2) {
-                e e3 = e2.c[i2];
-                if (e3 == null || e3.a == Integer.MAX_VALUE) continue;
-                ((StringBuilder)charSequence).append(this.a(e2));
-                object = ((I)this.b).a(i2 - 1);
-                ((StringBuilder)charSequence).append(cYh.d("4A"));
-                ((StringBuilder)charSequence).append((String)object);
-                ((StringBuilder)charSequence).append(cYh.d("4A6E"));
-                ((StringBuilder)charSequence).append(this.a(e3));
-                ((StringBuilder)charSequence).append('\n');
-            }
-        }
-        if (((String)(charSequence = ((StringBuilder)charSequence).toString())).length() == 0) {
-            return null;
-        }
-        return charSequence;
+        return new Gson().toJson((Object)this);
     }
 }
 

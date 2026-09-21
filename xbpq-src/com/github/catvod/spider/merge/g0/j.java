@@ -1,44 +1,79 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.widget.EditText
  */
 package com.github.catvod.spider.merge.g0;
 
-import com.github.catvod.spider.merge.P.x;
-import com.github.catvod.spider.merge.T.c;
-import com.github.catvod.spider.merge.T.d;
-import com.github.catvod.spider.merge.g0.E;
-import com.github.catvod.spider.merge.g0.b;
+import android.widget.EditText;
+import com.github.catvod.en.BaseApi;
+import com.github.catvod.spider.ConfigCenter;
+import com.github.catvod.spider.Init;
+import com.github.catvod.spider.merge.I.B0;
+import com.github.catvod.spider.merge.I.L0;
+import com.github.catvod.spider.merge.I.a1;
+import com.github.catvod.spider.merge.I.k;
+import com.github.catvod.spider.merge.R.c;
+import com.github.catvod.spider.merge.i0.m;
+import java.util.Objects;
 
 public final class j
-extends x {
-    public j(x x2, int n2) {
-        super(x2, n2);
+implements Runnable {
+    public static final j b = new j(0);
+    public static final j c = new j(1);
+    public static final j d = new j(2);
+    public static final j e = new j(3);
+    public static final j f = new j(4);
+    public final int a;
+
+    public /* synthetic */ j(int n2) {
+        this.a = n2;
     }
 
     @Override
-    public final <T> T e(d<? extends T> d2) {
-        if (d2 instanceof E) {
-            return ((E)d2).C(this);
+    public final void run() {
+        switch (this.a) {
+            default: {
+                break;
+            }
+            case 3: {
+                String string = ConfigCenter.n;
+                BaseApi.get().showSingBoxInputWithOption();
+                return;
+            }
+            case 2: {
+                String string = ConfigCenter.n;
+                BaseApi.get().setNetPanIso();
+                return;
+            }
+            case 1: {
+                Object object = ConfigCenter.n;
+                object = a1.a().f;
+                ((c)object).a();
+                ((c)object).f();
+                return;
+            }
+            case 0: {
+                Object object = ConfigCenter.n;
+                object = L0.s();
+                Objects.requireNonNull(object);
+                EditText editText = BaseApi.get().initEditText();
+                editText.setHint((CharSequence)"\u8f93\u5165\u7ebf\u7a0b\u6570");
+                editText.setPadding(m.e(8), m.e(8), m.e(8), m.e(8));
+                editText.setBackground(BaseApi.createRoundedBackground(-3355444, m.e(8)));
+                Init.run(new k(object, editText, new B0(editText, 0), 1));
+                return;
+            }
         }
-        return d2.A(this);
-    }
-
-    @Override
-    public final int f() {
-        return 14;
-    }
-
-    @Override
-    public final void i(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).b0();
+        try {
+            while (true) {
+                Thread.sleep(2000L);
+                BaseApi.monitorCurrentActivityButtons();
+            }
         }
-    }
-
-    @Override
-    public final void j(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).M();
+        catch (Exception exception) {
+            return;
         }
     }
 }

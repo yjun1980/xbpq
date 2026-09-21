@@ -1,0 +1,32 @@
+/*
+ * Decompiled with CFR 0.152.
+ */
+package com.github.catvod.spider;
+
+import com.github.catvod.spider.XBPQ;
+import com.github.catvod.spider.XBPQ$4;
+import com.github.catvod.spider.merge.nz.k;
+
+public final class XBPQc
+implements Runnable {
+    public final XBPQ c;
+    public final String d;
+    public final String e;
+
+    public /* synthetic */ XBPQc(XBPQ xBPQ, String string, String string2) {
+        this.c = xBPQ;
+        this.d = string;
+        this.e = string2;
+    }
+
+    @Override
+    public final void run() {
+        XBPQ xBPQ = this.c;
+        String string = this.d;
+        String string2 = this.e;
+        String string3 = XBPQ.K;
+        ((Object)((Object)xBPQ)).getClass();
+        k.A("\u672c\u7ad9\u9700\u8981\u9a8c\u8bc1", string, string2, new XBPQ$4(xBPQ, string2));
+    }
+}
+

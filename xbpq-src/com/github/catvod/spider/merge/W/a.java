@@ -1,76 +1,99 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.text.TextUtils
+ *  com.google.gson.Gson
+ *  com.google.gson.annotations.SerializedName
  */
 package com.github.catvod.spider.merge.W;
 
-import com.github.catvod.spider.merge.U.b;
-import com.github.catvod.spider.merge.U.h;
-import com.github.catvod.spider.merge.c0.r;
-import com.github.catvod.spider.merge.cYh;
-import com.github.catvod.spider.merge.e0.O;
-import java.io.Serializable;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.github.catvod.spider.Init;
+import com.github.catvod.spider.merge.I.U;
+import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 
-public final class a
-implements com.github.catvod.spider.merge.n0.a {
-    public static String b(Throwable object) {
-        Object object2;
-        Serializable serializable = new ArrayList<Throwable>();
-        for (object2 = object; object2 != null && !((ArrayList)serializable).contains(object2); object2 = ((Throwable)object2).getCause()) {
-            ((ArrayList)serializable).add(object2);
-        }
-        object2 = ((ArrayList)serializable).isEmpty() ? null : (Throwable)((ArrayList)serializable).get(((ArrayList)serializable).size() - 1);
-        if (object2 != null) {
-            object = object2;
-        }
-        int n2 = b.e;
-        String string = b.a(object.getClass());
-        object2 = ((Throwable)object).getMessage();
-        serializable = new StringBuilder();
-        ((StringBuilder)serializable).append(string);
-        ((StringBuilder)serializable).append(cYh.d("5D70"));
-        n2 = h.a;
-        object = object2;
-        if (object2 == null) {
-            object = "";
-        }
-        ((StringBuilder)serializable).append((String)object);
-        return ((StringBuilder)serializable).toString();
+public final class a {
+    @SerializedName(value="user_name")
+    private String a;
+    @SerializedName(value="user_password")
+    private String b;
+    @SerializedName(value="auth")
+    private String c;
+    @SerializedName(value="code")
+    private String d;
+    @SerializedName(value="app_auth")
+    private String e;
+    @SerializedName(value="refresh_token")
+    private String f;
+    @SerializedName(value="user_id")
+    private String g;
+
+    public final a a() {
+        this.a = "";
+        this.b = "";
+        this.c = "";
+        this.e = "";
+        this.f = "";
+        return this;
     }
 
-    public static void c(O o2, r r2) {
-        r r3 = r2;
-        int n2 = 0;
-        while (r3 != null) {
-            int n3;
-            r r4 = r3.A();
-            o2.a(r3, n2);
-            r r5 = r3;
-            if (r4 != null) {
-                r5 = r3;
-                if (!r3.q()) {
-                    r5 = r4.g(r3.H());
-                }
-            }
-            r3 = r5;
-            if (r5.h() > 0) {
-                r3 = r5.g(0);
-                continue;
-            }
-            for (n3 = n2++; r3.s() == null && n3 > 0; --n3) {
-                o2.b(r3, n3);
-                r3 = r3.A();
-            }
-            o2.b(r3, n3);
-            if (r3 == r2) break;
-            r3 = r3.s();
-            n2 = n3;
-        }
+    public final String b() {
+        String string = TextUtils.isEmpty((CharSequence)this.c) ? "" : this.c;
+        return string;
     }
 
-    @Override
-    public com.github.catvod.spider.merge.n0.b a(String string) {
-        return com.github.catvod.spider.merge.p0.b.c;
+    public final String c() {
+        return this.d;
+    }
+
+    public final String d() {
+        String string = TextUtils.isEmpty((CharSequence)this.g) ? "" : this.g;
+        return string;
+    }
+
+    public final String e() {
+        String string = TextUtils.isEmpty((CharSequence)this.a) ? "" : this.a;
+        return string;
+    }
+
+    public final String f() {
+        String string = TextUtils.isEmpty((CharSequence)this.b) ? "" : this.b;
+        return string;
+    }
+
+    public final a g() {
+        Init.execute(new U(this, 2));
+        return this;
+    }
+
+    public final void h(String string) {
+        this.c = string;
+    }
+
+    public final void i(String string) {
+        this.d = string;
+    }
+
+    public final void j(String string) {
+        this.f = string;
+    }
+
+    public final void k(String string) {
+        this.g = string;
+    }
+
+    public final void l(String string) {
+        this.a = string;
+    }
+
+    public final void m(String string) {
+        this.b = string;
+    }
+
+    public final String toString() {
+        return new Gson().toJson((Object)this);
     }
 }
 

@@ -2,22 +2,19 @@
  * Decompiled with CFR 0.152.
  * 
  * Could not load the following classes:
- *  com.github.catvod.demo.MainActivity
+ *  kotlin.Metadata
  */
 package com.github.catvod.spider.merge.f;
 
-import com.github.catvod.demo.MainActivity;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+import kotlin.Metadata;
 
-public final class a
-implements Runnable {
-    public static final a c = new a();
-
-    private /* synthetic */ a() {
-    }
-
-    @Override
-    public final void run() {
-        int n2 = MainActivity.a;
-    }
+@Retention(value=RetentionPolicy.CLASS)
+@Target(value={ElementType.PACKAGE, ElementType.TYPE, ElementType.ANNOTATION_TYPE, ElementType.CONSTRUCTOR, ElementType.METHOD, ElementType.FIELD})
+@Metadata
+public @interface a {
 }
 

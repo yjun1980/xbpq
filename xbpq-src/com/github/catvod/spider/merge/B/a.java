@@ -3,16 +3,18 @@
  */
 package com.github.catvod.spider.merge.B;
 
-import com.github.catvod.spider.merge.A.b;
-import com.github.catvod.spider.merge.E.f;
-import com.github.catvod.spider.merge.cYh;
+import com.github.catvod.spider.merge.B.k;
+import com.github.catvod.spider.merge.C.n;
 
-public class a
-extends b {
-    @Override
-    public final void a(Throwable throwable, Throwable throwable2) {
-        f.e(throwable, cYh.d("0431342232"));
-        f.e(throwable2, cYh.d("02282234272E0E3F2F"));
+public final class a {
+    public final k a;
+    public final String b;
+    public n c;
+    public k d;
+
+    public a(k k2, String string) {
+        this.a = k2;
+        this.b = string;
     }
 }
 

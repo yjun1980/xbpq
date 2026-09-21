@@ -2,25 +2,29 @@
  * Decompiled with CFR 0.152.
  * 
  * Could not load the following classes:
- *  android.content.DialogInterface
- *  android.content.DialogInterface$OnCancelListener
+ *  android.graphics.drawable.Animatable
  */
 package com.github.catvod.spider.merge.j;
 
-import android.content.DialogInterface;
-import com.github.catvod.spider.merge.j.j;
-import com.github.catvod.spider.merge.j.k;
+import android.graphics.drawable.Animatable;
+import com.github.catvod.spider.merge.j.f;
 
-public final class a
-implements DialogInterface.OnCancelListener {
-    public final j a;
+final class a
+extends f {
+    private final Animatable a;
 
-    public /* synthetic */ a(j j2) {
-        this.a = j2;
+    a(Animatable animatable) {
+        this.a = animatable;
     }
 
-    public final void onCancel(DialogInterface dialogInterface) {
-        k.c(this.a, dialogInterface);
+    @Override
+    public final void c() {
+        this.a.start();
+    }
+
+    @Override
+    public final void d() {
+        this.a.stop();
     }
 }
 

@@ -1,22 +1,44 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.content.Context
+ *  android.content.res.Configuration
  */
 package com.github.catvod.spider.merge.l;
 
-public final class a {
-    public static final int[] a = new int[]{1, 2, 3, 4, 5, 6};
+import android.content.Context;
+import android.content.res.Configuration;
 
-    public static /* synthetic */ int a(int n2) {
-        if (n2 != 0) {
-            return n2 - 1;
-        }
-        throw null;
+public final class a {
+    private Context a;
+
+    private a(Context context) {
+        this.a = context;
     }
 
-    public static /* synthetic */ int[] b(int n2) {
-        int[] nArray = new int[n2];
-        System.arraycopy(a, 0, nArray, 0, n2);
-        return nArray;
+    public static a a(Context context) {
+        return new a(context);
+    }
+
+    public final int b() {
+        return this.a.getResources().getDisplayMetrics().widthPixels / 2;
+    }
+
+    public final int c() {
+        Configuration configuration = this.a.getResources().getConfiguration();
+        int n2 = configuration.screenWidthDp;
+        int n3 = configuration.screenHeightDp;
+        if (!(configuration.smallestScreenWidthDp > 600 || n2 > 600 || n2 > 960 && n3 > 720 || n2 > 720 && n3 > 960)) {
+            if (!(n2 >= 500 || n2 > 640 && n3 > 480 || n2 > 480 && n3 > 640)) {
+                if (n2 >= 360) {
+                    return 3;
+                }
+                return 2;
+            }
+            return 4;
+        }
+        return 5;
     }
 }
 

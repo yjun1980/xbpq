@@ -1,13 +1,18 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.graphics.PorterDuffColorFilter
  */
 package com.github.catvod.spider.merge.n;
 
-import com.github.catvod.spider.merge.n.o;
+import android.graphics.PorterDuffColorFilter;
+import com.github.catvod.spider.merge.q.g;
 
-public abstract class B<V>
-extends o<Object> {
-    B() {
+final class B
+extends g<Integer, PorterDuffColorFilter> {
+    public B() {
+        super(6);
     }
 }
 

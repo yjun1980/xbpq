@@ -3,36 +3,33 @@
  */
 package com.github.catvod.spider.merge.l0;
 
-import com.github.catvod.spider.merge.P.C;
-import com.github.catvod.spider.merge.P.D;
-import com.github.catvod.spider.merge.P.o;
-import com.github.catvod.spider.merge.P.q;
-import com.github.catvod.spider.merge.P.w;
-import com.github.catvod.spider.merge.P.x;
-import com.github.catvod.spider.merge.P.z;
-import com.github.catvod.spider.merge.S.m;
+import java.util.Comparator;
+import java.util.List;
 
 public final class a
-extends o {
-    @Override
-    public final void f(w object, z z2) {
-        object = ((w)object).p();
-        while (object != null) {
-            object = (x)((C)object).a;
-        }
-        object = new m(z2);
-        throw object;
+implements Comparator {
+    public final List a;
+
+    public /* synthetic */ a(List list) {
+        this.a = list;
     }
 
-    @Override
-    public final D g(w object) {
-        q q2 = new q((w)object);
-        object = ((w)object).p();
-        while (object != null) {
-            object = (x)((C)object).a;
+    public final int compare(Object object, Object object2) {
+        List list = this.a;
+        object = (String)object;
+        object2 = (String)object2;
+        int n2 = list.indexOf(object);
+        int n3 = list.indexOf(object2);
+        int n4 = n2;
+        if (n2 < 0) {
+            n4 = Integer.MAX_VALUE;
         }
-        object = new m(q2);
-        throw object;
+        n2 = n3;
+        if (n3 < 0) {
+            n2 = Integer.MAX_VALUE;
+        }
+        n4 = n4 != n2 ? Integer.compare(n4, n2) : String.valueOf(object).compareTo(String.valueOf(object2));
+        return n4;
     }
 }
 

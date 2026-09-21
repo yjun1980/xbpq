@@ -3,45 +3,24 @@
  */
 package com.github.catvod.spider.merge.g0;
 
-import com.github.catvod.spider.merge.P.D;
-import com.github.catvod.spider.merge.T.c;
-import com.github.catvod.spider.merge.T.d;
-import com.github.catvod.spider.merge.g0.E;
-import com.github.catvod.spider.merge.g0.b;
+import com.github.catvod.spider.Youtube;
+import com.github.catvod.spider.merge.B0.c;
+import com.github.catvod.spider.merge.B0.f;
+import com.github.catvod.spider.merge.i0.m;
+import java.util.function.Predicate;
 
 public final class x
-extends com.github.catvod.spider.merge.P.x {
-    public D g;
+implements Predicate {
+    public static final x a = new x();
 
-    public x(com.github.catvod.spider.merge.P.x x2, int n2) {
-        super(x2, n2);
+    private /* synthetic */ x() {
     }
 
-    @Override
-    public final <T> T e(d<? extends T> d2) {
-        if (d2 instanceof E) {
-            return ((E)d2).l(this);
-        }
-        return d2.A(this);
-    }
-
-    @Override
-    public final int f() {
-        return 18;
-    }
-
-    @Override
-    public final void i(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).Z();
-        }
-    }
-
-    @Override
-    public final void j(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).X();
-        }
+    public final boolean test(Object object) {
+        object = (f)object;
+        int n2 = Youtube.u;
+        boolean bl = m.r() ? true : ((c)object).g().contains("avc");
+        return bl;
     }
 }
 

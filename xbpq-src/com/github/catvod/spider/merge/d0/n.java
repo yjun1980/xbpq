@@ -1,63 +1,59 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.content.Context
+ *  com.github.catvod.crawler.SpiderDebug
  */
 package com.github.catvod.spider.merge.d0;
 
-import com.github.catvod.spider.merge.cYh;
-import com.github.catvod.spider.merge.d0.A;
-import com.github.catvod.spider.merge.d0.H;
-import com.github.catvod.spider.merge.d0.I;
-import com.github.catvod.spider.merge.d0.L;
-import com.github.catvod.spider.merge.d0.M;
-import com.github.catvod.spider.merge.d0.O;
-import com.github.catvod.spider.merge.d0.b;
+import android.content.Context;
+import com.github.catvod.crawler.SpiderDebug;
+import com.github.catvod.en.NetPan;
+import com.github.catvod.en.NetPan$TermuxService;
+import com.github.catvod.spider.merge.C.a;
+import com.github.catvod.spider.merge.c.b;
+import com.github.catvod.spider.merge.i0.m;
+import java.io.File;
+import java.util.regex.Pattern;
 
-final class n
-extends A {
+public final class n
+implements Runnable {
+    public final File a;
+    public final String b;
+    public final Context c;
+    public final NetPan$TermuxService d;
+    public final Boolean e;
+
+    public /* synthetic */ n(File file, String string, Context context, NetPan$TermuxService netPan$TermuxService, Boolean bl) {
+        this.a = file;
+        this.b = string;
+        this.c = context;
+        this.d = netPan$TermuxService;
+        this.e = bl;
+    }
+
     @Override
-    final boolean d(O o2, b b2) {
-        block14: {
-            block8: {
-                block13: {
-                    Object object;
-                    block11: {
-                        block12: {
-                            block10: {
-                                block9: {
-                                    block7: {
-                                        if (!A.a(o2)) break block7;
-                                        b2.E((H)o2);
-                                        break block8;
-                                    }
-                                    if (!o2.b()) break block9;
-                                    b2.F((I)o2);
-                                    break block8;
-                                }
-                                if (o2.c()) {
-                                    b2.n(this);
-                                    return false;
-                                }
-                                boolean bl = o2.f();
-                                object = cYh.d("0F242C3D");
-                                if (!bl || !((M)o2).c.equals(object)) break block10;
-                                object = A.i;
-                                break block11;
-                            }
-                            if (!o2.e() || !((L)o2).c.equals(object)) break block12;
-                            b2.j0(A.x);
-                            break block8;
-                        }
-                        if (!o2.f() || !((M)o2).c.equals(cYh.d("093F272336370223"))) break block13;
-                        object = A.f;
-                    }
-                    return b2.X(o2, (A)((Object)object));
-                }
-                if (!o2.d()) break block14;
-            }
-            return true;
+    public final void run() {
+        File file = this.a;
+        String string = this.b;
+        Object object = this.c;
+        NetPan$TermuxService netPan$TermuxService = this.d;
+        Boolean bl = this.e;
+        Pattern pattern = NetPan.a;
+        try {
+            com.github.catvod.spider.merge.c.b.f(file, string);
+            NetPan.runTermuxServiceCommand((Context)object, netPan$TermuxService, string, bl);
         }
-        b2.n(this);
-        return false;
+        catch (Exception exception) {
+            object = com.github.catvod.spider.merge.C.a.c("Service run command fail: ");
+            ((StringBuilder)object).append(exception.getMessage());
+            SpiderDebug.log((String)((StringBuilder)object).toString());
+            object = new StringBuilder();
+            ((StringBuilder)object).append("\u8fd0\u884c\u547d\u4ee4\u5931\u8d25: ");
+            ((StringBuilder)object).append(exception.getMessage());
+            m.y(((StringBuilder)object).toString());
+        }
     }
 }
 

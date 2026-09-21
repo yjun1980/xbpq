@@ -3,116 +3,48 @@
  */
 package com.github.catvod.spider.merge.g0;
 
-import com.github.catvod.spider.merge.T.c;
+import com.github.catvod.spider.ConfigCenter;
+import com.github.catvod.spider.Init;
+import com.github.catvod.spider.TgYunDouBanPan;
+import com.github.catvod.spider.merge.I.H0;
+import com.github.catvod.spider.merge.I.L0;
+import com.github.catvod.spider.merge.I.X;
+import com.github.catvod.spider.merge.i0.m;
+import java.util.Objects;
 
-public interface b
-extends c {
-    public void A();
+public final class b
+implements Runnable {
+    public static final b b = new b(0);
+    public static final b c = new b(1);
+    public static final b d = new b(2);
+    public final int a;
 
-    public void B();
+    public /* synthetic */ b(int n2) {
+        this.a = n2;
+    }
 
-    public void C();
-
-    public void D();
-
-    public void E();
-
-    public void F();
-
-    public void G();
-
-    public void H();
-
-    public void I();
-
-    public void J();
-
-    public void K();
-
-    public void L();
-
-    public void M();
-
-    public void N();
-
-    public void O();
-
-    public void P();
-
-    public void Q();
-
-    public void R();
-
-    public void T();
-
-    public void U();
-
-    public void V();
-
-    public void W();
-
-    public void X();
-
-    public void Y();
-
-    public void Z();
-
-    public void a0();
-
-    public void b0();
-
-    public void c();
-
-    public void c0();
-
-    public void d();
-
-    public void d0();
-
-    public void e();
-
-    public void e0();
-
-    public void f();
-
-    public void f0();
-
-    public void g();
-
-    public void i();
-
-    public void j();
-
-    public void k();
-
-    public void l();
-
-    public void m();
-
-    public void n();
-
-    public void o();
-
-    public void p();
-
-    public void q();
-
-    public void r();
-
-    public void s();
-
-    public void t();
-
-    public void u();
-
-    public void v();
-
-    public void w();
-
-    public void x();
-
-    public void y();
-
-    public void z();
+    @Override
+    public final void run() {
+        switch (this.a) {
+            default: {
+                break;
+            }
+            case 1: {
+                String string = ConfigCenter.n;
+                X.n().e.a();
+                m.y("\u5df2\u6e05\u9664\u5149\u9e2d\u672c\u5730\u6388\u6743");
+                return;
+            }
+            case 0: {
+                Object object = ConfigCenter.n;
+                object = L0.s();
+                Objects.requireNonNull(object);
+                Init.run(new H0((L0)object, 1));
+                return;
+            }
+        }
+        String string = ConfigCenter.n;
+        new TgYunDouBanPan().startTgFlow();
+    }
 }
 

@@ -1,42 +1,44 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.graphics.Rect
+ *  android.util.Log
+ *  android.view.View
+ *  androidx.core.view.ViewCompat
  */
 package com.github.catvod.spider.merge.n;
 
-import com.github.catvod.spider.merge.n.C;
-import com.github.catvod.spider.merge.n.M;
-import java.util.concurrent.Delayed;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
+import android.graphics.Rect;
+import android.util.Log;
+import android.view.View;
+import androidx.core.view.ViewCompat;
+import java.lang.reflect.AccessibleObject;
+import java.lang.reflect.Method;
 
-final class P<V>
-extends C<V>
-implements ScheduledFuture {
-    private final ScheduledFuture<?> d;
+public final class P {
+    private static Method a;
 
-    public P(M<V> m2, ScheduledFuture<?> scheduledFuture) {
-        super(m2);
-        this.d = scheduledFuture;
-    }
-
-    @Override
-    public final boolean cancel(boolean bl) {
-        boolean bl2 = super.cancel(bl);
-        if (bl2) {
-            this.d.cancel(bl);
+    static {
+        try {
+            Method method;
+            a = method = View.class.getDeclaredMethod("computeFitSystemWindows", Rect.class, Rect.class);
+            if (!method.isAccessible()) {
+                ((AccessibleObject)a).setAccessible(true);
+            }
         }
-        return bl2;
+        catch (NoSuchMethodException noSuchMethodException) {
+            Log.d((String)"ViewUtils", (String)"Could not find method computeFitSystemWindows. Oh well.");
+        }
     }
 
-    @Override
-    public final int compareTo(Object object) {
-        object = (Delayed)object;
-        return this.d.compareTo(object);
-    }
-
-    @Override
-    public final long getDelay(TimeUnit timeUnit) {
-        return this.d.getDelay(timeUnit);
+    public static boolean a(View view) {
+        int n2 = ViewCompat.getLayoutDirection((View)view);
+        boolean bl = true;
+        if (n2 != 1) {
+            bl = false;
+        }
+        return bl;
     }
 }
 

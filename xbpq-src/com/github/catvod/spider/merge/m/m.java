@@ -1,19 +1,18 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  androidx.appcompat.view.menu.k
  */
 package com.github.catvod.spider.merge.m;
 
-import java.util.Iterator;
+import androidx.appcompat.view.menu.k;
 
-public abstract class m<E>
-implements Iterator<E> {
-    protected m() {
-    }
+public interface m {
+    public void b(k var1);
 
-    @Override
-    @Deprecated
-    public final void remove() {
-        throw new UnsupportedOperationException();
-    }
+    public k c();
+
+    public boolean e();
 }
 

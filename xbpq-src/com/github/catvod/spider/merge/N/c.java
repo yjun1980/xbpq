@@ -3,55 +3,50 @@
  */
 package com.github.catvod.spider.merge.N;
 
-import com.github.catvod.spider.merge.N.e;
-import com.github.catvod.spider.merge.cYh;
-import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
+import com.github.catvod.spider.merge.R0.e;
 
-public class c<E> {
-    private static final AtomicReferenceFieldUpdater a = AtomicReferenceFieldUpdater.newUpdater(c.class, Object.class, cYh.d("38333423"));
-    private volatile Object _cur = new e(8, false);
+public final class c
+extends Enum<c> {
+    private static final c[] d;
+    private String a;
+    private Integer b;
+    private Integer c;
 
-    public final boolean a(E e2) {
-        e e3;
-        int n2;
-        while ((n2 = (e3 = (e)this._cur).a(e2)) != 0) {
-            if (n2 != 1) {
-                if (n2 != 2) continue;
-                return false;
-            }
-            AtomicReferenceFieldUpdater atomicReferenceFieldUpdater = a;
-            e e4 = e3.e();
-            while (!atomicReferenceFieldUpdater.compareAndSet(this, e3, e4) && atomicReferenceFieldUpdater.get(this) == e3) {
-            }
-        }
-        return true;
+    static {
+        Integer n2 = 400;
+        c c2 = new c("NORMAL", n2, 8);
+        Integer n3 = 6;
+        d = new c[]{c2, new c("SUPER_VIP", n2, n3), new c("VIP", n2, n3), new c("Z_VIP", n2, n3), new c("MINI_VIP", n2, n3)};
     }
 
-    public final void b() {
-        e e2;
-        while (!(e2 = (e)this._cur).b()) {
-            AtomicReferenceFieldUpdater atomicReferenceFieldUpdater = a;
-            e e3 = e2.e();
-            while (!atomicReferenceFieldUpdater.compareAndSet(this, e2, e3) && atomicReferenceFieldUpdater.get(this) == e2) {
-            }
-        }
-        return;
+    private c(String string2, Integer n3, Integer n4) {
+        this.a = string2;
+        this.b = n3;
+        this.c = n4;
     }
 
-    public final int c() {
-        return ((e)this._cur).c();
+    public static Integer b() {
+        for (c c2 : com.github.catvod.spider.merge.N.c.values()) {
+            if (!e.a("", c2.a)) continue;
+            return c2.b;
+        }
+        return 400;
     }
 
-    public final E d() {
-        e e2;
-        Object object;
-        while ((object = (e2 = (e)this._cur).f()) == e.g) {
-            object = a;
-            e e3 = e2.e();
-            while (!((AtomicReferenceFieldUpdater)object).compareAndSet(this, e2, e3) && ((AtomicReferenceFieldUpdater)object).get(this) == e2) {
-            }
+    public static Integer e(String string) {
+        for (c c2 : com.github.catvod.spider.merge.N.c.values()) {
+            if (!e.a(string, c2.a)) continue;
+            return c2.c;
         }
-        return (E)object;
+        return 6;
+    }
+
+    public static c valueOf(String string) {
+        return Enum.valueOf(c.class, string);
+    }
+
+    public static c[] values() {
+        return (c[])d.clone();
     }
 }
 

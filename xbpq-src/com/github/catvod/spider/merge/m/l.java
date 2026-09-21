@@ -1,54 +1,34 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.content.Context
+ *  androidx.appcompat.view.menu.i
+ *  androidx.appcompat.view.menu.k
+ *  androidx.appcompat.view.menu.r
  */
 package com.github.catvod.spider.merge.m;
 
-import com.github.catvod.spider.merge.m.g;
-import com.github.catvod.spider.merge.m.h;
-import com.github.catvod.spider.merge.m.m;
+import android.content.Context;
+import androidx.appcompat.view.menu.i;
+import androidx.appcompat.view.menu.r;
+import com.github.catvod.spider.merge.m.k;
 
-final class l<E>
-extends g<E> {
-    final transient E e;
+public interface l {
+    public void a(i var1, boolean var2);
 
-    l(E e2) {
-        this.e = e2;
-    }
+    public boolean b(androidx.appcompat.view.menu.k var1);
 
-    @Override
-    final int a(Object[] objectArray) {
-        objectArray[0] = this.e;
-        return 1;
-    }
+    public boolean d();
 
-    @Override
-    public final boolean contains(Object object) {
-        return this.e.equals(object);
-    }
+    public void f(Context var1, i var2);
 
-    @Override
-    public final m<E> e() {
-        return new h(this.e);
-    }
+    public void g(k var1);
 
-    @Override
-    public final int hashCode() {
-        return this.e.hashCode();
-    }
+    public boolean j(androidx.appcompat.view.menu.k var1);
 
-    @Override
-    public final int size() {
-        return 1;
-    }
+    public boolean k(r var1);
 
-    @Override
-    public final String toString() {
-        String string = this.e.toString();
-        StringBuilder stringBuilder = new StringBuilder(String.valueOf(string).length() + 2);
-        stringBuilder.append('[');
-        stringBuilder.append(string);
-        stringBuilder.append(']');
-        return stringBuilder.toString();
-    }
+    public void l(boolean var1);
 }
 

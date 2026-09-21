@@ -3,56 +3,71 @@
  */
 package com.github.catvod.spider.merge.v;
 
-import com.github.catvod.spider.merge.v.e;
+import com.github.catvod.spider.merge.v.c;
+import com.github.catvod.spider.merge.v.d;
 
-public final class b
-extends Enum<b> {
-    public static final /* enum */ b e;
-    public static final /* enum */ b f;
-    public static final /* enum */ b g;
-    public static final /* enum */ b h;
-    public static final /* enum */ b i;
-    private static final b[] j;
-    private final int[] c;
-    private final int d;
+final class b {
+    static final int[] a;
+    static final int[] b;
 
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
     static {
-        b b2;
-        b b3;
-        b b4;
-        b b5;
-        b b6;
-        b b7 = new b(new int[]{0, 0, 0}, 0);
-        e = b6 = new b(new int[]{10, 12, 14}, 1);
-        f = b5 = new b(new int[]{9, 11, 13}, 2);
-        b b8 = new b(new int[]{0, 0, 0}, 3);
-        g = b4 = new b(new int[]{8, 16, 16}, 4);
-        h = b3 = new b(new int[]{0, 0, 0}, 7);
-        i = b2 = new b(new int[]{8, 10, 12}, 8);
-        j = new b[]{b7, b6, b5, b8, b4, b3, b2, new b(new int[]{0, 0, 0}, 5), new b(new int[]{0, 0, 0}, 9), new b(new int[]{8, 10, 12}, 13)};
-    }
-
-    private b(int[] nArray, int n3) {
-        this.c = nArray;
-        this.d = n3;
-    }
-
-    public static b valueOf(String string) {
-        return Enum.valueOf(b.class, string);
-    }
-
-    public static b[] values() {
-        return (b[])j.clone();
-    }
-
-    public final int a() {
-        return this.d;
-    }
-
-    public final int b(e e2) {
-        int n2 = e2.f();
-        n2 = n2 <= 9 ? 0 : (n2 <= 26 ? 1 : 2);
-        return this.c[n2];
+        int[] nArray = new int[c.values().length];
+        b = nArray;
+        try {
+            nArray[c.ON_CREATE.ordinal()] = 1;
+        }
+        catch (NoSuchFieldError noSuchFieldError) {}
+        try {
+            com.github.catvod.spider.merge.v.b.b[c.ON_STOP.ordinal()] = 2;
+        }
+        catch (NoSuchFieldError noSuchFieldError) {}
+        try {
+            com.github.catvod.spider.merge.v.b.b[c.ON_START.ordinal()] = 3;
+        }
+        catch (NoSuchFieldError noSuchFieldError) {}
+        try {
+            com.github.catvod.spider.merge.v.b.b[c.ON_PAUSE.ordinal()] = 4;
+        }
+        catch (NoSuchFieldError noSuchFieldError) {}
+        try {
+            com.github.catvod.spider.merge.v.b.b[c.ON_RESUME.ordinal()] = 5;
+        }
+        catch (NoSuchFieldError noSuchFieldError) {}
+        try {
+            com.github.catvod.spider.merge.v.b.b[c.ON_DESTROY.ordinal()] = 6;
+        }
+        catch (NoSuchFieldError noSuchFieldError) {}
+        try {
+            com.github.catvod.spider.merge.v.b.b[c.ON_ANY.ordinal()] = 7;
+        }
+        catch (NoSuchFieldError noSuchFieldError) {}
+        nArray = new int[d.values().length];
+        a = nArray;
+        nArray[2] = 1;
+        try {
+            com.github.catvod.spider.merge.v.b.a[3] = 2;
+        }
+        catch (NoSuchFieldError noSuchFieldError) {}
+        try {
+            com.github.catvod.spider.merge.v.b.a[4] = 3;
+        }
+        catch (NoSuchFieldError noSuchFieldError) {}
+        try {
+            com.github.catvod.spider.merge.v.b.a[0] = 4;
+        }
+        catch (NoSuchFieldError noSuchFieldError) {}
+        try {
+            com.github.catvod.spider.merge.v.b.a[1] = 5;
+            return;
+        }
+        catch (NoSuchFieldError noSuchFieldError) {
+            return;
+        }
     }
 }
 

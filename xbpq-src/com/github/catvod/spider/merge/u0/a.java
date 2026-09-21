@@ -3,45 +3,34 @@
  */
 package com.github.catvod.spider.merge.u0;
 
-import com.github.catvod.spider.merge.E.f;
-import com.github.catvod.spider.merge.cYh;
+import com.github.catvod.spider.merge.u0.b;
+import com.github.catvod.spider.merge.y.d;
+import com.github.catvod.spider.merge.y.e;
+import java.io.PrintStream;
 
-public final class a {
-    private final String a;
-    private final Object b;
-    private final boolean c;
-
-    public a(String string, Object object) {
-        f.e(string, cYh.d("0C3538"));
-        this.a = string;
-        this.b = object;
-        this.c = false;
-    }
-
-    public final String a() {
-        return this.a;
-    }
-
-    public final Object b() {
-        return this.b;
-    }
-
-    public final boolean c() {
-        return this.c;
-    }
-
-    public final boolean equals(Object object) {
-        if (object == this) {
-            return true;
+public class a
+extends b {
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    public a(e object) {
+        super((e)object);
+        try {
+            this.e = com.github.catvod.spider.merge.g.a.b(((e)object).u("shortBylineText"));
+            object = ((e)object).u("title");
+            boolean bl = object == null;
+            object = !bl ? (((e)object).containsKey("simpleText") ? ((e)object).x("simpleText") : com.github.catvod.spider.merge.g.a.b((e)object)) : this.e;
+            this.d = object;
+            return;
         }
-        if (!(object instanceof a)) {
-            return false;
+        catch (d d2) {
+            PrintStream printStream = System.out;
+            object = com.github.catvod.spider.merge.C.a.c("JSON Parsing Error: ");
+            ((StringBuilder)object).append(d2.getMessage());
+            printStream.println(((StringBuilder)object).toString());
         }
-        return f.a(((a)object).a, this.a);
-    }
-
-    public final int hashCode() {
-        return this.a.hashCode();
     }
 }
 

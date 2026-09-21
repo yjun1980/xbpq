@@ -3,46 +3,43 @@
  */
 package com.github.catvod.spider.merge.g0;
 
-import com.github.catvod.spider.merge.P.D;
-import com.github.catvod.spider.merge.P.x;
-import com.github.catvod.spider.merge.T.c;
-import com.github.catvod.spider.merge.T.d;
-import com.github.catvod.spider.merge.g0.E;
-import com.github.catvod.spider.merge.g0.b;
+import com.github.catvod.spider.Youtube;
+import com.github.catvod.spider.merge.H1.b;
+import com.github.catvod.spider.merge.H1.f;
+import com.github.catvod.utils.server.Server;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.function.Function;
 
 public final class A
-extends x {
-    public D g;
+implements Function {
+    public final Youtube a;
 
-    public A(x x2, int n2) {
-        super(x2, n2);
+    public /* synthetic */ A(Youtube youtube, String string) {
+        this.a = youtube;
     }
 
-    @Override
-    public final <T> T e(d<? extends T> d2) {
-        if (d2 instanceof E) {
-            return ((E)d2).h(this);
-        }
-        return d2.A(this);
-    }
-
-    @Override
-    public final int f() {
-        return 21;
-    }
-
-    @Override
-    public final void i(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).d0();
-        }
-    }
-
-    @Override
-    public final void j(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).c();
-        }
+    public final Object apply(Object object) {
+        Object object2 = this.a;
+        object = (b)object;
+        int n2 = Youtube.u;
+        Objects.requireNonNull(object2);
+        String string = String.format(Locale.getDefault(), "subsegmentAlignment='true' audioSamplingRate='%d'", ((b)object).l().n());
+        n2 = ((b)object).k();
+        int n3 = ((b)object).e();
+        object2 = ((b)object).f();
+        String string2 = ((f)object).d().c;
+        String string3 = Server.H(((f)object).c()).replace("&", "&amp;");
+        CharSequence charSequence = new StringBuilder();
+        charSequence.append(((b)object).j());
+        charSequence.append("-");
+        charSequence.append(((b)object).i());
+        charSequence = charSequence.toString();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(((b)object).h());
+        stringBuilder.append("-");
+        stringBuilder.append(((b)object).g());
+        return String.format("<AdaptationSet>\n<ContentComponent contentType=\"audio\"/>\n<Representation id=\"%d\" bandwidth=\"%d\" codecs=\"%s\" mimeType=\"%s\" %s startWithSAP=\"0\">\n<BaseURL>%s</BaseURL>\n<SegmentBase indexRange=\"%s\">\n<Initialization range=\"%s\"/>\n</SegmentBase>\n</Representation>\n</AdaptationSet>\n", n2, n3, object2, string2, string, string3, stringBuilder.toString(), charSequence);
     }
 }
 

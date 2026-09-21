@@ -1,142 +1,86 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  com.thegrizzlylabs.sardineandroid.DavResource
  */
 package com.github.catvod.spider.merge.V;
 
-import com.github.catvod.spider.merge.U.g;
-import com.github.catvod.spider.merge.V.i;
-import com.github.catvod.spider.merge.cYh;
-import com.github.catvod.spider.merge.d.d;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
+import com.thegrizzlylabs.sardineandroid.DavResource;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
 
-final class c
-extends i {
-    c() {
-        this.H();
-        this.J();
-        this.y(cYh.d("1C"));
-        this.x(cYh.d("1A"));
-        this.w();
-        this.v();
-        this.A(cYh.d("4B"));
-        this.z();
-        this.C();
-        this.G();
-        this.F();
-        this.E();
-        this.D();
+public final class c
+implements Comparator<DavResource> {
+    private final String a;
+    private final String b;
+
+    public c(String string, String string2) {
+        this.a = string;
+        this.b = string2;
     }
 
-    @Override
-    public final void a(StringBuffer stringBuffer, Object object) {
-        super.a(stringBuffer, object);
-    }
-
-    @Override
-    protected final void c(StringBuffer stringBuffer, char c2) {
-        stringBuffer.append('\"');
-        stringBuffer.append(g.a(String.valueOf(c2)));
-        stringBuffer.append('\"');
-    }
-
-    @Override
-    protected final void e(StringBuffer stringBuffer, String string, Object object) {
-        if (object == null) {
-            this.l(stringBuffer);
-            return;
-        }
-        if (!(object instanceof String) && !(object instanceof Character)) {
-            if (!(object instanceof Number) && !(object instanceof Boolean)) {
-                String string2 = object.toString();
-                boolean bl = string2.startsWith(this.r());
-                boolean bl2 = false;
-                boolean bl3 = bl && string2.endsWith(this.q());
-                if (!bl3) {
-                    bl3 = bl2;
-                    if (string2.startsWith(this.p())) {
-                        bl3 = bl2;
-                        if (string2.endsWith(this.o())) {
-                            bl3 = true;
-                        }
-                    }
-                    if (!bl3) {
-                        this.e(stringBuffer, string, string2);
-                        return;
-                    }
-                }
-                stringBuffer.append(object);
-                return;
-            }
-            stringBuffer.append(object);
-            return;
-        }
-        string = object.toString();
-        stringBuffer.append('\"');
-        stringBuffer.append(g.a(string));
-        stringBuffer.append('\"');
-    }
-
-    @Override
-    protected final void f(StringBuffer stringBuffer, String string, Collection<?> object) {
-        if (object != null && !object.isEmpty()) {
-            stringBuffer.append(this.p());
-            int n2 = 0;
-            object = object.iterator();
-            while (object.hasNext()) {
-                this.d(stringBuffer, string, n2, object.next());
-                ++n2;
-            }
-            stringBuffer.append(this.o());
-            return;
-        }
-        stringBuffer.append(object);
+    public static void a(String string, String string2, List<DavResource> list) {
+        Collections.sort(list, new c(string, string2));
     }
 
     /*
-     * Ignored method signature, as it can't be verified against descriptor
+     * Unable to fully structure code
      */
     @Override
-    protected final void g(StringBuffer stringBuffer, Map object) {
-        if (object != null && !object.isEmpty()) {
-            stringBuffer.append(this.r());
-            Iterator iterator = object.entrySet().iterator();
-            boolean bl = true;
-            while (iterator.hasNext()) {
-                Map.Entry entry = iterator.next();
-                Object k2 = entry.getKey();
-                object = null;
-                if (k2 != null) {
-                    object = k2.toString();
+    public final int compare(Object var1_1, Object var2_2) {
+        block12: {
+            block10: {
+                block11: {
+                    var1_1 = (DavResource)var1_1;
+                    var8_3 = (DavResource)var2_2;
+                    var5_4 = this.b.equals("asc");
+                    var2_2 = this.a;
+                    Objects.requireNonNull(var2_2);
+                    var3_5 = var2_2.hashCode();
+                    var4_6 = -1;
+                    if (var3_5 == 3076014) break block10;
+                    if (var3_5 == 3373707) break block11;
+                    if (var3_5 != 3530753 || !var2_2.equals("size")) ** GOTO lbl-1000
+                    var3_5 = 2;
+                    break block12;
                 }
-                if (object == null) continue;
-                if (bl) {
-                    bl = false;
-                } else {
-                    this.i(stringBuffer);
-                }
-                this.j(stringBuffer, (String)object);
-                entry = entry.getValue();
-                if (entry == null) {
-                    this.l(stringBuffer);
-                    continue;
-                }
-                this.k(stringBuffer, (String)object, entry, true);
+                if (!var2_2.equals("name")) ** GOTO lbl-1000
+                var3_5 = 1;
+                break block12;
             }
-            stringBuffer.append(this.q());
-            return;
-        }
-        stringBuffer.append(object);
-    }
+            if (!var2_2.equals("date")) lbl-1000:
+            // 3 sources
 
-    @Override
-    protected final void j(StringBuffer stringBuffer, String string) {
-        String string2 = cYh.d("45");
-        StringBuilder stringBuilder = d.b(string2);
-        stringBuilder.append(g.a(string));
-        stringBuilder.append(string2);
-        super.j(stringBuffer, stringBuilder.toString());
+            {
+                var3_5 = -1;
+            } else {
+                var3_5 = 0;
+            }
+        }
+        if (var3_5 != 0) {
+            if (var3_5 != 1) {
+                if (var3_5 != 2) {
+                    var3_5 = var4_6;
+                } else {
+                    if (var5_4) {
+                        var6_7 = var1_1.getContentLength();
+                        var1_1 = var8_3.getContentLength();
+                    } else {
+                        var6_7 = var8_3.getContentLength();
+                        var1_1 = var1_1.getContentLength();
+                    }
+                    var3_5 = Long.compare(var6_7, var1_1.longValue());
+                }
+            } else {
+                var3_5 = var5_4 ? var1_1.getName().compareTo(var8_3.getName()) : var8_3.getName().compareTo(var1_1.getName());
+            }
+        } else {
+            var3_5 = var5_4 ? var1_1.getModified().compareTo(var8_3.getModified()) : var8_3.getModified().compareTo(var1_1.getModified());
+        }
+        return var3_5;
     }
 }
 

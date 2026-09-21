@@ -1,20 +1,30 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.graphics.Typeface
+ *  android.widget.TextView
  */
 package com.github.catvod.spider.merge.n;
 
-import com.github.catvod.spider.merge.n.o;
+import android.graphics.Typeface;
+import android.widget.TextView;
 
-final class n {
-    static final n c = new n(false);
-    volatile Thread a;
-    volatile n b;
+final class n
+implements Runnable {
+    final TextView a;
+    final Typeface b;
+    final int c;
 
-    n() {
-        o.c().i(this, Thread.currentThread());
+    n(TextView textView, Typeface typeface, int n2) {
+        this.a = textView;
+        this.b = typeface;
+        this.c = n2;
     }
 
-    n(boolean bl) {
+    @Override
+    public final void run() {
+        this.a.setTypeface(this.b, this.c);
     }
 }
 

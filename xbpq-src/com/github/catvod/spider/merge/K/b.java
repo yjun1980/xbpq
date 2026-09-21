@@ -1,24 +1,24 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  com.google.gson.annotations.SerializedName
  */
 package com.github.catvod.spider.merge.K;
 
-class b {
-    public static final boolean a(char c2, char c3, boolean bl) {
-        boolean bl2 = true;
-        if (c2 == c3) {
-            return true;
-        }
-        if (!bl) {
-            return false;
-        }
-        c2 = Character.toUpperCase(c2);
-        c3 = Character.toUpperCase(c3);
-        bl = bl2;
-        if (c2 != c3) {
-            bl = Character.toLowerCase(c2) == Character.toLowerCase(c3) ? bl2 : false;
-        }
-        return bl;
+import com.github.catvod.spider.merge.i0.h;
+import com.google.gson.annotations.SerializedName;
+
+public final class b {
+    @SerializedName(value="n")
+    private String a;
+    @SerializedName(value="v")
+    private String b;
+
+    public b(String string, String string2) {
+        int n2 = h.a;
+        this.a = string;
+        this.b = string2;
     }
 }
 

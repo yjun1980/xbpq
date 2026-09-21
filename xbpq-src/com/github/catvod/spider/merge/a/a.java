@@ -1,15 +1,21 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.app.Notification
+ *  android.os.IInterface
  */
 package com.github.catvod.spider.merge.a;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import android.app.Notification;
+import android.os.IInterface;
 
-@Retention(value=RetentionPolicy.CLASS)
-@Target(value={ElementType.PACKAGE, ElementType.TYPE, ElementType.ANNOTATION_TYPE, ElementType.CONSTRUCTOR, ElementType.METHOD, ElementType.FIELD})
-public @interface a {
+public interface a
+extends IInterface {
+    public void cancel(String var1, int var2, String var3);
+
+    public void cancelAll(String var1);
+
+    public void notify(String var1, int var2, String var3, Notification var4);
 }
 

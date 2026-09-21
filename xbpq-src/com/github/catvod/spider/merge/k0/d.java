@@ -1,33 +1,50 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  com.github.catvod.crawler.SpiderDebug
+ *  okhttp3.Call
+ *  okhttp3.Response
  */
 package com.github.catvod.spider.merge.k0;
 
-import com.github.catvod.spider.merge.U.h;
-import com.github.catvod.spider.merge.cYh;
-import com.github.catvod.spider.merge.h0.c;
-import com.github.catvod.spider.merge.h0.e;
-import com.github.catvod.spider.merge.m0.a;
-import java.math.BigDecimal;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.github.catvod.crawler.SpiderDebug;
+import com.github.catvod.spider.merge.k0.b;
+import java.io.IOException;
+import java.util.Map;
+import okhttp3.Call;
+import okhttp3.Response;
 
-public final class d
-implements c {
-    private static Pattern a = Pattern.compile(cYh.d("3B346B0D79653B346A"));
+final class d
+extends b<String> {
+    final Map b;
 
-    @Override
-    public final String a() {
-        return cYh.d("09252C");
+    d(Map map) {
+        this.b = map;
     }
 
     @Override
-    public final e b(com.github.catvod.spider.merge.h0.d object) {
-        object = h.e(com.github.catvod.spider.merge.m0.a.b(cYh.d("063C2D05322213")).b((com.github.catvod.spider.merge.h0.d)object).e(), "");
-        if (((Matcher)(object = a.matcher((CharSequence)object))).find()) {
-            return new e(new BigDecimal(((Matcher)object).group()).doubleValue());
+    public final void a(Exception exception) {
+        this.d();
+        SpiderDebug.log((Throwable)exception);
+    }
+
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    @Override
+    public final Object onParseResponse(Call object, Response response) {
+        try {
+            object = this.b;
+            if (object == null) return response.body().string();
         }
-        return new e(null);
+        catch (IOException iOException) {
+            return "";
+        }
+        object.clear();
+        this.b.putAll(response.headers().toMultimap());
+        return response.body().string();
     }
 }
 

@@ -3,43 +3,24 @@
  */
 package com.github.catvod.spider.merge.g0;
 
-import com.github.catvod.spider.merge.P.x;
-import com.github.catvod.spider.merge.T.c;
-import com.github.catvod.spider.merge.T.d;
-import com.github.catvod.spider.merge.g0.E;
-import com.github.catvod.spider.merge.g0.b;
+import com.github.catvod.spider.Youtube;
+import com.github.catvod.spider.merge.B0.c;
+import java.util.function.Function;
 
 public final class C
-extends x {
-    public C(x x2, int n2) {
-        super(x2, n2);
+implements Function {
+    public final Youtube a;
+    public final String b;
+    public final String c;
+
+    public /* synthetic */ C(Youtube youtube, String string) {
+        this.a = youtube;
+        this.b = "token";
+        this.c = string;
     }
 
-    @Override
-    public final <T> T e(d<? extends T> d2) {
-        if (d2 instanceof E) {
-            return ((E)d2).y(this);
-        }
-        return d2.A(this);
-    }
-
-    @Override
-    public final int f() {
-        return 24;
-    }
-
-    @Override
-    public final void i(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).f0();
-        }
-    }
-
-    @Override
-    public final void j(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).D();
-        }
+    public final Object apply(Object object) {
+        return Youtube.o(this.a, this.b, this.c, (c)object);
     }
 }
 

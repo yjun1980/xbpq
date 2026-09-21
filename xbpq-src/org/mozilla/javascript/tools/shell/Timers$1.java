@@ -1,0 +1,8 @@
+/*
+ * Decompiled with CFR 0.152.
+ */
+package org.mozilla.javascript.tools.shell;
+
+class Timers$1 {
+}
+

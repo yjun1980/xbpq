@@ -3,20 +3,44 @@
  */
 package com.github.catvod.spider.merge.w0;
 
-import com.github.catvod.spider.merge.E.g;
-import com.github.catvod.spider.merge.r0.b;
+import com.github.catvod.spider.merge.w0.e;
+import com.github.catvod.spider.merge.w0.g;
+import com.github.catvod.spider.merge.w0.h;
+import com.github.catvod.spider.merge.w0.j;
+import java.util.List;
 
-final class a
-extends g
-implements com.github.catvod.spider.merge.D.a<b> {
-    public static final a c = new a();
+public abstract class a
+implements g {
+    private String a;
+    protected List<String> b;
 
-    a() {
+    public a(com.github.catvod.spider.merge.y.e e2) {
+        this.a = e2.u("title").x("simpleText");
+        com.github.catvod.spider.merge.g.a.b(e2.u("shortBylineText"));
     }
 
     @Override
-    public final void a() {
-        com.github.catvod.spider.merge.q0.b.b();
+    public final j a() {
+        throw new UnsupportedOperationException();
+    }
+
+    public final List<String> b() {
+        return this.b;
+    }
+
+    @Override
+    public final String c() {
+        return this.a;
+    }
+
+    @Override
+    public e f() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public h g() {
+        throw new UnsupportedOperationException();
     }
 }
 

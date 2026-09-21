@@ -1,31 +1,21 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  okhttp3.Call
+ *  okhttp3.Response
  */
 package com.github.catvod.spider.merge.k0;
 
-import com.github.catvod.spider.merge.c0.l;
-import com.github.catvod.spider.merge.cYh;
-import com.github.catvod.spider.merge.h0.c;
-import com.github.catvod.spider.merge.h0.d;
-import com.github.catvod.spider.merge.h0.e;
-import java.util.LinkedList;
+import com.github.catvod.spider.merge.k0.b;
+import okhttp3.Call;
+import okhttp3.Response;
 
-public final class a
-implements c {
+public abstract class a
+extends b<Response> {
     @Override
-    public final String a() {
-        return cYh.d("063C2D05322213");
-    }
-
-    @Override
-    public final e b(d object) {
-        LinkedList<Object> linkedList = new LinkedList<Object>();
-        for (l l2 : ((d)object).a()) {
-            object = l2.t();
-            object = cYh.d("14333338272E").equals(object) ? l2.T() : l2.p0();
-            linkedList.add(object);
-        }
-        return new e(linkedList);
+    public Response onParseResponse(Call call, Response response) {
+        return response;
     }
 }
 

@@ -3,43 +3,23 @@
  */
 package com.github.catvod.spider.merge.g0;
 
-import com.github.catvod.spider.merge.P.x;
-import com.github.catvod.spider.merge.T.c;
-import com.github.catvod.spider.merge.T.d;
-import com.github.catvod.spider.merge.g0.E;
-import com.github.catvod.spider.merge.g0.b;
+import com.github.catvod.spider.Youtube;
+import com.github.catvod.spider.merge.B0.a;
+import com.github.catvod.spider.merge.u0.c;
+import java.util.function.Predicate;
 
 public final class w
-extends x {
-    public w(x x2, int n2) {
-        super(x2, n2);
+implements Predicate {
+    public static final w a = new w();
+
+    private /* synthetic */ w() {
     }
 
-    @Override
-    public final <T> T e(d<? extends T> d2) {
-        if (d2 instanceof E) {
-            return ((E)d2).s(this);
-        }
-        return d2.A(this);
-    }
-
-    @Override
-    public final int f() {
-        return 22;
-    }
-
-    @Override
-    public final void i(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).R();
-        }
-    }
-
-    @Override
-    public final void j(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).e();
-        }
+    public final boolean test(Object object) {
+        object = (a)object;
+        int n2 = Youtube.u;
+        boolean bl = ((com.github.catvod.spider.merge.B0.c)object).b() == c.f;
+        return bl;
     }
 }
 

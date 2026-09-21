@@ -1,22 +1,58 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.text.TextUtils
+ *  com.google.gson.Gson
+ *  com.google.gson.annotations.SerializedName
  */
 package com.github.catvod.spider.merge.P;
 
-import com.github.catvod.spider.merge.P.B;
-import com.github.catvod.spider.merge.P.w;
-import com.github.catvod.spider.merge.P.z;
-import com.github.catvod.spider.merge.Q.f;
-import com.github.catvod.spider.merge.R.b;
-import java.util.BitSet;
+import android.text.TextUtils;
+import com.github.catvod.spider.Init;
+import com.github.catvod.spider.merge.I.X;
+import com.github.catvod.spider.merge.I.c;
+import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 
-public interface a {
-    public void a(B<?, ?> var1, Object var2, int var3, int var4, String var5, z var6);
+public final class a {
+    @SerializedName(value="access_token")
+    private String a;
+    @SerializedName(value="refresh_token")
+    private String b;
 
-    public void b(w var1, b var2, int var3, int var4, BitSet var5, f var6);
+    public final a a() {
+        X.n().e.a = "";
+        X.n().e.b = "";
+        X.n().e.d();
+        return this;
+    }
 
-    public void c(w var1, b var2, int var3, int var4, BitSet var5, f var6);
+    public final String b() {
+        String string = TextUtils.isEmpty((CharSequence)this.a) ? "" : this.a;
+        return string;
+    }
 
-    public void d(w var1, b var2, int var3, int var4, int var5, f var6);
+    public final String c() {
+        String string = TextUtils.isEmpty((CharSequence)this.b) ? "" : this.b;
+        return string;
+    }
+
+    public final a d() {
+        Init.execute(new c(this, 2));
+        return this;
+    }
+
+    public final void e(String string) {
+        this.a = string;
+    }
+
+    public final void f(String string) {
+        this.b = string;
+    }
+
+    public final String toString() {
+        return new Gson().toJson((Object)this);
+    }
 }
 

@@ -1,30 +1,19 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  com.google.gson.annotations.SerializedName
  */
 package com.github.catvod.spider.merge.X;
 
-import com.github.catvod.spider.merge.X.b;
-import java.io.Writer;
+import com.google.gson.annotations.SerializedName;
 
-@Deprecated
-public final class a
-extends b {
-    private final b[] b;
+public final class a {
+    @SerializedName(value="fileName")
+    private String a;
 
-    public a(b ... bArray) {
-        this.b = (b[])((Object[])bArray.clone());
-    }
-
-    @Override
-    public final int a(CharSequence charSequence, int n2, Writer writer) {
-        b[] bArray = this.b;
-        int n3 = bArray.length;
-        for (int i2 = 0; i2 < n3; ++i2) {
-            int n4 = bArray[i2].a(charSequence, n2, writer);
-            if (n4 == 0) continue;
-            return n4;
-        }
-        return 0;
+    public final String a() {
+        return this.a;
     }
 }
 

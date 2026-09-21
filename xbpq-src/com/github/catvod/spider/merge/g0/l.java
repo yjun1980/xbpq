@@ -1,45 +1,29 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.content.Context
  */
 package com.github.catvod.spider.merge.g0;
 
-import com.github.catvod.spider.merge.P.x;
-import com.github.catvod.spider.merge.T.c;
-import com.github.catvod.spider.merge.T.d;
-import com.github.catvod.spider.merge.g0.E;
-import com.github.catvod.spider.merge.g0.b;
+import android.content.Context;
+import com.github.catvod.spider.Init;
 
 public final class l
-extends x {
-    public l(x x2, int n2) {
-        super(x2, n2);
+implements Runnable {
+    public final Init a;
+    public final Context b;
+    public final boolean c;
+
+    public /* synthetic */ l(Init init, Context context, boolean bl) {
+        this.a = init;
+        this.b = context;
+        this.c = bl;
     }
 
     @Override
-    public final <T> T e(d<? extends T> d2) {
-        if (d2 instanceof E) {
-            return ((E)d2).b(this);
-        }
-        return d2.A(this);
-    }
-
-    @Override
-    public final int f() {
-        return 23;
-    }
-
-    @Override
-    public final void i(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).n();
-        }
-    }
-
-    @Override
-    public final void j(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).B();
-        }
+    public final void run() {
+        Init.b(this.a, this.b, this.c);
     }
 }
 

@@ -1,116 +1,175 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.content.res.ColorStateList
+ *  android.graphics.Canvas
+ *  android.graphics.ColorFilter
+ *  android.graphics.PorterDuff$Mode
+ *  android.graphics.Rect
+ *  android.graphics.Region
+ *  android.graphics.drawable.Drawable
+ *  android.graphics.drawable.Drawable$Callback
+ *  androidx.core.graphics.drawable.DrawableCompat
  */
 package com.github.catvod.spider.merge.j;
 
-import com.github.catvod.spider.merge.cYh;
-import com.github.catvod.spider.merge.e0.g;
-import com.github.catvod.spider.merge.h0.d;
-import com.github.catvod.spider.merge.j.o;
-import com.github.catvod.spider.merge.x.f;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.Reader;
-import java.util.AbstractCollection;
-import java.util.Iterator;
+import android.content.res.ColorStateList;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff;
+import android.graphics.Rect;
+import android.graphics.Region;
+import android.graphics.drawable.Drawable;
+import androidx.core.graphics.drawable.DrawableCompat;
 
-public final class l {
-    public static final Object a(Throwable throwable) {
-        return new f(throwable);
-    }
+public class l
+extends Drawable
+implements Drawable.Callback {
+    private Drawable a;
 
-    public static g b(com.github.catvod.spider.merge.c0.l l2) {
-        g g2 = new g();
-        while ((l2 = l2.b0()) != null) {
-            ((AbstractCollection)g2).add(l2);
+    public l(Drawable drawable) {
+        Drawable drawable2 = this.a;
+        if (drawable2 != null) {
+            drawable2.setCallback(null);
         }
-        if (((AbstractCollection)g2).size() > 0) {
-            return g2;
-        }
-        return null;
-    }
-
-    public static int c(com.github.catvod.spider.merge.c0.l l2, d d2) {
-        Iterator iterator = ((AbstractCollection)l2.f0().R()).iterator();
-        int n2 = 1;
-        while (iterator.hasNext()) {
-            com.github.catvod.spider.merge.c0.l l3 = (com.github.catvod.spider.merge.c0.l)iterator.next();
-            if (!l2.n0().equals(l3.n0()) || !((AbstractCollection)d2.a()).contains(l3)) continue;
-            boolean bl = l2 == l3;
-            if (bl) break;
-            ++n2;
-        }
-        return n2;
-    }
-
-    public static g d(com.github.catvod.spider.merge.c0.l l2) {
-        g g2 = new g();
-        while ((l2 = l2.i0()) != null) {
-            ((AbstractCollection)g2).add(l2);
-        }
-        if (((AbstractCollection)g2).size() > 0) {
-            return g2;
-        }
-        return null;
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
-    public static String e(InputStream object) {
-        try {
-            Object object2 = new InputStreamReader((InputStream)object);
-            Object object3 = new BufferedReader((Reader)object2);
-            object = new StringBuilder();
-            while ((object2 = ((BufferedReader)object3).readLine()) != null) {
-                ((StringBuilder)object).append((String)object2);
-                ((StringBuilder)object).append(cYh.d("6D"));
-            }
-            ((BufferedReader)object3).close();
-            object3 = ((StringBuilder)object).toString();
-            int n2 = o.a;
-            object = object3;
-            if (object3 == null) return object;
-            object = object3;
-            if (((String)object3).length() <= 1) return object;
-            return ((String)object3).substring(0, ((String)object3).length() - 1);
-        }
-        catch (Exception exception) {
-            return "";
+        this.a = drawable;
+        if (drawable != null) {
+            drawable.setCallback((Drawable.Callback)this);
         }
     }
 
-    public static void f(com.github.catvod.spider.merge.c0.l l2, int n2) {
-        l2.b(cYh.d("221C1E021617220F151010052E1E05140F052C1518"), String.valueOf(n2));
+    public final Drawable a() {
+        return this.a;
     }
 
-    public static void g(File file, String object) {
-        object = ((String)object).getBytes();
-        Object object2 = new FileOutputStream(file);
-        ((FileOutputStream)object2).write((byte[])object);
-        ((OutputStream)object2).flush();
-        ((FileOutputStream)object2).close();
-        try {
-            object2 = Runtime.getRuntime();
-            object = new StringBuilder();
-            ((StringBuilder)object).append(cYh.d("04382C3E337A50677671"));
-            ((StringBuilder)object).append(file);
-            ((Runtime)object2).exec(((StringBuilder)object).toString()).waitFor();
-        }
-        catch (Exception exception) {
-            try {
-                exception.printStackTrace();
-            }
-            catch (Exception exception2) {
-                exception2.printStackTrace();
-            }
-        }
+    public void draw(Canvas canvas) {
+        this.a.draw(canvas);
+    }
+
+    public final int getChangingConfigurations() {
+        return this.a.getChangingConfigurations();
+    }
+
+    public final Drawable getCurrent() {
+        return this.a.getCurrent();
+    }
+
+    public final int getIntrinsicHeight() {
+        return this.a.getIntrinsicHeight();
+    }
+
+    public final int getIntrinsicWidth() {
+        return this.a.getIntrinsicWidth();
+    }
+
+    public final int getMinimumHeight() {
+        return this.a.getMinimumHeight();
+    }
+
+    public final int getMinimumWidth() {
+        return this.a.getMinimumWidth();
+    }
+
+    public final int getOpacity() {
+        return this.a.getOpacity();
+    }
+
+    public final boolean getPadding(Rect rect) {
+        return this.a.getPadding(rect);
+    }
+
+    public final int[] getState() {
+        return this.a.getState();
+    }
+
+    public final Region getTransparentRegion() {
+        return this.a.getTransparentRegion();
+    }
+
+    public final void invalidateDrawable(Drawable drawable) {
+        this.invalidateSelf();
+    }
+
+    public final boolean isAutoMirrored() {
+        return DrawableCompat.isAutoMirrored((Drawable)this.a);
+    }
+
+    public final boolean isStateful() {
+        return this.a.isStateful();
+    }
+
+    public final void jumpToCurrentState() {
+        this.a.jumpToCurrentState();
+    }
+
+    protected final void onBoundsChange(Rect rect) {
+        this.a.setBounds(rect);
+    }
+
+    protected final boolean onLevelChange(int n2) {
+        return this.a.setLevel(n2);
+    }
+
+    public final void scheduleDrawable(Drawable drawable, Runnable runnable, long l2) {
+        this.scheduleSelf(runnable, l2);
+    }
+
+    public final void setAlpha(int n2) {
+        this.a.setAlpha(n2);
+    }
+
+    public final void setAutoMirrored(boolean bl) {
+        DrawableCompat.setAutoMirrored((Drawable)this.a, (boolean)bl);
+    }
+
+    public final void setChangingConfigurations(int n2) {
+        this.a.setChangingConfigurations(n2);
+    }
+
+    public final void setColorFilter(ColorFilter colorFilter) {
+        this.a.setColorFilter(colorFilter);
+    }
+
+    public final void setDither(boolean bl) {
+        this.a.setDither(bl);
+    }
+
+    public final void setFilterBitmap(boolean bl) {
+        this.a.setFilterBitmap(bl);
+    }
+
+    public void setHotspot(float f2, float f4) {
+        DrawableCompat.setHotspot((Drawable)this.a, (float)f2, (float)f4);
+    }
+
+    public void setHotspotBounds(int n2, int n3, int n4, int n5) {
+        DrawableCompat.setHotspotBounds((Drawable)this.a, (int)n2, (int)n3, (int)n4, (int)n5);
+    }
+
+    public boolean setState(int[] nArray) {
+        return this.a.setState(nArray);
+    }
+
+    public final void setTint(int n2) {
+        DrawableCompat.setTint((Drawable)this.a, (int)n2);
+    }
+
+    public final void setTintList(ColorStateList colorStateList) {
+        DrawableCompat.setTintList((Drawable)this.a, (ColorStateList)colorStateList);
+    }
+
+    public final void setTintMode(PorterDuff.Mode mode) {
+        DrawableCompat.setTintMode((Drawable)this.a, (PorterDuff.Mode)mode);
+    }
+
+    public boolean setVisible(boolean bl, boolean bl2) {
+        bl = super.setVisible(bl, bl2) || this.a.setVisible(bl, bl2);
+        return bl;
+    }
+
+    public final void unscheduleDrawable(Drawable drawable, Runnable runnable) {
+        this.unscheduleSelf(runnable);
     }
 }
 

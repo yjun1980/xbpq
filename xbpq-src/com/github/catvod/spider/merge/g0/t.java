@@ -3,51 +3,21 @@
  */
 package com.github.catvod.spider.merge.g0;
 
-import com.github.catvod.spider.merge.P.D;
-import com.github.catvod.spider.merge.P.x;
-import com.github.catvod.spider.merge.T.c;
-import com.github.catvod.spider.merge.T.d;
-import com.github.catvod.spider.merge.g0.E;
-import com.github.catvod.spider.merge.g0.b;
-import com.github.catvod.spider.merge.g0.m;
+import com.github.catvod.spider.Wogg;
+import java.util.concurrent.Callable;
 
 public final class t
-extends x {
-    public D g;
+implements Callable {
+    public final Wogg a;
+    public final String b;
 
-    public t(x x2, int n2) {
-        super(x2, n2);
+    public /* synthetic */ t(Wogg wogg, String string) {
+        this.a = wogg;
+        this.b = string;
     }
 
-    @Override
-    public final <T> T e(d<? extends T> d2) {
-        if (d2 instanceof E) {
-            return ((E)d2).t(this);
-        }
-        return d2.A(this);
-    }
-
-    @Override
-    public final int f() {
-        return 13;
-    }
-
-    @Override
-    public final void i(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).g();
-        }
-    }
-
-    @Override
-    public final void j(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).t();
-        }
-    }
-
-    public final m n() {
-        return (m)this.k(m.class);
+    public final Object call() {
+        return Wogg.o(this.a, this.b);
     }
 }
 

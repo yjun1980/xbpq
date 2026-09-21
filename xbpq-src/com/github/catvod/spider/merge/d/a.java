@@ -2,65 +2,23 @@
  * Decompiled with CFR 0.152.
  * 
  * Could not load the following classes:
- *  com.google.gson.annotations.SerializedName
+ *  android.os.IBinder
  */
 package com.github.catvod.spider.merge.d;
 
-import com.google.gson.annotations.SerializedName;
-import java.util.List;
+import android.os.IBinder;
+import com.github.catvod.spider.merge.d.c;
 
-public final class a {
-    @SerializedName(value="pds_login_result")
-    private a a;
-    @SerializedName(value="role")
-    private String b;
-    @SerializedName(value="isFirstLogin")
-    private Boolean c;
-    @SerializedName(value="needLink")
-    private Boolean d;
-    @SerializedName(value="loginType")
-    private String e;
-    @SerializedName(value="nickName")
-    private String f;
-    @SerializedName(value="needRpVerify")
-    private Boolean g;
-    @SerializedName(value="avatar")
-    private String h;
-    @SerializedName(value="accessToken")
-    private String i;
-    @SerializedName(value="userName")
-    private String j;
-    @SerializedName(value="userId")
-    private String k;
-    @SerializedName(value="defaultDriveId")
-    private String l;
-    @SerializedName(value="existLink")
-    private List<?> m;
-    @SerializedName(value="expiresIn")
-    private Integer n;
-    @SerializedName(value="expireTime")
-    private String o;
-    @SerializedName(value="requestId")
-    private String p;
-    @SerializedName(value="dataPinSetup")
-    private Boolean q;
-    @SerializedName(value="state")
-    private String r;
-    @SerializedName(value="tokenType")
-    private String s;
-    @SerializedName(value="dataPinSaved")
-    private Boolean t;
-    @SerializedName(value="refreshToken")
-    private String u;
-    @SerializedName(value="status")
-    private String v;
+final class a
+implements c {
+    private IBinder a;
 
-    public final a a() {
-        return this.a;
+    a(IBinder iBinder) {
+        this.a = iBinder;
     }
 
-    public final String b() {
-        return this.u;
+    public final IBinder asBinder() {
+        return this.a;
     }
 }
 

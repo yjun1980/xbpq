@@ -3,46 +3,24 @@
  */
 package com.github.catvod.spider.merge.L;
 
-import com.github.catvod.spider.merge.L.p;
-import com.github.catvod.spider.merge.N.j;
-import com.github.catvod.spider.merge.N.k;
-import com.github.catvod.spider.merge.cYh;
-import com.github.catvod.spider.merge.d.d;
+import com.github.catvod.spider.merge.L.f;
+import com.github.catvod.spider.merge.i0.m;
+import java.util.Comparator;
 
-public abstract class l
-implements Runnable,
-Comparable<l>,
-k {
-    private j c;
-    public long d;
-
+public final class l
+implements Comparator<f> {
     @Override
-    public final void a() {
-    }
-
-    @Override
-    public final void b(j<?> j2) {
-        boolean bl = this.c != p.b();
-        if (bl) {
-            this.c = j2;
-            return;
+    public final int compare(Object object, Object object2) {
+        int n2;
+        object = (f)object;
+        f f2 = (f)object2;
+        try {
+            n2 = Integer.compare(Integer.parseInt(m.z(((f)object).k()).replaceAll("\\D+", "")), Integer.parseInt(m.z(f2.k()).replaceAll("\\D+", "")));
         }
-        throw new IllegalArgumentException(cYh.d("2131283D323E47222420223315352C34392E49").toString());
-    }
-
-    @Override
-    public final int compareTo(Object object) {
-        object = (l)object;
-        long l2 = this.d - ((l)object).d;
-        int n2 = l2 > 0L ? 1 : (l2 < 0L ? -1 : 0);
+        catch (NumberFormatException numberFormatException) {
+            n2 = ((f)object).f().compareToIgnoreCase(f2.f());
+        }
         return n2;
-    }
-
-    public final String toString() {
-        StringBuilder stringBuilder = com.github.catvod.spider.merge.d.d.b(cYh.d("23352D302E3F030B2F303935146D"));
-        stringBuilder.append(this.d);
-        stringBuilder.append(']');
-        return stringBuilder.toString();
     }
 }
 

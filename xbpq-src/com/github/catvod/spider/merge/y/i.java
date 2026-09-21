@@ -3,9 +3,9 @@
  */
 package com.github.catvod.spider.merge.y;
 
-import com.github.catvod.spider.merge.y.h;
+import com.github.catvod.spider.merge.y.N;
 
-class i
-extends h {
+interface i {
+    public boolean a(N var1, Object var2, Object var3, Object var4);
 }
 

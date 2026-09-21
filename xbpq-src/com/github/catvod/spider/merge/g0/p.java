@@ -1,45 +1,25 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.content.DialogInterface
+ *  android.content.DialogInterface$OnClickListener
  */
 package com.github.catvod.spider.merge.g0;
 
-import com.github.catvod.spider.merge.P.x;
-import com.github.catvod.spider.merge.T.c;
-import com.github.catvod.spider.merge.T.d;
-import com.github.catvod.spider.merge.g0.E;
-import com.github.catvod.spider.merge.g0.b;
+import android.content.DialogInterface;
+import com.github.catvod.spider.TgYunDouBanPan;
 
 public final class p
-extends x {
-    public p(x x2, int n2) {
-        super(x2, n2);
+implements DialogInterface.OnClickListener {
+    public final TgYunDouBanPan a;
+
+    public /* synthetic */ p(TgYunDouBanPan tgYunDouBanPan) {
+        this.a = tgYunDouBanPan;
     }
 
-    @Override
-    public final <T> T e(d<? extends T> d2) {
-        if (d2 instanceof E) {
-            return ((E)d2).j(this);
-        }
-        return d2.A(this);
-    }
-
-    @Override
-    public final int f() {
-        return 26;
-    }
-
-    @Override
-    public final void i(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).y();
-        }
-    }
-
-    @Override
-    public final void j(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).E();
-        }
+    public final void onClick(DialogInterface dialogInterface, int n2) {
+        TgYunDouBanPan.p(this.a);
     }
 }
 

@@ -1,230 +1,119 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.text.TextUtils
+ *  com.github.catvod.crawler.SpiderDebug
+ *  com.google.gson.Gson
+ *  com.google.gson.annotations.SerializedName
  */
 package com.github.catvod.spider.merge.S;
 
-import com.github.catvod.spider.merge.N.a;
-import com.github.catvod.spider.merge.O.m;
-import com.github.catvod.spider.merge.S.d;
-import com.github.catvod.spider.merge.cYh;
-import java.util.AbstractCollection;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Set;
+import android.text.TextUtils;
+import com.github.catvod.crawler.SpiderDebug;
+import com.github.catvod.spider.Init;
+import com.github.catvod.spider.merge.C.a;
+import com.github.catvod.spider.merge.G1.d;
+import com.github.catvod.spider.merge.I.S;
+import com.github.catvod.spider.merge.I.s0;
+import com.github.catvod.spider.merge.S.b;
+import com.github.catvod.spider.merge.i0.m;
+import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
+import java.util.Objects;
 
-public class e<K, V>
-implements Map<K, V> {
-    protected final m c;
-    protected LinkedList<d<K, V>>[] d;
-    protected int e = 0;
-    protected int f = 12;
+public final class e {
+    @SerializedName(value="pdir_fid")
+    private String a;
+    @SerializedName(value="cookie")
+    private String b;
+    @SerializedName(value="member_type")
+    private String c;
+    public Integer d;
+    private long e;
 
-    public e(m m2) {
-        this.c = m2;
-        this.d = new LinkedList[8];
+    public static void a(e e2) {
+        Objects.requireNonNull(e2);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("cookie>>");
+        stringBuilder.append(e2.b);
+        SpiderDebug.log((String)stringBuilder.toString());
+        Objects.requireNonNull(s0.o());
+        com.github.catvod.spider.merge.c.b.f(com.github.catvod.spider.merge.c.b.e("quark_user"), e2.toString());
     }
 
-    @Override
-    public final void clear() {
-        this.d = new LinkedList[16];
-        this.e = 0;
-    }
-
-    @Override
-    public final boolean containsKey(Object object) {
-        boolean bl = this.get(object) != null;
-        return bl;
-    }
-
-    @Override
-    public final boolean containsValue(Object object) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public final Set<Map.Entry<K, V>> entrySet() {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public final boolean equals(Object object) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public final V get(Object object) {
-        if (object == null) {
-            return null;
+    public static e h(String object) {
+        e e2 = (e)com.github.catvod.spider.merge.G1.d.a((String)object, e.class);
+        object = e2;
+        if (e2 == null) {
+            object = new e();
+            ((e)object).e = 0L;
         }
-        int n2 = this.c.F(object);
-        Object object2 = this.d;
-        if ((object2 = object2[n2 & ((LinkedList<d<K, V>>[])object2).length - 1]) == null) {
-            return null;
-        }
-        Iterator iterator = ((AbstractCollection)object2).iterator();
-        while (iterator.hasNext()) {
-            object2 = (d)iterator.next();
-            if (!this.c.E(((d)object2).a, object)) continue;
-            return ((d)object2).b;
-        }
-        return null;
+        return object;
     }
 
-    @Override
-    public final int hashCode() {
-        LinkedList<d<K, V>>[] linkedListArray = this.d;
-        int n2 = linkedListArray.length;
-        int n3 = 0;
-        for (int i2 = 0; i2 < n2; ++i2) {
-            int n4;
-            LinkedList<d<K, V>> linkedList = linkedListArray[i2];
-            if (linkedList == null) {
-                n4 = n3;
-            } else {
-                linkedList = ((AbstractCollection)linkedList).iterator();
-                while (true) {
-                    n4 = n3;
-                    if (!linkedList.hasNext()) break;
-                    d d2 = (d)linkedList.next();
-                    if (d2 == null) {
-                        n4 = n3;
-                        break;
-                    }
-                    n3 = a.o(n3, this.c.F(d2.a));
-                }
-            }
-            n3 = n4;
+    public final e b() {
+        this.a = "";
+        this.b = "";
+        this.d = null;
+        this.e = 0L;
+        m.y("\u5938\u514b cookie\u5df2\u6e05\u7a7a\uff01");
+        return this;
+    }
+
+    public final Integer c() {
+        Integer n2 = this.d;
+        boolean bl = n2 == null;
+        if (bl) {
+            n2 = com.github.catvod.spider.merge.S.b.e(this.c);
         }
-        return a.b(n3, this.e);
+        return n2;
     }
 
-    @Override
-    public final boolean isEmpty() {
-        boolean bl = this.e == 0;
-        return bl;
+    public final String d() {
+        String string = TextUtils.isEmpty((CharSequence)this.b) ? "" : this.b;
+        return string;
     }
 
-    @Override
-    public final Set<K> keySet() {
-        throw new UnsupportedOperationException();
+    public final String e() {
+        String string = TextUtils.isEmpty((CharSequence)this.a) ? "" : this.a;
+        return string;
     }
 
-    @Override
-    public final V put(K object, V v2) {
-        Object object2;
-        Object object32;
-        int n2;
-        Object object4;
-        if (object == null) {
-            return null;
-        }
-        if (this.e > this.f) {
-            object4 = this.d;
-            n2 = ((LinkedList<d<K, V>>[])object4).length * 2;
-            this.d = new LinkedList[n2];
-            double d2 = n2;
-            Double.isNaN(d2);
-            Double.isNaN(d2);
-            Double.isNaN(d2);
-            this.f = (int)(d2 * 0.75);
-            int n3 = this.e;
-            for (Object object32 : object4) {
-                if (object32 == null) continue;
-                object32 = ((AbstractCollection)object32).iterator();
-                while (object32.hasNext() && (object2 = (d)object32.next()) != null) {
-                    this.put(((d)object2).a, ((d)object2).b);
-                }
-            }
-            this.e = n3;
-        }
-        n2 = this.c.F(object);
-        object2 = this.d;
-        object32 = object2[n2 &= ((LinkedList<d<K, V>>[])object2).length - 1];
-        object4 = object32;
-        if (object32 == null) {
-            object2[n2] = object4 = new LinkedList();
-        }
-        object2 = ((AbstractCollection)object4).iterator();
-        while (object2.hasNext()) {
-            object32 = (d)object2.next();
-            if (!this.c.E(((d)object32).a, object)) continue;
-            object = ((d)object32).b;
-            ((d)object32).b = v2;
-            ++this.e;
-            return (V)object;
-        }
-        ((LinkedList)object4).add(new d<K, V>(object, v2));
-        ++this.e;
-        return null;
-    }
-
-    @Override
-    public final void putAll(Map<? extends K, ? extends V> map) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public final V remove(Object object) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public final int size() {
+    public final long f() {
         return this.e;
     }
 
-    public final String toString() {
-        if (this.e == 0) {
-            return cYh.d("1C2D");
-        }
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append('{');
-        LinkedList<d<K, V>>[] linkedListArray = this.d;
-        int n2 = linkedListArray.length;
-        boolean bl = true;
-        for (int i2 = 0; i2 < n2; ++i2) {
-            boolean bl2;
-            Object object = linkedListArray[i2];
-            if (object == null) {
-                bl2 = bl;
-            } else {
-                Iterator iterator = ((AbstractCollection)object).iterator();
-                while (true) {
-                    bl2 = bl;
-                    if (!iterator.hasNext()) break;
-                    object = (d)iterator.next();
-                    if (object == null) {
-                        bl2 = bl;
-                        break;
-                    }
-                    if (bl) {
-                        bl = false;
-                    } else {
-                        stringBuilder.append(cYh.d("4B70"));
-                    }
-                    stringBuilder.append(((d)object).toString());
-                }
-            }
-            bl = bl2;
-        }
-        stringBuilder.append('}');
-        return stringBuilder.toString();
+    public final String g() {
+        return this.c;
     }
 
-    @Override
-    public final Collection<V> values() {
-        ArrayList arrayList = new ArrayList(this.e);
-        for (LinkedList<d<K, V>> linkedList : this.d) {
-            if (linkedList == null) continue;
-            linkedList = ((AbstractCollection)linkedList).iterator();
-            while (linkedList.hasNext()) {
-                arrayList.add(((d)linkedList.next()).b);
-            }
-        }
-        return arrayList;
+    public final e i() {
+        StringBuilder stringBuilder = com.github.catvod.spider.merge.C.a.c("cookie>>");
+        stringBuilder.append(this.b);
+        SpiderDebug.log((String)stringBuilder.toString());
+        Init.execute(new S(this, 3));
+        return this;
+    }
+
+    public final void j(String string) {
+        this.b = string;
+    }
+
+    public final void k(String string) {
+        this.a = string;
+    }
+
+    public final void l(long l2) {
+        this.e = l2;
+    }
+
+    public final void m(String string) {
+        this.c = string;
+    }
+
+    public final String toString() {
+        return new Gson().toJson((Object)this);
     }
 }
 

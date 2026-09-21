@@ -1,67 +1,46 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.content.Context
+ *  android.view.ActionProvider
+ *  android.view.SubMenu
+ *  android.view.View
+ *  androidx.core.view.ActionProvider
  */
 package com.github.catvod.spider.merge.m;
 
-import com.github.catvod.spider.merge.l.m;
-import com.github.catvod.spider.merge.m.f;
-import java.util.Iterator;
-import java.util.ListIterator;
+import android.content.Context;
+import android.view.SubMenu;
+import android.view.View;
+import androidx.core.view.ActionProvider;
+import com.github.catvod.spider.merge.m.j;
 
-final class e
-extends f<Object> {
-    final transient int f;
-    final transient int g;
-    final f h;
+class e
+extends ActionProvider {
+    final android.view.ActionProvider a;
+    final j b;
 
-    e(f f2, int n2, int n3) {
-        this.h = f2;
-        this.f = n2;
-        this.g = n3;
+    e(j j2, Context context, android.view.ActionProvider actionProvider) {
+        this.b = j2;
+        super(context);
+        this.a = actionProvider;
     }
 
-    @Override
-    final Object[] b() {
-        return this.h.b();
+    public final boolean hasSubMenu() {
+        return this.a.hasSubMenu();
     }
 
-    @Override
-    final int c() {
-        return this.h.d() + this.f + this.g;
+    public final View onCreateActionView() {
+        return this.a.onCreateActionView();
     }
 
-    @Override
-    final int d() {
-        return this.h.d() + this.f;
+    public final boolean onPerformDefaultAction() {
+        return this.a.onPerformDefaultAction();
     }
 
-    @Override
-    public final Object get(int n2) {
-        m.c(n2, this.g);
-        return this.h.get(n2 + this.f);
-    }
-
-    @Override
-    public final f<Object> h(int n2, int n3) {
-        m.e(n2, n3, this.g);
-        f f2 = this.h;
-        int n4 = this.f;
-        return f2.h(n2 + n4, n3 + n4);
-    }
-
-    @Override
-    public final Iterator iterator() {
-        return this.g(0);
-    }
-
-    @Override
-    public final ListIterator listIterator() {
-        return this.g(0);
-    }
-
-    @Override
-    public final int size() {
-        return this.g;
+    public final void onPrepareSubMenu(SubMenu subMenu) {
+        this.a.onPrepareSubMenu(this.b.b(subMenu));
     }
 }
 

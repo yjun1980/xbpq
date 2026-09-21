@@ -1,31 +1,19 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.content.res.ColorStateList
+ *  android.graphics.PorterDuff$Mode
  */
 package com.github.catvod.spider.merge.n;
 
-import com.github.catvod.spider.merge.n.L;
-import com.github.catvod.spider.merge.n.W;
-import java.util.concurrent.locks.AbstractOwnableSynchronizer;
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff;
 
-final class J
-extends AbstractOwnableSynchronizer
-implements Runnable {
-    private final L<?> c;
-
-    J(L l2, W w2) {
-        this.c = l2;
-    }
-
-    static void a(J j2, Thread thread) {
-        j2.setExclusiveOwnerThread(thread);
-    }
-
-    @Override
-    public final void run() {
-    }
-
-    public final String toString() {
-        return this.c.toString();
-    }
+public final class J {
+    public ColorStateList a;
+    public PorterDuff.Mode b;
+    public boolean c;
+    public boolean d;
 }
 

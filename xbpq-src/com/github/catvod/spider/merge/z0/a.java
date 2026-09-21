@@ -3,11 +3,15 @@
  */
 package com.github.catvod.spider.merge.z0;
 
-import javax.net.ssl.SSLSocketFactory;
-import javax.net.ssl.X509TrustManager;
+import java.util.regex.Pattern;
 
 public final class a {
-    public SSLSocketFactory a;
-    public X509TrustManager b;
+    private static final Pattern a = Pattern.compile("&fmt=[^&]*");
+    private static final Pattern b = Pattern.compile("&tlang=[^&]*");
+
+    public a(String string) {
+        string = a.matcher(string).replaceAll("");
+        b.matcher(string).replaceAll("");
+    }
 }
 

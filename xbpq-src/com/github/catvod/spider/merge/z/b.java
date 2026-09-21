@@ -3,35 +3,42 @@
  */
 package com.github.catvod.spider.merge.z;
 
-import com.github.catvod.spider.merge.E.f;
-import com.github.catvod.spider.merge.cYh;
-import com.github.catvod.spider.merge.z.h;
-import com.github.catvod.spider.merge.z.i;
+import com.github.catvod.spider.merge.B.c;
+import com.github.catvod.spider.merge.D.i0;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public abstract class b<B extends h, E extends B>
-implements i<E> {
-    private final com.github.catvod.spider.merge.D.b<h, E> a;
-    private final i<?> b;
+@Retention(value=RetentionPolicy.RUNTIME)
+@Target(value={ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER})
+public @interface b {
+    public String[] alternateNames() default {};
 
-    public b(i<B> i2, com.github.catvod.spider.merge.D.b<? super h, ? extends E> i3) {
-        f.e(i2, cYh.d("053132341C3F1E"));
-        this.a = i3;
-        i3 = i2;
-        if (i2 instanceof b) {
-            i3 = ((b)i2).b;
-        }
-        this.b = i3;
-    }
+    public String defaultValue() default "";
 
-    public final boolean a(i<?> i2) {
-        f.e(i2, cYh.d("0C3538"));
-        boolean bl = i2 == this || this.b == i2;
-        return bl;
-    }
+    public boolean deserialize() default true;
 
-    public final E b(h h2) {
-        f.e(h2, cYh.d("023C243C323413"));
-        return (E)((h)this.a.c(h2));
-    }
+    public Class<?> deserializeUsing() default Void.class;
+
+    public String format() default "";
+
+    public boolean jsonDirect() default false;
+
+    public String label() default "";
+
+    public String name() default "";
+
+    public int ordinal() default 0;
+
+    public c[] parseFeatures() default {};
+
+    public boolean serialize() default true;
+
+    public Class<?> serializeUsing() default Void.class;
+
+    public i0[] serialzeFeatures() default {};
+
+    public boolean unwrapped() default false;
 }
 

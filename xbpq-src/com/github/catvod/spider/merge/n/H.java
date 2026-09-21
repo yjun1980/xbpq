@@ -1,54 +1,95 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.content.Context
+ *  android.content.res.ColorStateList
+ *  android.graphics.Color
+ *  android.util.Log
+ *  android.util.TypedValue
+ *  android.view.View
+ *  androidx.core.graphics.ColorUtils
  */
 package com.github.catvod.spider.merge.n;
 
-import com.github.catvod.spider.merge.cYh;
-import com.github.catvod.spider.merge.l.s;
-import com.github.catvod.spider.merge.m.f;
-import com.github.catvod.spider.merge.n.A;
-import com.github.catvod.spider.merge.n.E;
-import com.github.catvod.spider.merge.n.F;
-import com.github.catvod.spider.merge.n.G;
-import com.github.catvod.spider.merge.n.I;
-import com.github.catvod.spider.merge.n.M;
-import com.github.catvod.spider.merge.n.N;
-import com.github.catvod.spider.merge.n.O;
-import com.github.catvod.spider.merge.n.S;
-import com.github.catvod.spider.merge.n.W;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
-import java.util.concurrent.ScheduledExecutorService;
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.util.Log;
+import android.util.TypedValue;
+import android.view.View;
+import androidx.core.graphics.ColorUtils;
+import com.github.catvod.spider.merge.g.a;
+import com.github.catvod.spider.merge.n.L;
 
 public final class H {
-    public static void a(M m2, E e2, Executor executor) {
-        m2.a(new F(m2, e2), executor);
-    }
+    private static final ThreadLocal<TypedValue> a = new ThreadLocal();
+    static final int[] b = new int[]{-16842910};
+    static final int[] c = new int[]{16842908};
+    static final int[] d = new int[]{16842919};
+    static final int[] e = new int[]{0x10100A0};
+    static final int[] f = new int[0];
+    private static final int[] g = new int[1];
 
-    public static Executor b() {
-        return A.c;
-    }
-
-    public static Object c(Future future) {
-        if (future.isDone()) {
-            return W.a(future);
+    public static void a(View view, Context context) {
+        context = context.obtainStyledAttributes(com.github.catvod.spider.merge.g.a.h);
+        try {
+            if (!context.hasValue(117)) {
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append("View ");
+                stringBuilder.append(view.getClass());
+                stringBuilder.append(" is an AppCompat widget that can only be used with a Theme.AppCompat theme (or descendant).");
+                Log.e((String)"ThemeUtils", (String)stringBuilder.toString());
+            }
+            return;
         }
-        throw new IllegalStateException(s.b(cYh.d("21253524253F47272022773F1F202432233F0370353E77380270253E393F5D706422"), future));
+        finally {
+            context.recycle();
+        }
     }
 
-    public static M d(Throwable throwable) {
-        return new I(throwable);
+    public static int b(Context context, int n2) {
+        ColorStateList colorStateList = H.d(context, n2);
+        if (colorStateList != null && colorStateList.isStateful()) {
+            return colorStateList.getColorForState(b, colorStateList.getDefaultColor());
+        }
+        ThreadLocal<TypedValue> threadLocal = a;
+        TypedValue typedValue = threadLocal.get();
+        colorStateList = typedValue;
+        if (typedValue == null) {
+            colorStateList = new TypedValue();
+            threadLocal.set((TypedValue)colorStateList);
+        }
+        context.getTheme().resolveAttribute(0x1010033, (TypedValue)colorStateList, true);
+        float f2 = colorStateList.getFloat();
+        n2 = H.c(context, n2);
+        return ColorUtils.setAlphaComponent((int)n2, (int)Math.round((float)Color.alpha((int)n2) * f2));
     }
 
-    public static N e(ExecutorService executorService) {
-        executorService = executorService instanceof N ? (N)executorService : (executorService instanceof ScheduledExecutorService ? new S((ScheduledExecutorService)executorService) : new O(executorService));
-        return executorService;
+    public static int c(Context object, int n2) {
+        int[] nArray = g;
+        nArray[0] = n2;
+        object = L.r((Context)object, null, nArray);
+        try {
+            n2 = ((L)object).b();
+            return n2;
+        }
+        finally {
+            ((L)object).t();
+        }
     }
 
-    @SafeVarargs
-    public static G f(M ... mArray) {
-        return new G(f.f(mArray));
+    public static ColorStateList d(Context object, int n2) {
+        Object object2 = g;
+        object2[0] = n2;
+        object = L.r((Context)object, null, object2);
+        try {
+            object2 = ((L)object).c(0);
+            return object2;
+        }
+        finally {
+            ((L)object).t();
+        }
     }
 }
 

@@ -3,9 +3,21 @@
  */
 package com.github.catvod.spider.merge.J;
 
-import com.github.catvod.spider.merge.J.d;
+import java.util.ArrayList;
+import java.util.List;
 
-class f
-extends d {
+final class f {
+    final List<String> a = new ArrayList<String>();
+    String b;
+
+    f() {
+        new ArrayList();
+        this.b = null;
+    }
+
+    f(String string) {
+        new ArrayList();
+        this.b = string;
+    }
 }
 

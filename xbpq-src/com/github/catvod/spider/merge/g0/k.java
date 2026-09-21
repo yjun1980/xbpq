@@ -3,43 +3,21 @@
  */
 package com.github.catvod.spider.merge.g0;
 
-import com.github.catvod.spider.merge.P.x;
-import com.github.catvod.spider.merge.T.c;
-import com.github.catvod.spider.merge.T.d;
-import com.github.catvod.spider.merge.g0.E;
-import com.github.catvod.spider.merge.g0.b;
+import com.github.catvod.spider.GuaZi;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLSession;
 
 public final class k
-extends x {
-    public k(x x2, int n2) {
-        super(x2, n2);
+implements HostnameVerifier {
+    public static final k a = new k();
+
+    private /* synthetic */ k() {
     }
 
     @Override
-    public final <T> T e(d<? extends T> d2) {
-        if (d2 instanceof E) {
-            return ((E)d2).u(this);
-        }
-        return d2.A(this);
-    }
-
-    @Override
-    public final int f() {
-        return 11;
-    }
-
-    @Override
-    public final void i(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).p();
-        }
-    }
-
-    @Override
-    public final void j(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).x();
-        }
+    public final boolean verify(String string, SSLSession sSLSession) {
+        int n2 = GuaZi.o;
+        return true;
     }
 }
 

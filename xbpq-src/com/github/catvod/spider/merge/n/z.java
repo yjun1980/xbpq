@@ -1,56 +1,39 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.content.Context
+ *  android.content.res.Resources$Theme
+ *  android.graphics.drawable.Drawable
+ *  android.util.AttributeSet
+ *  android.util.Log
+ *  org.xmlpull.v1.XmlPullParser
  */
 package com.github.catvod.spider.merge.n;
 
-import com.github.catvod.spider.merge.m.c;
-import com.github.catvod.spider.merge.n.s;
-import com.github.catvod.spider.merge.n.t;
-import com.github.catvod.spider.merge.n.y;
-import java.util.concurrent.Callable;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.util.AttributeSet;
+import android.util.Log;
+import com.github.catvod.spider.merge.j.g;
+import com.github.catvod.spider.merge.n.D;
+import org.xmlpull.v1.XmlPullParser;
 
-final class z<V>
-extends t<Object, V> {
-    private y r;
-
-    /*
-     * Ignored method signature, as it can't be verified against descriptor
-     */
-    z(c c2, Callable callable) {
-        super(c2);
-        this.r = new y(this, callable);
-        this.J();
-    }
-
-    static /* synthetic */ void L(z z2) {
-        z2.r = null;
+final class z
+implements D {
+    z() {
     }
 
     @Override
-    final void F() {
-    }
-
-    @Override
-    final void H() {
-        y y2 = this.r;
-        if (y2 != null) {
-            y2.h();
+    public final Drawable a(Context object, XmlPullParser xmlPullParser, AttributeSet attributeSet, Resources.Theme theme) {
+        try {
+            object = g.i(object, object.getResources(), xmlPullParser, attributeSet, theme);
+            return object;
         }
-    }
-
-    @Override
-    final void K(s s2) {
-        super.K(s2);
-        if (s2 == s.c) {
-            this.r = null;
-        }
-    }
-
-    @Override
-    protected final void q() {
-        y y2 = this.r;
-        if (y2 != null) {
-            y2.c();
+        catch (Exception exception) {
+            Log.e((String)"AsldcInflateDelegate", (String)"Exception while inflating <animated-selector>", (Throwable)exception);
+            return null;
         }
     }
 }

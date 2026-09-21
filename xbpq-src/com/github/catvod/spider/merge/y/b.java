@@ -3,140 +3,224 @@
  */
 package com.github.catvod.spider.merge.y;
 
-import com.github.catvod.spider.merge.E.c;
-import com.github.catvod.spider.merge.E.f;
-import com.github.catvod.spider.merge.cYh;
-import java.util.Arrays;
+import com.github.catvod.spider.merge.y.a;
+import com.github.catvod.spider.merge.y.e;
+import java.io.Serializable;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
+import java.util.RandomAccess;
 
-final class b<T>
-implements Collection<T> {
-    private final T[] c;
-    private final boolean d;
+public final class b
+extends a
+implements List<Object>,
+Cloneable,
+RandomAccess,
+Serializable {
+    private final List<Object> i;
+    protected transient Object j;
+    protected transient Type k;
 
-    public b(T[] TArray, boolean bl) {
-        f.e(TArray, cYh.d("11312D243229"));
-        this.c = TArray;
-        this.d = bl;
+    public b() {
+        this.i = new ArrayList<Object>();
+    }
+
+    public b(int n2) {
+        this.i = new ArrayList<Object>(n2);
+    }
+
+    public b(List<Object> list) {
+        if (list != null) {
+            this.i = list;
+            return;
+        }
+        throw new IllegalArgumentException("list is null.");
     }
 
     @Override
-    public final boolean add(T t2) {
-        throw new UnsupportedOperationException(cYh.d("28202423362E0E3F2F713E29473E2E2577291220313E252E023461373828472224303377083E2D287739083C2D34342E0E3F2F"));
+    public final void add(int n2, Object object) {
+        this.i.add(n2, object);
     }
 
     @Override
-    public final boolean addAll(Collection<? extends T> collection) {
-        throw new UnsupportedOperationException(cYh.d("28202423362E0E3F2F713E29473E2E2577291220313E252E023461373828472224303377083E2D287739083C2D34342E0E3F2F"));
+    public final boolean add(Object object) {
+        return this.i.add(object);
+    }
+
+    @Override
+    public final boolean addAll(int n2, Collection<?> collection) {
+        return this.i.addAll(n2, collection);
+    }
+
+    @Override
+    public final boolean addAll(Collection<?> collection) {
+        return this.i.addAll(collection);
     }
 
     @Override
     public final void clear() {
-        throw new UnsupportedOperationException(cYh.d("28202423362E0E3F2F713E29473E2E2577291220313E252E023461373828472224303377083E2D287739083C2D34342E0E3F2F"));
+        this.i.clear();
+    }
+
+    public final Object clone() {
+        return new b(new ArrayList<Object>(this.i));
     }
 
     @Override
     public final boolean contains(Object object) {
-        int n2;
-        boolean bl;
-        block7: {
-            T[] TArray = this.c;
-            f.e(TArray, cYh.d("5B2429382464"));
-            bl = false;
-            if (object == null) {
-                int n3 = TArray.length;
-                for (n2 = 0; n2 < n3; ++n2) {
-                    if (TArray[n2] != null) {
-                        continue;
-                    }
-                    break block7;
-                }
-            } else {
-                int n4 = TArray.length;
-                for (n2 = 0; n2 < n4; ++n2) {
-                    if (!f.a(object, TArray[n2])) {
-                        continue;
-                    }
-                    break block7;
-                }
-            }
-            n2 = -1;
-        }
-        if (n2 >= 0) {
-            bl = true;
-        }
-        return bl;
+        return this.i.contains(object);
     }
 
     @Override
-    public final boolean containsAll(Collection<? extends Object> object) {
-        boolean bl;
-        block3: {
-            f.e(object, cYh.d("023C243C32341323"));
-            bl = object.isEmpty();
-            boolean bl2 = true;
-            if (bl) {
-                bl = bl2;
-            } else {
-                object = object.iterator();
-                do {
-                    bl = bl2;
-                    if (!object.hasNext()) break block3;
-                } while (this.contains(object.next()));
-                bl = false;
-            }
+    public final boolean containsAll(Collection<?> collection) {
+        return this.i.containsAll(collection);
+    }
+
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    @Override
+    public final boolean equals(Object list) {
+        List<Object> list2;
+        if (this == list) {
+            return true;
         }
-        return bl;
+        if (list instanceof b) {
+            list2 = this.i;
+            list = ((b)list).i;
+            return list2.equals(list);
+        }
+        list2 = this.i;
+        return list2.equals(list);
+    }
+
+    @Override
+    public final Object get(int n2) {
+        return this.i.get(n2);
+    }
+
+    @Override
+    public final int hashCode() {
+        return this.i.hashCode();
+    }
+
+    @Override
+    public final int indexOf(Object object) {
+        return this.i.indexOf(object);
     }
 
     @Override
     public final boolean isEmpty() {
-        boolean bl = this.c.length == 0;
-        return bl;
+        return this.i.isEmpty();
     }
 
     @Override
-    public final Iterator<T> iterator() {
-        return com.github.catvod.spider.merge.E.b.a(this.c);
+    public final Iterator<Object> iterator() {
+        return this.i.iterator();
+    }
+
+    @Override
+    public final int lastIndexOf(Object object) {
+        return this.i.lastIndexOf(object);
+    }
+
+    @Override
+    public final ListIterator<Object> listIterator() {
+        return this.i.listIterator();
+    }
+
+    @Override
+    public final ListIterator<Object> listIterator(int n2) {
+        return this.i.listIterator(n2);
+    }
+
+    public final Type o() {
+        return this.k;
+    }
+
+    public final e p(int n2) {
+        Object object = this.i.get(n2);
+        if (object instanceof e) {
+            return (e)object;
+        }
+        if (object instanceof Map) {
+            return new e((Map)object);
+        }
+        return (e)com.github.catvod.spider.merge.y.a.k(object);
+    }
+
+    public final Object q() {
+        return this.j;
+    }
+
+    public final void r(Type type) {
+        this.k = type;
+    }
+
+    @Override
+    public final Object remove(int n2) {
+        return this.i.remove(n2);
     }
 
     @Override
     public final boolean remove(Object object) {
-        throw new UnsupportedOperationException(cYh.d("28202423362E0E3F2F713E29473E2E2577291220313E252E023461373828472224303377083E2D287739083C2D34342E0E3F2F"));
+        return this.i.remove(object);
     }
 
     @Override
-    public final boolean removeAll(Collection<? extends Object> collection) {
-        throw new UnsupportedOperationException(cYh.d("28202423362E0E3F2F713E29473E2E2577291220313E252E023461373828472224303377083E2D287739083C2D34342E0E3F2F"));
+    public final boolean removeAll(Collection<?> collection) {
+        return this.i.removeAll(collection);
     }
 
     @Override
-    public final boolean retainAll(Collection<? extends Object> collection) {
-        throw new UnsupportedOperationException(cYh.d("28202423362E0E3F2F713E29473E2E2577291220313E252E023461373828472224303377083E2D287739083C2D34342E0E3F2F"));
+    public final boolean retainAll(Collection<?> collection) {
+        return this.i.retainAll(collection);
+    }
+
+    public final void s(Object object) {
+        this.j = object;
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final Object set(int n2, Object object) {
+        if (n2 != -1) {
+            if (this.i.size() > n2) {
+                return this.i.set(n2, object);
+            }
+            for (int i2 = this.i.size(); i2 < n2; ++i2) {
+                this.i.add(null);
+            }
+        }
+        this.i.add(object);
+        return null;
     }
 
     @Override
     public final int size() {
-        return this.c.length;
+        return this.i.size();
+    }
+
+    @Override
+    public final List<Object> subList(int n2, int n3) {
+        return this.i.subList(n2, n3);
     }
 
     @Override
     public final Object[] toArray() {
-        Object[] objectArray = this.c;
-        boolean bl = this.d;
-        f.e(objectArray, cYh.d("5B2429382464"));
-        if (!bl || !f.a(objectArray.getClass(), Object[].class)) {
-            objectArray = Arrays.copyOf(objectArray, objectArray.length, Object[].class);
-            f.d(objectArray, cYh.d("043F3128183C4F242938247647242938247414393B347B7A262233302E66263E386E69605D332D302429493A20273673"));
-        }
-        return objectArray;
+        return this.i.toArray();
     }
 
     @Override
     public final <T> T[] toArray(T[] TArray) {
-        f.e(TArray, cYh.d("062233302E"));
-        return com.github.catvod.spider.merge.E.c.b(this, TArray);
+        return this.i.toArray(TArray);
     }
 }
 

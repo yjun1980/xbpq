@@ -1,30 +1,31 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.app.Application
+ *  android.content.SharedPreferences
  */
 package com.github.catvod.spider.merge.i0;
 
-import com.github.catvod.spider.merge.c0.l;
-import com.github.catvod.spider.merge.cYh;
-import com.github.catvod.spider.merge.e0.g;
-import com.github.catvod.spider.merge.h0.a;
-import com.github.catvod.spider.merge.h0.e;
-import java.util.AbstractCollection;
+import android.app.Application;
+import android.content.SharedPreferences;
+import com.github.catvod.spider.Init;
 
-public final class d
-implements a {
-    @Override
-    public final String a() {
-        return cYh.d("0438283D33");
+public final class d {
+    private static SharedPreferences a() {
+        Application application = Init.context();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(Init.context().getPackageName());
+        stringBuilder.append("_preferences");
+        return application.getSharedPreferences(stringBuilder.toString(), 0);
     }
 
-    @Override
-    public final e b(g object) {
-        g g2 = new g();
-        object = ((AbstractCollection)object).iterator();
-        while (object.hasNext()) {
-            ((AbstractCollection)g2).addAll(((l)object.next()).R());
-        }
-        return new e(g2);
+    public static String b(String string) {
+        return d.a().getString(string, "");
+    }
+
+    public static void c(String string, Object object) {
+        d.a().edit().putString(string, (String)object).apply();
     }
 }
 

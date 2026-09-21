@@ -1,31 +1,32 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.text.TextUtils
+ *  com.google.gson.annotations.SerializedName
  */
 package com.github.catvod.spider.merge.Q;
 
-import com.github.catvod.spider.merge.O.m;
-import com.github.catvod.spider.merge.Q.b;
+import android.text.TextUtils;
+import com.github.catvod.spider.merge.I.r;
+import com.google.gson.annotations.SerializedName;
 
-public abstract class c
-extends com.github.catvod.spider.merge.S.b<b> {
-    public c(m m2) {
-        super(m2, 2);
+public final class c {
+    @SerializedName(alternate={"name"}, value="title")
+    private String a;
+
+    static /* bridge */ /* synthetic */ String a(c c2) {
+        return c2.b();
     }
 
-    @Override
-    protected final Object a(Object object) {
-        object = !(object instanceof b) ? null : (b)object;
-        return object;
+    private String b() {
+        String string = TextUtils.isEmpty((CharSequence)this.a) ? "" : this.a;
+        return string;
     }
 
-    @Override
-    protected final Object[] c(int n2) {
-        return new b[n2];
-    }
-
-    @Override
-    protected final Object[][] d(int n2) {
-        return new b[n2][];
+    public final String c(boolean bl) {
+        String string = bl ? String.format("[a=cr:{\"id\":\"%s\",\"name\":\"%s\"}/]%s[/a]", r.c(new StringBuilder(), this.b(), "/{pg}"), this.b(), this.b()) : this.b();
+        return string;
     }
 }
 

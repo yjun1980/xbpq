@@ -1,28 +1,42 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.view.textclassifier.TextClassificationManager
+ *  android.view.textclassifier.TextClassifier
+ *  android.widget.TextView
+ *  androidx.core.util.Preconditions
  */
 package com.github.catvod.spider.merge.n;
 
-import com.github.catvod.spider.merge.cYh;
-import java.lang.reflect.AccessibleObject;
-import java.lang.reflect.Field;
-import java.security.PrivilegedExceptionAction;
-import sun.misc.Unsafe;
+import android.view.textclassifier.TextClassificationManager;
+import android.view.textclassifier.TextClassifier;
+import android.widget.TextView;
+import androidx.core.util.Preconditions;
 
-final class l
-implements PrivilegedExceptionAction<Unsafe> {
-    l() {
+final class l {
+    private TextView a;
+    private TextClassifier b;
+
+    l(TextView textView) {
+        this.a = (TextView)Preconditions.checkNotNull((Object)textView);
     }
 
-    public final Unsafe a() {
-        for (Field field : Unsafe.class.getDeclaredFields()) {
-            ((AccessibleObject)field).setAccessible(true);
-            Object object = field.get(null);
-            if (!Unsafe.class.isInstance(object)) continue;
-            return (Unsafe)Unsafe.class.cast(object);
+    public final TextClassifier a() {
+        TextClassifier textClassifier;
+        TextClassifier textClassifier2 = textClassifier = this.b;
+        if (textClassifier == null) {
+            textClassifier2 = (TextClassificationManager)this.a.getContext().getSystemService(TextClassificationManager.class);
+            if (textClassifier2 != null) {
+                return textClassifier2.getTextClassifier();
+            }
+            textClassifier2 = TextClassifier.NO_OP;
         }
-        NoSuchFieldError noSuchFieldError = new NoSuchFieldError(cYh.d("13382471023414312734"));
-        throw noSuchFieldError;
+        return textClassifier2;
+    }
+
+    public final void b(TextClassifier textClassifier) {
+        this.b = textClassifier;
     }
 }
 

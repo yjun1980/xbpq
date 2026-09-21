@@ -3,11 +3,14 @@
  * 
  * Could not load the following classes:
  *  android.content.Context
- *  android.content.SharedPreferences$Editor
  *  android.text.TextUtils
  *  android.util.Base64
  *  com.github.catvod.crawler.Spider
  *  com.github.catvod.crawler.SpiderApi
+ *  com.google.gson.Gson
+ *  com.google.gson.JsonArray
+ *  com.google.gson.JsonElement
+ *  com.google.gson.JsonObject
  *  okhttp3.MediaType
  *  okhttp3.OkHttpClient
  *  okhttp3.Request
@@ -21,30 +24,36 @@
 package com.github.catvod.spider;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.util.Base64;
 import com.github.catvod.crawler.Spider;
 import com.github.catvod.crawler.SpiderApi;
 import com.github.catvod.spider.Init;
 import com.github.catvod.spider.Proxy;
-import com.github.catvod.spider.PushAgent;
 import com.github.catvod.spider.XBPQ$3;
 import com.github.catvod.spider.XBPQ$5;
 import com.github.catvod.spider.XBPQ$6;
 import com.github.catvod.spider.XBPQ$7;
-import com.github.catvod.spider.a;
-import com.github.catvod.spider.c;
-import com.github.catvod.spider.merge.b.n;
-import com.github.catvod.spider.merge.b.p;
-import com.github.catvod.spider.merge.cYh;
-import com.github.catvod.spider.merge.d.d;
-import com.github.catvod.spider.merge.h.b;
-import com.github.catvod.spider.merge.j.k;
-import com.github.catvod.spider.merge.j.m;
-import com.github.catvod.spider.merge.k.g;
+import com.github.catvod.spider.XBPQPA;
+import com.github.catvod.spider.XBPQa;
+import com.github.catvod.spider.XBPQc;
+import com.github.catvod.spider.merge.Dw.f;
+import com.github.catvod.spider.merge.Dw.i;
+import com.github.catvod.spider.merge.Dw.v;
+import com.github.catvod.spider.merge.dp.n;
+import com.github.catvod.spider.merge.ka.d;
+import com.github.catvod.spider.merge.lq.b;
+import com.github.catvod.spider.merge.mk.c;
+import com.github.catvod.spider.merge.mk.g;
+import com.github.catvod.spider.merge.nz.k;
+import com.github.catvod.spider.merge.nz.m;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.InetAddress;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -81,13 +90,13 @@ extends Spider {
     private String A = "";
     protected JSONObject B = null;
     private Context C;
-    private PushAgent D;
+    private XBPQPA D;
     private boolean E = true;
     private HashMap<String, String> F = null;
     private String G;
     private int H = 0;
     private SpiderApi I = null;
-    private String J = cYh.d("5E697669");
+    private String J = "9978";
     private boolean a = false;
     private String b;
     private String c = "";
@@ -116,1074 +125,13 @@ extends Spider {
     private String z = "";
 
     /*
-     * Could not resolve type clashes
-     * Unable to fully structure code
-     */
-    private JSONObject A(String var1_1, String var2_3, String var3_4, String var4_5) {
-        block23: {
-            block22: {
-                block21: {
-                    var14_6 = cYh.d("3B76");
-                    var15_7 = cYh.d("44");
-                    var10_8 = new JSONObject();
-                    var11_9 = new JSONArray();
-                    var7_10 = var1_1.equals(cYh.d("0529"));
-                    var17_11 = cYh.d("82D5E9B8D4F2");
-                    var18_12 = cYh.d("043135341E3E");
-                    var16_13 = cYh.d("4A7D");
-                    var13_14 = cYh.d("11");
-                    var12_15 = cYh.d("09");
-                    var9_16 = var3_4;
-                    var8_17 /* !! */  = var10_8;
-                    if (!var7_10) {
-                        var9_16 = var3_4;
-                        var8_17 /* !! */  = var10_8;
-                        if (var1_1.equals(var18_12)) break block21;
-                        var10_8.put(var12_15, (Object)var17_11);
-                        var10_8.put(var13_14, (Object)"");
-                        var11_9.put(var10_8);
-                        var10_8 = new JSONObject();
-                        var9_16 = var3_4;
-                        var8_17 /* !! */  = var10_8;
-                        if (var3_4.indexOf(var16_13) < 0) break block21;
-                        var9_16 = var3_4.split(var16_13)[1];
-                        var8_17 /* !! */  = var10_8;
-                    }
-                }
-                var7_10 = var1_1.equals(var18_12);
-                var5_18 = 0;
-                var10_8 = var9_16;
-                var3_4 = var8_17 /* !! */ ;
-                if (!var7_10) break block22;
-                var8_17 /* !! */ .put(var12_15, (Object)var17_11);
-                var8_17 /* !! */ .put(var13_14, (Object)var9_16.split(var16_13)[0]);
-                var11_9.put((Object)var8_17 /* !! */ );
-                var8_17 /* !! */  = new JSONObject();
-                var10_8 = var9_16;
-                var3_4 = var8_17 /* !! */ ;
-                if (var9_16.indexOf(var16_13) < 0) break block22;
-                var10_8 = var9_16.split(var16_13)[1];
-                var3_4 = var8_17 /* !! */ ;
-            }
-            if (var10_8.indexOf(var15_7) < 0) ** GOTO lbl79
-            var5_18 = var10_8.indexOf(var15_7);
-            var4_5 = cYh.d("3B74");
-            if (var5_18 >= 0) {
-                ** try [egrp 7[TRYBLOCK] [7 : 306->320)] { 
-lbl60:
-                // 2 sources
-
-                for (String var9_16 : var10_8.split(var15_7)) {
-                    var3_4.put(var12_15, (Object)var9_16.split((String)var4_5)[0]);
-                    var3_4.put(var13_14, (Object)var9_16.split((String)var4_5)[1]);
-                    var11_9.put((Object)var3_4);
-                    var3_4 = new JSONObject();
-                }
-            } else {
-                block24: {
-                    var3_4.put(var12_15, (Object)var10_8.split((String)var4_5)[0]);
-                    var3_4.put(var13_14, (Object)var10_8.split((String)var4_5)[1]);
-                    var11_9.put((Object)var3_4);
-                    break block23;
-lbl79:
-                    // 1 sources
-
-                    if (var10_8.indexOf(cYh.d("41")) < 0) break block23;
-                    var8_17 /* !! */  = var10_8.split(var14_6);
-                    if (!"".equals(var4_5) && !cYh.d("4D").equals(var4_5)) {
-                        var4_5 = var4_5.split(var14_6);
-                        break block24;
-                    }
-                    var4_5 = var8_17 /* !! */ ;
-                }
-                while (true) {
-                    if (var5_18 >= ((JSONObject)var8_17 /* !! */ ).length) break;
-                    var3_4.put(var12_15, (Object)var8_17 /* !! */ [var5_18]);
-                    var3_4.put(var13_14, var4_5[var5_18]);
-                    var11_9.put((Object)var3_4);
-                    var3_4 = new JSONObject();
-                    ++var5_18;
-                    continue;
-                    break;
-                }
-            }
-        }
-        try {
-            var3_4 = new JSONObject();
-            var3_4.put(cYh.d("0C3538"), (Object)var1_1);
-            var3_4.put(cYh.d("09312C34"), (Object)var2_3);
-            var3_4.put(cYh.d("11312D2432"), (Object)var11_9);
-            return var3_4;
-        }
-lbl108:
-        // 12 sources
-
-        catch (Exception var1_2) {
-            if (this.m) {
-                var2_3 = new StringBuilder();
-                var2_3.append(this.G);
-                var2_3.append(cYh.d("8FE0C2B9F8CF4A6E2634230833293134B2DDDDB9D5C8B8E6FD"));
-                var2_3.append(var1_2.toString());
-                Init.show(var2_3.toString());
-            }
-            if ((var2_3 = this.I) != null) {
-                com.github.catvod.spider.merge.i.b.a(var1_2, com.github.catvod.spider.merge.d.d.b(cYh.d("00353503032317356978BECEFEB8EEFE7A7759")), (SpiderApi)var2_3);
-            }
-            return null;
-        }
-    }
-
-    private String B(String string) {
-        return this.C(string, "");
-    }
-
-    /*
-     * WARNING - void declaration
-     * Enabled aggressive block sorting
-     */
-    private String C(String object, String object2) {
-        void var1_11;
-        void var2_21;
-        block29: {
-            void var1_5;
-            block18: {
-                int n2;
-                String string;
-                int n3;
-                String[] stringArray;
-                String string2;
-                String string3;
-                String string4;
-                block28: {
-                    void var2_12;
-                    block26: {
-                        block27: {
-                            boolean bl;
-                            block22: {
-                                block24: {
-                                    block25: {
-                                        block23: {
-                                            block19: {
-                                                block20: {
-                                                    block21: {
-                                                        string4 = this.B.optString((String)object);
-                                                        bl = ((String)object).equals(cYh.d("83E8FAB8F6EF12222D"));
-                                                        string3 = "";
-                                                        string2 = string4;
-                                                        if (!bl) break block19;
-                                                        string2 = string4;
-                                                        if (!string4.isEmpty()) break block19;
-                                                        string2 = string4 = this.B.optString(cYh.d("8EF6D7B8F6EF81DEE9B9DACA8EC3FFB7D9FF"));
-                                                        if (!string4.isEmpty()) break block19;
-                                                        string2 = string4 = this.B.optString(cYh.d("80EDD0B6FCC382CCF1B4CADA"));
-                                                        if (!string4.isEmpty()) break block19;
-                                                        string2 = string4 = this.B.optString(cYh.d("12222D"));
-                                                        if (!string4.isEmpty()) break block19;
-                                                        string2 = string4 = this.B.optString(cYh.d("0F3F2C3402280B"));
-                                                        if (!string4.isEmpty()) break block19;
-                                                        string2 = string4 = this.B.optString(cYh.d("82D8C7B6E6E112222D"));
-                                                        if (!string4.isEmpty()) break block20;
-                                                        string4 = this.B.optString(cYh.d("82D8C7B6E6E18EC3FFB7D9FF"));
-                                                        bl = string4.isEmpty();
-                                                        stringArray = cYh.d("0F243521");
-                                                        if (bl) break block21;
-                                                        string2 = string4;
-                                                        if (string4.startsWith((String)stringArray)) break block20;
-                                                    }
-                                                    string2 = string4 = this.B.optString(cYh.d("82D8C7B6E6E18EF1F4"));
-                                                    if (string4.isEmpty()) {
-                                                        string2 = string4 = this.B.optString(cYh.d("043C2022240512222D"));
-                                                        if (string4.isEmpty()) {
-                                                            string2 = string4 = this.B.optString(cYh.d("0431353402280B"));
-                                                            if (string4.isEmpty()) {
-                                                                string4 = string2 = this.B.optString(cYh.d("81C0DDB6E3F812222D"));
-                                                                if (!string2.startsWith((String)stringArray)) {
-                                                                    string4 = "";
-                                                                }
-                                                                string2 = string4;
-                                                                if (string4.isEmpty()) {
-                                                                    string2 = string4 = this.B.optString(cYh.d("81C0DDB6E3F88EC3FFB7D9FF"));
-                                                                    if (!string4.startsWith((String)stringArray)) {
-                                                                        string2 = "";
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                                n3 = string2.indexOf(cYh.d("48272433273B1523247E"));
-                                                stringArray = cYh.d("4361");
-                                                string4 = n3 > 0 ? cYh.d("497A6E2632381731332232754F3835252729580C7B7E7801397F1C7A7E75497A") : cYh.d("497A6939232E17237E0D6D75480B1F7E0A714E7F6F7B");
-                                                string2 = string2.replaceAll(string4, (String)stringArray);
-                                            }
-                                            string4 = string2;
-                                            if (!((String)object).equals(cYh.d("82D8C7B6E6E1"))) break block22;
-                                            if (string2.isEmpty()) break block23;
-                                            string4 = string2;
-                                            if (string2.indexOf(cYh.d("41")) < 0) break block22;
-                                            string4 = this.B;
-                                            stringArray = cYh.d("82D8C7B6E6E182D0FD");
-                                            break block24;
-                                        }
-                                        string2 = this.B.optString(cYh.d("82D8C7B6E6E182C0CCB6F0EA"));
-                                        if (string2.isEmpty()) break block25;
-                                        string4 = this.B;
-                                        stringArray = cYh.d("82D8C7B6E6E182C0CCB6F0EA81CBFEB7DAF88FFFCC");
-                                        break block24;
-                                    }
-                                    string4 = string2 = this.B.optString(cYh.d("043C2022240509312C34"));
-                                    if (string2.isEmpty()) break block22;
-                                    string4 = this.B;
-                                    stringArray = cYh.d("043C2022240511312D2432");
-                                }
-                                string4 = this.R(string2, string4.optString((String)stringArray));
-                            }
-                            bl = string4.isEmpty();
-                            string2 = cYh.d("80F9FB");
-                            if (bl || string4.equals(string2)) break block26;
-                            String string5 = string4;
-                            if (((String)object).equals(cYh.d("82D9E6B7D4DF"))) return var2_21;
-                            String string6 = string4;
-                            if (((String)object).equals(cYh.d("82CCF1B4DBE0"))) return var2_21;
-                            String string7 = string4;
-                            if (((String)object).equals(cYh.d("80E1FAB4C9D1"))) return var2_21;
-                            String string8 = string4;
-                            if (((String)object).equals(cYh.d("82E9F5B5ECE7"))) return var2_21;
-                            String string9 = string4;
-                            if (((String)object).equals(cYh.d("81DED3B4EDD5"))) return var2_21;
-                            string = cYh.d("1B2C");
-                            if (string4.indexOf(string) < 0 || string4.indexOf(string2 = cYh.d("4A7D")) < 0) break block27;
-                            stringArray = string4.split(cYh.d("3B2C1D2D"));
-                            n2 = stringArray.length;
-                            break block28;
-                        }
-                        String string10 = string4;
-                        break block29;
-                    }
-                    if (!((String)object).equals(cYh.d("81C0DDB6E3F882C0CFB6EBDA"))) return var2_12;
-                    if (!string4.equals(string2)) return var2_12;
-                    return "";
-                }
-                for (n3 = 0; n3 < n2; ++n3) {
-                    String string11 = stringArray[n3];
-                    if (string11.indexOf(this.r) < 0) continue;
-                    String string12 = string11.split(string2)[1];
-                    break block18;
-                }
-                String string13 = string3;
-                if (string4.indexOf(string) < 0) break block29;
-                String[] stringArray2 = stringArray[0].split(string2);
-                if (stringArray2.length > 1) {
-                    String string14 = stringArray2[1];
-                } else {
-                    String string15 = stringArray2[0];
-                }
-            }
-            void var2_19 = var1_5;
-            return var2_21;
-        }
-        void var2_20 = var1_11;
-        return var2_21;
-    }
-
-    private String D(String string, String string2, String string3) {
-        return this.C(string, this.C(string2, string3));
-    }
-
-    private String E(String string, String string2, String string3, String string4) {
-        return this.C(string, this.C(string2, this.C(string3, string4)));
-    }
-
-    private String F(String string, String string2, String string3, String string4, String string5) {
-        return this.C(string, this.C(string2, this.C(string3, this.C(string4, string5))));
-    }
-
-    private String G(String string, String string2, String string3, String string4, String string5, String string6) {
-        return this.C(string, this.C(string2, this.C(string3, this.C(string4, this.C(string5, string6)))));
-    }
-
-    private String H(String string, String string2, String string3, String string4, String string5, String string6) {
-        return this.C(string, this.C(string2, this.C(string3, this.C(string4, this.C(string5, this.C(string6, ""))))));
-    }
-
-    private String K(String object) {
-        CharSequence charSequence = cYh.d("81C7F7B8C0EE81D8F2");
-        String[] stringArray = object;
-        if (object.indexOf((String)charSequence) >= 0) {
-            stringArray = com.github.catvod.spider.merge.d.d.b("");
-            stringArray.append(new Date().getTime());
-            stringArray = object.replace(charSequence, stringArray.toString());
-        }
-        object = stringArray;
-        if (stringArray.indexOf(cYh.d("5D6978666F75")) > 0) {
-            charSequence = this.J;
-            String string = cYh.d("5E697669");
-            object = stringArray;
-            if (!string.equals(charSequence)) {
-                object = stringArray.replace(string, this.J);
-            }
-        }
-        stringArray = object;
-        if (object.indexOf(cYh.d("0A347479")) > 0) {
-            charSequence = object.replaceAll(cYh.d("0A34740D7F72497A7E780B73"), cYh.d("4361"));
-            if (((String)charSequence).indexOf(cYh.d("4B39323E")) > 0) {
-                charSequence = ((String)charSequence).split(cYh.d("4B"))[0];
-                stringArray = com.github.catvod.spider.merge.j.m.c;
-            } else {
-                stringArray = com.github.catvod.spider.merge.j.m.b;
-            }
-            stringArray = com.github.catvod.spider.merge.j.m.a((String)charSequence, (Charset)stringArray);
-            stringArray = object.replaceAll(cYh.d("0A34740D7F744D6F1D78"), (String)stringArray);
-        }
-        object = stringArray;
-        if (stringArray.indexOf(cYh.d("4C25333D6D")) > 0) {
-            object = stringArray.split(cYh.d("3B7B34233B065D"));
-            if (((String[])object).length > 1) {
-                if (stringArray.indexOf(cYh.d("432334336D")) > 0) {
-                    stringArray = object[1].split(cYh.d("3B74322435065D"));
-                    if (stringArray.length > 1) {
-                        charSequence = new StringBuilder();
-                        ((StringBuilder)charSequence).append(object[0]);
-                        ((StringBuilder)charSequence).append(this.c0(this.j(stringArray[0]), stringArray[1], "").get(0).trim());
-                        object = ((StringBuilder)charSequence).toString();
-                    } else {
-                        charSequence = new StringBuilder();
-                        ((StringBuilder)charSequence).append(object[0]);
-                        ((StringBuilder)charSequence).append(this.j(stringArray[0]));
-                        object = ((StringBuilder)charSequence).toString();
-                    }
-                } else {
-                    stringArray = new StringBuilder();
-                    stringArray.append(object[0]);
-                    stringArray.append(this.j(object[1]));
-                    object = stringArray.toString();
-                }
-            } else {
-                object = object[0];
-            }
-        }
-        return object;
-    }
-
-    private String L(String string) {
-        if (string.length() < 1) {
-            return string;
-        }
-        string = string.replaceAll(cYh.d("3B76626E0C3B4A2A007C0D6A4A691C2A667656603C6A"), "");
-        String string2 = cYh.d("5B0B1F6F0A7059");
-        String string3 = cYh.d("48");
-        string = string.replaceAll(string2, string3).replaceAll(cYh.d("3C6E7D0C"), "");
-        string2 = cYh.d("47");
-        String string4 = cYh.d("80F9FBB6FEE080F9FB");
-        string = string.replaceAll(string2, string4).replaceAll(cYh.d("3B236A"), "").replaceAll(string4, string2).replaceAll(cYh.d("487B"), string3);
-        while (true) {
-            string2 = string;
-            if (!string.startsWith(string3)) break;
-            string = string.substring(1, string.length());
-        }
-        while (string2.endsWith(string3)) {
-            string2 = string2.substring(0, string2.length() - 1);
-        }
-        return string2;
-    }
-
-    /*
-     * WARNING - Removed back jump from a try to a catch block - possible behaviour change.
-     * Unable to fully structure code
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
-    private void M() {
-        var8_1 = cYh.d("3B74");
-        var12_2 = cYh.d("3739221F323F0300333E2F23");
-        var11_3 = cYh.d("82CBFFB6DEDD81C8EEB4C7FC8ECCC1B9F1DB83EBE2B6C7DC");
-        var10_4 = cYh.d("82CBFFB6DEDD83EBE2B6C7DC");
-        var13_5 = cYh.d("0F243521");
-        var17_6 = cYh.d("4176");
-        var15_7 = cYh.d("497A6939232E17237E0D6D75480B1F7E0A714E7F6F7B");
-        var5_8 = cYh.d("56");
-        var9_9 = cYh.d("57");
-        var16_10 = cYh.d("82CFDEB4C7D78FE7F2B9EAF6");
-        var6_11 = cYh.d("81C0DDB6E3F88EC3FFB7D9FF");
-        var3_12 = cYh.d("81C0DDB6E3F812222D");
-        var14_14 = cYh.d("48");
-        var7_15 = cYh.d("4361");
-        var4_16 = cYh.d("5C6B");
-        try {
-            var18_18 = new StringBuilder();
-            var18_18.append(this.B(cYh.d("83E8FAB8F6EF12222D")));
-            var18_18.append(var14_14);
-            var18_18 = var18_18.toString().replaceAll(var15_7, var7_15);
-            this.f = var18_18;
-            this.G = var18_18;
-            this.G = var18_18.split(cYh.d("5D7F6E"))[1].split(var14_14)[0].replace(cYh.d("49"), cYh.d("38"));
-            var18_18 = this.G(cYh.d("82D8C7B6E6E112222D"), cYh.d("82D8C7B6E6E18EC3FFB7D9FF"), cYh.d("82D8C7B6E6E18EF1F4"), cYh.d("043C2022240512222D"), cYh.d("0431353402280B"), "");
-            this.b = var18_18;
-            var1_19 = var18_18.indexOf((String)var4_16);
-            if (var1_19 >= 0) {
-                if (this.b.split((String)var4_16).length > 1) {
-                    this.s = this.b.split((String)var4_16)[1];
-                }
-                this.b = this.b.split((String)var4_16)[0];
-            } else if (this.D((String)var3_12, var6_11, "").indexOf((String)var4_16) >= 0) {
-                if (this.D((String)var3_12, var6_11, "").split((String)var4_16).length > 1) {
-                    this.s = this.D((String)var3_12, var6_11, "").split((String)var4_16)[1];
-                }
-            } else {
-                this.s = "";
-            }
-            if (this.B(var16_10).indexOf(var17_6) > 0 || this.s.indexOf(cYh.d("82CFDE")) >= 0) {
-                var3_12 = var4_16 = this.D(cYh.d("82DFD0B4EFD98EF1F4"), cYh.d("82CFDEB4C7D782DFD0B4EFD98EF1F4"), "");
-                if (!var4_16.startsWith(var13_5)) {
-                    var3_12 = this.f;
-                }
-                var6_11 = this.j((String)var3_12);
-                if (this.B(var16_10).indexOf(var17_6) > 0) {
-                    var3_12 = this.Y(var6_11, this.B(var16_10), "").get(0).trim();
-                } else {
-                    var3_12 = var4_16 = this.Y(var6_11, cYh.d("5B316B39253F016D637771783CB5CDD4B2CACC6A2925232A3A"), "");
-                    if (var4_16.size() < 1) {
-                        var3_12 = this.Y(var6_11, cYh.d("5B316B39253F016D6677717D3CB5CDD4B2CACC6A2925232A3A"), "");
-                    }
-                    if ((var1_19 = (var4_16 = this.s.matches(cYh.d("497AA4CEC806037E6B")) != false ? this.s.replaceAll(cYh.d("497AA4CEC8723B34687F7D"), var7_15) : "").matches(cYh.d("3B34")) != false ? Integer.parseInt((String)var4_16) - 1 : 0) > 0 && var3_12.size() > var1_19) {
-                        var3_12 = var3_12.get(var1_19);
-lbl52:
-                        // 2 sources
-
-                        while (true) {
-                            var3_12 = (String)var3_12;
-                            var4_16 = var3_12.trim();
-                            break;
-                        }
-                    } else {
-                        var4_16 = var6_11;
-                        if (var3_12.size() > 0) {
-                            var3_12 = var3_12.get(0);
-                            ** continue;
-                        }
-                    }
-                    var3_12 = new StringBuilder();
-                    var3_12.append((String)var4_16);
-                    var3_12.append(var14_14);
-                    var3_12 = var3_12.toString().replaceAll(var15_7, var7_15);
-                }
-                if (var3_12 != null && var3_12.startsWith(var13_5)) {
-                    this.g = var4_16 = this.f;
-                    this.f = var3_12;
-                    this.b = this.b.replace((CharSequence)var4_16, (CharSequence)var3_12);
-                }
-            }
-            if (this.s.indexOf(cYh.d("8EC8FEB8D0D6")) >= 0) {
-                this.B.put(cYh.d("8FE7F2B9EAF68EC3FFB7D9FF"), (Object)cYh.d("0F2435212460487F36262074063C28282234032228273274043F2C7E24754C312D382E2F09343338213F49332E3C782948766773"));
-            }
-lbl74:
-            // 4 sources
-
-            while (true) {
-                var2_20 = this.E(var10_4, var11_3, var12_2, var9_9).equals(var5_8);
-                break;
-            }
-        }
-        catch (Exception var4_17) {
-            var3_12 = this.I;
-            if (var3_12 == null) return;
-            com.github.catvod.spider.merge.i.b.a(var4_17, com.github.catvod.spider.merge.d.d.b(cYh.d("82D8DCB4F0D182DCD7B4D2F282E1C1B4D8C28ED7CEB8C3C38FFFEEBEEBDB4A7D7F")), (SpiderApi)var3_12);
-            return;
-        }
-        var4_16 = cYh.d("81C8EE");
-        {
-            var2_20 = var2_20 || this.E(var10_4, var11_3, var12_2, var9_9).equals(var4_16) || this.s.indexOf(cYh.d("13")) >= 0;
-            this.h = var2_20;
-            var3_12 = this.s.indexOf(cYh.d("33")) >= 0 ? var5_8 : this.D(cYh.d("8FE0C2B9F8CF"), cYh.d("0335232430"), "");
-            this.o = var3_12;
-            var2_20 = var3_12.length() > 0 && var9_9.equals(this.o) == false;
-            this.m = var2_20;
-            if (this.o.indexOf(cYh.d("43")) >= 0) {
-                this.p = Integer.parseInt(this.o.split(var8_1)[1]);
-                this.o = this.o.split(var8_1)[0];
-            }
-            var2_20 = this.F(cYh.d("82D0D3B4EDD5"), cYh.d("82D0D3B4EDD581C2ECB7C3E4"), cYh.d("81C8EEB4C7FC82DFCCB9EAF68ED0C8B8CCDC82EACEB4DFCD"), cYh.d("0220280E253F1135332232"), cYh.d("57")).equals(var5_8) || this.F(cYh.d("82D0D3B4EDD5"), cYh.d("82D0D3B4EDD581C2ECB7C3E4"), cYh.d("81C8EEB4C7FC82DFCCB9EAF68ED0C8B8CCDC82EACEB4DFCD"), cYh.d("0220280E253F1135332232"), cYh.d("57")).equals(var4_16) || this.s.indexOf(cYh.d("0360")) < 0 && this.s.indexOf(cYh.d("03")) >= 0;
-            this.y = var2_20;
-            if (this.s.indexOf(cYh.d("08")) < 0) return;
-            var3_12 = this.s.replaceAll(cYh.d("497A2E790B3E4C796F7B"), var7_15);
-            if (var3_12.length() <= 0) return;
-            this.v = Integer.parseInt((String)var3_12);
-            return;
-        }
-        catch (JSONException var3_13) {
-            ** continue;
-        }
-    }
-
-    private String N(String string) {
-        String string2 = cYh.d("8FEDEDB5EED383EAD4B4D8ED");
-        String string3 = string;
-        if (string.indexOf(string2) >= 0) {
-            string3 = string.replace(string2, cYh.d("44"));
-        }
-        return string3;
-    }
-
-    /*
-     * Unable to fully structure code
-     */
-    private String O(String var1_1, String var2_2, String var3_4) {
-        block31: {
-            block30: {
-                block29: {
-                    block27: {
-                        block34: {
-                            block28: {
-                                var8_5 = this.I;
-                                if (var8_5 == null) ** GOTO lbl11
-                                var9_6 = new StringBuilder();
-                                var9_6.append(cYh.d("8FFFF6B7E6D88FE7F2B9EAF681C2ECB7C3E48EC3FFB7D9FF81EAD1B6F7DB88ECCD26323832222D7C7A6447"));
-                                var9_6.append(var1_1);
-                                var8_5.log(var9_6.toString());
-lbl11:
-                                // 2 sources
-
-                                var9_6 = this.j(var1_1);
-                                var10_7 = this.I;
-                                var8_5 = var9_6;
-                                if (var10_7 == null) break block27;
-                                if (var9_6 != null) break block28;
-                                var10_7.log(cYh.d("81CCEBB9D9ED82DFD7B4DFEA8FE7F2B9EAF681EAD1B6F7DB"));
-                                var8_5 = "";
-                                break block27;
-                            }
-                            var7_8 = this.m;
-                            var8_5 = cYh.d("8FDEF6B4D8CC82D8F1B9E0E98FEDEDB7EDCA80F0C07C7A6447");
-                            if (!var7_8) ** GOTO lbl33
-                            var11_9 = new StringBuilder();
-                            var11_9.append((String)var8_5);
-                            var11_9.append((String)var9_6);
-                            var8_5 = var11_9.toString();
-                            break block34;
-lbl33:
-                            // 1 sources
-
-                            var11_9 = new StringBuilder();
-                            var11_9.append((String)var8_5);
-                            var11_9.append(var9_6.split(cYh.d("5B3D2425367A0F243521"))[0].split(cYh.d("4B0C3A"))[0]);
-                            var11_9.append(cYh.d("497E6F7F7974"));
-                            var8_5 = var11_9.toString();
-                        }
-                        var10_7.log((String)var8_5);
-                        var8_5 = var9_6;
-                    }
-                    if (var2_2.length() > 0) break block29;
-                    var2_2 = cYh.d("4525333D7570457667737B");
-                }
-                var9_6 = cYh.d("4176");
-                if (var8_5 != null) {
-                    if (!var8_5.startsWith(cYh.d("1C")) || !var8_5.endsWith(cYh.d("1A")) || var2_2.indexOf((String)var9_6) >= 0) break block30;
-                    var3_4 = new JSONObject((String)var8_5);
-                    if (var2_2.indexOf(cYh.d("49")) < 0) {
-                        var3_4.optString(var2_2).getClass();
-                    } else {
-                        this.u((String)var8_5, var2_2);
-                    }
-                    break block31;
-                }
-            }
-            if (var8_5 != null) {
-                if (var2_2.indexOf((String)var9_6) < 0) break block31;
-                var9_6 = this.Y((String)var8_5, (String)var3_4, "");
-                var4_11 = 0;
-                while (true) {
-                    block32: {
-                        if (var4_11 >= var9_6.size()) break;
-                        var3_4 = (String)var9_6.get(var4_11);
-                        if (var3_4.length() <= 10) break block32;
-                        var10_7 = this.Y((String)var3_4, var2_2, "");
-                        var5_12 = 0;
-                        while (true) {
-                            block33: {
-                                if (var5_12 >= var10_7.size()) break;
-                                var3_4 = var8_5 = ((String)var10_7.get(var5_12)).trim();
-                                try {
-                                    if (this.s.indexOf(cYh.d("1260")) < 0) {
-                                        var3_4 = URLDecoder.decode((String)var8_5);
-                                    }
-                                }
-                                catch (Exception var11_10) {
-                                    if (this.m) {
-                                        var3_4 = new StringBuilder();
-                                        var3_4.append(this.G);
-                                        var3_4.append(cYh.d("8FE0C2B9F8CF4A6EA9E6E4B2DAFC14233BB2C0F3A6F1D6BFE0EAA8C5CEB5DBCA"));
-                                        var3_4.append(var11_10.toString());
-                                        Init.show(var3_4.toString());
-                                    }
-                                    var12_14 = this.I;
-                                    var3_4 = var8_5;
-                                    if (var12_14 == null) break block33;
-                                    var3_4 = new StringBuilder();
-                                    var3_4.append(cYh.d("8FE7F2B9EAF632222DB9F0F980F0C0B8C3C38FFFEEBEEBDB4A7D7F"));
-                                    var3_4.append(var11_10.toString());
-                                    var12_14.log(var3_4.toString());
-                                    var3_4 = var8_5;
-                                }
-                            }
-                            var6_13 = var3_4.length();
-                            if (var6_13 > 10) {
-                                return var3_4;
-                            }
-                            ++var5_12;
-                            continue;
-                            break;
-                        }
-                    }
-                    ++var4_11;
-                }
-            }
-        }
-        return var1_1;
-        {
-            catch (Exception var2_3) {
-                if (this.m) {
-                    var3_4 = new StringBuilder();
-                    var3_4.append(this.G);
-                    var3_4.append(cYh.d("8FE0C2B9F8CF4A6E2B243A2A242535B4D0E08EC4D8BEEBC0"));
-                    var3_4.append(var2_3.toString());
-                    Init.show(var3_4.toString());
-                }
-                if ((var3_4 = this.I) != null) {
-                    com.github.catvod.spider.merge.i.b.a(var2_3, com.github.catvod.spider.merge.d.d.b(cYh.d("0D252C21142F137868B8C3C38FFFEEBEEBDB4A7D7F")), (SpiderApi)var3_4);
-                }
-                return var1_1;
-            }
-        }
-    }
-
-    /*
-     * Unable to fully structure code
-     */
-    private String P(String var1_1, String var2_2) {
-        block44: {
-            block43: {
-                block42: {
-                    block41: {
-                        block49: {
-                            block40: {
-                                block39: {
-                                    block48: {
-                                        block47: {
-                                            block46: {
-                                                block45: {
-                                                    var11_3 = cYh.d("043F2534");
-                                                    var6_4 = var2_2;
-                                                    if (var2_2.length() < 1) break block44;
-                                                    if (this.u < this.v) break block45;
-                                                    var6_4 = var2_2;
-                                                    break block44;
-                                                }
-                                                var3_5 = var2_2.indexOf(cYh.d("81F3C1B7E2D183E8EC"));
-                                                var4_6 = false;
-                                                if (var3_5 < 0 || var2_2.indexOf(cYh.d("8FE7F2B9EAF683E8EC")) < 0 || var2_2.indexOf(cYh.d("0524363031")) < 0) break block46;
-                                                var7_7 = this.I;
-                                                if (var7_7 != null) {
-                                                    var6_4 = new StringBuilder();
-                                                    var6_4.append(cYh.d("8FEFC6B4F9C782F1D5B6CCE44A7D7F71"));
-                                                    var6_4.append((String)var2_2);
-                                                    var7_7.log(var6_4.toString());
-                                                }
-                                                var8_11 = this.Y((String)var2_2, cYh.d("052436303167417663"), "").get(0);
-                                                var7_7 = com.github.catvod.spider.merge.d.d.b(var1_1);
-                                                var2_2 = var6_4 = cYh.d("58");
-                                                if (var1_1.indexOf((String)var6_4) >= 0) {
-                                                    var2_2 = cYh.d("41");
-                                                }
-                                                var7_7.append((String)var2_2);
-                                                var7_7.append(cYh.d("052436303167"));
-                                                var7_7.append(var8_11);
-                                                var1_1 = var7_7.toString();
-                                                ++this.u;
-                                                var6_4 = this.j(var1_1);
-                                                this.t = true;
-                                                break block44;
-                                            }
-                                            var5_14 = var2_2.contains(cYh.d("81FDE2B4CBF28FEFDAB9F6D683EAFBB7CBE08FFFC7B4DFF1"));
-                                            var10_15 = cYh.d("0F243521");
-                                            if (!var5_14) break block47;
-                                            var7_8 = this.I;
-                                            if (var7_8 != null) {
-                                                var6_4 = new StringBuilder();
-                                                var6_4.append(cYh.d("83EAFBB7CBE08EFACDB9F8DB4A7D7F71"));
-                                                var6_4.append((String)var2_2);
-                                                var7_8.log(var6_4.toString());
-                                            }
-                                            var7_8 = this.Y((String)var2_2, cYh.d("1422226C757C4172"), "").get(0).trim();
-                                            var6_4 = var2_2;
-                                            if (var7_8.length() > 0) {
-                                                var8_12 = new HashMap<String, List<String>>();
-                                                var4_6 = var7_8.startsWith(var10_15);
-                                                var9_16 = cYh.d("48");
-                                                if (var4_6) {
-                                                    var2_2 = var7_8;
-                                                } else {
-                                                    if (var7_8.startsWith(var9_16)) {
-                                                        var2_2 = new StringBuilder();
-                                                        var2_2.append(this.f);
-                                                    } else {
-                                                        var2_2 = new StringBuilder();
-                                                        var2_2.append(this.f);
-                                                        var2_2.append(var9_16);
-                                                    }
-                                                    var2_2.append((String)var7_8);
-                                                    var2_2 = var2_2.toString();
-                                                }
-                                                var6_4 = com.github.catvod.spider.merge.k.g.h((String)var2_2, this.r((String)var2_2), var8_12);
-                                                var7_8 = this.Y((String)var6_4, cYh.d("113133713C3F1E6D63777178"), "").get(0).trim();
-                                                var11_3 = this.Y((String)var6_4, cYh.d("4B26203D223F5A72677775"), "").get(0).trim();
-                                                var2_2 = "";
-                                                for (var3_5 = 0; var3_5 < var11_3.length(); ++var3_5) {
-                                                    var2_2 = com.github.catvod.spider.merge.d.d.b((String)var2_2);
-                                                    var2_2.append(Integer.toString(var11_3.charAt(var3_5)));
-                                                    var2_2 = var2_2.toString();
-                                                }
-                                                var11_3 = com.github.catvod.spider.merge.j.m.a((String)var2_2, com.github.catvod.spider.merge.j.m.b);
-                                                if ((var6_4 = this.Y((String)var6_4, cYh.d("047E263423724576670D71"), "").get(0).trim()).startsWith(var10_15)) {
-                                                    var2_2 = var6_4;
-                                                } else {
-                                                    if (var6_4.startsWith(var9_16)) {
-                                                        var2_2 = new StringBuilder();
-                                                        var2_2.append(this.f);
-                                                    } else {
-                                                        var2_2 = new StringBuilder();
-                                                        var2_2.append(this.f);
-                                                        var2_2.append(var9_16);
-                                                    }
-                                                    var2_2.append((String)var6_4);
-                                                    var2_2 = var2_2.toString();
-                                                }
-                                                var6_4 = new StringBuilder();
-                                                var6_4.append((String)var2_2);
-                                                var6_4.append(cYh.d("413B24286A"));
-                                                var6_4.append((String)var7_8);
-                                                var6_4.append(cYh.d("4126203D223F5A"));
-                                                var6_4.append(var11_3);
-                                                var2_2 = var6_4.toString();
-                                                com.github.catvod.spider.merge.k.g.h((String)var2_2, this.r((String)var2_2), var8_12);
-                                                var6_4 = var8_12.entrySet().iterator();
-                                                while (var6_4.hasNext()) {
-                                                    var2_2 = var6_4.next();
-                                                    if (!var2_2.getKey().equals(cYh.d("1435357C3435083B2834")) && !var2_2.getKey().equals(cYh.d("3435357C1435083B2834"))) continue;
-                                                    var3_5 = this.z.length();
-                                                    var7_8 = cYh.d("5C");
-                                                    if (var3_5 < 1) {
-                                                        var2_2 = TextUtils.join((CharSequence)var7_8, (Iterable)var2_2.getValue());
-                                                    } else {
-                                                        var6_4 = new StringBuilder();
-                                                        var6_4.append(this.z);
-                                                        var6_4.append((String)var7_8);
-                                                        var6_4.append(TextUtils.join((CharSequence)var7_8, (Iterable)((Iterable)var2_2.getValue())));
-                                                        var2_2 = var6_4.toString();
-                                                    }
-                                                    this.z = var2_2;
-                                                    break;
-                                                }
-                                                ++this.u;
-                                                var6_4 = this.j(var1_1);
-                                            }
-                                            break block44;
-                                        }
-                                        var7_9 = cYh.d("8FEED2B4D2FF8EFACDB9F8DB80F0C0");
-                                        if (var2_2.indexOf((String)var7_9) >= 0) break block48;
-                                        var6_4 = var2_2;
-                                        if (var2_2.indexOf(cYh.d("81EBD0B4DDF28EFACDB9F8DB")) < 0) break block44;
-                                    }
-                                    var6_4 = this.I;
-                                    if (var6_4 == null) ** GOTO lbl148
-                                    var8_13 = new StringBuilder();
-                                    var8_13.append(cYh.d("281313B9E9DF82DAE8B8FDD68FFFC07C7A6447"));
-                                    var8_13.append((String)var2_2);
-                                    var6_4.log(var8_13.toString());
-lbl148:
-                                    // 2 sources
-
-                                    if (var2_2.indexOf((String)var7_9) < 0) break block39;
-                                    var4_6 = true;
-                                }
-                                var6_4 = this.y(this.B(cYh.d("8EFACDB9F8DB")), var4_6);
-                                var12_18 = this.z;
-                                var14_19 = var6_4.getString(cYh.d("142433"));
-                                var13_20 = var6_4.getString(cYh.d("043F253402280B"));
-                                var8_13 = this.E(cYh.d("083333"), cYh.d("283333"), cYh.d("281313"), "");
-                                var9_17 = cYh.d("56");
-                                if (!var4_6) break block40;
-                                if (var8_13.length() < 1) ** GOTO lbl165
-                                var6_4 = var8_13;
-                                var7_9 = var9_17;
-                                if (var8_13.startsWith(var10_15)) ** GOTO lbl178
-lbl165:
-                                // 2 sources
-
-                                var6_4 = cYh.d("0F2435212460487F2E322574103F263679360E3E2A7E");
-                                var7_9 = var9_17;
-                                ** GOTO lbl178
-                            }
-                            if (var8_13.length() < 1) ** GOTO lbl175
-                            var6_4 = var8_13;
-                            if (var8_13.startsWith(var10_15)) break block49;
-lbl175:
-                            // 2 sources
-
-                            var6_4 = cYh.d("0F2435212460487F2E32256B49272E3630740B392F3A78");
-                        }
-                        var7_9 = cYh.d("54");
-lbl178:
-                        // 3 sources
-
-                        this.J("");
-                        var7_9 = this.o(var14_19, (String)var6_4, (String)var7_9);
-                        var6_4 = var7_9.getString(var11_3);
-                        this.z = var7_9.getString(cYh.d("043F2E3A3E3F"));
-                        if (var6_4.length() > 0 && this.z.length() > 0) ** GOTO lbl192
-                        this.z = var12_18;
-                        this.u = var3_5 = this.u + 1;
-                        if (var3_5 < this.v) break block41;
-                        return var2_2;
-                    }
-                    this.P(var1_1, (String)var2_2);
-lbl192:
-                    // 2 sources
-
-                    var7_9 = this.r(var14_19);
-                    if (!var4_6) break block42;
-                    var8_13 = new StringBuilder();
-                    var8_13.append(var13_20);
-                    var8_13.append((String)var6_4);
-                    var8_13 = var8_13.toString();
-                    var6_4 = new HashMap();
-                    var6_4 = com.github.catvod.spider.merge.h.b.c((String)var8_13, var6_4, (Map<String, String>)var7_9);
-                    var7_9 = new JSONObject((String)var6_4);
-                    if (var7_9.optInt(var11_3) != 1) {
-                        this.z = var12_18;
-                        this.u = var3_5 = this.u + 1;
-                        if (var3_5 >= this.v) {
-                            return var2_2;
-                        }
-                        break block43;
-                    }
-                    ** GOTO lbl228
-                }
-                var8_13 = new StringBuilder();
-                var8_13.append(var13_20);
-                var8_13.append((String)var6_4);
-                if (!com.github.catvod.spider.merge.k.g.g(var8_13.toString(), (Map<String, String>)var7_9).contains(cYh.d("083B"))) {
-                    this.z = var12_18;
-                    this.u = var3_5 = this.u + 1;
-                    if (var3_5 < this.v) break block43;
-                    return var2_2;
-                }
-                ** GOTO lbl228
-            }
-            try {
-                this.P(var1_1, (String)var2_2);
-lbl228:
-                // 3 sources
-
-                ++this.u;
-                var6_4 = this.j(var1_1);
-            }
-            catch (Exception var7_10) {
-                var1_1 = this.I;
-                var6_4 = var2_2;
-                if (var1_1 == null) break block44;
-                com.github.catvod.spider.merge.i.b.a(var7_10, com.github.catvod.spider.merge.d.d.b(cYh.d("0D252C21352E103127797EB3F3C9A9FEF8774A6E")), (SpiderApi)var1_1);
-                var6_4 = var2_2;
-            }
-        }
-        return var6_4;
-    }
-
-    private String Q(String string) {
-        String string2 = cYh.d("8FEDEDB5EED382E7E7B7DCF682DFF6");
-        String string3 = string;
-        if (string.indexOf(string2) >= 0) {
-            string3 = string.replace(string2, cYh.d("3C"));
-        }
-        string2 = cYh.d("8FEDEDB5EED382DFF2B7DCF682DFF6");
-        string = string3;
-        if (string3.indexOf(string2) >= 0) {
-            string = string3.replace(string2, cYh.d("3A"));
-        }
-        return string;
-    }
-
-    private String R(String charSequence, String object) {
-        String[] stringArray;
-        block4: {
-            block3: {
-                if (object.equals(cYh.d("4D"))) break block3;
-                stringArray = object;
-                if (!object.isEmpty()) break block4;
-            }
-            stringArray = charSequence;
-        }
-        object = cYh.d("3B76");
-        String[] stringArray2 = ((String)charSequence).split((String)object);
-        stringArray = stringArray.split((String)object);
-        charSequence = "";
-        for (int i2 = 0; i2 < stringArray2.length; ++i2) {
-            object = i2 < stringArray2.length - 1 ? cYh.d("44") : "";
-            charSequence = com.github.catvod.spider.merge.d.d.b((String)charSequence);
-            ((StringBuilder)charSequence).append(stringArray2[i2]);
-            ((StringBuilder)charSequence).append(cYh.d("43"));
-            charSequence = com.github.catvod.spider.merge.b.n.b((StringBuilder)charSequence, stringArray[i2], (String)object);
-        }
-        return charSequence;
-    }
-
-    private String S(String string, String string2) {
-        String string3;
-        int n2 = string.length();
-        String string4 = string3 = "";
-        if (n2 > 1) {
-            String[] stringArray = string.split(cYh.d("44"));
-            if (stringArray.length == 1) {
-                string = stringArray[0].replaceAll(cYh.d("497A6939232E177E6B78"), cYh.d("4361"));
-            } else if (stringArray.length > 1) {
-                block9: {
-                    int n3 = stringArray.length;
-                    n2 = 0;
-                    while (true) {
-                        string4 = cYh.d("3B74");
-                        if (n2 >= n3) break;
-                        string = stringArray[n2];
-                        if (string2.equals(string.split(string4)[0])) {
-                            string = string.split(string4)[1];
-                            break block9;
-                        }
-                        ++n2;
-                    }
-                    string = "";
-                }
-                if (string.length() < 1) {
-                    string = stringArray[0].split(string4)[1];
-                }
-            } else {
-                string = "";
-            }
-            string4 = string3;
-            if (string != null) {
-                string4 = !string.startsWith(cYh.d("0F243521")) ? string3 : string;
-            }
-        }
-        return string4;
-    }
-
-    /*
-     * WARNING - void declaration
-     */
-    private void T(Map<String, List<String>> object6) {
-        String string;
-        String string2;
-        String string3;
-        if (object6.isEmpty()) {
-            return;
-        }
-        Object object = this.I;
-        if (object != null) {
-            StringBuilder stringBuilder = com.github.catvod.spider.merge.d.d.b(cYh.d("82C3CCB4EDCE4A7D7F71"));
-            stringBuilder.append(object6.toString());
-            object.log(stringBuilder.toString());
-        }
-        StringBuilder stringBuilder = new StringBuilder();
-        String string4 = cYh.d("1435357C3435083B2834");
-        Object object2 = object6.get(string4);
-        object = cYh.d("5C");
-        if (object2 != null && !((List)object6.get(string4)).isEmpty()) {
-            Iterator iterator = ((List)object6.get(string4)).iterator();
-            while (iterator.hasNext()) {
-                stringBuilder.append(((String)iterator.next()).split((String)object)[0]);
-                stringBuilder.append((String)object);
-            }
-        }
-        if (object6.get(string3 = cYh.d("3435357C3435083B2834")) != null && !((List)object6.get(string3)).isEmpty()) {
-            for (String string5 : (List)object6.get(string3)) {
-                if (stringBuilder.indexOf(string5.split((String)object)[0]) >= 0) continue;
-                stringBuilder.append(string5.split((String)object)[0]);
-                stringBuilder.append((String)object);
-            }
-        }
-        if (object6.get(string2 = cYh.d("3435357C1435083B2834")) != null && !((List)object6.get(string2)).isEmpty()) {
-            for (String string6 : (List)object6.get(string2)) {
-                if (stringBuilder.indexOf(string6.split((String)object)[0]) >= 0) continue;
-                stringBuilder.append(string6.split((String)object)[0]);
-                stringBuilder.append((String)object);
-            }
-        }
-        if (object6.get(string = cYh.d("1435357C1435083B2834")) != null && !((List)object6.get(string)).isEmpty()) {
-            for (String string7 : (List)object6.get(string)) {
-                if (stringBuilder.indexOf(string7.split((String)object)[0]) >= 0) continue;
-                stringBuilder.append(string7.split((String)object)[0]);
-                stringBuilder.append((String)object);
-            }
-        }
-        if (stringBuilder.toString().length() < 3) {
-            return;
-        }
-        for (String string8 : stringBuilder.toString().split((String)object)) {
-            void var1_13;
-            String string9 = this.z;
-            object2 = cYh.d("5A");
-            int n2 = string9.indexOf(string8.split((String)object2)[0]);
-            String string10 = cYh.d("57");
-            if (n2 < 0) {
-                String string11 = string8;
-                if (this.z.length() >= 1) {
-                    if (string10.equals(this.z)) {
-                        String string12 = string8;
-                    } else {
-                        StringBuilder stringBuilder2 = new StringBuilder();
-                        stringBuilder2.append(this.z);
-                        stringBuilder2.append((String)object);
-                        stringBuilder2.append(string8);
-                        String string13 = stringBuilder2.toString();
-                    }
-                }
-            } else {
-                String string14;
-                if (string8.endsWith((String)object2) || string10.equals(string8.split((String)object2)[1])) continue;
-                String string15 = com.github.catvod.spider.merge.b.n.b(new StringBuilder(), this.z, (String)object);
-                string10 = com.github.catvod.spider.merge.b.n.b(new StringBuilder(), string8.split((String)object2)[0], cYh.d("5A7E6B6E6C"));
-                object2 = new StringBuilder();
-                ((StringBuilder)object2).append(string8);
-                ((StringBuilder)object2).append((String)object);
-                this.z = string14 = string15.replaceAll(string10, ((StringBuilder)object2).toString());
-                String string16 = string14.substring(0, string14.length() - 1);
-            }
-            this.z = var1_13;
-        }
-    }
-
-    private static String V(String string) {
-        if (string.length() < 1) {
-            return string;
-        }
-        Matcher matcher = Pattern.compile(cYh.d("4F0C1D247F06102B752C7E73")).matcher(string);
-        while (matcher.find()) {
-            String string2 = matcher.group(1);
-            char c2 = (char)Integer.parseInt(matcher.group(2), 16);
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append(c2);
-            stringBuilder.append("");
-            string = string.replace(string2, stringBuilder.toString());
-        }
-        return string.replaceAll(cYh.d("3B0C"), "");
-    }
-
-    /*
      * Exception decompiling
      */
-    private JSONObject W(String var1_1, String var2_3, boolean var3_7) {
+    private JSONObject A(String var1_1, String var2_3, boolean var3_4, HashMap<String, String> var4_5) {
         /*
          * This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
          * 
-         * org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 67[TRYBLOCK] [101 : 3991->3999)] java.lang.Throwable
+         * org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 73[TRYBLOCK] [110 : 4741->4750)] java.lang.Throwable
          *     at org.benf.cfr.reader.bytecode.analysis.opgraph.Op02WithProcessedDataAndRefs.insertExceptionBlocks(Op02WithProcessedDataAndRefs.java:2283)
          *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:415)
          *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:278)
@@ -1200,494 +148,1427 @@ lbl228:
         throw new IllegalStateException("Decompilation failed");
     }
 
-    private void X(String string) {
-        String string2;
-        String string3 = cYh.d("80FEC1B5ECD1");
-        if (this.B(string3).length() > 0) {
-            com.github.catvod.spider.merge.b.p.l = this.L(this.Y(string, this.B(string3), "").get(0));
+    /*
+     * WARNING - Removed back jump from a try to a catch block - possible behaviour change.
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    private JSONObject B(String var1_1, boolean var2_2) {
+        try {
+            block26: {
+                block25: {
+                    var6_3 = var1_1.split("#");
+                    var3_4 = var1_1.length();
+                    if (var3_4 >= 1) break block25;
+                    if (var2_2) {
+                        if ("\u641c\u7d22".equals(this.r)) {
+                            var1_1 = new StringBuilder();
+                            var1_1.append(this.f);
+                            var1_1.append("/index.php/ajax/verify_check?type=search&verify=");
+                        } else {
+                            var1_1 = new StringBuilder();
+                            var1_1.append(this.f);
+                            var1_1.append("/index.php/ajax/verify_check?type=show&verify=");
+                        }
+                        var1_1 = var1_1.toString();
+                        var4_5 /* !! */  = new StringBuilder();
+                        var4_5 /* !! */ .append(this.f);
+                        var4_5 /* !! */ .append("/index.php/verify/index.html?");
+                    } else {
+                        var1_1 = new StringBuilder();
+                        var1_1.append(this.f);
+                        var1_1.append("/extend/vercode/check.php?tn_r=");
+                        var1_1 = var1_1.toString();
+                        var4_5 /* !! */  = new StringBuilder();
+                        var4_5 /* !! */ .append(this.f);
+                        var4_5 /* !! */ .append("/extend/vercode/tncode.php?");
+                    }
+                    var4_5 /* !! */  = var4_5 /* !! */ .toString();
+                    ** GOTO lbl189
+                }
+                if (!var2_2) ** GOTO lbl-1000
+                var1_1 = new StringBuilder();
+                var1_1.append(this.f);
+                var1_1.append("/index.php/verify/index.html?");
+                var5_7 = var1_1.toString();
+                if (!"\u641c\u7d22".equals(this.r)) ** GOTO lbl-1000
+                var1_1 = new StringBuilder();
+                var1_1.append(this.f);
+                var1_1.append("/index.php/ajax/verify_check?type=search&verify=");
+                var1_1 = var1_1.toString();
+                if (!"\u7a7a".equals(var6_3[2])) break block26;
+                var4_5 /* !! */  = var5_7;
+                ** GOTO lbl168
+            }
+            if (var6_3[2].startsWith("http")) {
+            }
+            ** GOTO lbl-1000
         }
-        if (this.B(string3 = cYh.d("82FFFDB7EBCE")).length() > 0) {
-            com.github.catvod.spider.merge.b.p.m = this.L(this.Y(string, this.B(string3), "").get(0));
+        catch (Exception var4_6) {
+            var1_1 = this.I;
+            if (var1_1 != null) {
+                com.github.catvod.spider.merge.Dw.f.a(var4_6, com.github.catvod.spider.merge.ka.d.b("getOcrUrl()\u9519\u8bef-->"), (SpiderApi)var1_1);
+            }
+            return null;
         }
-        if (this.D(string2 = cYh.d("83E8FAB7EBCE"), string3 = cYh.d("81ECD5B4C6C2"), "").length() > 0) {
-            com.github.catvod.spider.merge.b.p.n = this.L(this.Y(string, this.D(string2, string3, ""), "").get(0));
+        var1_1 = var6_3[2];
+        var4_5 /* !! */  = var5_7;
+        ** GOTO lbl168
+lbl-1000:
+        // 1 sources
+
+        {
+            if (!var6_3[2].startsWith("/")) ** GOTO lbl77
+            var1_1 = new StringBuilder();
+            var1_1.append(this.f);
         }
+        var4_5 /* !! */  = var6_3[2];
+lbl-1000:
+        // 8 sources
+
+        {
+            while (true) {
+                var1_1.append((String)var4_5 /* !! */ );
+                ** GOTO lbl-1000
+                break;
+            }
+lbl77:
+            // 1 sources
+
+            var1_1 = new StringBuilder();
+            var1_1.append(this.f);
+            var1_1.append("/");
+        }
+        var4_5 /* !! */  = var6_3[2];
+        ** GOTO lbl-1000
+lbl-1000:
+        // 1 sources
+
+        {
+            block27: {
+                var1_1 = new StringBuilder();
+                var1_1.append(this.f);
+                var1_1.append("/index.php/ajax/verify_check?type=show&verify=");
+                var1_1 = var1_1.toString();
+                if (!"\u7a7a".equals(var6_3[1])) break block27;
+                var4_5 /* !! */  = var5_7;
+                ** GOTO lbl168
+            }
+            if (!var6_3[1].startsWith("http")) ** GOTO lbl-1000
+        }
+        var1_1 = var6_3[1];
+        var4_5 /* !! */  = var5_7;
+        ** GOTO lbl168
+lbl-1000:
+        // 1 sources
+
+        {
+            if (!var6_3[1].startsWith("/")) ** GOTO lbl-1000
+            var1_1 = new StringBuilder();
+            var1_1.append(this.f);
+        }
+        var4_5 /* !! */  = var6_3[1];
+        ** GOTO lbl-1000
+lbl-1000:
+        // 1 sources
+
+        {
+            var1_1 = new StringBuilder();
+            var1_1.append(this.f);
+            var1_1.append("/");
+        }
+        var4_5 /* !! */  = var6_3[1];
+        ** GOTO lbl-1000
+lbl-1000:
+        // 1 sources
+
+        {
+            block28: {
+                var1_1 = new StringBuilder();
+                var1_1.append(this.f);
+                var1_1.append("/extend/vercode/tncode.php?");
+                var5_7 = var1_1.toString();
+                var1_1 = new StringBuilder();
+                var1_1.append(this.f);
+                var1_1.append("/extend/vercode/check.php?tn_r=");
+                var1_1 = var1_1.toString();
+                if (!"\u641c\u7d22".equals(this.r)) ** GOTO lbl-1000
+                if (!"\u7a7a".equals(var6_3[2])) break block28;
+                var4_5 /* !! */  = var5_7;
+                ** GOTO lbl168
+            }
+            if (!var6_3[2].startsWith("http")) ** GOTO lbl-1000
+        }
+        var1_1 = var6_3[2];
+        var4_5 /* !! */  = var5_7;
+        ** GOTO lbl168
+lbl-1000:
+        // 1 sources
+
+        {
+            if (!var6_3[2].startsWith("/")) ** GOTO lbl-1000
+            var1_1 = new StringBuilder();
+            var1_1.append(this.f);
+        }
+        var4_5 /* !! */  = var6_3[2];
+        ** GOTO lbl-1000
+lbl-1000:
+        // 1 sources
+
+        {
+            var1_1 = new StringBuilder();
+            var1_1.append(this.f);
+            var1_1.append("/");
+        }
+        var4_5 /* !! */  = var6_3[2];
+        ** GOTO lbl-1000
+lbl-1000:
+        // 1 sources
+
+        {
+            block29: {
+                if (!"\u7a7a".equals(var6_3[1])) break block29;
+                var4_5 /* !! */  = var5_7;
+                ** GOTO lbl168
+            }
+            if (!var6_3[1].startsWith("http")) ** GOTO lbl-1000
+        }
+        var1_1 = var6_3[1];
+        var4_5 /* !! */  = var5_7;
+        ** GOTO lbl168
+lbl-1000:
+        // 1 sources
+
+        {
+            if (!var6_3[1].startsWith("/")) ** GOTO lbl-1000
+            var1_1 = new StringBuilder();
+            var1_1.append(this.f);
+        }
+        var4_5 /* !! */  = var6_3[1];
+        ** GOTO lbl-1000
+lbl-1000:
+        // 1 sources
+
+        {
+            var1_1 = new StringBuilder();
+            var1_1.append(this.f);
+            var1_1.append("/");
+        }
+        var4_5 /* !! */  = var6_3[1];
+        ** while (true)
+lbl-1000:
+        // 1 sources
+
+        {
+            var1_1 = var1_1.toString();
+            var4_5 /* !! */  = var5_7;
+lbl168:
+            // 9 sources
+
+            if ("\u7a7a".equals(var6_3[0])) ** GOTO lbl189
+            if (!var6_3[0].startsWith("http")) ** GOTO lbl-1000
+        }
+        var4_5 /* !! */  = var6_3[0];
+        ** GOTO lbl189
+lbl-1000:
+        // 1 sources
+
+        {
+            if (!var6_3[0].startsWith("/")) ** GOTO lbl181
+            var5_7 = new StringBuilder();
+            var5_7.append(this.f);
+        }
+        var4_5 /* !! */  = var6_3[0];
+lbl-1000:
+        // 2 sources
+
+        {
+            while (true) {
+                var5_7.append((String)var4_5 /* !! */ );
+                ** GOTO lbl-1000
+                break;
+            }
+lbl181:
+            // 1 sources
+
+            var5_7 = new StringBuilder();
+            var5_7.append(this.f);
+            var5_7.append("/");
+        }
+        var4_5 /* !! */  = var6_3[0];
+        ** while (true)
+lbl-1000:
+        // 1 sources
+
+        {
+            var4_5 /* !! */  = var5_7.toString();
+lbl189:
+            // 4 sources
+
+            var5_7 = new JSONObject();
+            var5_7.put("str", (Object)var4_5 /* !! */ );
+            var5_7.put("codeUrl", (Object)var1_1);
+            return var5_7;
+        }
+    }
+
+    /*
+     * WARNING - combined exceptions agressively - possible behaviour change.
+     * WARNING - void declaration
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    private JSONObject D(String string, String charSequence, String object, String object2) {
+        try {
+            Object object3 = new JSONObject();
+            JSONArray jSONArray = new JSONArray();
+            boolean bl = string.equals("by");
+            Object object4 = object;
+            Object object52 = object3;
+            if (!bl) {
+                object4 = object;
+                object52 = object3;
+                if (!string.equals("cateId")) {
+                    object3.put("n", (Object)"\u5168\u90e8");
+                    object3.put("v", (Object)"");
+                    jSONArray.put(object3);
+                    object3 = new JSONObject();
+                    object4 = object;
+                    object52 = object3;
+                    if (((String)object).indexOf("--") >= 0) {
+                        object4 = ((String)object).split("--")[1];
+                        object52 = object3;
+                    }
+                }
+            }
+            bl = string.equals("cateId");
+            int n2 = 0;
+            object3 = object4;
+            JSONObject jSONObject = object52;
+            if (bl) {
+                object52.put("n", (Object)"\u5168\u90e8");
+                object52.put("v", (Object)((String)object4).split("--")[0]);
+                jSONArray.put(object52);
+                object52 = new JSONObject();
+                object3 = object4;
+                Object object6 = object52;
+                if (((String)object4).indexOf("--") >= 0) {
+                    object3 = ((String)object4).split("--")[1];
+                    Object object7 = object52;
+                }
+            }
+            if (((String)object3).indexOf("#") >= 0) {
+                n2 = ((String)object3).indexOf("#");
+                if (n2 >= 0) {
+                    for (Object object52 : ((String)object3).split("#")) {
+                        void var3_9;
+                        var3_9.put("n", (Object)((String)object52).split("\\$")[0]);
+                        var3_9.put("v", (Object)((String)object52).split("\\$")[1]);
+                        jSONArray.put((Object)var3_9);
+                        JSONObject jSONObject2 = new JSONObject();
+                    }
+                } else {
+                    void var3_8;
+                    var3_8.put("n", (Object)((String)object3).split("\\$")[0]);
+                    var3_8.put("v", (Object)((String)object3).split("\\$")[1]);
+                    jSONArray.put((Object)var3_8);
+                }
+            } else if (((String)object3).indexOf("&") >= 0) {
+                Object object8;
+                object4 = ((String)object3).split("\\&");
+                object8 = !"".equals(object8) && !"*".equals(object8) ? object8.split("\\&") : object4;
+                while (n2 < ((String[])object4).length) {
+                    void var3_11;
+                    object52 = !"\u60c5\u8272".equals(object4[n2]) ? object4[n2] : "\u798f\u5229";
+                    var3_11.put("n", object52);
+                    var3_11.put("v", (Object)object8[n2]);
+                    jSONArray.put((Object)var3_11);
+                    JSONObject jSONObject3 = new JSONObject();
+                    ++n2;
+                }
+            }
+            JSONObject jSONObject4 = new JSONObject();
+            jSONObject4.put("key", (Object)string);
+            jSONObject4.put("name", (Object)charSequence);
+            jSONObject4.put("value", (Object)jSONArray);
+            return jSONObject4;
+        }
+        catch (Exception exception) {
+            if (this.m) {
+                charSequence = new StringBuilder();
+                ((StringBuilder)charSequence).append(this.G);
+                ((StringBuilder)charSequence).append("\u8c03\u8bd5->getRType\u51fa\u9519\uff1a");
+                ((StringBuilder)charSequence).append(((Object)exception).toString());
+                Init.show(((StringBuilder)charSequence).toString());
+            }
+            if ((charSequence = this.I) != null) {
+                com.github.catvod.spider.merge.Dw.f.a(exception, com.github.catvod.spider.merge.ka.d.b("getRType()\u9519\u8bef-->"), (SpiderApi)charSequence);
+            }
+            return null;
+        }
+    }
+
+    private String E(String string) {
+        return this.F(string, "");
+    }
+
+    /*
+     * WARNING - void declaration
+     * Enabled aggressive block sorting
+     */
+    private String F(String object, String stringArray) {
+        void var1_11;
+        Object object2;
+        block23: {
+            void var1_5;
+            int n2;
+            String[] stringArray2;
+            String string;
+            block24: {
+                block22: {
+                    block18: {
+                        String string2;
+                        Object object3;
+                        block20: {
+                            block21: {
+                                block19: {
+                                    block15: {
+                                        block16: {
+                                            block17: {
+                                                object2 = this.B.optString((String)object);
+                                                boolean bl = ((String)object).equals("\u4e3b\u9875url");
+                                                string = "";
+                                                object3 = object2;
+                                                if (!bl) break block15;
+                                                object3 = object2;
+                                                if (!((String)object2).isEmpty()) break block15;
+                                                object3 = object2 = this.B.optString("\u9996\u9875\u63a8\u8350\u94fe\u63a5");
+                                                if (!((String)object2).isEmpty()) break block15;
+                                                object3 = object2 = this.B.optString("\u7f51\u7ad9\u5730\u5740");
+                                                if (!((String)object2).isEmpty()) break block15;
+                                                object3 = object2 = this.B.optString("url");
+                                                if (!((String)object2).isEmpty()) break block15;
+                                                object3 = object2 = this.B.optString("homeUrl");
+                                                if (!((String)object2).isEmpty()) break block15;
+                                                object3 = object2 = this.B.optString("\u5206\u7c7burl");
+                                                if (!((String)object2).isEmpty()) break block16;
+                                                object2 = this.B.optString("\u5206\u7c7b\u94fe\u63a5");
+                                                if (((String)object2).isEmpty()) break block17;
+                                                object3 = object2;
+                                                if (((String)object2).startsWith("http")) break block16;
+                                            }
+                                            object3 = object2 = this.B.optString("\u5206\u7c7b\u9875");
+                                            if (((String)object2).isEmpty()) {
+                                                object3 = object2 = this.B.optString("class_url");
+                                                if (((String)object2).isEmpty()) {
+                                                    object3 = object2 = this.B.optString("cateUrl");
+                                                    if (((String)object2).isEmpty()) {
+                                                        object2 = object3 = this.B.optString("\u641c\u7d22url");
+                                                        if (!((String)object3).startsWith("http")) {
+                                                            object2 = "";
+                                                        }
+                                                        object3 = object2;
+                                                        if (((String)object2).isEmpty()) {
+                                                            object3 = object2 = this.B.optString("\u641c\u7d22\u94fe\u63a5");
+                                                            if (!((String)object2).startsWith("http")) {
+                                                                object3 = "";
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        object2 = ((String)object3).indexOf("/webparse/") > 0 ? ".*/webparse/(https?\\://[^/]+)/.*" : ".*(https?\\://[^/]+)/.*";
+                                        object3 = ((String)object3).replaceAll((String)object2, "$1");
+                                    }
+                                    object2 = object3;
+                                    if (!((String)object).equals("\u5206\u7c7b")) break block18;
+                                    if (((String)object3).isEmpty()) break block19;
+                                    object2 = object3;
+                                    if (((String)object3).indexOf("&") < 0) break block18;
+                                    object2 = this.B;
+                                    string2 = "\u5206\u7c7b\u503c";
+                                    break block20;
+                                }
+                                object3 = this.B.optString("\u5206\u7c7b\u540d\u79f0");
+                                if (((String)object3).isEmpty()) break block21;
+                                object2 = this.B;
+                                string2 = "\u5206\u7c7b\u540d\u79f0\u66ff\u6362\u8bcd";
+                                break block20;
+                            }
+                            object2 = object3 = this.B.optString("class_name");
+                            if (((String)object3).isEmpty()) break block18;
+                            object2 = this.B;
+                            string2 = "class_value";
+                        }
+                        object2 = this.T((String)object3, object2.optString(string2));
+                    }
+                    if (((String)object2).isEmpty() || ((String)object2).equals("\u7a7a")) break block22;
+                    stringArray2 = object2;
+                    if (((String)object).equals("\u5267\u60c5")) return stringArray2;
+                    stringArray2 = object2;
+                    if (((String)object).equals("\u5730\u533a")) return stringArray2;
+                    stringArray2 = object2;
+                    if (((String)object).equals("\u7c7b\u578b")) return stringArray2;
+                    stringArray2 = object2;
+                    if (((String)object).equals("\u5e74\u4efd")) return stringArray2;
+                    stringArray2 = object2;
+                    if (((String)object).equals("\u6392\u5e8f")) return stringArray2;
+                    if (((String)object2).indexOf("||") < 0 || ((String)object2).indexOf("--") < 0) break block23;
+                    stringArray2 = ((String)object2).split("\\|\\|");
+                    n2 = stringArray2.length;
+                    break block24;
+                }
+                if (!((String)object).equals("\u641c\u7d22\u540e\u7f00")) return stringArray2;
+                if (!((String)object2).equals("\u7a7a")) return stringArray2;
+                return "";
+            }
+            for (int i2 = 0; i2 < n2; ++i2) {
+                String string3 = stringArray2[i2];
+                if (string3.indexOf(this.r) < 0) continue;
+                String string4 = string3.split("--")[1];
+                return var1_5;
+            }
+            String string5 = string;
+            if (((String)object2).indexOf("||") < 0) return var1_11;
+            String[] stringArray3 = stringArray2[0].split("--");
+            if (stringArray3.length > 1) {
+                String string6 = stringArray3[1];
+                return var1_5;
+            } else {
+                String string7 = stringArray3[0];
+            }
+            return var1_5;
+        }
+        String[] stringArray4 = object2;
+        return var1_11;
+    }
+
+    private String G(String string, String string2, String string3) {
+        return this.F(string, this.F(string2, string3));
+    }
+
+    private String H(String string, String string2, String string3, String string4) {
+        return this.F(string, this.F(string2, this.F(string3, string4)));
+    }
+
+    private String I(String string, String string2, String string3, String string4, String string5) {
+        return this.F(string, this.F(string2, this.F(string3, this.F(string4, string5))));
+    }
+
+    private String J(String string, String string2, String string3, String string4, String string5, String string6) {
+        return this.F(string, this.F(string2, this.F(string3, this.F(string4, this.F(string5, string6)))));
+    }
+
+    private String K(String string, String string2, String string3, String string4, String string5, String string6) {
+        return this.F(string, this.F(string2, this.F(string3, this.F(string4, this.F(string5, this.F(string6, ""))))));
+    }
+
+    private String N(String charSequence) {
+        Comparable<Charset> comparable;
+        CharSequence charSequence2 = charSequence = ((String)charSequence).replace("://", "\u53cc\u659c\u6760").replace("//", "/").replace("\u53cc\u659c\u6760", "://").trim();
+        if (((String)charSequence).indexOf("\u65f6\u95f4\u6233") >= 0) {
+            charSequence2 = com.github.catvod.spider.merge.ka.d.b("");
+            ((StringBuilder)charSequence2).append(new Date().getTime());
+            charSequence2 = ((String)charSequence).replace("\u65f6\u95f4\u6233", ((StringBuilder)charSequence2).toString());
+        }
+        charSequence = charSequence2;
+        if (((String)charSequence2).indexOf(":9978/") > 0) {
+            charSequence = charSequence2;
+            if (!"9978".equals(this.J)) {
+                charSequence = ((String)charSequence2).replace("9978", this.J);
+            }
+        }
+        charSequence2 = charSequence;
+        if (((String)charSequence).indexOf("md5(") > 0) {
+            charSequence2 = ((String)charSequence).replaceAll("md5\\((.*?)\\)", "$1");
+            if (((String)charSequence2).indexOf(",iso") > 0) {
+                charSequence2 = ((String)charSequence2).split(",")[0];
+                comparable = com.github.catvod.spider.merge.nz.m.c;
+            } else {
+                comparable = com.github.catvod.spider.merge.nz.m.b;
+            }
+            charSequence2 = ((String)charSequence).replaceAll("md5\\(.*?\\)", com.github.catvod.spider.merge.nz.m.a((String)charSequence2, (Charset)comparable));
+        }
+        charSequence = charSequence2;
+        if (((String)charSequence2).indexOf("+url:") > 0) {
+            charSequence = ((String)charSequence2).split("\\+url\\:");
+            if (((CharSequence)charSequence).length > 1) {
+                if (((String)charSequence2).indexOf("$sub:") > 0) {
+                    charSequence2 = ((String)charSequence[1]).split("\\$sub\\:");
+                    if (((CharSequence)charSequence2).length > 1) {
+                        comparable = new StringBuilder();
+                        ((StringBuilder)comparable).append((String)charSequence[0]);
+                        ((StringBuilder)comparable).append(this.e0(this.k((String)charSequence2[0]), (String)charSequence2[1], "").get(0).trim());
+                        charSequence = ((StringBuilder)comparable).toString();
+                    } else {
+                        comparable = new StringBuilder();
+                        ((StringBuilder)comparable).append((String)charSequence[0]);
+                        ((StringBuilder)comparable).append(this.k((String)charSequence2[0]));
+                        charSequence = ((StringBuilder)comparable).toString();
+                    }
+                } else {
+                    charSequence2 = new StringBuilder();
+                    ((StringBuilder)charSequence2).append((String)charSequence[0]);
+                    ((StringBuilder)charSequence2).append(this.k((String)charSequence[1]));
+                    charSequence = ((StringBuilder)charSequence2).toString();
+                }
+            } else {
+                charSequence = charSequence[0];
+            }
+        }
+        return charSequence;
+    }
+
+    /*
+     * Loose catch block
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    private void O() {
+        boolean bl;
+        Object object;
+        block20: {
+            try {
+                block21: {
+                    Object object2;
+                    block23: {
+                        block26: {
+                            block25: {
+                                String string;
+                                block24: {
+                                    int n2;
+                                    block22: {
+                                        object = new StringBuilder();
+                                        ((StringBuilder)object).append(this.E("\u4e3b\u9875url"));
+                                        ((StringBuilder)object).append("/");
+                                        object = ((StringBuilder)object).toString().replaceAll(".*(https?\\://[^/]+)/.*", "$1");
+                                        this.f = object;
+                                        this.G = object;
+                                        this.G = ((String)object).split("://")[1].split("/")[0].replace(".", "_");
+                                        object = this.J("\u5206\u7c7burl", "\u5206\u7c7b\u94fe\u63a5", "\u5206\u7c7b\u9875", "class_url", "cateUrl", "");
+                                        this.b = object;
+                                        n2 = ((String)object).indexOf(";;");
+                                        if (n2 >= 0) {
+                                            if (this.b.split(";;").length > 1) {
+                                                this.s = this.b.split(";;")[1];
+                                            }
+                                            this.b = this.b.split(";;")[0];
+                                        } else if (this.G("\u641c\u7d22url", "\u641c\u7d22\u94fe\u63a5", "").indexOf(";;") >= 0) {
+                                            if (this.G("\u641c\u7d22url", "\u641c\u7d22\u94fe\u63a5", "").split(";;").length > 1) {
+                                                this.s = this.G("\u641c\u7d22url", "\u641c\u7d22\u94fe\u63a5", "").split(";;")[1];
+                                            }
+                                        } else {
+                                            this.s = "";
+                                        }
+                                        if (this.E("\u57df\u540d\u8df3\u8f6c").indexOf("&&") <= 0 && this.s.indexOf("\u57df") < 0) break block21;
+                                        object = object2 = this.G("\u53d1\u5e03\u9875", "\u57df\u540d\u53d1\u5e03\u9875", "");
+                                        if (!((String)object2).startsWith("http")) {
+                                            object = this.f;
+                                        }
+                                        string = this.k((String)object);
+                                        if (this.E("\u57df\u540d\u8df3\u8f6c").indexOf("&&") <= 0) break block22;
+                                        object = this.a0(string, this.E("\u57df\u540d\u8df3\u8f6c"), "").get(0).trim();
+                                        break block23;
+                                    }
+                                    object = object2 = this.a0(string, "<a*href=\"&&\"[\u5305\u542b:http]", "");
+                                    if (((ArrayList)object2).size() < 1) {
+                                        object = this.a0(string, "<a*href='&&'[\u5305\u542b:http]", "");
+                                    }
+                                    if ((n2 = ((String)(object2 = this.s.matches(".*\u57df\\d.*") ? this.s.replaceAll(".*\u57df(\\d).*", "$1") : "")).matches("\\d") ? Integer.parseInt((String)object2) - 1 : 0) <= 0 || ((ArrayList)object).size() <= n2) break block24;
+                                    object = ((ArrayList)object).get(n2);
+                                    break block25;
+                                }
+                                object2 = string;
+                                if (((ArrayList)object).size() <= 0) break block26;
+                                object = ((ArrayList)object).get(0);
+                            }
+                            object = (String)object;
+                            object2 = ((String)object).trim();
+                        }
+                        object = new StringBuilder();
+                        ((StringBuilder)object).append((String)object2);
+                        ((StringBuilder)object).append("/");
+                        object = ((StringBuilder)object).toString().replaceAll(".*(https?\\://[^/]+)/.*", "$1");
+                    }
+                    if (object != null && ((String)object).startsWith("http")) {
+                        this.g = object2 = this.f;
+                        this.f = object;
+                        this.b = this.b.replace((CharSequence)object2, (CharSequence)object);
+                    }
+                }
+                if (this.s.indexOf("\u963f\u91cc") >= 0) {
+                    this.B.put("\u8df3\u8f6c\u94fe\u63a5", (Object)"https://www.aliyundrive.com/s/+aliyundrive.com/s/&&\"");
+                }
+                break block20;
+            }
+            catch (Exception exception) {
+                SpiderApi spiderApi = this.I;
+                if (spiderApi == null) return;
+                com.github.catvod.spider.merge.Dw.f.a(exception, com.github.catvod.spider.merge.ka.d.b("\u521d\u59cb\u5316\u5168\u5c40\u53d8\u91cf\u9519\u8bef\uff01-->"), spiderApi);
+            }
+            return;
+            catch (JSONException jSONException) {}
+        }
+        bl = (bl = this.H("\u56fe\u7247\u4ee3\u7406", "\u56fe\u7247\u662f\u5426\u9700\u8981\u4ee3\u7406", "PicNeedProxy", "0").equals("1")) || this.H("\u56fe\u7247\u4ee3\u7406", "\u56fe\u7247\u662f\u5426\u9700\u8981\u4ee3\u7406", "PicNeedProxy", "0").equals("\u662f") || this.s.indexOf("t") >= 0;
+        this.h = bl;
+        object = this.s.indexOf("T") >= 0 ? "1" : this.G("\u8c03\u8bd5", "debug", "");
+        this.o = object;
+        bl = ((String)object).length() > 0 && !"0".equals(this.o);
+        this.m = bl;
+        if (this.o.indexOf("$") >= 0) {
+            this.p = Integer.parseInt(this.o.split("\\$")[1]);
+            this.o = this.o.split("\\$")[0];
+        }
+        bl = this.I("\u5012\u5e8f", "\u5012\u5e8f\u64ad\u653e", "\u662f\u5426\u53cd\u8f6c\u9009\u96c6\u5e8f\u5217", "epi_reverse", "0").equals("1") || this.I("\u5012\u5e8f", "\u5012\u5e8f\u64ad\u653e", "\u662f\u5426\u53cd\u8f6c\u9009\u96c6\u5e8f\u5217", "epi_reverse", "0").equals("\u662f") || this.s.indexOf("d0") < 0 && this.s.indexOf("d") >= 0;
+        this.y = bl;
+        if (this.s.indexOf("o") < 0) return;
+        object = this.s.replaceAll(".*o(\\d+).*", "$1");
+        if (((String)object).length() <= 0) return;
+        this.v = Integer.parseInt((String)object);
+    }
+
+    private String P(String string) {
+        String string2 = string;
+        if (string.indexOf("\u8f6c\u4e49\u4e95\u53f7") >= 0) {
+            string2 = string.replace("\u8f6c\u4e49\u4e95\u53f7", "#");
+        }
+        return string2;
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    private String Q(String var1_1, String var2_2, String var3_4) {
+        block32: {
+            block31: {
+                block30: {
+                    block28: {
+                        block35: {
+                            block29: {
+                                var8_5 = this.I;
+                                if (var8_5 == null) ** GOTO lbl11
+                                var9_6 = new StringBuilder();
+                                var9_6.append("\u8bf7\u6c42\u8df3\u8f6c\u64ad\u653e\u94fe\u63a5\u6e90\u7801\uff0cwebUrl--> ");
+                                var9_6.append(var1_1);
+                                var8_5.log(var9_6.toString());
+lbl11:
+                                // 2 sources
+
+                                var9_6 = this.k(var1_1);
+                                var10_7 = this.I;
+                                if (var10_7 == null) break block28;
+                                if (var9_6 != null) break block29;
+                                var10_7.log("\u672a\u83b7\u53d6\u5230\u8df3\u8f6c\u6e90\u7801");
+                                return var1_1;
+                            }
+                            var7_8 = this.m;
+                            if (!var7_8) ** GOTO lbl30
+                            var8_5 = new StringBuilder();
+                            var8_5.append("\u83b7\u53d6\u5230\u8df3\u8f6c\u6e90\u7801--> ");
+                            var8_5.append((String)var9_6);
+                            var8_5 = var8_5.toString();
+                            break block35;
+lbl30:
+                            // 1 sources
+
+                            var8_5 = new StringBuilder();
+                            var8_5.append("\u83b7\u53d6\u5230\u8df3\u8f6c\u6e90\u7801--> ");
+                            var8_5.append(var9_6.split("<meta http")[0].split(",\\{")[0]);
+                            var8_5.append("......");
+                            var8_5 = var8_5.toString();
+                        }
+                        var10_7.log((String)var8_5);
+                        break block30;
+                    }
+                    if (var9_6 == null) {
+                        return var1_1;
+                    }
+                }
+                if (var2_2.length() <= 0) {
+                    var2_2 = "\"url\"*\"&&\",";
+                }
+                if (var9_6 == null) break block31;
+                if (!var9_6.startsWith("{") || !var9_6.endsWith("}") || var2_2.indexOf("&&") >= 0) break block31;
+                var3_4 = new JSONObject((String)var9_6);
+                if (var2_2.indexOf(".") < 0) {
+                    var3_4.optString(var2_2).getClass();
+                } else {
+                    this.w((String)var9_6, var2_2);
+                }
+                break block32;
+            }
+            if (var9_6 != null) {
+                if (var2_2.indexOf("&&") < 0) break block32;
+                var9_6 = this.a0((String)var9_6, (String)var3_4, "");
+                var4_9 = 0;
+                while (true) {
+                    block33: {
+                        if (var4_9 >= var9_6.size()) break;
+                        var3_4 = (String)var9_6.get(var4_9);
+                        if (var3_4.length() <= 10) break block33;
+                        var10_7 = this.a0((String)var3_4, var2_2, "");
+                        var5_10 = 0;
+                        while (true) {
+                            block34: {
+                                if (var5_10 >= var10_7.size()) break;
+                                var3_4 = var8_5 = ((String)var10_7.get(var5_10)).trim();
+                                try {
+                                    if (this.s.indexOf("u0") < 0) {
+                                        var3_4 = URLDecoder.decode((String)var8_5);
+                                    }
+                                }
+                                catch (Exception var11_12) {
+                                    if (this.m) {
+                                        var3_4 = new StringBuilder();
+                                        var3_4.append(this.G);
+                                        var3_4.append("\u8c03\u8bd5->\u8df3\u8f6cUrl\u89e3\u7801\u51fa\u9519\uff1a");
+                                        var3_4.append(var11_12.toString());
+                                        Init.show(var3_4.toString());
+                                    }
+                                    var12_13 = this.I;
+                                    var3_4 = var8_5;
+                                    if (var12_13 == null) break block34;
+                                    var3_4 = new StringBuilder();
+                                    var3_4.append("\u8df3\u8f6cUrl\u89e3\u7801\u9519\u8bef\uff01-->");
+                                    var3_4.append(var11_12.toString());
+                                    var12_13.log(var3_4.toString());
+                                    var3_4 = var8_5;
+                                }
+                            }
+                            var6_11 = var3_4.length();
+                            if (var6_11 > 10) {
+                                return var3_4;
+                            }
+                            ++var5_10;
+                            continue;
+                            break;
+                        }
+                    }
+                    ++var4_9;
+                }
+            }
+        }
+        return var1_1;
+        {
+            catch (Exception var2_3) {
+                if (this.m) {
+                    var3_4 = new StringBuilder();
+                    var3_4.append(this.G);
+                    var3_4.append("\u8c03\u8bd5->jumpCut\u51fa\u9519\uff1a");
+                    var3_4.append(var2_3.toString());
+                    Init.show(var3_4.toString());
+                }
+                if ((var3_4 = this.I) != null) {
+                    com.github.catvod.spider.merge.Dw.f.a(var2_3, com.github.catvod.spider.merge.ka.d.b("jumpCut()\u9519\u8bef\uff01-->"), (SpiderApi)var3_4);
+                }
+                return var1_1;
+            }
+        }
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    private String R(String var1_1, String var2_3) {
+        block42: {
+            block41: {
+                block40: {
+                    block39: {
+                        block36: {
+                            block38: {
+                                block37: {
+                                    block34: {
+                                        block35: {
+                                            block33: {
+                                                block46: {
+                                                    block45: {
+                                                        block44: {
+                                                            block43: {
+                                                                var5_4 = var2_3;
+                                                                if (var2_3.length() < 1) break block42;
+                                                                if (this.u < this.v) break block43;
+                                                                var5_4 = var2_3;
+                                                                break block42;
+                                                            }
+                                                            var3_5 = var2_3.indexOf("\u68c0\u6d4b\u4e2d");
+                                                            var4_6 = false;
+                                                            if (var3_5 < 0 || var2_3.indexOf("\u8df3\u8f6c\u4e2d") < 0 || var2_3.indexOf("btwaf") < 0) break block44;
+                                                            var6_7 = this.I;
+                                                            if (var6_7 != null) {
+                                                                var5_4 = new StringBuilder();
+                                                                var5_4.append("\u8fc7\u5b9d\u5854\u76fe--> ");
+                                                                var5_4.append((String)var2_3);
+                                                                var6_7.log(var5_4.toString());
+                                                            }
+                                                            var5_4 = this.a0((String)var2_3, "btwaf=&&\"", "").get(0);
+                                                            var6_7 = com.github.catvod.spider.merge.ka.d.b(var1_1);
+                                                            var2_3 = "?";
+                                                            if (var1_1.indexOf("?") >= 0) {
+                                                                var2_3 = "&";
+                                                            }
+                                                            var6_7.append((String)var2_3);
+                                                            var6_7.append("btwaf=");
+                                                            var6_7.append((String)var5_4);
+                                                            var1_1 = var6_7.toString();
+                                                            ++this.u;
+                                                            var5_4 = this.k(var1_1);
+                                                            this.t = true;
+                                                            break block42;
+                                                        }
+                                                        if (!var2_3.contains("\u6b63\u5728\u8fdb\u884c\u4eba\u673a\u8bc6\u522b")) break block45;
+                                                        var5_4 = this.I;
+                                                        if (var5_4 != null) {
+                                                            var6_8 = new StringBuilder();
+                                                            var6_8.append("\u4eba\u673a\u9a8c\u8bc1--> ");
+                                                            var6_8.append((String)var2_3);
+                                                            var5_4.log(var6_8.toString());
+                                                        }
+                                                        var6_8 = this.a0((String)var2_3, "src=\"&&\"", "").get(0).trim();
+                                                        var5_4 = var2_3;
+                                                        if (var6_8.length() > 0) {
+                                                            var7_10 = new HashMap<String, List<String>>();
+                                                            if (var6_8.startsWith("http")) {
+                                                                var2_3 = var6_8;
+                                                            } else {
+                                                                if (var6_8.startsWith("/")) {
+                                                                    var2_3 = new StringBuilder();
+                                                                    var2_3.append(this.f);
+                                                                } else {
+                                                                    var2_3 = new StringBuilder();
+                                                                    var2_3.append(this.f);
+                                                                    var2_3.append("/");
+                                                                }
+                                                                var2_3.append((String)var6_8);
+                                                                var2_3 = var2_3.toString();
+                                                            }
+                                                            var5_4 = com.github.catvod.spider.merge.mk.g.h((String)var2_3, this.t((String)var2_3), var7_10);
+                                                            var6_8 = this.a0((String)var5_4, "var key=\"&&\"", "").get(0).trim();
+                                                            var8_12 = this.a0((String)var5_4, ",value=\"&&\"", "").get(0).trim();
+                                                            var2_3 = "";
+                                                            for (var3_5 = 0; var3_5 < var8_12.length(); ++var3_5) {
+                                                                var2_3 = com.github.catvod.spider.merge.ka.d.b((String)var2_3);
+                                                                var2_3.append(Integer.toString(var8_12.charAt(var3_5)));
+                                                                var2_3 = var2_3.toString();
+                                                            }
+                                                            var8_12 = com.github.catvod.spider.merge.nz.m.a((String)var2_3, com.github.catvod.spider.merge.nz.m.b);
+                                                            if ((var5_4 = this.a0((String)var5_4, "c.get(\"&&\\&", "").get(0).trim()).startsWith("http")) {
+                                                                var2_3 = var5_4;
+                                                            } else {
+                                                                if (var5_4.startsWith("/")) {
+                                                                    var2_3 = new StringBuilder();
+                                                                    var2_3.append(this.f);
+                                                                } else {
+                                                                    var2_3 = new StringBuilder();
+                                                                    var2_3.append(this.f);
+                                                                    var2_3.append("/");
+                                                                }
+                                                                var2_3.append((String)var5_4);
+                                                                var2_3 = var2_3.toString();
+                                                            }
+                                                            var5_4 = new StringBuilder();
+                                                            var5_4.append((String)var2_3);
+                                                            var5_4.append("&key=");
+                                                            var5_4.append((String)var6_8);
+                                                            var5_4.append("&value=");
+                                                            var5_4.append(var8_12);
+                                                            var2_3 = var5_4.toString();
+                                                            com.github.catvod.spider.merge.mk.g.h((String)var2_3, this.t((String)var2_3), var7_10);
+                                                            var5_4 = var7_10.entrySet().iterator();
+                                                            while (var5_4.hasNext()) {
+                                                                var2_3 = var5_4.next();
+                                                                if (!var2_3.getKey().equals("set-cookie") && !var2_3.getKey().equals("Set-Cookie")) continue;
+                                                                if (this.z.length() < 1) {
+                                                                    var2_3 = TextUtils.join((CharSequence)";", (Iterable)var2_3.getValue());
+                                                                } else {
+                                                                    var5_4 = new StringBuilder();
+                                                                    var5_4.append(this.z);
+                                                                    var5_4.append(";");
+                                                                    var5_4.append(TextUtils.join((CharSequence)";", (Iterable)((Iterable)var2_3.getValue())));
+                                                                    var2_3 = var5_4.toString();
+                                                                }
+                                                                this.z = var2_3;
+                                                                break;
+                                                            }
+                                                            ++this.u;
+                                                            var5_4 = this.k(var1_1);
+                                                        }
+                                                        break block42;
+                                                    }
+                                                    if (var2_3.indexOf("\u8f93\u5165\u9a8c\u8bc1\u7801") >= 0) break block46;
+                                                    var5_4 = var2_3;
+                                                    if (var2_3.indexOf("\u6ed1\u52a8\u9a8c\u8bc1") < 0) break block42;
+                                                }
+                                                var5_4 = this.I;
+                                                if (var5_4 == null) ** GOTO lbl140
+                                                var6_9 = new StringBuilder();
+                                                var6_9.append("OCR\u8f85\u52a9\u9a8c\u8bc1--> ");
+                                                var6_9.append((String)var2_3);
+                                                var5_4.log(var6_9.toString());
+lbl140:
+                                                // 2 sources
+
+                                                if (var2_3.indexOf("\u8f93\u5165\u9a8c\u8bc1\u7801") < 0) break block33;
+                                                var4_6 = true;
+                                            }
+                                            var5_4 = this.B(this.E("\u9a8c\u8bc1"), var4_6);
+                                            var9_14 = this.z;
+                                            var11_15 = var5_4.getString("str");
+                                            var10_16 = var5_4.getString("codeUrl");
+                                            var6_9 = this.H("ocr", "Ocr", "OCR", "");
+                                            var8_13 = "1";
+                                            if (!var4_6) break block34;
+                                            if (var6_9.length() < 1) break block35;
+                                            var5_4 = var6_9;
+                                            var7_11 = var8_13;
+                                            if (var6_9.startsWith("http")) break block36;
+                                        }
+                                        var5_4 = "https://ocr.wogg.link/";
+                                        var7_11 = var8_13;
+                                        {
+                                            break block36;
+                                        }
+                                    }
+                                    if (var6_9.length() < 1) break block37;
+                                    var5_4 = var6_9;
+                                    if (var6_9.startsWith("http")) break block38;
+                                }
+                                var5_4 = "https://ocr1.wogg.link/";
+                            }
+                            var7_11 = "3";
+                        }
+                        this.M("");
+                        var5_4 = this.p(var11_15, (String)var5_4, (String)var7_11);
+                        var6_9 = var5_4.getString("code");
+                        this.z = var5_4.getString("cookie");
+                        if (var6_9.length() > 0 && this.z.length() > 0) ** GOTO lbl187
+                        this.z = var9_14;
+                        this.u = var3_5 = this.u + 1;
+                        if (var3_5 < this.v) break block39;
+                        return var2_3;
+                    }
+                    this.R(var1_1, (String)var2_3);
+lbl187:
+                    // 2 sources
+
+                    var5_4 = this.t(var11_15);
+                    if (!var4_6) break block40;
+                    var7_11 = new StringBuilder();
+                    var7_11.append(var10_16);
+                    var7_11.append((String)var6_9);
+                    var7_11 = var7_11.toString();
+                    var6_9 = new HashMap();
+                    var5_4 = com.github.catvod.spider.merge.lq.b.c((String)var7_11, (Map<String, String>)var6_9, (Map<String, String>)var5_4);
+                    var6_9 = new JSONObject((String)var5_4);
+                    if (var6_9.optInt("code") != 1) {
+                        this.z = var9_14;
+                        this.u = var3_5 = this.u + 1;
+                        if (var3_5 >= this.v) {
+                            return var2_3;
+                        }
+                        break block41;
+                    }
+                    ** GOTO lbl223
+                }
+                var7_11 = new StringBuilder();
+                var7_11.append(var10_16);
+                var7_11.append((String)var6_9);
+                if (!com.github.catvod.spider.merge.mk.g.g(var7_11.toString(), (Map<String, String>)var5_4).contains("ok")) {
+                    this.z = var9_14;
+                    this.u = var3_5 = this.u + 1;
+                    if (var3_5 < this.v) break block41;
+                    return var2_3;
+                }
+                ** GOTO lbl223
+            }
+            try {
+                this.R(var1_1, (String)var2_3);
+lbl223:
+                // 3 sources
+
+                ++this.u;
+                var5_4 = this.k(var1_1);
+            }
+            catch (Exception var1_2) {
+                var6_9 = this.I;
+                var5_4 = var2_3;
+                if (var6_9 == null) break block42;
+                com.github.catvod.spider.merge.Dw.f.a(var1_2, com.github.catvod.spider.merge.ka.d.b("jumpbtwaf()\u9519\u8bef-->"), (SpiderApi)var6_9);
+                var5_4 = var2_3;
+            }
+        }
+        return var5_4;
+    }
+
+    private String S(String string) {
+        String string2 = string;
+        if (string.indexOf("\u8f6c\u4e49\u5de6\u62ec\u53f7") >= 0) {
+            string2 = string.replace("\u8f6c\u4e49\u5de6\u62ec\u53f7", "[");
+        }
+        string = string2;
+        if (string2.indexOf("\u8f6c\u4e49\u53f3\u62ec\u53f7") >= 0) {
+            string = string2.replace("\u8f6c\u4e49\u53f3\u62ec\u53f7", "]");
+        }
+        return string;
+    }
+
+    private String T(String charSequence, String object) {
+        String[] stringArray;
+        block4: {
+            block3: {
+                if (object.equals("*")) break block3;
+                stringArray = object;
+                if (!object.isEmpty()) break block4;
+            }
+            stringArray = charSequence;
+        }
+        String[] stringArray2 = ((String)charSequence).split("\\&");
+        stringArray = stringArray.split("\\&");
+        charSequence = "";
+        for (int i2 = 0; i2 < stringArray2.length; ++i2) {
+            object = i2 < stringArray2.length - 1 ? "#" : "";
+            charSequence = com.github.catvod.spider.merge.ka.d.b((String)charSequence);
+            ((StringBuilder)charSequence).append(stringArray2[i2]);
+            ((StringBuilder)charSequence).append("$");
+            charSequence = com.github.catvod.spider.merge.dp.n.b((StringBuilder)charSequence, stringArray[i2], (String)object);
+        }
+        return charSequence;
     }
 
     /*
      * Could not resolve type clashes
-     * Unable to fully structure code
+     * Loose catch block
      */
-    private ArrayList<String> Y(String var1_1, String var2_2, String var3_3) {
-        var7_4 = new ArrayList<String>();
-        var8_5 = cYh.d("3B7B");
-        var6_6 = var2_2;
-        if (var2_2.indexOf((String)var8_5) >= 0) {
-            var6_6 = var2_2.replace((CharSequence)var8_5, cYh.d("8FEDEDB5EED382DAE1B4D8ED"));
-        }
-        var9_7 = cYh.d("3B78");
-        var2_2 = var6_6;
-        if (var6_6.indexOf(var9_7) >= 0) {
-            var2_2 = var6_6.replace(var9_7, cYh.d("8FEDEDB5EED382E7E7B4E7D581DBEDB4D8ED"));
-        }
-        var9_7 = cYh.d("3B79");
-        var6_6 = var2_2;
-        if (var2_2.indexOf(var9_7) >= 0) {
-            var6_6 = var2_2.replace(var9_7, cYh.d("8FEDEDB5EED382DFF2B4E7D581DBEDB4D8ED"));
-        }
-        if (var6_6.indexOf(cYh.d("4C")) < 0) {
-            return this.c0(var1_1, var6_6, (String)var3_3 /* !! */ );
-        }
-        var8_5 = var6_6.split((String)var8_5);
-        var2_2 = new StringBuilder();
-        for (String[] var3_3 : var8_5) {
-            block10: {
-                if (var3_3 /* !! */ .isEmpty()) continue;
-                if (var3_3 /* !! */ .startsWith(cYh.d("12222D6B"))) break block10;
-                var3_3 /* !! */  = this.c0(var1_1, (String)var3_3 /* !! */ , "");
-                ** GOTO lbl30
-            }
-            var6_6 = var3_3 /* !! */ .substring(4);
-            var3_3 /* !! */  = var6_6;
-            if (var6_6.indexOf(cYh.d("432334336D")) <= 0) ** GOTO lbl33
-            var3_3 /* !! */  = var6_6.split(cYh.d("3B74322435065D"));
-            if (var3_3 /* !! */ .length > 1) {
-                var3_3 /* !! */  = this.c0(this.j(var3_3 /* !! */ [0]), var3_3 /* !! */ [1], "");
-lbl30:
-                // 2 sources
-
-                var6_6 = ((String)var3_3 /* !! */ .get(0)).trim();
-            } else {
-                var3_3 /* !! */  = var3_3 /* !! */ [0];
-lbl33:
-                // 2 sources
-
-                var6_6 = this.j((String)var3_3 /* !! */ );
-            }
-            if (var6_6.isEmpty()) continue;
-            var3_3 /* !! */  = var2_2;
-            if (var6_6.startsWith(cYh.d("0F243521"))) {
-                var3_3 /* !! */  = var2_2;
-                if (!var2_2.toString().trim().endsWith(cYh.d("5A"))) {
-                    var3_3 /* !! */  = var2_2;
-                    if (!var2_2.toString().trim().endsWith(cYh.d("8FF7E2B7C9CA"))) {
-                        var3_3 /* !! */  = new StringBuilder();
+    private String U(String object7) {
+        Object object2;
+        Object object3;
+        StringBuilder stringBuilder;
+        Object object4;
+        block61: {
+            int n2;
+            int n3;
+            block59: {
+                block56: {
+                    Object object5;
+                    block60: {
+                        block53: {
+                            block55: {
+                                block54: {
+                                    object4 = ";post";
+                                    stringBuilder = new StringBuilder();
+                                    object3 = object4;
+                                    if (((String)object7).indexOf("$$$") >= 1) break block53;
+                                    object3 = object4;
+                                    if (((String)object7).indexOf(";post") < 0) break block54;
+                                    object3 = object4;
+                                    object7 = object4 = this.l((String)object7);
+                                    break block55;
+                                }
+                                object3 = object4;
+                                object7 = object4 = this.k(((String)object7).split(";")[0]);
+                            }
+                            return object7;
+                        }
+                        object3 = object4;
+                        if (this.I == null) break block56;
+                        object3 = object4;
+                        object3 = object4;
+                        JsonArray jsonArray = new JsonArray();
+                        object3 = object4;
+                        object2 = ((String)object7).split("\\$\\$\\$");
+                        object3 = object4;
+                        n3 = ((Object)object2).length;
+                        for (n2 = 0; n2 < n3; ++n2) {
+                            JsonObject jsonObject;
+                            JsonObject jsonObject2;
+                            Object object6;
+                            block58: {
+                                block57: {
+                                    object6 = object2[n2];
+                                    object3 = object4;
+                                    object3 = object4;
+                                    jsonObject2 = new JsonObject();
+                                    object3 = object4;
+                                    object3 = object4;
+                                    jsonObject = new JsonObject();
+                                    object3 = object4;
+                                    object3 = object4;
+                                    JsonObject jsonObject3 = new JsonObject();
+                                    object3 = object4;
+                                    int n4 = ((String)object6).indexOf((String)object4);
+                                    if (n4 <= 0) break block57;
+                                    object3 = object4;
+                                    jsonObject.addProperty("method", "POST");
+                                    object3 = object4;
+                                    String[] stringArray = ((String)object6).split(";post;")[1].split("\\&");
+                                    object3 = object4;
+                                    n4 = stringArray.length;
+                                    object5 = object4;
+                                    for (int i2 = 0; i2 < n4; ++i2) {
+                                        String string = stringArray[i2];
+                                        object3 = object5;
+                                        if (string.endsWith("=")) continue;
+                                        object3 = object5;
+                                        jsonObject3.addProperty(string.split("=")[0], string.split("=")[1]);
+                                    }
+                                    object3 = object5;
+                                    jsonObject.add("data", (JsonElement)jsonObject3);
+                                    object3 = object5;
+                                    jsonObject.addProperty("postType", "form");
+                                    break block58;
+                                }
+                                object3 = object4;
+                                jsonObject.addProperty("method", "GET");
+                            }
+                            object3 = object4;
+                            jsonObject.add("headers", (JsonElement)this.y((String)object6));
+                            object3 = object4;
+                            jsonObject2.addProperty("url", ((String)object6).split(";")[0]);
+                            object3 = object4;
+                            jsonObject2.add("data", (JsonElement)jsonObject);
+                            object3 = object4;
+                            jsonArray.add((JsonElement)jsonObject2);
+                            continue;
+                        }
+                        object3 = object2 = object4;
+                        object5 = this.I.multiReq(jsonArray);
+                        object4 = object2;
+                        if (object5 == null) break block59;
+                        object4 = object2;
+                        object3 = object2;
+                        if (((String)object5).length() <= 50) break block59;
+                        object3 = object2;
+                        object3 = object2;
+                        object4 = new Gson();
+                        object3 = object2;
+                        object4 = (JsonArray)object4.fromJson((String)object5, JsonArray.class);
+                        if (object4 == null) break block60;
+                        object3 = object2;
+                        if (object4.size() <= 0) break block60;
+                        object3 = object2;
+                        this.I.log("\u591a\u7ebf\u7a0b\u5e76\u53d1\u6210\u529f\uff01");
+                        n3 = 0;
+                        while (true) {
+                            object3 = object2;
+                            if (n3 >= object4.size()) break;
+                            object3 = object2;
+                            stringBuilder.append(object4.get(n3).getAsJsonObject().get("content").getAsString());
+                            ++n3;
+                            continue;
+                            break;
+                        }
+                        object3 = object2;
+                        return XBPQ.Y(stringBuilder.toString()).replace(" ", "\u7a7a\u7a7a\u7a7a").replaceAll("\\s+", "").replace("\u7a7a\u7a7a\u7a7a", " ").trim();
                     }
+                    object3 = object2;
+                    return XBPQ.Y((String)object5).replace(" ", "\u7a7a\u7a7a\u7a7a").replaceAll("\\s+", "").replace("\u7a7a\u7a7a\u7a7a", " ").trim();
+                }
+                object4 = ";post";
+            }
+            object3 = object4;
+            object2 = ((String)object7).split("\\$\\$\\$");
+            object3 = object4;
+            n2 = ((Object)object2).length;
+            for (n3 = 0; n3 < n2; ++n3) {
+                object3 = object2[n3];
+                object3 = ((String)object3).indexOf((String)object4) >= 0 ? this.l((String)object3) : this.k(((String)object3).split(";")[0]);
+                if (((String)object3).length() <= 50) continue;
+                stringBuilder.append((String)object3);
+                continue;
+            }
+            try {
+                object3 = stringBuilder.toString();
+                return object3;
+            }
+            catch (Exception exception) {}
+            break block61;
+            catch (Exception exception) {
+                object2 = object3;
+                object3 = exception;
+                object4 = object2;
+            }
+            break block61;
+            catch (Exception exception) {
+                object4 = object3;
+                object3 = exception;
+            }
+        }
+        if (this.m) {
+            object2 = new StringBuilder();
+            ((StringBuilder)object2).append(this.G);
+            ((StringBuilder)object2).append("\u8c03\u8bd5->multiReq\u51fa\u9519\uff1a");
+            ((StringBuilder)object2).append(object3.toString());
+            Init.show(((StringBuilder)object2).toString());
+        }
+        if ((object2 = this.I) != null) {
+            com.github.catvod.spider.merge.Dw.f.a((Exception)object3, com.github.catvod.spider.merge.ka.d.b("multiReq()\u9519\u8bef\uff01-->"), (SpiderApi)object2);
+        }
+        for (Object object7 : ((String)object7).split("\\$\\$\\$")) {
+            object7 = ((String)object7).indexOf((String)object4) >= 0 ? this.l((String)object7) : this.k(((String)object7).split(";")[0]);
+            if (((String)object7).length() <= 50) continue;
+            stringBuilder.append((String)object7);
+        }
+        return stringBuilder.toString();
+    }
+
+    private String V(String string, String string2) {
+        String string3;
+        int n2 = string.length();
+        String string4 = string3 = "";
+        if (n2 > 1) {
+            String[] stringArray = string.split("#");
+            if (string.indexOf("$") < 1) {
+                string = stringArray[0].replaceAll(".*(http.*)", "$1");
+            } else {
+                int n3 = stringArray.length;
+                string = "";
+                for (n2 = 0; n2 < n3; ++n2) {
+                    String string5;
+                    string4 = string5 = stringArray[n2];
+                    if (string5.endsWith("$")) {
+                        string4 = com.github.catvod.spider.merge.dp.n.a(string5, "\u7a7a");
+                    }
+                    String[] stringArray2 = string4.split("\\$")[0].split("\u3001");
+                    int n4 = stringArray2.length;
+                    int n5 = 0;
+                    while (true) {
+                        string5 = string;
+                        if (n5 >= n4) break;
+                        if (string2.equals(stringArray2[n5])) {
+                            string5 = string4.split("\\$")[1];
+                            break;
+                        }
+                        ++n5;
+                    }
+                    string = string5;
+                }
+                if (string.length() < 1 && "\u9ed8\u8ba4".equals(stringArray[0].split("\\$")[0])) {
+                    string = stringArray[0].split("\\$")[1];
                 }
             }
-            var3_3 /* !! */ .append(var6_6);
-            var2_2 = var3_3 /* !! */ ;
+            string4 = string3;
+            if (!"\u7a7a".equals(string)) {
+                string4 = string3;
+                if (string.startsWith("http")) {
+                    string4 = !string.endsWith("=") ? string3 : string;
+                }
+            }
         }
-        var7_4.add(var2_2.toString());
-        return var7_4;
+        return string4;
+    }
+
+    private void W(Map<String, List<String>> object) {
+        if (object.isEmpty()) {
+            return;
+        }
+        SpiderApi object32 = this.I;
+        if (object32 != null) {
+            StringBuilder stringBuilder = com.github.catvod.spider.merge.ka.d.b("\u54cd\u5e94--> ");
+            stringBuilder.append(object.toString());
+            object32.log(stringBuilder.toString());
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        if (object.get("set-cookie") != null && !((List)object.get("set-cookie")).isEmpty()) {
+            Iterator iterator = ((List)object.get("set-cookie")).iterator();
+            while (iterator.hasNext()) {
+                stringBuilder.append(((String)iterator.next()).split(";")[0]);
+                stringBuilder.append(";");
+            }
+        }
+        if (object.get("Set-cookie") != null && !((List)object.get("Set-cookie")).isEmpty()) {
+            for (String string : (List)object.get("Set-cookie")) {
+                if (stringBuilder.indexOf(string.split(";")[0]) >= 0) continue;
+                stringBuilder.append(string.split(";")[0]);
+                stringBuilder.append(";");
+            }
+        }
+        if (object.get("Set-Cookie") != null && !((List)object.get("Set-Cookie")).isEmpty()) {
+            for (String string : (List)object.get("Set-Cookie")) {
+                if (stringBuilder.indexOf(string.split(";")[0]) >= 0) continue;
+                stringBuilder.append(string.split(";")[0]);
+                stringBuilder.append(";");
+            }
+        }
+        if (object.get("set-Cookie") != null && !((List)object.get("set-Cookie")).isEmpty()) {
+            for (String string : (List)object.get("set-Cookie")) {
+                if (stringBuilder.indexOf(string.split(";")[0]) >= 0) continue;
+                stringBuilder.append(string.split(";")[0]);
+                stringBuilder.append(";");
+            }
+        }
+        if (stringBuilder.toString().length() < 3) {
+            return;
+        }
+        for (String string : stringBuilder.toString().split(";")) {
+            if (this.z.indexOf(string.split("=")[0]) < 0) {
+                object = string;
+                if (this.z.length() >= 1) {
+                    if ("0".equals(this.z)) {
+                        object = string;
+                    } else {
+                        object = new StringBuilder();
+                        ((StringBuilder)object).append(this.z);
+                        ((StringBuilder)object).append(";");
+                        ((StringBuilder)object).append(string);
+                        object = ((StringBuilder)object).toString();
+                    }
+                }
+            } else {
+                if (string.endsWith("=") || "0".equals(string.split("=")[1])) continue;
+                String string2 = com.github.catvod.spider.merge.dp.n.b(new StringBuilder(), this.z, ";");
+                object = com.github.catvod.spider.merge.dp.n.b(new StringBuilder(), string.split("=")[0], "=.*?;");
+                StringBuilder stringBuilder2 = new StringBuilder();
+                stringBuilder2.append(string);
+                stringBuilder2.append(";");
+                this.z = object = string2.replaceAll((String)object, stringBuilder2.toString());
+                object = ((String)object).substring(0, ((String)object).length() - 1);
+            }
+            this.z = object;
+        }
+    }
+
+    private static String Y(String string) {
+        if (string.length() < 1) {
+            return string;
+        }
+        Matcher matcher = Pattern.compile("(\\\\u(\\w{4}))").matcher(string);
+        while (matcher.find()) {
+            String string2 = matcher.group(1);
+            char c2 = (char)Integer.parseInt(matcher.group(2), 16);
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append(c2);
+            stringBuilder.append("");
+            string = string.replace(string2, stringBuilder.toString());
+        }
+        return string.replaceAll("\\\\", "");
     }
 
     /*
-     * Unable to fully structure code
+     * Exception decompiling
      */
-    private ArrayList<String> Z(String var1_1, String var2_3, String var3_4) {
-        block109: {
-            block99: {
-                block98: {
-                    block97: {
-                        block94: {
-                            block95: {
-                                block96: {
-                                    block110: {
-                                        block93: {
-                                            block112: {
-                                                block111: {
-                                                    block92: {
-                                                        block91: {
-                                                            var13_5 = var1_1;
-                                                            var12_6 = var2_3;
-                                                            var17_7 = cYh.d("3B0D");
-                                                            var18_8 = cYh.d("3B0B");
-                                                            var21_9 = cYh.d("81C5F5B8F6EF");
-                                                            var16_10 = cYh.d("8FEDEDB5EED382DFF2B4E7D581DBEDB4D8ED");
-                                                            var22_11 = cYh.d("8FEDEDB5EED382E7E7B4E7D581DBEDB4D8ED");
-                                                            var23_12 = cYh.d("8FEDEDB5EED382DAE1B4D8ED");
-                                                            var20_13 = cYh.d("3B741D75");
-                                                            var15_14 = cYh.d("3B7A");
-                                                            var19_15 = cYh.d("4176");
-                                                            var14_16 = new ArrayList<String>();
-                                                            if (var2_3.isEmpty() && var3_4.isEmpty() || var12_6.equals(cYh.d("80F9FB7573BDCEEA")) || var12_6.equals(cYh.d("80F9FB"))) break block109;
-                                                            var1_1 = var12_6;
-                                                            if (var12_6.indexOf(var23_12) >= 0) {
-                                                                var1_1 = var12_6.replace(var23_12, cYh.d("4C"));
-                                                            }
-                                                            var12_6 = var1_1;
-                                                            if (var1_1.indexOf(var22_11) >= 0) {
-                                                                var12_6 = var1_1.replace(var22_11, cYh.d("4F"));
-                                                            }
-                                                            var2_3 = var12_6;
-                                                            if (var12_6.indexOf((String)var16_10) >= 0) {
-                                                                var2_3 = var12_6.replace((CharSequence)var16_10, cYh.d("4E"));
-                                                            }
-                                                            var4_17 = var2_3.indexOf(var19_15);
-                                                            var16_10 = cYh.d("81CBFEB7DAF8");
-                                                            var22_11 = cYh.d("4374");
-                                                            if (var4_17 < 0) {
-                                                                if (var2_3.indexOf(var22_11) >= 0 || var2_3.length() <= 0 || var3_4.length() >= 1) break block91;
-                                                                var1_1 = var2_3;
-                                                                if (var2_3.indexOf((String)var16_10) >= 0) {
-                                                                    var1_1 = this.a0((String)var2_3, (String)var13_5);
-                                                                }
-                                                                var14_16.add((String)var1_1);
-                                                                return var14_16;
-                                                            }
-                                                        }
-                                                        var1_1 = var13_5;
-                                                        var12_6 = var2_3;
-                                                        if (!var2_3.endsWith(var21_9)) break block92;
-                                                        var2_3 = var2_3.replace(var21_9, "");
-                                                        var1_1 = var13_5;
-                                                        var12_6 = var2_3;
-                                                        if (this.x.length() <= 0) break block92;
-                                                        var1_1 = this.x;
-                                                        var12_6 = var2_3;
-                                                    }
-                                                    var2_3 = var12_6;
-                                                    if (var12_6.indexOf(var18_8) >= 0) {
-                                                        var2_3 = var12_6.replace(var18_8, cYh.d("8FEDEDB5EED382E7E7B7DCF682DFF6"));
-                                                    }
-                                                    var12_6 = var2_3;
-                                                    if (var2_3.indexOf(var17_7) >= 0) {
-                                                        var12_6 = var2_3.replace(var17_7, cYh.d("8FEDEDB5EED382DFF2B7DCF682DFF6"));
-                                                    }
-                                                    var2_3 = var12_6;
-                                                    if (var12_6.indexOf((String)var15_14) >= 0) {
-                                                        var2_3 = var12_6.replace(var15_14, cYh.d("8FEDEDB5EED381C8DEB4D8ED"));
-                                                    }
-                                                    var4_17 = var2_3.indexOf(cYh.d("3B76"));
-                                                    var17_7 = cYh.d("8FEDEDB5EED38FEFDFB7D9FF80FCE7");
-                                                    var12_6 = var2_3;
-                                                    if (var4_17 >= 0) {
-                                                        var12_6 = var2_3.replace(cYh.d("3B76"), var17_7);
-                                                    }
-                                                    var2_3 = var12_6;
-                                                    if (var12_6.indexOf(cYh.d("3B73")) >= 0) {
-                                                        var2_3 = var12_6.replace(cYh.d("3B73"), cYh.d("8FEDEDB5EED383EAD4B4D8ED"));
-                                                    }
-                                                    var4_17 = var2_3.indexOf(var19_15);
-                                                    var18_8 = cYh.d("3C");
-                                                    var21_9 = cYh.d("3B761D77");
-                                                    if (var4_17 < 0) break block110;
-                                                    if (var2_3.split(var21_9) == null || var2_3.split(var21_9).length < 1) break block93;
-                                                    var4_17 = var2_3.split(var21_9).length;
-                                                    var20_13 = cYh.d("81D8EBB4D8CC82D8F1B7CBF182E0FF");
-                                                    var3_4 = var1_1;
-                                                    var12_6 = var2_3;
-                                                    if (var4_17 != 1) ** GOTO lbl116
-                                                    if (!var2_3.startsWith(var19_15)) break block111;
-                                                    var3_4 = new StringBuilder();
-                                                    var3_4.append(cYh.d("83EBCFB4F3EE81D8EBB4D8CC"));
-                                                    var3_4.append((String)var1_1);
-                                                    var3_4 = var3_4.toString();
-                                                    var1_1 = new StringBuilder();
-                                                    var1_1.append(cYh.d("83EBCFB4F3EE81D8EBB4D8CC"));
-                                                    var1_1.append((String)var2_3);
-                                                    ** GOTO lbl115
-                                                }
-                                                var3_4 = var1_1;
-                                                var12_6 = var2_3;
-                                                if (!var2_3.endsWith(var19_15)) break block112;
-                                                var3_4 = new StringBuilder();
-                                                var3_4.append((String)var1_1);
-                                                var3_4.append(var20_13);
-                                                var3_4 = var3_4.toString();
-                                                var1_1 = new StringBuilder();
-                                                var1_1.append((String)var2_3);
-                                                var1_1.append(var20_13);
-lbl115:
-                                                // 2 sources
-
-                                                var12_6 = var1_1.toString();
-                                            }
-                                            var13_5 = var12_6.split(var21_9)[1];
-                                            var2_3 = var3_4;
-                                            var1_1 = var13_5;
-                                            if (var13_5.startsWith(var18_8)) {
-                                                var1_1 = new StringBuilder();
-                                                var1_1.append(var20_13);
-                                                var1_1.append((String)var13_5);
-                                                var1_1 = var1_1.toString();
-                                                var2_3 = new StringBuilder();
-                                                var2_3.append((String)var3_4);
-                                                var2_3.append(var20_13);
-                                                var2_3 = var2_3.toString();
-                                            }
-                                            var3_4 = var12_6.split(var21_9)[0];
-                                            var13_5 = var2_3;
-                                            var2_3 = var3_4;
-                                            var3_4 = var1_1;
-                                            break block94;
-                                        }
-                                        var14_16.add((String)var1_1);
-                                        return var14_16;
-                                    }
-                                    if (var2_3.indexOf(var22_11) < 0) break block95;
-                                    if (var2_3.split(var20_13) == null || var2_3.split(var21_9).length < 2) break block96;
-                                    var3_4 = var2_3.split(var20_13)[1];
-                                    var2_3 = var2_3.split(var20_13)[0];
-                                    var13_5 = var1_1;
-                                    break block94;
-                                }
-                                var14_16.add((String)var1_1);
-                                return var14_16;
-                            }
-                            var13_5 = var1_1;
-                        }
-                        var12_6 = var2_3;
-                        if (var2_3.indexOf(var17_7) >= 0) {
-                            var12_6 = var2_3.replace(var17_7, cYh.d("41"));
-                        }
-                        var1_1 = var3_4;
-                        if (var3_4.indexOf(var17_7) >= 0) {
-                            var1_1 = var3_4.replace(var17_7, cYh.d("41"));
-                        }
-                        var4_17 = var12_6.indexOf(var18_8);
-                        var17_7 = cYh.d("4361");
-                        if (var4_17 >= 0) {
-                            var2_3 = var12_6.replaceAll(cYh.d("497A690D0C744D79"), var17_7);
-                            var12_6 = var12_6.replaceAll(cYh.d("3B0B6F7B"), "");
-                        } else {
-                            var2_3 = "";
-                        }
-                        var3_4 = var1_1;
-                        if (var1_1.indexOf(var18_8) >= 0) {
-                            var2_3 = var1_1.replaceAll(cYh.d("497A690D0C744D79"), var17_7);
-                            var3_4 = var1_1.replaceAll(cYh.d("3B0B6F7B"), "");
-                        }
-                        var11_18 = var12_6.matches(cYh.d("4A6F1D357C"));
-                        var18_8 = cYh.d("4A");
-                        if (var11_18) {
-                            if (!var3_4.matches(cYh.d("4A6F1D357C"))) break block97;
-                            var4_17 = var12_6.startsWith(var18_8) != false ? var13_5.length() - Integer.parseInt(var12_6.replace(var18_8, "")) : Integer.parseInt((String)var12_6) - 1;
-                            var5_19 = var3_4.startsWith(var18_8) != false ? var13_5.length() - Integer.parseInt(var3_4.replace(var18_8, "")) + 1 : Integer.parseInt((String)var3_4);
-                            var3_4 = var13_5.substring(var4_17, var5_19);
-                            var1_1 = var3_4;
-                            if (var2_3.indexOf((String)var16_10) > 0) {
-                                var1_1 = this.a0((String)var2_3, (String)var3_4);
-                            }
-                            var14_16.add((String)var1_1);
-                            return var14_16;
-                        }
-                    }
-                    var1_1 = this.Q((String)var12_6);
-                    var3_4 = this.Q((String)var3_4);
-                    var1_1 = this.N((String)var1_1);
-                    var3_4 = this.N((String)var3_4);
-                    if (var1_1.indexOf(cYh.d("4D")) >= 0) break block98;
-                    var1_1 = this.i((String)var1_1);
-                    var4_17 = 1;
-                    ** GOTO lbl246
-                }
-                if (var1_1.indexOf(cYh.d("4D7A")) >= 0) ** GOTO lbl228
-                var12_6 = var1_1.split((String)var15_14);
-                var1_1 = this.i(this.e0((String)var12_6[0]));
-                var4_17 = 1;
-                while (true) {
-                    if (var4_17 >= ((CharSequence)var12_6).length) break;
-                    var15_14 = new StringBuilder();
-                    var15_14.append((String)var1_1);
-                    var15_14.append(cYh.d("4F0B1F6F0A705879"));
-                    var15_14.append(this.i(this.e0((String)var12_6[var4_17])));
-                    var1_1 = var15_14.toString();
-                    ++var4_17;
-                    continue;
-                    break;
-                }
-                var4_17 = ((CharSequence)var12_6).length;
-                ** GOTO lbl246
-lbl228:
-                // 1 sources
-
-                var12_6 = var1_1.split(cYh.d("3B7A1D7B"));
-                var1_1 = this.i(this.e0((String)var12_6[0]));
-                var4_17 = 1;
-                while (true) {
-                    if (var4_17 >= ((CharSequence)var12_6).length) break;
-                    var15_14 = new StringBuilder();
-                    var15_14.append((String)var1_1);
-                    var15_14.append(cYh.d("4F0B1D020B293A7A7E78"));
-                    var15_14.append(this.i(this.e0((String)var12_6[var4_17])));
-                    var1_1 = var15_14.toString();
-                    ++var4_17;
-                    continue;
-                    break;
-                }
-                try {
-                    var4_17 = ((CharSequence)var12_6).length;
-lbl246:
-                    // 3 sources
-
-                    var12_6 = new StringBuilder();
-                    var12_6.append((String)var1_1);
-                    var12_6.append(cYh.d("4F0B1D020B293A7A7E78"));
-                    var12_6.append(this.i((String)var3_4));
-                    var1_1 = Pattern.compile(var12_6.toString()).matcher(var13_5);
-                    var5_20 = 0;
-                }
-                catch (Throwable var1_2) {
-                    if (this.m) {
-                        var2_3 = new StringBuilder();
-                        var2_3.append(this.G);
-                        var2_3.append(cYh.d("8FE0C2B9F8CF4A6E32243519083E3534392E222835B4D0E08EC4D8BEEBC0"));
-                        var2_3.append(var1_2.toString());
-                        Init.show(var2_3.toString());
-                    }
-                    if ((var3_4 = this.I) == null) break block99;
-                    var2_3 = com.github.catvod.spider.merge.d.d.b(cYh.d("14252312383413352F251222137868B8C3C38FFFEE7C7A64"));
-                    var2_3.append(var1_2.toString());
-                    var3_4.log(var2_3.toString());
-                }
-                while (true) {
-                    block102: {
-                        block106: {
-                            block103: {
-                                block113: {
-                                    block101: {
-                                        if (!var1_1.find()) break block99;
-                                        var3_4 = var1_1.group(var4_17);
-                                        var9_24 = var5_20 + 1;
-                                        var12_6 = new StringBuilder((String)var3_4);
-                                        var12_6.append(cYh.d("5BB5FBDEB2D5D06E"));
-                                        var12_6.append(var9_24);
-                                        var12_6 = this.a0((String)var2_3, var12_6.toString());
-                                        var5_20 = var2_3.indexOf(cYh.d("3CB5CDD4B2CACC6A"));
-                                        var15_14 = cYh.d("44");
-                                        if (var5_20 >= 0) {
-                                            var3_4 = this.Q(var2_3.replaceAll(cYh.d("497A1D0AB2D6E2B5D1FA6D72497A7E780B07497A"), var17_7));
-                                            if (var3_4.isEmpty()) ** break block100
-                                            var3_4 = var3_4.split((String)var15_14);
-                                            var6_21 = ((CharSequence)var3_4).length;
-                                            for (var5_20 = 0; var5_20 < var6_21; ++var5_20) {
-                                                var7_22 = var12_6.indexOf(this.e0(this.N((String)var3_4[var5_20])));
-                                                if (var7_22 < 0) {
-                                                    continue;
-                                                }
-                                                ** break block100
-                                            }
-                                            var6_21 = 0;
-                                        } else lbl-1000:
-                                        // 3 sources
-
-                                        {
-                                            var6_21 = 1;
-                                        }
-                                        var13_5 = cYh.d("83E8CCB9F1DB");
-                                        if (var6_21 == 0) break block113;
-                                        var5_20 = var6_21;
-                                        if (var2_3.indexOf(cYh.d("3CB4F9DCB2D6E2B5D1FA6D")) < 0) break block101;
-                                        var3_4 = this.Q(var2_3.replaceAll(cYh.d("497A1D0AB3E2EAB5CDD4B2CACC6A697F7D654E0C1C7F7D"), var17_7));
-                                        var5_20 = var6_21;
-                                        if (var3_4.isEmpty()) break block101;
-                                        var3_4 = var3_4.split((String)var15_14);
-                                        var6_21 = ((CharSequence)var3_4).length;
-                                        for (var5_20 = 0; var5_20 < var6_21; ++var5_20) {
-                                            if (var12_6.indexOf(this.e0(this.N((String)var3_4[var5_20]))) < 0) continue;
-                                            var5_20 = 0;
-                                            break block101;
-                                        }
-                                        var5_20 = 1;
-                                    }
-                                    if (var5_20 != 0) ** GOTO lbl309
-                                }
-                                var14_16.add((String)var13_5);
-                                break block102;
-lbl309:
-                                // 1 sources
-
-                                if (var2_3.indexOf(cYh.d("3CB5D1FAB2E0E8B5CEE66D")) < 0 || (var3_4 = var2_3.replaceAll(cYh.d("497A1D0AB2CACCB5FBDEB2D5D06A697F7D654E0C1C7F7D"), var17_7)).isEmpty()) break block103;
-                                var16_10 = var3_4.split((String)var15_14);
-                                var10_25 = var16_10.length;
-                                var5_20 = 0;
-                                for (var6_21 = 0; var6_21 < var10_25; ++var6_21) {
-                                    block105: {
-                                        block104: {
-                                            var3_4 = var16_10[var6_21];
-                                            if (var3_4.indexOf(var18_8) < 0) break block104;
-                                            var3_4 = var3_4.split(var18_8);
-                                            var8_23 = Integer.parseInt((String)var3_4[0]);
-                                            while (true) {
-                                                var7_22 = var5_20;
-                                                if (var8_23 > Integer.parseInt((String)var3_4[1])) break block105;
-                                                if (var8_23 == var9_24) {
-                                                    var7_22 = 1;
-                                                    break block105;
-                                                }
-                                                ++var8_23;
-                                                continue;
-                                                break;
-                                            }
-                                        }
-                                        var8_23 = var4_17;
-                                        var7_22 = var5_20;
-                                        if (Integer.parseInt((String)var3_4) != var9_24) break block105;
-                                        var5_20 = 1;
-                                        var4_17 = var8_23;
-                                        break;
-                                    }
-                                    var5_20 = var7_22;
-                                }
-                            }
-                            if (var5_20 == 0) {
-                                while (true) {
-                                    var14_16.add((String)var13_5);
-                                    break block102;
-                                    break;
-                                }
-                            }
-                            var6_21 = var5_20;
-                            if (var2_3.indexOf(cYh.d("3CB4F9DCB2CACCB5FBDEB2D5D06A")) < 0) break block106;
-                            var3_4 = var2_3.replaceAll(cYh.d("497A1D0AB3E2EAB5D1FAB2E0E8B5CEE66D72497A7E780B07497A"), var17_7);
-                            var6_21 = var5_20;
-                            if (var3_4.isEmpty()) break block106;
-                            var3_4 = var3_4.split((String)var15_14);
-                            var10_25 = ((CharSequence)var3_4).length;
-                            var5_20 = 1;
-                            for (var6_21 = 0; var6_21 < var10_25; ++var6_21) {
-                                block108: {
-                                    block107: {
-                                        var15_14 = var3_4[var6_21];
-                                        if (var15_14.indexOf(var18_8) < 0) break block107;
-                                        var15_14 = var15_14.split(var18_8);
-                                        var8_23 = Integer.parseInt((String)var15_14[0]);
-                                        while (true) {
-                                            var7_22 = var5_20;
-                                            if (var8_23 > Integer.parseInt((String)var15_14[1])) break block108;
-                                            if (var8_23 == var9_24) {
-                                                var7_22 = 0;
-                                                break block108;
-                                            }
-                                            ++var8_23;
-                                            continue;
-                                            break;
-                                        }
-                                    }
-                                    var7_22 = var5_20;
-                                    if (Integer.parseInt((String)var15_14) != var9_24) break block108;
-                                    var6_21 = 0;
-                                    break block106;
-                                }
-                                var5_20 = var7_22;
-                            }
-                            var6_21 = var5_20;
-                        }
-                        if (var6_21 == 0) ** continue;
-                        var14_16.add((String)var12_6);
-                    }
-                    var5_20 = var9_24;
-                }
-            }
-            if (var14_16.isEmpty()) {
-                var14_16.add("");
-            }
-            return var14_16;
-        }
-        var14_16.add((String)var13_5);
-        return var14_16;
+    private JSONObject Z(String var1_1, String var2_9, boolean var3_10) {
+        /*
+         * This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+         * 
+         * org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 73[TRYBLOCK] [102 : 3624->3634)] java.lang.Throwable
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.Op02WithProcessedDataAndRefs.insertExceptionBlocks(Op02WithProcessedDataAndRefs.java:2283)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:415)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:278)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:201)
+         *     at org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:94)
+         *     at org.benf.cfr.reader.entities.Method.analyse(Method.java:531)
+         *     at org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:1055)
+         *     at org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:942)
+         *     at org.benf.cfr.reader.Driver.doJarVersionTypes(Driver.java:257)
+         *     at org.benf.cfr.reader.Driver.doJar(Driver.java:139)
+         *     at org.benf.cfr.reader.CfrDriverImpl.analyse(CfrDriverImpl.java:76)
+         *     at org.benf.cfr.reader.Main.main(Main.java:54)
+         */
+        throw new IllegalStateException("Decompilation failed");
     }
 
     static /* synthetic */ String a(XBPQ xBPQ, String string) {
@@ -1696,368 +1577,757 @@ lbl309:
     }
 
     /*
-     * Unable to fully structure code
      * Could not resolve type clashes
+     * Unable to fully structure code
      */
-    private String a0(String var1_1, String var2_2) {
-        block60: {
-            block61: {
-                var14_4 = cYh.d("3B7A");
-                var13_5 = cYh.d("596E");
-                var10_6 = cYh.d("4473");
-                var15_7 = cYh.d("4361");
-                var11_8 = cYh.d("4D");
-                var12_9 = cYh.d("596E7F");
-                var7_10 /* !! */  = var2_2;
-                var9_11 = var2_2.replaceAll(cYh.d("497A7DB4EDD582DFF66F7F744D79"), (String)var15_7);
-                var7_10 /* !! */  = var2_2;
-                var2_2 = var2_2.replaceAll(cYh.d("5BB5FBDEB2D5D06E6F7B"), "");
-                var8_12 = var2_2;
-                var7_10 /* !! */  = var2_2;
-                if (var1_1.indexOf(cYh.d("81CBFEB7DAF8")) < 0) break block60;
-                var7_10 /* !! */  = var2_2;
-                var8_12 = var1_1.replaceAll(cYh.d("497A1D0AB3E1E26FA7CAE8BCEAF21A6BB8E6FD0D697F7D654E0C1C7F7D"), (String)var15_7);
-                var7_10 /* !! */  = var2_2;
-                if (var8_12.indexOf(var10_6) < 0) break block61;
-                var7_10 /* !! */  = var2_2;
-                return this.Y((String)var2_2, var8_12.replace(var10_6, cYh.d("4176")), "").get(0).trim();
-            }
-            var7_10 /* !! */  = var2_2;
-            var9_11 = this.Q((String)var8_12).replace(cYh.d("5BB5FBDEB2D5D06E"), var9_11);
-            var8_12 = var2_2;
-            var7_10 /* !! */  = var2_2;
-            if (var9_11.isEmpty()) break block60;
-            var7_10 /* !! */  = var2_2;
-            var15_7 = var9_11.split(cYh.d("44"));
-            var7_10 /* !! */  = var2_2;
-            try {
-                var4_13 = var15_7.length;
-                var3_14 = 0;
-            }
-            catch (Exception var2_3) {
-                if (this.m) {
-                    var8_12 = new StringBuilder();
-                    var8_12.append(this.G);
-                    var8_12.append(cYh.d("8FE0C2B9F8CF4A6EA7CAE8BCEAF2A4D6EDB3F3C9AEEDDBB2C8E7A7F2D7BCF8F5AEEDCD"));
-                    var8_12.append(var1_1);
-                    var8_12.append(cYh.d("4A6E"));
-                    var8_12.append(var2_3.toString());
-                    Init.show(var8_12.toString());
-                }
-                if ((var1_1 = this.I) != null) {
-                    com.github.catvod.spider.merge.i.b.a(var2_3, com.github.catvod.spider.merge.d.d.b(cYh.d("81CBFEB7DAF813186978BECEFEB8EEFEB8E6E67D6C6F")), (SpiderApi)var1_1);
-                }
-                return var7_10 /* !! */ ;
-            }
-            while (true) {
-                block67: {
-                    block64: {
-                        block66: {
-                            block65: {
-                                block63: {
-                                    block62: {
-                                        var8_12 = var2_2;
-                                        if (var3_14 >= var4_13) break;
-                                        var7_10 /* !! */  = var2_2;
-                                        var8_12 = this.N(var15_7[var3_14]);
-                                        var7_10 /* !! */  = var2_2;
-                                        if (var8_12.indexOf(var12_9) >= 0) break block62;
-                                        var7_10 /* !! */  = var2_2;
-                                        var9_11 = var8_12.split(var13_5)[0];
-                                        var7_10 /* !! */  = var2_2;
-                                        var8_12 = var8_12.split(var13_5)[1];
-                                        break block63;
-                                    }
-                                    var7_10 /* !! */  = var2_2;
-                                    var7_10 /* !! */  = var2_2;
-                                    var9_11 = new StringBuilder();
-                                    var7_10 /* !! */  = var2_2;
-                                    var9_11.append(var8_12.split(var12_9)[0]);
-                                    var7_10 /* !! */  = var2_2;
-                                    var9_11.append(cYh.d("59"));
-                                    var7_10 /* !! */  = var2_2;
-                                    var9_11 = var9_11.toString();
-                                    var7_10 /* !! */  = var2_2;
-                                    var8_12 = var8_12.split(var12_9)[1];
-                                }
-                                var7_10 /* !! */  = var2_2;
-                                var10_6 = this.f0((String)var8_12);
-                                var7_10 /* !! */  = var2_2;
-                                var5_15 = var9_11.indexOf(var11_8);
-                                var16_17 = cYh.d("80F9FB");
-                                if (var5_15 < 0) break block64;
-                                var7_10 /* !! */  = var2_2;
-                                if (var10_6.length() <= 0) break block64;
-                                var8_12 = var10_6;
-                                var7_10 /* !! */  = var2_2;
-                                if (var10_6.equals(var16_17)) {
-                                    var8_12 = "";
-                                }
-                                var7_10 /* !! */  = var2_2;
-                                var6_16 = var9_11.startsWith(var11_8);
-                                var10_6 = cYh.d("4F0B1D020B293A7A7E78");
-                                if (var6_16) {
-                                    var7_10 /* !! */  = var2_2;
-                                    var16_17 = this.e0(var9_11.substring(1, var9_11.length()));
-                                    var7_10 /* !! */  = var2_2;
-                                    var7_10 /* !! */  = var2_2;
-                                    var9_11 = new StringBuilder();
-                                    var7_10 /* !! */  = var2_2;
-                                    var9_11.append(var10_6);
-                                    var7_10 /* !! */  = var2_2;
-                                    var9_11.append(this.i(var16_17));
-lbl113:
-                                    // 2 sources
-
-                                    while (true) {
-                                        var7_10 /* !! */  = var2_2;
-                                        var10_6 = var9_11.toString();
-                                        var9_11 = var8_12;
-                                        var8_12 = var10_6;
-                                        break block65;
-                                        break;
-                                    }
-                                }
-                                var7_10 /* !! */  = var2_2;
-                                if (!var9_11.endsWith(var11_8)) break block66;
-                                var7_10 /* !! */  = var2_2;
-                                var16_17 = this.e0(var9_11.substring(0, var9_11.length() - 1));
-                                var7_10 /* !! */  = var2_2;
-                                var7_10 /* !! */  = var2_2;
-                                var9_11 = new StringBuilder();
-                                var7_10 /* !! */  = var2_2;
-                                var9_11.append(this.i(var16_17));
-                                var7_10 /* !! */  = var2_2;
-                                var9_11.append(var10_6);
-                                ** continue;
-                            }
-lbl140:
-                            // 3 sources
-
-                            while (true) {
-                                var7_10 /* !! */  = var2_2;
-                                var8_12 = var2_2.replaceAll((String)var8_12, (String)var9_11);
-                                break block67;
-                                break;
-                            }
-                        }
-                        var7_10 /* !! */  = var2_2;
-                        var16_17 = this.e0(var9_11.split(var14_4)[0]);
-                        var7_10 /* !! */  = var2_2;
-                        var17_18 = this.e0(var9_11.split(var14_4)[1]);
-                        var7_10 /* !! */  = var2_2;
-                        var7_10 /* !! */  = var2_2;
-                        var9_11 = new StringBuilder();
-                        var7_10 /* !! */  = var2_2;
-                        var9_11.append(this.i(var16_17));
-                        var7_10 /* !! */  = var2_2;
-                        var9_11.append(var10_6);
-                        var7_10 /* !! */  = var2_2;
-                        var9_11.append(this.i(var17_18));
-                        var7_10 /* !! */  = var2_2;
-                        var10_6 = var9_11.toString();
-                        var9_11 = var8_12;
-                        var8_12 = var10_6;
-                        ** GOTO lbl140
-                    }
-                    var8_12 = var2_2;
-                    var7_10 /* !! */  = var2_2;
-                    if (var10_6.length() <= 0) break block67;
-                    var7_10 /* !! */  = var2_2;
-                    if (var9_11.equals(var16_17)) {
-                        return var10_6;
-                    }
-                    var8_12 = var10_6;
-                    var7_10 /* !! */  = var2_2;
-                    if (var10_6.equals(var16_17)) {
-                        var8_12 = "";
-                    }
-                    var7_10 /* !! */  = var2_2;
-                    var10_6 = this.i(this.e0((String)var9_11));
-                    var9_11 = var8_12;
-                    var8_12 = var10_6;
-                    ** continue;
-                }
-                ++var3_14;
-                var2_2 = var8_12;
-            }
+    private ArrayList<String> a0(String var1_1, String var2_2, String var3_3) {
+        var7_4 = new ArrayList<String>();
+        var6_5 = var2_2;
+        if (var2_2.indexOf("\\+") >= 0) {
+            var6_5 = var2_2.replace("\\+", "\u8f6c\u4e49\u52a0\u53f7");
         }
-        return var8_12;
+        var2_2 = var6_5;
+        if (var6_5.indexOf("\\(") >= 0) {
+            var2_2 = var6_5.replace("\\(", "\u8f6c\u4e49\u5de6\u5c0f\u62ec\u53f7");
+        }
+        var6_5 = var2_2;
+        if (var2_2.indexOf("\\)") >= 0) {
+            var6_5 = var2_2.replace("\\)", "\u8f6c\u4e49\u53f3\u5c0f\u62ec\u53f7");
+        }
+        if (var6_5.indexOf("+") < 0) {
+            return this.e0(var1_1, var6_5, (String)var3_3 /* !! */ );
+        }
+        var8_6 = var6_5.split("\\+");
+        var2_2 = new StringBuilder();
+        for (String[] var3_3 : var8_6) {
+            block10: {
+                if (var3_3 /* !! */ .isEmpty()) continue;
+                if (var3_3 /* !! */ .startsWith("url:")) break block10;
+                var3_3 /* !! */  = this.e0(var1_1, (String)var3_3 /* !! */ , "");
+                ** GOTO lbl27
+            }
+            var6_5 = var3_3 /* !! */ .substring(4);
+            var3_3 /* !! */  = var6_5;
+            if (var6_5.indexOf("$sub:") <= 0) ** GOTO lbl30
+            var3_3 /* !! */  = var6_5.split("\\$sub\\:");
+            if (var3_3 /* !! */ .length > 1) {
+                var3_3 /* !! */  = this.e0(this.k(var3_3 /* !! */ [0]), var3_3 /* !! */ [1], "");
+lbl27:
+                // 2 sources
+
+                var6_5 = ((String)var3_3 /* !! */ .get(0)).trim();
+            } else {
+                var3_3 /* !! */  = var3_3 /* !! */ [0];
+lbl30:
+                // 2 sources
+
+                var6_5 = this.k((String)var3_3 /* !! */ );
+            }
+            if (var6_5.isEmpty()) continue;
+            var3_3 /* !! */  = var2_2;
+            if (var6_5.startsWith("http")) {
+                var3_3 /* !! */  = var2_2;
+                if (!var2_2.toString().trim().endsWith("=")) {
+                    var3_3 /* !! */  = var2_2;
+                    if (!var2_2.toString().trim().endsWith("\u89e3\u6790")) {
+                        var3_3 /* !! */  = new StringBuilder();
+                    }
+                }
+            }
+            var3_3 /* !! */ .append(var6_5);
+            var2_2 = var3_3 /* !! */ ;
+        }
+        var7_4.add(var2_2.toString());
+        return var7_4;
     }
 
     static /* synthetic */ String b(XBPQ xBPQ) {
         return xBPQ.G;
     }
 
-    private ArrayList<String> b0(String string, String string2, String string3) {
-        block28: {
-            ArrayList<String> arrayList;
-            block31: {
-                String string4;
-                block30: {
-                    String string5;
-                    String string6;
-                    String string7;
-                    String string8;
-                    String string9;
-                    int n2;
-                    block29: {
-                        arrayList = new ArrayList<String>();
-                        if (string2.indexOf(cYh.d("25313234616E")) < 0) break block28;
-                        n2 = string2.indexOf(cYh.d("250B"));
-                        string9 = cYh.d("4361");
-                        string8 = cYh.d("4176");
-                        String string10 = n2 >= 0 ? string2.replaceAll(cYh.d("497A030D0C72497A7E780B07497A"), string9).replace(cYh.d("4473"), string8) : "";
-                        string7 = cYh.d("81CBFEB7DAF8");
-                        string4 = string10;
-                        if (string10 != null) {
-                            string4 = string10;
-                            if (string10.indexOf(string7) > 0) {
-                                string4 = com.github.catvod.spider.merge.b.n.a(string10, cYh.d("3A"));
+    /*
+     * Unable to fully structure code
+     */
+    private ArrayList<String> b0(String var1_1, String var2_3, String var3_4) {
+        block106: {
+            block96: {
+                block95: {
+                    block94: {
+                        block93: {
+                            block92: {
+                                block89: {
+                                    block90: {
+                                        block91: {
+                                            block87: {
+                                                block88: {
+                                                    block108: {
+                                                        block107: {
+                                                            block86: {
+                                                                block85: {
+                                                                    block84: {
+                                                                        var13_5 = var1_1;
+                                                                        var12_6 = var2_3;
+                                                                        var14_7 = new ArrayList<String>();
+                                                                        if (var2_3.isEmpty() && var3_4.isEmpty() || var12_6.equals("\u7a7a$$\u7a7a") || var12_6.equals("\u7a7a")) break block106;
+                                                                        var1_1 = var12_6;
+                                                                        if (var12_6.indexOf("\u8f6c\u4e49\u52a0\u53f7") >= 0) {
+                                                                            var1_1 = var12_6.replace("\u8f6c\u4e49\u52a0\u53f7", "+");
+                                                                        }
+                                                                        var12_6 = var1_1;
+                                                                        if (var1_1.indexOf("\u8f6c\u4e49\u5de6\u5c0f\u62ec\u53f7") >= 0) {
+                                                                            var12_6 = var1_1.replace("\u8f6c\u4e49\u5de6\u5c0f\u62ec\u53f7", "(");
+                                                                        }
+                                                                        var2_3 = var12_6;
+                                                                        if (var12_6.indexOf("\u8f6c\u4e49\u53f3\u5c0f\u62ec\u53f7") >= 0) {
+                                                                            var2_3 = var12_6.replace("\u8f6c\u4e49\u53f3\u5c0f\u62ec\u53f7", ")");
+                                                                        }
+                                                                        if ((var4_8 = var2_3.indexOf("&&")) >= 0) break block84;
+                                                                        if (var2_3.indexOf("$$") >= 0 || var2_3.length() <= 0 || var3_4.length() >= 1) break block84;
+                                                                        var1_1 = var2_3;
+                                                                        if (var2_3.indexOf("\u66ff\u6362") >= 0) {
+                                                                            var1_1 = this.c0((String)var2_3, (String)var13_5);
+                                                                        }
+                                                                        var14_7.add((String)var1_1);
+                                                                        return var14_7;
+                                                                    }
+                                                                    var1_1 = var13_5;
+                                                                    var12_6 = var2_3;
+                                                                    if (!var2_3.endsWith("\u6574\u9875")) break block85;
+                                                                    var2_3 = var2_3.replace("\u6574\u9875", "");
+                                                                    var1_1 = var13_5;
+                                                                    var12_6 = var2_3;
+                                                                    if (this.x.length() <= 0) break block85;
+                                                                    var1_1 = this.x;
+                                                                    var12_6 = var2_3;
+                                                                }
+                                                                var2_3 = var12_6;
+                                                                if (var12_6.indexOf("\\[") >= 0) {
+                                                                    var2_3 = var12_6.replace("\\[", "\u8f6c\u4e49\u5de6\u62ec\u53f7");
+                                                                }
+                                                                var12_6 = var2_3;
+                                                                if (var2_3.indexOf("\\]") >= 0) {
+                                                                    var12_6 = var2_3.replace("\\]", "\u8f6c\u4e49\u53f3\u62ec\u53f7");
+                                                                }
+                                                                var2_3 = var12_6;
+                                                                if (var12_6.indexOf("\\*") >= 0) {
+                                                                    var2_3 = var12_6.replace("\\*", "\u8f6c\u4e49\u661f\u53f7");
+                                                                }
+                                                                var4_8 = var2_3.indexOf("\\&");
+                                                                var12_6 = var2_3;
+                                                                if (var4_8 < 0) break block86;
+                                                                var12_6 = var2_3.replace("\\&", "\u8f6c\u4e49\u8fde\u63a5\u7b26");
+                                                            }
+                                                            var2_3 = var12_6;
+                                                            if (var12_6.indexOf("\\#") >= 0) {
+                                                                var2_3 = var12_6.replace("\\#", "\u8f6c\u4e49\u4e95\u53f7");
+                                                            }
+                                                            if ((var4_8 = var2_3.indexOf("&&")) < 0) break block87;
+                                                            if (var2_3.split("\\&\\&") == null || var2_3.split("\\&\\&").length < 1) break block88;
+                                                            var4_8 = var2_3.split("\\&\\&").length;
+                                                            var3_4 = var1_1;
+                                                            var12_6 = var2_3;
+                                                            if (var4_8 != 1) ** GOTO lbl100
+                                                            if (!var2_3.startsWith("&&")) break block107;
+                                                            var3_4 = new StringBuilder();
+                                                            var3_4.append("\u4ece\u5934\u622a\u53d6");
+                                                            var3_4.append((String)var1_1);
+                                                            var3_4 = var3_4.toString();
+                                                            var1_1 = new StringBuilder();
+                                                            var1_1.append("\u4ece\u5934\u622a\u53d6");
+                                                            var1_1.append((String)var2_3);
+                                                            ** GOTO lbl99
+                                                        }
+                                                        var3_4 = var1_1;
+                                                        var12_6 = var2_3;
+                                                        if (!var2_3.endsWith("&&")) break block108;
+                                                        var3_4 = new StringBuilder();
+                                                        var3_4.append((String)var1_1);
+                                                        var3_4.append("\u622a\u53d6\u5230\u672b\u5c3e");
+                                                        var3_4 = var3_4.toString();
+                                                        var1_1 = new StringBuilder();
+                                                        var1_1.append((String)var2_3);
+                                                        var1_1.append("\u622a\u53d6\u5230\u672b\u5c3e");
+lbl99:
+                                                        // 2 sources
+
+                                                        var12_6 = var1_1.toString();
+                                                    }
+                                                    var13_5 = var12_6.split("\\&\\&")[1];
+                                                    var2_3 = var3_4;
+                                                    var1_1 = var13_5;
+                                                    if (var13_5.startsWith("[")) {
+                                                        var1_1 = new StringBuilder();
+                                                        var1_1.append("\u622a\u53d6\u5230\u672b\u5c3e");
+                                                        var1_1.append((String)var13_5);
+                                                        var1_1 = var1_1.toString();
+                                                        var2_3 = new StringBuilder();
+                                                        var2_3.append((String)var3_4);
+                                                        var2_3.append("\u622a\u53d6\u5230\u672b\u5c3e");
+                                                        var2_3 = var2_3.toString();
+                                                    }
+                                                    var3_4 = var12_6.split("\\&\\&")[0];
+                                                    var13_5 = var2_3;
+                                                    var2_3 = var3_4;
+                                                    var3_4 = var1_1;
+                                                    break block89;
+                                                }
+                                                var14_7.add((String)var1_1);
+                                                return var14_7;
+                                            }
+                                            if (var2_3.indexOf("$$") < 0) break block90;
+                                            if (var2_3.split("\\$\\$") == null || var2_3.split("\\&\\&").length < 2) break block91;
+                                            var3_4 = var2_3.split("\\$\\$")[1];
+                                            var2_3 = var2_3.split("\\$\\$")[0];
+                                            var13_5 = var1_1;
+                                            break block89;
+                                        }
+                                        var14_7.add((String)var1_1);
+                                        return var14_7;
+                                    }
+                                    var13_5 = var1_1;
+                                }
+                                var12_6 = var2_3;
+                                if (var2_3.indexOf("\u8f6c\u4e49\u8fde\u63a5\u7b26") >= 0) {
+                                    var12_6 = var2_3.replace("\u8f6c\u4e49\u8fde\u63a5\u7b26", "&");
+                                }
+                                var1_1 = var3_4;
+                                if (var3_4.indexOf("\u8f6c\u4e49\u8fde\u63a5\u7b26") >= 0) {
+                                    var1_1 = var3_4.replace("\u8f6c\u4e49\u8fde\u63a5\u7b26", "&");
+                                }
+                                if ((var4_8 = var12_6.indexOf("[")) <= 0) break block92;
+                                var2_3 = var12_6.replaceAll(".*(\\[.*)", "$1");
+                                var12_6 = var12_6.replaceAll("\\[.*", "");
+                                break block93;
                             }
+                            var2_3 = "";
                         }
-                        if ((string10 = string2.replaceAll(cYh.d("497A0330243F51641D797F744D6F680D7E744D"), string9)).matches(cYh.d("497A6D0D33"))) {
-                            n2 = Integer.parseInt(string10.substring(string10.length() - 1, string10.length()));
-                            string10 = string10.substring(0, string10.length() - 2);
-                        } else {
-                            n2 = 1;
+                        var3_4 = var1_1;
+                        if (var1_1.indexOf("[") > 0) {
+                            var2_3 = var1_1.replaceAll(".*(\\[.*)", "$1");
+                            var3_4 = var1_1.replaceAll("\\[.*", "");
                         }
-                        boolean bl = string10.isEmpty();
-                        string6 = cYh.d("25313234616E4905131D0809261604B7FFFB82ECCE");
-                        string9 = cYh.d("25313234616E491E0E0E00082600A7F9F6BFDBDF");
-                        string5 = cYh.d("25313234616E491E0E0E071B2314081F10BCCFF1A4EDD8");
-                        if (bl) break block29;
-                        if (n2 == 2) {
-                            string2 = string9 = new String(Base64.decode((String)this.Z(string, string10, string3).get(0).trim(), (int)1));
-                            if (this.m) {
-                                Init.show(string5);
-                                string2 = string9;
-                            }
-                        } else if (n2 == 3) {
-                            string2 = new String(Base64.decode((String)this.Z(string, string10, string3).get(0).trim(), (int)2));
-                            if (this.m) {
-                                Init.show(string9);
-                            }
-                        } else if (n2 == 4) {
-                            string2 = string9 = new String(Base64.decode((String)this.Z(string, string10, string3).get(0).trim(), (int)8));
-                            if (this.m) {
-                                Init.show(string6);
-                                string2 = string9;
-                            }
-                        } else {
-                            string2 = "";
+                        if (!(var11_9 = var12_6.matches("-?\\d+"))) break block94;
+                        if (!var3_4.matches("-?\\d+")) break block94;
+                        var4_8 = var12_6.startsWith("-") != false ? var13_5.length() - Integer.parseInt(var12_6.replace("-", "")) : Integer.parseInt((String)var12_6) - 1;
+                        var5_10 = var3_4.startsWith("-") != false ? var13_5.length() - Integer.parseInt(var3_4.replace("-", "")) + 1 : Integer.parseInt((String)var3_4);
+                        var3_4 = var13_5.substring(var4_8, var5_10);
+                        var1_1 = var3_4;
+                        if (var2_3.indexOf("\u66ff\u6362") > 0) {
+                            var1_1 = this.c0((String)var2_3, (String)var3_4);
                         }
-                        if (n2 == 1) {
-                            string2 = new String(Base64.decode((String)this.Z(string, string10, string3).get(0).trim(), (int)0));
-                        }
-                        string3 = string2;
-                        if (string4.indexOf(string8) >= 0) break block30;
-                        string3 = string2;
-                        if (string4.indexOf(string7) <= 0) break block31;
-                        string3 = string2;
-                        break block30;
+                        var14_7.add((String)var1_1);
+                        return var14_7;
                     }
-                    if (n2 == 2) {
-                        string = string2 = new String(Base64.decode((String)string, (int)1));
-                        if (this.m) {
-                            Init.show(string5);
-                            string = string2;
-                        }
-                    } else if (n2 == 3) {
-                        string = string2 = new String(Base64.decode((String)string, (int)2));
-                        if (this.m) {
-                            Init.show(string9);
-                            string = string2;
-                        }
-                    } else if (n2 == 4) {
-                        string = string2 = new String(Base64.decode((String)string, (int)8));
-                        if (this.m) {
-                            Init.show(string6);
-                            string = string2;
-                        }
-                    } else {
-                        string = new String(Base64.decode((String)string, (int)0));
-                    }
-                    string3 = string;
-                    if (string4.indexOf(string8) >= 0) break block30;
-                    string3 = string;
-                    if (string4.indexOf(string7) <= 0) break block31;
-                    string3 = string;
+                    var12_6 = this.S((String)var12_6);
+                    var1_1 = this.S((String)var3_4);
+                    var12_6 = this.P((String)var12_6);
+                    var3_4 = this.P((String)var1_1);
+                    if (var12_6.indexOf("*") >= 0) break block95;
+                    var1_1 = this.j((String)var12_6);
+                    var4_8 = 1;
+                    ** GOTO lbl228
                 }
-                string3 = this.Z(string3, string4, "").get(0).trim();
+                if (var12_6.indexOf("**") >= 0) ** GOTO lbl210
+                var12_6 = var12_6.split("\\*");
+                var1_1 = this.j(this.g0((String)var12_6[0]));
+                var4_8 = 1;
+                while (true) {
+                    if (var4_8 >= ((CharSequence)var12_6).length) break;
+                    var15_12 = new StringBuilder();
+                    var15_12.append((String)var1_1);
+                    var15_12.append("([^>]*?)");
+                    var15_12.append(this.j(this.g0((String)var12_6[var4_8])));
+                    var1_1 = var15_12.toString();
+                    ++var4_8;
+                    continue;
+                    break;
+                }
+                var4_8 = ((CharSequence)var12_6).length;
+                ** GOTO lbl228
+lbl210:
+                // 1 sources
+
+                var12_6 = var12_6.split("\\*\\*");
+                var1_1 = this.j(this.g0((String)var12_6[0]));
+                var4_8 = 1;
+                while (true) {
+                    if (var4_8 >= ((CharSequence)var12_6).length) break;
+                    var15_12 = new StringBuilder();
+                    var15_12.append((String)var1_1);
+                    var15_12.append("([\\S\\s]*?)");
+                    var15_12.append(this.j(this.g0((String)var12_6[var4_8])));
+                    var1_1 = var15_12.toString();
+                    ++var4_8;
+                    continue;
+                    break;
+                }
+                try {
+                    var4_8 = ((CharSequence)var12_6).length;
+lbl228:
+                    // 3 sources
+
+                    var12_6 = new StringBuilder();
+                    var12_6.append((String)var1_1);
+                    var12_6.append("([\\S\\s]*?)");
+                    var12_6.append(this.j((String)var3_4));
+                    var1_1 = Pattern.compile(var12_6.toString()).matcher(var13_5);
+                    var5_11 = 0;
+                }
+                catch (Throwable var1_2) {
+                    if (this.m) {
+                        var2_3 = new StringBuilder();
+                        var2_3.append(this.G);
+                        var2_3.append("\u8c03\u8bd5->subContentExt\u51fa\u9519\uff1a");
+                        var2_3.append(var1_2.toString());
+                        Init.show(var2_3.toString());
+                    }
+                    if ((var2_3 = this.I) == null) break block96;
+                    var3_4 = com.github.catvod.spider.merge.ka.d.b("subContentExt()\u9519\u8bef-->");
+                    var3_4.append(var1_2.toString());
+                    var2_3.log(var3_4.toString());
+                }
+                while (true) {
+                    block99: {
+                        block103: {
+                            block100: {
+                                block110: {
+                                    block98: {
+                                        block109: {
+                                            block97: {
+                                                if (!var1_1.find()) break block96;
+                                                var12_6 = var1_1.group(var4_8);
+                                                var9_16 = var5_11 + 1;
+                                                var3_4 = new StringBuilder((String)var12_6);
+                                                var3_4.append("<\u5e8f\u53f7>");
+                                                var3_4.append(var9_16);
+                                                var12_6 = this.c0((String)var2_3, var3_4.toString());
+                                                var5_11 = var2_3.indexOf("[\u5305\u542b:");
+                                                if (var5_11 < 0) break block97;
+                                                var3_4 = this.S(var2_3.replaceAll(".*\\[\u5305\u542b:(.*?)\\].*", "$1"));
+                                                if (var3_4.isEmpty()) break block97;
+                                                var3_4 = var3_4.split("#");
+                                                var6_13 = ((CharSequence)var3_4).length;
+                                                for (var5_11 = 0; var5_11 < var6_13; ++var5_11) {
+                                                    var7_14 = var12_6.indexOf(this.g0(this.P((String)var3_4[var5_11])));
+                                                    if (var7_14 < 0) {
+                                                        continue;
+                                                    }
+                                                    break block97;
+                                                }
+                                                var6_13 = 0;
+                                                break block109;
+                                            }
+                                            var6_13 = 1;
+                                        }
+                                        if (var6_13 == 0) break block110;
+                                        var5_11 = var6_13;
+                                        if (var2_3.indexOf("[\u4e0d\u5305\u542b:") < 0) break block98;
+                                        var3_4 = this.S(var2_3.replaceAll(".*\\[\u4e0d\u5305\u542b:(.*?)\\].*", "$1"));
+                                        var5_11 = var6_13;
+                                        if (var3_4.isEmpty()) break block98;
+                                        var3_4 = var3_4.split("#");
+                                        var6_13 = ((CharSequence)var3_4).length;
+                                        for (var5_11 = 0; var5_11 < var6_13; ++var5_11) {
+                                            if (var12_6.indexOf(this.g0(this.P((String)var3_4[var5_11]))) < 0) continue;
+                                            var5_11 = 0;
+                                            break block98;
+                                        }
+                                        var5_11 = 1;
+                                    }
+                                    if (var5_11 != 0) ** GOTO lbl290
+                                }
+                                var14_7.add("\u4e0d\u8981");
+                                break block99;
+lbl290:
+                                // 1 sources
+
+                                if (var2_3.indexOf("[\u542b\u5e8f\u53f7:") < 0 || (var3_4 = var2_3.replaceAll(".*\\[\u542b\u5e8f\u53f7:(.*?)\\].*", "$1")).isEmpty()) break block100;
+                                var13_5 = var3_4.split("#");
+                                var10_17 = ((CharSequence)var13_5).length;
+                                var5_11 = 0;
+                                for (var6_13 = 0; var6_13 < var10_17; ++var6_13) {
+                                    block102: {
+                                        block101: {
+                                            var3_4 = var13_5[var6_13];
+                                            if (var3_4.indexOf("-") < 0) break block101;
+                                            var3_4 = var3_4.split("-");
+                                            var8_15 = Integer.parseInt((String)var3_4[0]);
+                                            while (true) {
+                                                var7_14 = var5_11;
+                                                if (var8_15 > Integer.parseInt((String)var3_4[1])) break block102;
+                                                if (var8_15 == var9_16) {
+                                                    var7_14 = 1;
+                                                    break block102;
+                                                }
+                                                ++var8_15;
+                                                continue;
+                                                break;
+                                            }
+                                        }
+                                        var8_15 = var4_8;
+                                        var7_14 = var5_11;
+                                        if (Integer.parseInt((String)var3_4) != var9_16) break block102;
+                                        var5_11 = 1;
+                                        var4_8 = var8_15;
+                                        break;
+                                    }
+                                    var5_11 = var7_14;
+                                }
+                            }
+                            if (var5_11 == 0) {
+                                while (true) {
+                                    var14_7.add("\u4e0d\u8981");
+                                    break block99;
+                                    break;
+                                }
+                            }
+                            var6_13 = var5_11;
+                            if (var2_3.indexOf("[\u4e0d\u542b\u5e8f\u53f7:") < 0) break block103;
+                            var3_4 = var2_3.replaceAll(".*\\[\u4e0d\u542b\u5e8f\u53f7:(.*?)\\].*", "$1");
+                            var6_13 = var5_11;
+                            if (var3_4.isEmpty()) break block103;
+                            var3_4 = var3_4.split("#");
+                            var10_17 = ((CharSequence)var3_4).length;
+                            var5_11 = 1;
+                            for (var6_13 = 0; var6_13 < var10_17; ++var6_13) {
+                                block105: {
+                                    block104: {
+                                        var13_5 = var3_4[var6_13];
+                                        if (var13_5.indexOf("-") < 0) break block104;
+                                        var13_5 = var13_5.split("-");
+                                        var8_15 = Integer.parseInt((String)var13_5[0]);
+                                        while (true) {
+                                            var7_14 = var5_11;
+                                            if (var8_15 > Integer.parseInt((String)var13_5[1])) break block105;
+                                            if (var8_15 == var9_16) {
+                                                var7_14 = 0;
+                                                break block105;
+                                            }
+                                            ++var8_15;
+                                            continue;
+                                            break;
+                                        }
+                                    }
+                                    var7_14 = var5_11;
+                                    if (Integer.parseInt((String)var13_5) != var9_16) break block105;
+                                    var6_13 = 0;
+                                    break block103;
+                                }
+                                var5_11 = var7_14;
+                            }
+                            var6_13 = var5_11;
+                        }
+                        if (var6_13 == 0) ** continue;
+                        var14_7.add((String)var12_6);
+                    }
+                    var5_11 = var9_16;
+                }
             }
-            arrayList.add(string3);
-            return arrayList;
+            if (var14_7.isEmpty()) {
+                var14_7.add("");
+            }
+            return var14_7;
         }
-        return this.Z(string, string2, string3);
+        var14_7.add((String)var13_5);
+        return var14_7;
     }
 
     static /* synthetic */ String c(XBPQ xBPQ) {
         return xBPQ.z;
     }
 
-    private ArrayList<String> c0(String string, String string2, String string3) {
-        block9: {
-            ArrayList<String> arrayList;
-            block12: {
-                String string4;
-                block11: {
-                    String string5;
-                    String string6;
-                    block10: {
-                        arrayList = new ArrayList<String>();
-                        if (string2.indexOf(cYh.d("12222D153239083424")) < 0) break block9;
-                        int n2 = string2.indexOf(cYh.d("250B"));
-                        String string7 = cYh.d("4361");
-                        String string8 = n2 >= 0 ? string2.replaceAll(cYh.d("497A69130B01497A7E0D0A73497A"), string7) : "";
-                        n2 = string2.indexOf(cYh.d("230B"));
-                        string6 = cYh.d("4176");
-                        CharSequence charSequence = n2 >= 0 ? string2.replaceAll(cYh.d("497A050D0C72497A7E780B07497A"), string7).replace(cYh.d("4473"), string6) : "";
-                        string5 = cYh.d("81CBFEB7DAF8");
-                        string4 = charSequence;
-                        if (charSequence != null) {
-                            string4 = charSequence;
-                            if (((String)charSequence).indexOf(string5) > 0) {
-                                string4 = com.github.catvod.spider.merge.b.n.a((String)charSequence, cYh.d("3A"));
-                            }
-                        }
-                        if ((string2 = string2.replaceAll(cYh.d("497A34233B1E02332E3532064F786F7B68733B796F7B"), string7)).isEmpty()) break block10;
-                        if (string2.indexOf(cYh.d("25313234616E")) >= 0) {
-                            string7 = cYh.d("4E");
-                            if (string8 != null && string8.length() >= 1) {
-                                charSequence = new StringBuilder();
-                                ((StringBuilder)charSequence).append(string2);
-                                ((StringBuilder)charSequence).append(string7);
-                                ((StringBuilder)charSequence).append(string8);
-                                string2 = ((StringBuilder)charSequence).toString();
-                            } else {
-                                string2 = com.github.catvod.spider.merge.b.n.a(string2, string7);
-                            }
-                        }
-                        string = string2 = URLDecoder.decode(this.b0(string, string2, string3).get(0).trim());
-                        if (string4.indexOf(string6) >= 0) break block11;
-                        string = string2;
-                        if (string4.indexOf(string5) <= 0) break block12;
-                        string = string2;
-                        break block11;
-                    }
-                    string = string2 = URLDecoder.decode(string);
-                    if (string4.indexOf(string6) >= 0) break block11;
-                    string = string2;
-                    if (string4.indexOf(string5) <= 0) break block12;
-                    string = string2;
-                }
-                string = this.Z(string, string4, "").get(0).trim();
+    /*
+     * Unable to fully structure code
+     * Could not resolve type clashes
+     */
+    private String c0(String var1_1, String var2_2) {
+        block65: {
+            block66: {
+                var6_4 /* !! */  = var2_2;
+                var8_5 = var2_2.replaceAll(".*<\u5e8f\u53f7>(.*)", "$1");
+                var6_4 /* !! */  = var2_2;
+                var2_2 = var2_2.replaceAll("<\u5e8f\u53f7>.*", "");
+                var7_6 = var2_2;
+                var6_4 /* !! */  = var2_2;
+                if (var1_1.indexOf("\u66ff\u6362") < 0) break block65;
+                var6_4 /* !! */  = var2_2;
+                var7_6 = var1_1.replaceAll(".*\\[\u4ec5?\u66ff\u6362[:\uff1a](.*?)\\].*", "$1");
+                var6_4 /* !! */  = var2_2;
+                if (var7_6.indexOf("##") < 0) break block66;
+                var6_4 /* !! */  = var2_2;
+                return this.a0((String)var2_2, var7_6.replace("##", "&&"), "").get(0).trim();
             }
-            arrayList.add(string);
-            return arrayList;
+            var6_4 /* !! */  = var2_2;
+            var8_5 = this.S((String)var7_6).replace("<\u5e8f\u53f7>", var8_5);
+            var7_6 = var2_2;
+            var6_4 /* !! */  = var2_2;
+            if (var8_5.isEmpty()) break block65;
+            var6_4 /* !! */  = var2_2;
+            var10_7 = var8_5.split("#");
+            var6_4 /* !! */  = var2_2;
+            try {
+                var4_8 = var10_7.length;
+                var3_9 = 0;
+            }
+            catch (Exception var2_3) {
+                if (this.m) {
+                    var7_6 = new StringBuilder();
+                    var7_6.append(this.G);
+                    var7_6.append("\u8c03\u8bd5->\u66ff\u6362\u51fa\u9519\uff0c\u8bf7\u68c0\u67e5\uff1a");
+                    var7_6.append(var1_1);
+                    var7_6.append("->");
+                    var7_6.append(var2_3.toString());
+                    Init.show(var7_6.toString());
+                }
+                if ((var1_1 = this.I) != null) {
+                    com.github.catvod.spider.merge.Dw.f.a(var2_3, com.github.catvod.spider.merge.ka.d.b("\u66ff\u6362tH()\u9519\u8bef\uff01-->"), (SpiderApi)var1_1);
+                }
+                return var6_4 /* !! */ ;
+            }
+            while (true) {
+                block74: {
+                    block70: {
+                        block73: {
+                            block72: {
+                                block71: {
+                                    block69: {
+                                        block68: {
+                                            block67: {
+                                                var7_6 = var2_2;
+                                                if (var3_9 >= var4_8) break;
+                                                var6_4 /* !! */  = var2_2;
+                                                var8_5 = this.P(var10_7[var3_9]);
+                                                var6_4 /* !! */  = var2_2;
+                                                var5_10 = var8_5.endsWith(">>");
+                                                var7_6 = var8_5;
+                                                if (!var5_10) break block67;
+                                                var6_4 /* !! */  = var2_2;
+                                                var6_4 /* !! */  = var2_2;
+                                                var7_6 = new StringBuilder();
+                                                var6_4 /* !! */  = var2_2;
+                                                var7_6.append((String)var8_5);
+                                                var6_4 /* !! */  = var2_2;
+                                                var7_6.append("\u7a7a");
+                                                var6_4 /* !! */  = var2_2;
+                                                var7_6 = var7_6.toString();
+                                            }
+                                            var6_4 /* !! */  = var2_2;
+                                            if (var7_6.indexOf(">>>") >= 0) break block68;
+                                            var6_4 /* !! */  = var2_2;
+                                            var8_5 = var7_6.split(">>")[0];
+                                            var6_4 /* !! */  = var2_2;
+                                            var7_6 = var7_6.split(">>")[1];
+                                            break block69;
+                                        }
+                                        var6_4 /* !! */  = var2_2;
+                                        var6_4 /* !! */  = var2_2;
+                                        var8_5 = new StringBuilder();
+                                        var6_4 /* !! */  = var2_2;
+                                        var8_5.append(var7_6.split(">>>")[0]);
+                                        var6_4 /* !! */  = var2_2;
+                                        var8_5.append(">");
+                                        var6_4 /* !! */  = var2_2;
+                                        var8_5 = var8_5.toString();
+                                        var6_4 /* !! */  = var2_2;
+                                        var7_6 = var7_6.split(">>>")[1];
+                                    }
+                                    var6_4 /* !! */  = var2_2;
+                                    var9_11 = this.h0((String)var7_6);
+                                    var6_4 /* !! */  = var2_2;
+                                    if (var8_5.indexOf("*") < 0) break block70;
+                                    var6_4 /* !! */  = var2_2;
+                                    if (var9_11.length() <= 0) break block70;
+                                    var7_6 = var9_11;
+                                    var6_4 /* !! */  = var2_2;
+                                    if (var9_11.equals("\u7a7a")) {
+                                        var7_6 = "";
+                                    }
+                                    var6_4 /* !! */  = var2_2;
+                                    var5_10 = var8_5.startsWith("*");
+                                    if (!var5_10) break block71;
+                                    var6_4 /* !! */  = var2_2;
+                                    var9_11 = this.g0(var8_5.substring(1, var8_5.length()));
+                                    var6_4 /* !! */  = var2_2;
+                                    var6_4 /* !! */  = var2_2;
+                                    var8_5 = new StringBuilder();
+                                    var6_4 /* !! */  = var2_2;
+                                    var8_5.append("[\\S\\s]*?");
+                                    var6_4 /* !! */  = var2_2;
+                                    var8_5.append(this.j(var9_11));
+lbl125:
+                                    // 2 sources
+
+                                    while (true) {
+                                        var6_4 /* !! */  = var2_2;
+                                        var9_11 = var8_5.toString();
+                                        var8_5 = var7_6;
+                                        var7_6 = var9_11;
+                                        break block72;
+                                        break;
+                                    }
+                                }
+                                var6_4 /* !! */  = var2_2;
+                                if (!var8_5.endsWith("*")) break block73;
+                                var6_4 /* !! */  = var2_2;
+                                var9_11 = this.g0(var8_5.substring(0, var8_5.length() - 1));
+                                var6_4 /* !! */  = var2_2;
+                                var6_4 /* !! */  = var2_2;
+                                var8_5 = new StringBuilder();
+                                var6_4 /* !! */  = var2_2;
+                                var8_5.append(this.j(var9_11));
+                                var6_4 /* !! */  = var2_2;
+                                var8_5.append("[\\S\\s]*");
+                                ** continue;
+                            }
+lbl153:
+                            // 3 sources
+
+                            while (true) {
+                                var6_4 /* !! */  = var2_2;
+                                var7_6 = var2_2.replaceAll((String)var7_6, (String)var8_5);
+                                break block74;
+                                break;
+                            }
+                        }
+                        var6_4 /* !! */  = var2_2;
+                        var9_11 = this.g0(var8_5.split("\\*")[0]);
+                        var6_4 /* !! */  = var2_2;
+                        var11_12 = this.g0(var8_5.split("\\*")[1]);
+                        var6_4 /* !! */  = var2_2;
+                        var6_4 /* !! */  = var2_2;
+                        var8_5 = new StringBuilder();
+                        var6_4 /* !! */  = var2_2;
+                        var8_5.append(this.j(var9_11));
+                        var6_4 /* !! */  = var2_2;
+                        var8_5.append("[\\S\\s]*?");
+                        var6_4 /* !! */  = var2_2;
+                        var8_5.append(this.j(var11_12));
+                        var6_4 /* !! */  = var2_2;
+                        var9_11 = var8_5.toString();
+                        var8_5 = var7_6;
+                        var7_6 = var9_11;
+                        ** GOTO lbl153
+                    }
+                    var7_6 = var2_2;
+                    var6_4 /* !! */  = var2_2;
+                    if (var9_11.length() <= 0) break block74;
+                    var6_4 /* !! */  = var2_2;
+                    if (var8_5.equals("\u7a7a")) {
+                        return var9_11;
+                    }
+                    var7_6 = var9_11;
+                    var6_4 /* !! */  = var2_2;
+                    if (var9_11.equals("\u7a7a")) {
+                        var7_6 = "";
+                    }
+                    var6_4 /* !! */  = var2_2;
+                    var9_11 = this.j(this.g0((String)var8_5));
+                    var8_5 = var7_6;
+                    var7_6 = var9_11;
+                    ** continue;
+                }
+                ++var3_9;
+                var2_2 = var7_6;
+            }
         }
-        return this.b0(string, string2, string3);
+        return var7_6;
     }
 
     static /* synthetic */ String d(XBPQ xBPQ, String string) {
         xBPQ.z = string;
         return string;
+    }
+
+    private ArrayList<String> d0(String string, String string2, String string3) {
+        block28: {
+            ArrayList<String> arrayList;
+            block31: {
+                String string4;
+                block30: {
+                    int n2;
+                    block29: {
+                        arrayList = new ArrayList<String>();
+                        if (string2.indexOf("Base64") < 0) break block28;
+                        String string5 = string2.indexOf("B[") >= 0 ? string2.replaceAll(".*B\\[(.*?)\\].*", "$1").replace("##", "&&") : "";
+                        string4 = string5;
+                        if (string5 != null) {
+                            string4 = string5;
+                            if (string5.indexOf("\u66ff\u6362") > 0) {
+                                string4 = com.github.catvod.spider.merge.dp.n.a(string5, "]");
+                            }
+                        }
+                        if ((string5 = string2.replaceAll(".*Base64\\((.*?)\\).*", "$1")).matches(".*,\\d")) {
+                            n2 = Integer.parseInt(string5.substring(string5.length() - 1, string5.length()));
+                            string5 = string5.substring(0, string5.length() - 2);
+                        } else {
+                            n2 = 1;
+                        }
+                        if (string5.isEmpty()) break block29;
+                        if (n2 == 2) {
+                            String string6;
+                            string2 = string6 = new String(Base64.decode((String)this.b0(string, string5, string3).get(0).trim(), (int)1));
+                            if (this.m) {
+                                Init.show("Base64.NO_PADDING\u6a21\u5f0f");
+                                string2 = string6;
+                            }
+                        } else if (n2 == 3) {
+                            string2 = new String(Base64.decode((String)this.b0(string, string5, string3).get(0).trim(), (int)2));
+                            if (this.m) {
+                                Init.show("Base64.NO_WRAP\u6a21\u5f0f");
+                            }
+                        } else if (n2 == 4) {
+                            String string7;
+                            string2 = string7 = new String(Base64.decode((String)this.b0(string, string5, string3).get(0).trim(), (int)8));
+                            if (this.m) {
+                                Init.show("Base64.URL_SAFE\u6a21\u5f0f");
+                                string2 = string7;
+                            }
+                        } else {
+                            string2 = "";
+                        }
+                        if (n2 == 1) {
+                            string2 = new String(Base64.decode((String)this.b0(string, string5, string3).get(0).trim(), (int)0));
+                        }
+                        string3 = string2;
+                        if (string4.indexOf("&&") >= 0) break block30;
+                        string3 = string2;
+                        if (string4.indexOf("\u66ff\u6362") <= 0) break block31;
+                        string3 = string2;
+                        break block30;
+                    }
+                    if (n2 == 2) {
+                        string = string2 = new String(Base64.decode((String)string, (int)1));
+                        if (this.m) {
+                            Init.show("Base64.NO_PADDING\u6a21\u5f0f");
+                            string = string2;
+                        }
+                    } else if (n2 == 3) {
+                        string = string2 = new String(Base64.decode((String)string, (int)2));
+                        if (this.m) {
+                            Init.show("Base64.NO_WRAP\u6a21\u5f0f");
+                            string = string2;
+                        }
+                    } else if (n2 == 4) {
+                        string = string2 = new String(Base64.decode((String)string, (int)8));
+                        if (this.m) {
+                            Init.show("Base64.URL_SAFE\u6a21\u5f0f");
+                            string = string2;
+                        }
+                    } else {
+                        string = new String(Base64.decode((String)string, (int)0));
+                    }
+                    string3 = string;
+                    if (string4.indexOf("&&") >= 0) break block30;
+                    string3 = string;
+                    if (string4.indexOf("\u66ff\u6362") <= 0) break block31;
+                    string3 = string;
+                }
+                string3 = this.b0(string3, string4, "").get(0).trim();
+            }
+            arrayList.add(string3);
+            return arrayList;
+        }
+        return this.b0(string, string2, string3);
     }
 
     /*
@@ -2067,96 +2337,99 @@ lbl140:
      * Enabled aggressive exception aggregation
      */
     private JSONObject e(String var1_1, String var2_4, boolean var3_5, HashMap<String, String> var4_6) {
-        block26: {
-            block25: {
-                var9_7 = cYh.d("57");
-                var14_8 = cYh.d("0C60");
-                var13_9 = cYh.d("04");
+        block31: {
+            block30: {
                 this.x = "";
-                var8_10 = this.x((String)var1_1, (String)var2_4, var3_5, (HashMap<String, String>)var4_6 /* !! */ );
-                var7_11 /* !! */  = new JSONArray();
-                {
-                    catch (JSONException var1_3) {
-                        if (this.m) {
-                            var2_4 = new StringBuilder();
-                            var2_4.append(this.G);
-                            var2_4.append(cYh.d("8FE0C2B9F8CF4A6E2230233F003F3328B2DDDDB9D5C8B8E6FD"));
-                            var2_4.append(var1_3.toString());
-                            Init.show(var2_4.toString());
+                var7_7 = this.w.length() < 1 ? this.A((String)var1_1, (String)var2_4, var3_5, (HashMap<String, String>)var4_6) : null;
+                var6_8 = new JSONArray();
+                if (var7_7 != null) {
+                    var6_8 = var7_7.getJSONArray("list");
+                }
+                var5_9 = var6_8.length();
+                var8_10 /* !! */  = var7_7;
+                if (var5_9 < 1) {
+                    var8_10 /* !! */  = var7_7;
+                    if (!"<div&&</div>".equals(this.w)) {
+                        if (this.w.length() < 1) {
+                            if ("\u641c\u7d22".equals(this.r) && this.s.indexOf("k0") >= 0) {
+                                this.s = this.s.replace("k0", "");
+                            }
+                            if (this.s.indexOf("c") < 0) {
+                                var7_7 = new StringBuilder();
+                                var7_7.append(this.s);
+                                var7_7.append("c");
+                                this.s = var7_7.toString();
+                            }
+                            if ((var7_7 = this.I) != null) {
+                                var7_7.log("\u81ea\u52a8\u6a21\u5f0f<li>\u672a\u622a\u53d6\u5230\u6570\u636e\uff0c\u5c1d\u8bd5\u7528<a>\u518d\u622a\u53d6\u4e00\u6b21");
+                            }
+                            this.w = "<a&&</a>";
                         }
-                        if ((var4_6 /* !! */  = this.I) != null) {
-                            var2_4 = com.github.catvod.spider.merge.d.d.b(cYh.d("04313534303515296978BECEFEB8EEFEB8E6E67D6C6F"));
-                            var2_4.append(var1_3.toString());
-                            var4_6 /* !! */ .log(var2_4.toString());
-                        }
-                        this.x = "";
-                        return null;
+                        var8_10 /* !! */  = this.A((String)var1_1, (String)var2_4, var3_5, (HashMap<String, String>)var4_6);
                     }
                 }
-                var12_12 = cYh.d("0B393225");
-                if (var8_10 == null) ** GOTO lbl29
-                var7_11 /* !! */  = var8_10.getJSONArray(var12_12);
-lbl29:
-                // 2 sources
-
-                var5_13 = var7_11 /* !! */ .length();
-                var11_14 = cYh.d("5B3167776B75066E");
-                var10_15 = cYh.d("81C0DDB6E3F8");
-                var6_16 = var8_10;
-                if (var5_13 >= 1) ** GOTO lbl50
-                var6_16 = var8_10;
-                if (this.w.length() < 1) {
-                    if (var10_15.equals(this.r) && this.s.indexOf(var14_8) >= 0) {
-                        this.s = this.s.replace(var14_8, "");
+                var7_7 = var6_8;
+                if (var8_10 /* !! */  != null) {
+                    var7_7 = var6_8;
+                    if (var6_8.length() < 1) {
+                        var7_7 = var8_10 /* !! */ .getJSONArray("list");
                     }
-                    if (this.s.indexOf(var13_9) < 0) {
-                        var6_16 = new StringBuilder();
-                        var6_16.append(this.s);
-                        var6_16.append(var13_9);
-                        this.s = var6_16.toString();
-                    }
-                    if ((var6_16 = this.I) != null) {
-                        var6_16.log(cYh.d("8FD7EBB4DDF281F8E0B4EBD55B3C286FB1C6CDB6C9FBB2D5F1B5C9E1B1CFD7B6CCFFB8E6EBB5F1CCBFF5F2B7D5F96B3B59B5C7DCB1D2CDB5CEC7B3E2E7B6EDF0"));
-                    }
-                    this.w = var11_14;
-                    var6_16 = this.x((String)var1_1, (String)var2_4, var3_5, (HashMap<String, String>)var4_6 /* !! */ );
                 }
-lbl50:
-                // 4 sources
-
-                var8_10 = var7_11 /* !! */ ;
-                if (var6_16 != null) {
-                    var8_10 = var6_16.getJSONArray(var12_12);
-                }
-                var7_11 /* !! */  = var6_16;
-                if (var8_10.length() < 1) {
-                    var7_11 /* !! */  = var6_16;
-                    if (var11_14.equals(this.w)) {
-                        var6_16 = this.I;
-                        if (var6_16 != null) {
-                            var6_16.log(cYh.d("8FD7EBB4DDF281F8E0B4EBD55B317FB7CBF081D8EBB4D8CC82D8F1B7C2EA81DDEFBEEBD682E0DCB9F8CF80C4E96D3333116EA4D7DABCEFFAA4DEC1BEDFD0A7FDF6"));
+                if (var7_7.length() < 1) {
+                    if (!"<div&&</div>".equals(this.w)) {
+                        var6_8 = this.I;
+                        if (var6_8 != null) {
+                            var6_8.log("\u81ea\u52a8\u6a21\u5f0f<a>\u672a\u622a\u53d6\u5230\u6570\u636e\uff0c\u5c1d\u8bd5\u7528<div>\u518d\u622a\u53d6\u4e00\u6b21");
                         }
-                        this.w = cYh.d("5B342827717C5B7F25382164");
-                        var1_1 = this.x((String)var1_1, (String)var2_4, var3_5, (HashMap<String, String>)var4_6 /* !! */ );
-                        var7_11 /* !! */  = var1_1;
-                        if (var10_15.equals(this.r)) {
-                            this.w = "";
-                            var7_11 /* !! */  = var1_1;
-                        }
+                        this.w = "<div&&</div>";
+                    }
+                    var1_1 = this.A((String)var1_1, (String)var2_4, var3_5, (HashMap<String, String>)var4_6);
+                    var8_10 /* !! */  = var1_1;
+                    if ("\u641c\u7d22".equals(this.r)) {
+                        this.w = "";
+                        var8_10 /* !! */  = var1_1;
                     }
                 }
-                if ((var2_4 = this.B(cYh.d("81E5CEB9F0D282C9E9"))).length() < 1 && this.s.indexOf(cYh.d("2B")) >= 0) break block25;
+                var1_1 = var7_7;
+                if (var8_10 /* !! */  != null) {
+                    var1_1 = var7_7;
+                    if (var7_7.length() < 1) {
+                        var1_1 = var8_10 /* !! */ .getJSONArray("list");
+                    }
+                }
+                if (var1_1.length() < 1 && this.w.length() > 0) {
+                    this.w = "";
+                }
+                if ((var2_4 = this.E("\u6d4f\u89c8\u5668")).length() < 1 && this.s.indexOf("L") >= 0) break block30;
                 var1_1 = var2_4;
-                if (!cYh.d("56").equals(var2_4)) break block26;
+                if (!"1".equals(var2_4)) break block31;
             }
             var1_1 = this.f;
         }
-        var2_4 = this.n((String)var1_1);
-        if (var10_15.equals(this.r) || !var1_1.startsWith(cYh.d("0F243521")) || (var3_5 = var9_7.equals(this.A))) ** GOTO lbl98
+        var4_6 = this.o((String)var1_1);
+        if ("\u641c\u7d22".equals(this.r) || !var1_1.startsWith("http") || (var3_5 = "0".equals(this.A))) ** GOTO lbl98
+        {
+            catch (JSONException var1_3) {
+                if (this.m) {
+                    var2_4 = new StringBuilder();
+                    var2_4.append(this.G);
+                    var2_4.append("\u8c03\u8bd5->category\u51fa\u9519\uff1a");
+                    var2_4.append(var1_3.toString());
+                    Init.show(var2_4.toString());
+                }
+                if ((var2_4 = this.I) != null) {
+                    var4_6 = com.github.catvod.spider.merge.ka.d.b("category()\u9519\u8bef\uff01-->");
+                    var4_6.append(var1_3.toString());
+                    var2_4.log(var4_6.toString());
+                }
+                this.x = "";
+                return null;
+            }
+        }
         try {
-            var4_6 /* !! */  = new a(this, (String)var1_1, (String)var2_4);
-            Init.run((Runnable)var4_6 /* !! */ , 200);
-            if (!var9_7.equals(this.A)) {
+            var2_4 = new XBPQa(this, (String)var1_1, (String)var4_6);
+            Init.run((Runnable)var2_4, 200);
+            if (!"0".equals(this.A)) {
                 this.A = "";
             }
             ** GOTO lbl98
@@ -2165,37 +2438,287 @@ lbl50:
             if (this.m) {
                 var2_4 = new StringBuilder();
                 var2_4.append(this.G);
-                var2_4.append(cYh.d("8FE0C2B9F8CF4A6EA4D7D2BDDAFEA7E4D8B2C0D8A4C8FFB2D8C0A9F0DBBFE0EAA8C5CEB5DBCA"));
+                var2_4.append("\u8c03\u8bd5->\u5185\u7f6e\u6d4f\u89c8\u5668\u8fd0\u884c\u51fa\u9519\uff1a");
                 var2_4.append(var1_2.toString());
                 Init.show(var2_4.toString());
             }
-            if ((var4_6 /* !! */  = this.I) != null) {
-                var2_4 = new StringBuilder();
-                var2_4.append(cYh.d("82D6C4B6EAF481E5CEB9F0D282C9E9B9E8CA8FF1CD797EB3F3C9A9FEF8B5DBD16C7C69"));
-                var2_4.append(var1_2.toString());
-                var4_6 /* !! */ .log(var2_4.toString());
+            if ((var2_4 = this.I) != null) {
+                var4_6 = new StringBuilder();
+                var4_6.append("\u5185\u7f6e\u6d4f\u89c8\u5668\u8fd0\u884c()\u9519\u8bef\uff01-->");
+                var4_6.append(var1_2.toString());
+                var2_4.log(var4_6.toString());
             }
 lbl98:
             // 5 sources
 
             this.x = "";
-            return var7_11 /* !! */ ;
+            return var8_10 /* !! */ ;
         }
     }
 
-    private String e0(String string) {
-        String string2 = cYh.d("8FEDEDB5EED381C8DEB4D8ED");
-        String string3 = string;
-        if (string.indexOf(string2) >= 0) {
-            string3 = string.replace(string2, cYh.d("4D"));
+    private ArrayList<String> e0(String string, String string2, String string3) {
+        block9: {
+            ArrayList<String> arrayList;
+            block12: {
+                String string4;
+                block11: {
+                    block10: {
+                        arrayList = new ArrayList<String>();
+                        if (string2.indexOf("urlDecode") < 0) break block9;
+                        String string5 = string2.indexOf("B[") >= 0 ? string2.replaceAll(".*(B\\[.*?\\]).*", "$1") : "";
+                        CharSequence charSequence = string2.indexOf("D[") >= 0 ? string2.replaceAll(".*D\\[(.*?)\\].*", "$1").replace("##", "&&") : "";
+                        string4 = charSequence;
+                        if (charSequence != null) {
+                            string4 = charSequence;
+                            if (((String)charSequence).indexOf("\u66ff\u6362") > 0) {
+                                string4 = com.github.catvod.spider.merge.dp.n.a((String)charSequence, "]");
+                            }
+                        }
+                        if ((string2 = string2.replaceAll(".*urlDecode\\((.*?)\\).*", "$1")).isEmpty()) break block10;
+                        if (string2.indexOf("Base64") >= 0) {
+                            if (string5 != null && string5.length() >= 1) {
+                                charSequence = new StringBuilder();
+                                ((StringBuilder)charSequence).append(string2);
+                                ((StringBuilder)charSequence).append(")");
+                                ((StringBuilder)charSequence).append(string5);
+                                string2 = ((StringBuilder)charSequence).toString();
+                            } else {
+                                string2 = com.github.catvod.spider.merge.dp.n.a(string2, ")");
+                            }
+                        }
+                        string = string2 = URLDecoder.decode(this.d0(string, string2, string3).get(0).trim());
+                        if (string4.indexOf("&&") >= 0) break block11;
+                        string = string2;
+                        if (string4.indexOf("\u66ff\u6362") <= 0) break block12;
+                        string = string2;
+                        break block11;
+                    }
+                    string = string2 = URLDecoder.decode(string);
+                    if (string4.indexOf("&&") >= 0) break block11;
+                    string = string2;
+                    if (string4.indexOf("\u66ff\u6362") <= 0) break block12;
+                    string = string2;
+                }
+                string = this.b0(string, string4, "").get(0).trim();
+            }
+            arrayList.add(string);
+            return arrayList;
         }
-        return string3;
+        return this.d0(string, string2, string3);
     }
 
-    private String f0(String object) {
-        String string;
+    private String fixCover(String string, String string2) {
+        try {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("proxy://do=xbpq&site=");
+            stringBuilder.append(string2);
+            stringBuilder.append("&pic=");
+            stringBuilder.append(string);
+            stringBuilder.append("&sourcekey=");
+            stringBuilder.append(this.E("\u6307\u5b9a\u4ee3\u7406"));
+            string2 = stringBuilder.toString();
+            return string2;
+        }
+        catch (Exception exception) {
+            Object object;
+            if (this.m) {
+                object = new StringBuilder();
+                ((StringBuilder)object).append(this.G);
+                ((StringBuilder)object).append("\u8c03\u8bd5->fixCover\u51fa\u9519\uff1a");
+                ((StringBuilder)object).append(((Object)exception).toString());
+                Init.show(((StringBuilder)object).toString());
+            }
+            if ((object = this.I) != null) {
+                com.github.catvod.spider.merge.Dw.f.a(exception, com.github.catvod.spider.merge.ka.d.b("fixCover()\u9519\u8bef-->"), (SpiderApi)object);
+            }
+            return string;
+        }
+    }
+
+    private String g(String string) {
+        String string2;
+        block6: {
+            String string3;
+            String string4;
+            block9: {
+                block8: {
+                    block7: {
+                        string2 = string4 = "";
+                        if (string == null) break block6;
+                        if (string.length() >= 1) break block7;
+                        string2 = string4;
+                        break block6;
+                    }
+                    string3 = string.trim();
+                    if (string3.startsWith("\uff1a")) break block8;
+                    string = string3;
+                    if (!string3.startsWith(":")) break block9;
+                }
+                string = string3.substring(1, string3.length());
+            }
+            while (true) {
+                string3 = string;
+                if (!string.startsWith("/")) break;
+                string = string.substring(1, string.length()).trim();
+            }
+            while (string3.endsWith("/")) {
+                string3 = string3.substring(0, string3.length() - 1).trim();
+            }
+            string2 = string4;
+            if (!"\u672a\u77e5".equals(string3)) {
+                string2 = "\u5185\u8be6".equals(string3) ? string4 : string3;
+            }
+        }
+        return string2;
+    }
+
+    private String g0(String string) {
+        String string2 = string;
+        if (string.indexOf("\u8f6c\u4e49\u661f\u53f7") >= 0) {
+            string2 = string.replace("\u8f6c\u4e49\u661f\u53f7", "*");
+        }
+        return string2;
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    private JSONArray h(String charSequence, String charSequence2, String string, String string2, String string3, String string4, String string5) {
+        String string6 = "\u65f6\u957f";
+        try {
+            JSONArray jSONArray;
+            block58: {
+                block57: {
+                    int n2;
+                    block56: {
+                        block55: {
+                            block54: {
+                                block53: {
+                                    block52: {
+                                        block51: {
+                                            block50: {
+                                                block49: {
+                                                    block48: {
+                                                        block47: {
+                                                            block46: {
+                                                                block45: {
+                                                                    block44: {
+                                                                        block43: {
+                                                                            block42: {
+                                                                                block41: {
+                                                                                    block40: {
+                                                                                        block39: {
+                                                                                            jSONArray = new JSONArray();
+                                                                                            n2 = ((String)charSequence).indexOf("$");
+                                                                                            if (n2 < 0) break block39;
+                                                                                            charSequence = this.D("cateId", "\u7c7b\u578b", (String)charSequence, "");
+                                                                                            break block40;
+                                                                                        }
+                                                                                        if (((String)charSequence).indexOf("&") < 0) break block41;
+                                                                                        charSequence = this.D("cateId", "\u7c7b\u578b", (String)charSequence, this.G("\u7c7b\u578b\u503c", "\u7b5b\u9009\u5b50\u5206\u7c7b\u66ff\u6362\u8bcd", ""));
+                                                                                    }
+                                                                                    jSONArray.put((Object)charSequence);
+                                                                                }
+                                                                                if ((n2 = ((String)charSequence2).indexOf("$")) < 0) break block42;
+                                                                                charSequence = this.D("class", "\u5267\u60c5", (String)charSequence2, "");
+                                                                                break block43;
+                                                                            }
+                                                                            if (((String)charSequence2).indexOf("&") < 0) break block44;
+                                                                            charSequence = this.D("class", "\u5267\u60c5", (String)charSequence2, this.G("\u5267\u60c5\u503c", "\u7b5b\u9009\u7c7b\u578b\u66ff\u6362\u8bcd", ""));
+                                                                        }
+                                                                        jSONArray.put((Object)charSequence);
+                                                                    }
+                                                                    if ((n2 = string.indexOf("$")) < 0) break block45;
+                                                                    charSequence = this.D("area", "\u5730\u533a", string, "");
+                                                                    break block46;
+                                                                }
+                                                                if (string.indexOf("&") < 0) break block47;
+                                                                charSequence = this.D("area", "\u5730\u533a", string, this.G("\u5730\u533a\u503c", "\u7b5b\u9009\u5730\u533a\u66ff\u6362\u8bcd", ""));
+                                                            }
+                                                            jSONArray.put((Object)charSequence);
+                                                        }
+                                                        if ((n2 = string2.indexOf("$")) < 0) break block48;
+                                                        charSequence = this.D("lang", "\u8bed\u8a00", string2, "");
+                                                        break block49;
+                                                    }
+                                                    if (string2.indexOf("&") < 0) break block50;
+                                                    charSequence = this.D("lang", "\u8bed\u8a00", string2, this.G("\u8bed\u8a00\u503c", "\u7b5b\u9009\u8bed\u8a00\u66ff\u6362\u8bcd", ""));
+                                                }
+                                                jSONArray.put((Object)charSequence);
+                                            }
+                                            if (string3.indexOf("-") < 0 || string3.indexOf("--") >= 0) {
+                                                charSequence = string3;
+                                            } else {
+                                                int n3 = Integer.parseInt(string3.split("-")[1]);
+                                                int n4 = Integer.parseInt(string3.split("-")[0]);
+                                                n2 = n3;
+                                                int n5 = n4;
+                                                if (n4 > n3) {
+                                                    n5 = n3;
+                                                    n2 = n4;
+                                                }
+                                                charSequence = new StringBuilder();
+                                                while (n2 >= n5) {
+                                                    if (n2 == n5) {
+                                                        ((StringBuilder)charSequence).append(String.valueOf(n2));
+                                                    } else {
+                                                        ((StringBuilder)charSequence).append(String.valueOf(n2));
+                                                        ((StringBuilder)charSequence).append("&");
+                                                    }
+                                                    --n2;
+                                                }
+                                                charSequence = ((StringBuilder)charSequence).toString();
+                                            }
+                                            charSequence2 = this.E("\u65f6\u957f").length() > 0 ? string6 : "\u5e74\u4efd";
+                                            n2 = ((String)charSequence).indexOf("$");
+                                            if (n2 < 0) break block51;
+                                            charSequence = this.D("year", (String)charSequence2, (String)charSequence, "");
+                                            break block52;
+                                        }
+                                        if (((String)charSequence).indexOf("&") < 0) break block53;
+                                        charSequence = this.D("year", (String)charSequence2, (String)charSequence, this.H("\u5e74\u4efd\u503c", "\u65f6\u957f\u503c", "\u7b5b\u9009\u5e74\u4efd\u66ff\u6362\u8bcd", ""));
+                                    }
+                                    jSONArray.put((Object)charSequence);
+                                }
+                                if ((n2 = string4.indexOf("$")) < 0) break block54;
+                                charSequence = this.D("letter", "\u5b57\u6bcd", string4, "");
+                                break block55;
+                            }
+                            if (string4.indexOf("&") < 0) break block56;
+                            charSequence = this.D("letter", "\u5b57\u6bcd", string4, this.G("\u5b57\u6bcd\u503c", "\u7b5b\u9009\u5b57\u6bcd\u66ff\u6362\u8bcd", ""));
+                        }
+                        jSONArray.put((Object)charSequence);
+                    }
+                    charSequence = "";
+                    n2 = string5.indexOf("$");
+                    if (n2 >= 0) break block57;
+                    if (string5.indexOf("&") < 0) break block58;
+                    charSequence = this.G("\u6392\u5e8f\u503c", "\u7b5b\u9009\u6392\u5e8f\u66ff\u6362\u8bcd", "");
+                }
+                charSequence = this.D("by", "\u6392\u5e8f", string5, (String)charSequence);
+                jSONArray.put((Object)charSequence);
+            }
+            return jSONArray;
+        }
+        catch (Exception exception) {
+            if (this.m) {
+                charSequence2 = new StringBuilder();
+                ((StringBuilder)charSequence2).append(this.G);
+                ((StringBuilder)charSequence2).append("\u8c03\u8bd5->creatFilter\u51fa\u9519\uff1a");
+                ((StringBuilder)charSequence2).append(((Object)exception).toString());
+                Init.show(((StringBuilder)charSequence2).toString());
+            }
+            if ((charSequence2 = this.I) != null) {
+                com.github.catvod.spider.merge.Dw.f.a(exception, com.github.catvod.spider.merge.ka.d.b("creatFilter()\u9519\u8bef-->"), (SpiderApi)charSequence2);
+            }
+            return null;
+        }
+    }
+
+    private String h0(String object) {
         block8: {
-            string = cYh.d("3B7A");
             try {
                 if (((String)object).length() >= 0) break block8;
                 return "";
@@ -2205,723 +2728,557 @@ lbl98:
                 if (this.m) {
                     object2 = new StringBuilder();
                     ((StringBuilder)object2).append(this.G);
-                    ((StringBuilder)object2).append(cYh.d("8FE0C2B9F8CF4A6EA7CAE8BCEAF2A7D9FDBFE8C6A4D6EDB3F3C9AEEDCD"));
+                    ((StringBuilder)object2).append("\u8c03\u8bd5->\u66ff\u6362\u622a\u53d6\u51fa\u9519\uff1a");
                     ((StringBuilder)object2).append(((Object)exception).toString());
                     Init.show(((StringBuilder)object2).toString());
                 }
                 if ((object2 = this.I) != null) {
-                    com.github.catvod.spider.merge.i.b.a(exception, com.github.catvod.spider.merge.d.d.b(cYh.d("81CBFEB7DAF881D8EBB4D8CC1F381224351912246978BECEFEB8EEFEB8E6E67D6C6F")), (SpiderApi)object2);
+                    com.github.catvod.spider.merge.Dw.f.a(exception, com.github.catvod.spider.merge.ka.d.b("\u66ff\u6362\u622a\u53d6xhSubCut()\u9519\u8bef\uff01-->"), (SpiderApi)object2);
                 }
                 return "";
             }
         }
-        if (((String)object).indexOf(cYh.d("4D")) < 0) {
-            return this.e0((String)object);
+        if (((String)object).indexOf("*") < 0) {
+            return this.g0((String)object);
         }
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(this.i(this.e0(((String)object).split(string)[0])));
-        stringBuilder.append(cYh.d("4F0B1D020B293A7A7E78"));
-        stringBuilder.append(this.i(this.e0(((String)object).split(string)[1])));
+        stringBuilder.append(this.j(this.g0(((String)object).split("\\*")[0])));
+        stringBuilder.append("([\\S\\s]*?)");
+        stringBuilder.append(this.j(this.g0(((String)object).split("\\*")[1])));
         object = Pattern.compile(stringBuilder.toString()).matcher(this.x);
         if (((Matcher)object).find()) {
-            return ((Matcher)object).group(1).replaceAll(cYh.d("3B76626E0C3B4A2A007C0D6A4A691C2A667656603C6A"), "").replaceAll(cYh.d("5B0B1F6F0A7059"), "").replaceAll(cYh.d("3C6E7D0C"), "").trim();
+            return ((Matcher)object).group(1).replaceAll("\\&#?[a-zA-Z0-9]{1,10};", "").replaceAll("<[^>]*>", "").replaceAll("[><]", "").trim();
         }
         if (this.m) {
-            Init.show(cYh.d("81CBFEB7DAF881CCEBB9D9ED82DFD7B4DFEA81CCC8B7C2D281D8EBB4D8CC82D6C4B4F9E3"));
+            Init.show("\u66ff\u6362\u672a\u83b7\u53d6\u5230\u6709\u6548\u622a\u53d6\u5185\u5bb9");
         }
         return "";
     }
 
-    private String fixCover(String string, String string2) {
-        try {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append(cYh.d("17222E292E60487F253E6A2205203077243313357C"));
-            stringBuilder.append(string2);
-            stringBuilder.append(cYh.d("412028326A"));
-            stringBuilder.append(string);
-            stringBuilder.append(cYh.d("41232E242539023B24286A"));
-            stringBuilder.append(this.B(cYh.d("81DCC6B4F9C083EBE2B6C7DC")));
-            string2 = stringBuilder.toString();
-            return string2;
-        }
-        catch (Exception exception) {
-            Object object;
-            if (this.m) {
-                object = new StringBuilder();
-                ((StringBuilder)object).append(this.G);
-                ((StringBuilder)object).append(cYh.d("8FE0C2B9F8CF4A6E27382F1908262423B2DDDDB9D5C8B8E6FD"));
-                ((StringBuilder)object).append(((Object)exception).toString());
-                Init.show(((StringBuilder)object).toString());
-            }
-            if ((object = this.I) != null) {
-                com.github.catvod.spider.merge.i.b.a(exception, com.github.catvod.spider.merge.d.d.b(cYh.d("01393912382C02226978BECEFEB8EEFE7A7759")), (SpiderApi)object);
-            }
-            return string;
-        }
-    }
-
-    /*
-     * Unable to fully structure code
-     */
-    private JSONArray g(String var1_1, String var2_3, String var3_4, String var4_5, String var5_6) {
-        block44: {
-            block43: {
-                block42: {
-                    block41: {
-                        block33: {
-                            block32: {
-                                block30: {
-                                    block31: {
-                                        block39: {
-                                            block38: {
-                                                block37: {
-                                                    block36: {
-                                                        block35: {
-                                                            block34: {
-                                                                var10_7 = cYh.d("81C7F7B8C2E5");
-                                                                var14_8 = cYh.d("4A");
-                                                                var13_9 = cYh.d("43");
-                                                                var11_10 = new JSONArray();
-                                                                var6_11 = var1_1.indexOf(var13_9);
-                                                                var15_12 = cYh.d("80E1FAB4C9D1");
-                                                                var16_13 = cYh.d("043135341E3E");
-                                                                var12_14 = cYh.d("41");
-                                                                if (var6_11 < 0) ** GOTO lbl14
-                                                                var1_1 = this.A(var16_13, var15_12, (String)var1_1, "");
-                                                                break block34;
-lbl14:
-                                                                // 1 sources
-
-                                                                if (var1_1.indexOf(var12_14) < 0) break block35;
-                                                                var1_1 = this.A(var16_13, var15_12, (String)var1_1, this.D(cYh.d("80E1FAB4C9D182D0FD"), cYh.d("80FDDAB8D7D382FDD1B4DFDC80E1FAB7CCE581DDE3B9F8D7"), ""));
-                                                            }
-                                                            var11_10.put((Object)var1_1);
-                                                        }
-                                                        var6_11 = var2_3.indexOf(var13_9);
-                                                        var15_12 = cYh.d("82D9E6B7D4DF");
-                                                        var1_1 = cYh.d("043C202224");
-                                                        if (var6_11 < 0) ** GOTO lbl27
-                                                        var1_1 = this.A((String)var1_1, var15_12, (String)var2_3, "");
-                                                        break block36;
-lbl27:
-                                                        // 1 sources
-
-                                                        if (var2_3.indexOf(var12_14) < 0) break block37;
-                                                        var1_1 = this.A((String)var1_1, var15_12, (String)var2_3, this.D(cYh.d("82D9E6B7D4DF82D0FD"), cYh.d("80FDDAB8D7D380E1FAB4C9D181CBFEB7DAF88FFFCC"), ""));
-                                                    }
-                                                    var11_10.put((Object)var1_1);
-                                                }
-                                                var6_11 = var3_4.indexOf(var13_9);
-                                                var2_3 = cYh.d("82CCF1B4DBE0");
-                                                var1_1 = cYh.d("06222430");
-                                                if (var6_11 < 0) ** GOTO lbl40
-                                                var1_1 = this.A((String)var1_1, (String)var2_3, var3_4, "");
-                                                break block38;
-lbl40:
-                                                // 1 sources
-
-                                                if (var3_4.indexOf(var12_14) < 0) break block39;
-                                                var1_1 = this.A((String)var1_1, (String)var2_3, var3_4, this.D(cYh.d("82CCF1B4DBE082D0FD"), cYh.d("80FDDAB8D7D382CCF1B4DBE081CBFEB7DAF88FFFCC"), ""));
-                                            }
-                                            var11_10.put((Object)var1_1);
-                                        }
-                                        if (var4_5.indexOf(var14_8) < 0 || var4_5.indexOf(cYh.d("4A7D")) >= 0) break block30;
-                                        var9_15 = Integer.parseInt(var4_5.split(var14_8)[1]);
-                                        var8_16 = Integer.parseInt(var4_5.split(var14_8)[0]);
-                                        var6_11 = var9_15;
-                                        var7_17 = var8_16;
-                                        if (var8_16 <= var9_15) break block31;
-                                        var7_17 = var9_15;
-                                        var6_11 = var8_16;
-                                    }
-                                    var1_1 = new StringBuilder();
-                                    while (var6_11 >= var7_17) {
-                                        block40: {
-                                            if (var6_11 != var7_17) ** GOTO lbl63
-                                            var1_1.append(String.valueOf(var6_11));
-                                            break block40;
-lbl63:
-                                            // 1 sources
-
-                                            var1_1.append(String.valueOf(var6_11));
-                                            var1_1.append(var12_14);
-                                        }
-                                        --var6_11;
-                                    }
-                                    try {
-                                        var1_1 = var1_1.toString();
-                                        break block32;
-                                    }
-                                    catch (Exception var1_2) {
-                                        if (this.m) {
-                                            var2_3 = new StringBuilder();
-                                            var2_3.append(this.G);
-                                            var2_3.append(cYh.d("8FE0C2B9F8CF4A6E2223323B1316283D233F15B5C6EBBECEFEBFFDCB"));
-                                            var2_3.append(var1_2.toString());
-                                            Init.show(var2_3.toString());
-                                        }
-                                        if ((var2_3 = this.I) != null) {
-                                            com.github.catvod.spider.merge.i.b.a(var1_2, com.github.catvod.spider.merge.d.d.b(cYh.d("04222430231C0E3C353425724EB9D5C8BFF5C87D6C6F")), (SpiderApi)var2_3);
-                                        }
-                                        return null;
-                                    }
-                                }
-                                var1_1 = var4_5;
-                            }
-                            var2_3 = cYh.d("82E9F5B5ECE7");
-                            if (this.B(var10_7).length() <= 0) break block33;
-                            var2_3 = var10_7;
-                        }
-                        var6_11 = var1_1.indexOf(var13_9);
-                        var3_4 = cYh.d("1E352023");
-                        if (var6_11 < 0) ** GOTO lbl101
-                        var1_1 = this.A(var3_4, (String)var2_3, (String)var1_1, "");
-                        break block41;
-lbl101:
-                        // 1 sources
-
-                        if (var1_1.indexOf(var12_14) < 0) break block42;
-                        var1_1 = this.A(var3_4, (String)var2_3, (String)var1_1, this.E(cYh.d("82E9F5B5ECE782D0FD"), cYh.d("81C7F7B8C2E582D0FD"), cYh.d("80FDDAB8D7D382E9F5B5ECE781CBFEB7DAF88FFFCC"), ""));
-                    }
-                    var11_10.put((Object)var1_1);
-                }
-                var6_11 = var5_6.indexOf(var13_9);
-                var1_1 = cYh.d("81DED3B4EDD5");
-                var2_3 = cYh.d("0529");
-                if (var6_11 < 0) ** GOTO lbl114
-                var1_1 = this.A((String)var2_3, (String)var1_1, var5_6, "");
-                break block43;
-lbl114:
-                // 1 sources
-
-                if (var5_6.indexOf(var12_14) < 0) break block44;
-                var1_1 = this.A((String)var2_3, (String)var1_1, var5_6, this.D(cYh.d("81DED3B4EDD582D0FD"), cYh.d("80FDDAB8D7D381DED3B4EDD581CBFEB7DAF88FFFCC"), ""));
-            }
-            var11_10.put((Object)var1_1);
-        }
-        return var11_10;
-    }
-
-    private String h(String object) {
+    private String i(String object) {
         CharSequence charSequence;
-        block13: {
-            XBPQ$3 xBPQ$3 = new XBPQ$3();
-            HashMap<String, String> hashMap = this.s;
-            int n2 = ((String)object).indexOf(cYh.d("5C202E2223"));
-            String string = "";
-            charSequence = n2 > 0 ? ((String)object).split(cYh.d("5C202E222361"))[1].trim() : "";
-            Object object2 = ((String)object).split(cYh.d("5C"))[0];
-            if (this.s.indexOf(cYh.d("2D")) >= 0 && ((String)object2).indexOf(cYh.d("082535342512331D0D")) < 0 && ((String)object2).indexOf(cYh.d("0E3E2F342512331D0D")) < 0 && this.I != null) {
-                object = this.s.indexOf(cYh.d("2D32")) >= 0 ? cYh.d("5D342E322237023E357F353503296F383934022209051A16") : cYh.d("5D342E322237023E357F333504252C34392E223C243C3234137E2E24233F1518151C1B");
-                hashMap = ((String)((Object)hashMap)).matches(cYh.d("497A0B336806037B6F7B")) ? ((String)((Object)hashMap)).replaceAll(cYh.d("497A0B3368723B346A787970"), cYh.d("4361")) : "";
-                StringBuilder charSequence2 = new StringBuilder();
-                charSequence2.append(this.I.getAddress(true));
-                charSequence2.append(cYh.d("10352321362814356E"));
-                charSequence2.append((String)object2);
-                charSequence2.append(cYh.d("5B6C24273636"));
-                charSequence2.append((String)((Object)hashMap));
-                charSequence2.append((String)object);
-                hashMap = charSequence2.toString();
-                SpiderApi spiderApi = this.I;
-                object = hashMap;
-                if (spiderApi != null) {
-                    object = new StringBuilder();
-                    ((StringBuilder)object).append(cYh.d("81FDE2B4CBF283EDFEB6C3F283EBE2B6C7DC4A7D7F71"));
-                    ((StringBuilder)object).append((String)((Object)hashMap));
-                    spiderApi.log(((StringBuilder)object).toString());
+        String string;
+        HashMap<String, String> hashMap;
+        block16: {
+            block15: {
+                XBPQ$3 xBPQ$3 = new XBPQ$3();
+                hashMap = this.s;
+                int n2 = ((String)object).indexOf(";post");
+                string = "";
+                charSequence = n2 > 0 ? ((String)object).split(";post;")[1].trim() : "";
+                String[] stringArray = ((String)object).split(";")[0];
+                if (this.s.indexOf("J") >= 0 && stringArray.indexOf("outerHTML") < 0 && stringArray.indexOf("innerHTML") < 0 && this.I != null) {
+                    object = this.s.indexOf("Jb") >= 0 ? ":document.body.innerHTML" : ":document.documentElement.outerHTML";
+                    hashMap = ((String)((Object)hashMap)).matches(".*Jb?\\d+.*") ? ((String)((Object)hashMap)).replaceAll(".*Jb?(\\d+).*", "$1") : "";
+                    StringBuilder charSequence2 = new StringBuilder();
+                    charSequence2.append(this.I.getAddress(true));
+                    charSequence2.append("webparse/");
+                    charSequence2.append((String)stringArray);
+                    charSequence2.append("<<eval");
+                    charSequence2.append((String)((Object)hashMap));
+                    charSequence2.append((String)object);
+                    hashMap = charSequence2.toString();
+                    SpiderApi spiderApi = this.I;
                     object = hashMap;
-                }
-            } else {
-                object = object2;
-            }
-            hashMap = this.r;
-            hashMap = !cYh.d("81C0DDB6E3F8").equals(hashMap) ? this.r((String)object2) : this.I((String)object2);
-            if (((String)charSequence).length() > 2) {
-                object2 = new LinkedHashMap();
-                for (String string2 : ((String)charSequence).split(cYh.d("3B76"))) {
-                    String string3 = cYh.d("5A");
-                    if (string2.endsWith(string3)) continue;
-                    int n3 = string2.indexOf(string3);
-                    ((AbstractMap)object2).put(string2.substring(0, n3), string2.substring(n3 + 1));
-                }
-                if (!((String)charSequence).isEmpty()) {
-                    com.github.catvod.spider.merge.k.g.e(com.github.catvod.spider.merge.k.g.b(), (String)object, (Map<String, String>)object2, (Map<String, String>)hashMap, xBPQ$3);
+                    if (spiderApi != null) {
+                        object = new StringBuilder();
+                        ((StringBuilder)object).append("\u6b63\u5728\u4f7f\u7528\u4ee3\u7406--> ");
+                        ((StringBuilder)object).append((String)((Object)hashMap));
+                        spiderApi.log(((StringBuilder)object).toString());
+                        object = hashMap;
+                    }
                 } else {
-                    com.github.catvod.spider.merge.k.g.e(com.github.catvod.spider.merge.k.g.b(), (String)object, null, (Map<String, String>)hashMap, xBPQ$3);
+                    object = stringArray;
                 }
-            } else {
-                com.github.catvod.spider.merge.k.g.c(com.github.catvod.spider.merge.k.g.b(), (String)object, hashMap, xBPQ$3);
-            }
-            try {
-                hashMap = (HashMap<String, String>)((Response)xBPQ$3.getResult()).body().bytes();
-                object = this.s.indexOf(cYh.d("00")) >= 0 ? cYh.d("20120A") : this.E(cYh.d("80ECD7B6F7DB"), cYh.d("80EDD0B8F6EF80ECD7B6F7DB81F0FDB4EBD5"), cYh.d("243F2538393D38362E233A3B13"), cYh.d("3204077C6F"));
-                charSequence = string;
-                if (hashMap == null) break block13;
-            }
-            catch (IOException iOException) {
-                if (this.m) {
-                    charSequence = new StringBuilder();
-                    ((StringBuilder)charSequence).append(this.G);
-                    ((StringBuilder)charSequence).append(cYh.d("8FE0C2B9F8CF4A6E25341234243F2534B2DDDDB9D5C8B8E6FD"));
-                    ((StringBuilder)charSequence).append(((Object)iOException).toString());
-                    Init.show(((StringBuilder)charSequence).toString());
+                hashMap = !"\u641c\u7d22".equals(this.r) ? this.t((String)stringArray) : this.L((String)stringArray);
+                if (((String)charSequence).length() > 2) {
+                    LinkedHashMap<String, String> linkedHashMap = new LinkedHashMap<String, String>();
+                    for (String string2 : ((String)charSequence).split("\\&")) {
+                        if (string2.endsWith("=")) continue;
+                        int n3 = string2.indexOf("=");
+                        ((AbstractMap)linkedHashMap).put(string2.substring(0, n3), string2.substring(n3 + 1));
+                    }
+                    if (!((String)charSequence).isEmpty()) {
+                        com.github.catvod.spider.merge.mk.g.e(com.github.catvod.spider.merge.mk.g.b(), (String)object, linkedHashMap, (Map<String, String>)hashMap, xBPQ$3);
+                    } else {
+                        com.github.catvod.spider.merge.mk.g.e(com.github.catvod.spider.merge.mk.g.b(), (String)object, null, (Map<String, String>)hashMap, xBPQ$3);
+                    }
+                } else {
+                    com.github.catvod.spider.merge.mk.g.c(com.github.catvod.spider.merge.mk.g.b(), (String)object, hashMap, xBPQ$3);
                 }
-                if ((charSequence = this.I) != null) {
-                    hashMap = com.github.catvod.spider.merge.d.d.b(cYh.d("0335043F143503356978BECEFEB8EEFE7A7759"));
-                    ((StringBuilder)((Object)hashMap)).append(((Object)iOException).toString());
-                    charSequence.log(((StringBuilder)((Object)hashMap)).toString());
+                try {
+                    hashMap = (HashMap<String, String>)((Response)xBPQ$3.getResult()).body().bytes();
+                    if (this.s.indexOf("g") < 0) break block15;
+                    object = "GBK";
+                    break block16;
                 }
-                return "";
+                catch (IOException iOException) {
+                    if (this.m) {
+                        charSequence = new StringBuilder();
+                        ((StringBuilder)charSequence).append(this.G);
+                        ((StringBuilder)charSequence).append("\u8c03\u8bd5->deEnCode\u51fa\u9519\uff1a");
+                        ((StringBuilder)charSequence).append(((Object)iOException).toString());
+                        Init.show(((StringBuilder)charSequence).toString());
+                    }
+                    if ((charSequence = this.I) != null) {
+                        hashMap = com.github.catvod.spider.merge.ka.d.b("deEnCode()\u9519\u8bef-->");
+                        ((StringBuilder)((Object)hashMap)).append(((Object)iOException).toString());
+                        charSequence.log(((StringBuilder)((Object)hashMap)).toString());
+                    }
+                    return "";
+                }
             }
+            object = this.H("\u7f16\u7801", "\u7f51\u9875\u7f16\u7801\u683c\u5f0f", "Coding_format", "UTF-8");
+        }
+        charSequence = string;
+        if (hashMap != null) {
             charSequence = new String((byte[])hashMap, (String)object);
         }
         return charSequence;
     }
 
     /*
-     * Unable to fully structure code
-     */
-    private String l() {
-        block152: {
-            block131: {
-                block150: {
-                    block151: {
-                        block142: {
-                            block153: {
-                                block139: {
-                                    block138: {
-                                        block141: {
-                                            block140: {
-                                                block137: {
-                                                    block136: {
-                                                        block132: {
-                                                            var3_1 = cYh.d("3B23");
-                                                            if (this.c.length() >= 3) break block152;
-                                                            var11_2 = cYh.d("48102923323C");
-                                                            var9_3 = cYh.d("80CBF5B7C5F7");
-                                                            var24_4 = cYh.d("3B0B");
-                                                            var23_5 = cYh.d("3C");
-                                                            var7_6 = cYh.d("83E8CCB9F1DB");
-                                                            var20_7 = cYh.d("82D8C7B6E6E183EACDB7FBFB81D8EBB4D8CC");
-                                                            var21_8 = cYh.d("043135341A3B0925203D");
-                                                            var8_9 = cYh.d("48");
-                                                            var10_10 = cYh.d("0F243521");
-                                                            var12_11 = cYh.d("82D8C7B6E6E181C5F1B6ECDE");
-                                                            var17_12 = cYh.d("43");
-                                                            var22_13 = cYh.d("3B7E");
-                                                            var16_14 = cYh.d("82D8C7B6E6E1");
-                                                            var4_15 = this.B(var16_14);
-                                                            var15_19 = cYh.d("80C4F4B4EAEB436162B9E8C480EBECB4DEFD436262B6ECE68FD9FB75647982DAE9B7EBF14364");
-                                                            var5_20 = this.B(cYh.d("83E8FAB8F6EF12222D"));
-                                                            var6_21 = this.g;
-                                                            if (var6_21 == null) ** GOTO lbl24
-                                                            var5_20 = var5_20.replace((CharSequence)var6_21, this.f);
-lbl24:
-                                                            // 2 sources
-
-                                                            if (var4_15.indexOf(var17_12) >= 0) break block131;
-                                                            var1_22 = this.B((String)var12_11).indexOf(cYh.d("4176"));
-                                                            var18_23 = cYh.d("82D8C7B6E6E12E14");
-                                                            var14_24 = cYh.d("82D8C7B6E6E181F0C6B8F5C2");
-                                                            var19_25 = cYh.d("44");
-                                                            var13_26 = cYh.d("487F");
-                                                            if (var1_22 >= 0) {
-                                                                block134: {
-                                                                    block133: {
-                                                                        var6_21 = var3_1;
-                                                                        if (this.B((String)var12_11).startsWith((String)var13_26)) break block132;
-                                                                        var6_21 = var3_1;
-                                                                        var5_20 = this.j((String)var5_20);
-                                                                        var6_21 = var3_1;
-                                                                        if (this.B((String)var20_7).isEmpty()) break block133;
-                                                                        var6_21 = var3_1;
-                                                                        var4_15 = this.Y((String)var5_20, this.B((String)var20_7), "").get(0);
-                                                                        break block134;
-                                                                    }
-                                                                    var4_15 = var5_20;
-                                                                }
-                                                                var6_21 = var3_1;
-                                                                if (!var4_15.isEmpty()) {
-                                                                    var5_20 = var4_15;
-                                                                }
-                                                                var6_21 = var3_1;
-                                                                var4_15 = this.Y((String)var5_20, this.B((String)var12_11), "");
-                                                                var6_21 = var3_1;
-                                                                var6_21 = var3_1;
-                                                                var5_20 = new StringBuilder();
-                                                                var1_22 = 0;
-                                                                while (true) {
-                                                                    block135: {
-                                                                        var6_21 = var3_1;
-                                                                        if (var1_22 >= var4_15.size()) break;
-                                                                        var6_21 = var3_1;
-                                                                        if (((String)var4_15.get(var1_22)).equals(var7_6)) break block135;
-                                                                        var6_21 = var3_1;
-                                                                        var6_21 = var3_1;
-                                                                        var8_9 = new StringBuilder();
-                                                                        var6_21 = var3_1;
-                                                                        var8_9.append((String)var4_15.get(var1_22));
-                                                                        var6_21 = var3_1;
-                                                                        var8_9.append(cYh.d("5B7F206F"));
-                                                                        var6_21 = var3_1;
-                                                                        var8_9 = this.Y(var8_9.toString(), this.B((String)var14_24), cYh.d("5976676D783B59")).get(0).replaceAll(cYh.d("3B76626E0C3B4A2A007C0D6A4A691C2A667656603C6A"), "").replaceAll(cYh.d("5B0B1F6F0A7059"), "").replaceAll(cYh.d("3C6E7D0C"), "").trim();
-                                                                        var6_21 = var3_1;
-                                                                        var9_3 = this.Y((String)var4_15.get(var1_22), this.B(var18_23), cYh.d("0F2224376A78417663")).get(0);
-                                                                        var6_21 = var3_1;
-                                                                        if (var8_9.equals(var7_6)) break block135;
-                                                                        var6_21 = var3_1;
-                                                                        if (var8_9.isEmpty()) break block135;
-                                                                        var6_21 = var3_1;
-                                                                        if (var9_3.isEmpty()) break block135;
-                                                                        var6_21 = var3_1;
-                                                                        var5_20.append((String)var8_9);
-                                                                        var6_21 = var3_1;
-                                                                        var5_20.append(var17_12);
-                                                                        var6_21 = var3_1;
-                                                                        var5_20.append(var9_3);
-                                                                        var6_21 = var3_1;
-                                                                        var5_20.append(var19_25);
-                                                                    }
-                                                                    ++var1_22;
-                                                                }
-                                                                var6_21 = var3_1;
-                                                                var4_15 = var5_20.toString().substring(0, var5_20.toString().length() - 1);
-                                                                break block131;
-                                                            }
-                                                        }
-                                                        var6_21 = var3_1;
-                                                        var6_21 = var3_1;
-                                                        var20_7 = new StringBuilder();
-                                                        var6_21 = var3_1;
-                                                        if (this.B((String)var21_8).isEmpty()) break block136;
-                                                        var6_21 = var3_1;
-                                                        var7_6 = this.B.optJSONObject((String)var21_8);
-                                                        if (var7_6 == null) break block136;
-                                                        var6_21 = var3_1;
-                                                        var5_20 = var7_6.keys();
-                                                        while (true) {
-                                                            var6_21 = var3_1;
-                                                            if (!var5_20.hasNext()) break;
-                                                            var6_21 = var3_1;
-                                                            var4_15 = (String)var5_20.next();
-                                                            var6_21 = var3_1;
-                                                            var20_7.append(var4_15.trim());
-                                                            var6_21 = var3_1;
-                                                            var20_7.append(var17_12);
-                                                            var6_21 = var3_1;
-                                                            var20_7.append(var7_6.getString((String)var4_15).trim());
-                                                            var6_21 = var3_1;
-                                                            var20_7.append(var19_25);
-                                                            continue;
-                                                            break;
-                                                        }
-                                                        var6_21 = var3_1;
-                                                        var4_15 = var20_7.toString().substring(0, var20_7.toString().length() - 1);
-                                                        break block131;
-                                                    }
-                                                    var6_21 = var3_1;
-                                                    var21_8 = this.g0((String)var5_20);
-                                                    var5_20 = var4_15;
-                                                    var6_21 = var3_1;
-                                                    if (var4_15.length() >= 1) break block137;
-                                                    var5_20 = var4_15;
-                                                    var6_21 = var3_1;
-                                                    if (!this.B((String)var12_11).startsWith((String)var13_26)) break block137;
-                                                    var6_21 = var3_1;
-                                                    var5_20 = this.B((String)var12_11);
-                                                }
-                                                var6_21 = var3_1;
-                                                var7_6 = cYh.d("123C");
-                                                var6_21 = var3_1;
-                                                var12_11 = cYh.d("06");
-                                                var6_21 = var3_1;
-                                                if (var5_20.length() < 1) {
-                                                    var4_15 = "";
-                                                    var5_20 = var12_11;
-                                                    break block138;
-                                                }
-                                                var6_21 = var3_1;
-                                                if (var5_20.startsWith((String)var13_26)) break block139;
-                                                var6_21 = var3_1;
-                                                if (var5_20.indexOf((String)var22_13) < 0) break block139;
-                                                var6_21 = var3_1;
-                                                if (var5_20.split((String)var22_13)[0].indexOf(var23_5) < 0) break block140;
-                                                var6_21 = var3_1;
-                                                var7_6 = var5_20.split((String)var22_13)[0].split(var24_4)[0];
-                                                var6_21 = var3_1;
-                                                var6_21 = var3_1;
-                                                var4_15 = new StringBuilder();
-                                                var6_21 = var3_1;
-                                                var4_15.append(var23_5);
-                                                var6_21 = var3_1;
-                                                var4_15.append(var5_20.split((String)var22_13)[0].split(var24_4)[1]);
-                                                var6_21 = var3_1;
-                                                var4_15 = var4_15.toString();
-                                                break block141;
-                                            }
-                                            var6_21 = var3_1;
-                                            var7_6 = var5_20.split((String)var22_13)[0];
-                                            var4_15 = "";
-                                        }
-                                        var6_21 = var3_1;
-                                        var5_20 = var5_20.split((String)var22_13)[1];
-                                    }
-                                    var6_21 = cYh.d("8FC0DCB9D9D3");
-                                    var12_11 = var5_20;
-                                    var5_20 = var6_21;
-                                    break block153;
-                                }
-                                var4_15 = "";
-                            }
-                            var6_21 = var3_1;
-                            if (var5_20.startsWith((String)var13_26)) {
-                                var4_15 = var5_20;
-                                break block142;
-                            }
-                            var6_21 = var3_1;
-                            var6_21 = var3_1;
-                            var22_13 = new StringBuilder();
-                            var6_21 = var3_1;
-                            var22_13.append((String)var13_26);
-                            var6_21 = var3_1;
-                            var22_13.append((String)var7_6);
-                            var6_21 = var3_1;
-                            var22_13.append(cYh.d("3C78223E392E06392F227F754824242923724E7C66"));
-                            var6_21 = var3_1;
-                            var22_13.append((String)var5_20);
-                            var6_21 = var3_1;
-                            var22_13.append(cYh.d("4079613E257A043F2F2536330923697E782E022835797E7640B8FECFB0E1CAB5C8F67073473F337134350924203839294F7F6E112333133C247D70B3E7F3A6EBDBBFEDD7667877351570223E392E06392F227F754824242923724E7C66B6C3EF8FF7C7B4DEFD4079613E257A043F2F2536330923697E781A1339353D327640B9DAEABFFCF1B5CBD67073473F337134350924203839294F7F6E2532221378687D70BFEEF7A8CAD17D4E702E237739083E35303E3414786E7E172E0E242D347B7D82DAC6B8CCDC4079613E257A043F2F2536330923697E782E022835797E7640B7D5E4B2E7D6776871382847332E3F233B0E3E32797875272428253B3F4B77A8CAECBFDAE1667877351570223E392E06392F227F754824242923724E7C66B7C0FA80F0C0767E7A0822613238341331283F2472487F01253E2E0B356D76B1CDC7B7E1D07073473F337134350924203839294F7F6E2532221378687D70BDE3F1A6F3EB7D4E702E237739083E35303E3414786E7E172E0E242D347B7D80D4E0B6F5E64079613E257A043F2F2536330923697E782E022835797E7640B5DAECB3E0C0776871382847332E3F233B0E3E32797875272428253B3F4B77A4CDDCBDF3F2667877351570223E392E06392F227F754824242923724E7C66B5EDC081E4F3767E7A0822613238341331283F2472487F01253E2E0B356D76B3E0FDB6F5E37073473F337134350924203839294F7F6E2532221378687D70BEDDCEA7E5E57D4E702E237739083E35303E3414786E7E172E0E242D347B7D83EADFB7E3E840796871363403702F3E2372043F2F2536330923697E781A033135307A3515392638393B0B7C667E7073473F337134350924203839294F7F6E11333B13316C2225394B776E767E7A0822613238341331283F2472487F012225394B776E767E7A0822613238341331283F2472487F013336390C37333E2234037C667E70734E0D"));
-                            var6_21 = var3_1;
-                            var22_13.append((String)var4_15);
-                            var6_21 = var3_1;
-                            var22_13.append((String)var13_26);
-                            var6_21 = var3_1;
-                            var22_13.append((String)var12_11);
-                            var6_21 = var3_1;
-                            var22_13.append(cYh.d("3C3E2E257F39083E35303E3414786E7E233F1F2469787B7D8EF1F4767E7A0822613238341331283F2472487F35342F2E4F796D76BFF4C8776871382847332E3F233B0E3E32797875133539257F734B77A7C7E77D4E702E237739083E35303E3414786E7E233F1F2469787B7D8FEFFCB4DEFD4079613E257A043F2F2536330923697E782E022835797E7640B7C2FCB1CAFB776871382847332E3F233B0E3E32797875133539257F734B77A7F7CBBFEAC5667877351570223E392E06392F227F754824242923724E7C66B5EBC082C1D9767E7A0822613238341331283F2472487F35342F2E4F796D76B1D4F5B8E0DD7073473F337134350924203839294F7F6E2532221378687D70BDF2C9A9F9D77D4E702E237739083E35303E3414786E7E233F1F2469787B7D80F7C0B5EDE04079613E257A043F2F2536330923697E782E022835797E7640B5FCE0BEC3C5776871382847332E3F233B0E3E32797875133539257F734B77A6ECC67D4E702E237739083E35303E3414786E7E233F1F2469787B7D82EDF0B9F0DC4079613E257A043F2F2536330923697E782E022835797E7640B8C0C5B0E9DC776871382847332E3F233B0E3E32797875133539257F734B77A5E9C4B3C5C8667877351570223E392E06392F227F754824242923724E7C66B7CFD481C8DE767E7A0822613238341331283F2472487F35342F2E4F796D76BFFDF5B8C8E37073473F337134350924203839294F7F6E2532221378687D70BFFCEE667877351570223E392E06392F227F754824242923724E7C66B9DDD880CBEF767E7A0822613238341331283F2472487F35342F2E4F796D76BEC5CEB5E9E07073473F337134350924203839294F7F6E2532221378687D70BCDBC4A4C0CF7D4E702E237739083E35303E3414786E7E233F1F2469787B7D81C6C6B6FCFA4079613E257A043F2F2536330923697E782E022835797E7640B5C4E7B3E1F1776871382847332E3F233B0E3E32797875133539257F734B77A8CEE4BEDEC0667877351570223E392E06392F227F754824242923724E7C66B7D9F28FDDD1767E7A0822613238341331283F2472487F35342F2E4F796D76160A37776871382847332E3F233B0E3E32797875133539257F734B77A5E9DCB2DAED66787E07"));
-                            var6_21 = var3_1;
-                            var4_15 = var22_13.toString();
-                        }
-                        var6_21 = var3_1;
-                        var13_26 = var21_8.a((String)var4_15);
-                        var1_22 = 0;
-                        var4_15 = var11_2;
-                        var11_2 = var8_9;
-                        var12_11 = var14_24;
-                        while (true) {
-                            block145: {
-                                block143: {
-                                    block149: {
-                                        block148: {
-                                            block147: {
-                                                block154: {
-                                                    block146: {
-                                                        block144: {
-                                                            var6_21 = var3_1;
-                                                            var8_9 = (LinkedList)var13_26;
-                                                            var6_21 = var3_1;
-                                                            if (var1_22 >= var8_9.size()) break;
-                                                            var6_21 = var3_1;
-                                                            var7_6 = ((com.github.catvod.spider.merge.f0.b)var8_9.get(var1_22)).c(this.D((String)var12_11, cYh.d("04313534193B0A35"), cYh.d("487F35342F2E4F79"))).a();
-                                                            var14_24 = var6_21 = var7_6.replaceAll((String)var3_1, "").trim();
-                                                            if (var6_21.length() < 2) {
-                                                                var14_24 = ((com.github.catvod.spider.merge.f0.b)var8_9.get(var1_22)).c(cYh.d("48103538233602")).a().trim();
-                                                            }
-                                                            if (var14_24.length() > 9 || var14_24.length() < 2 || var20_7.toString().indexOf((String)var14_24) >= 0) break block143;
-                                                            if ((var14_24.indexOf(var9_3) < 0 || var5_20.indexOf(var9_3) >= 0) && (this.s.indexOf(cYh.d("46")) < 0 || var14_24.indexOf(cYh.d("80C0C7")) < 0 && var14_24.indexOf(cYh.d("80F6CE")) < 0 && var14_24.indexOf(cYh.d("80EECFB4F2E9")) < 0)) break block144;
-                                                            var7_6 = var4_15;
-                                                            break block145;
-                                                        }
-                                                        var6_21 = var7_6 = this.E(var18_23, cYh.d("82D8C7B6E6E18EC3FFB7D9FF"), cYh.d("043135341E3E"), (String)var4_15);
-                                                        if (!var7_6.startsWith(var10_10)) break block146;
-                                                        var6_21 = var4_15;
-                                                    }
-                                                    var7_6 = ((com.github.catvod.spider.merge.f0.b)var8_9.get(var1_22)).c((String)var6_21).a().trim();
-                                                    var2_27 = var7_6.indexOf(cYh.d("143520233432"));
-                                                    var6_21 = var4_15;
-                                                    var8_9 = cYh.d("14");
-                                                    var4_15 = cYh.d("1460");
-                                                    if (var2_27 < 0) break block154;
-                                                    if (var20_7.toString().indexOf(cYh.d("82D9E6")) < 0 && var20_7.toString().indexOf(cYh.d("82DAC6")) < 0) ** GOTO lbl329
-                                                    var7_6 = var6_21;
-                                                    if (this.s.indexOf((String)var4_15) >= 0) break block145;
-                                                    var7_6 = var6_21;
-                                                    if (this.s.indexOf((String)var8_9) < 0) break block145;
-lbl329:
-                                                    // 2 sources
-
-                                                    var20_7.append((String)var14_24);
-                                                    var20_7.append(var17_12);
-                                                    var20_7.append((String)var14_24);
-                                                    var20_7.append(var19_25);
-                                                    var7_6 = var6_21;
-                                                    break block145;
-                                                }
-                                                if (this.s.indexOf((String)var4_15) < 0 && this.s.indexOf((String)var8_9) >= 0) {
-                                                    var7_6 = var6_21;
-                                                    break block145;
-                                                }
-                                                var4_15 = var7_6;
-                                                if (var7_6.startsWith(var10_10)) {
-                                                    var4_15 = var7_6.replace(this.f, "");
-                                                }
-                                                var7_6 = var6_21;
-                                                if (var4_15.length() < 2) break block145;
-                                                var7_6 = var6_21;
-                                                if (var4_15.indexOf(var11_2) < 0) break block145;
-                                                var7_6 = var6_21;
-                                                if (var4_15.indexOf(cYh.d("033535303E36")) >= 0) break block145;
-                                                var7_6 = var6_21;
-                                                if (var4_15.indexOf(cYh.d("233535303E36")) >= 0) break block145;
-                                                var7_6 = var6_21;
-                                                if (var4_15.indexOf(cYh.d("14382E26")) >= 0) break block145;
-                                                if (var4_15.indexOf(cYh.d("173C2028")) < 0) break block147;
-                                                var7_6 = var6_21;
-                                                break block145;
-                                            }
-                                            var7_6 = var4_15.matches(cYh.d("487E6B6E0C77382E6E0C0B3E4C0B6C0E29753A0B70610A744D")) != false ? var4_15.replaceAll(cYh.d("487E6B6E0C754A0F3F7E0A723B346A780C014A0F3F7E0A073C61710C7970"), cYh.d("4361")) : var4_15;
-                                            if (var7_6 == null) break block148;
-                                            var8_9 = var7_6;
-                                            if (var7_6.matches(cYh.d("3B346A"))) break block149;
-                                        }
-                                        var7_6 = var4_15;
-                                        if (var4_15.matches(cYh.d("497A28350C77382E6E6C0A744D"))) {
-                                            var7_6 = new StringBuilder();
-                                            var7_6.append(var11_2);
-                                            var7_6.append(var4_15.split(cYh.d("0E341A7C0824486D1C"))[1]);
-                                            var7_6 = var7_6.toString();
-                                        }
-                                        var8_9 = var7_6;
-                                        if (var7_6.endsWith(cYh.d("4938353C3B"))) {
-                                            var8_9 = var7_6.substring(0, var7_6.length() - 5);
-                                        }
-                                        var4_15 = var8_9;
-                                        if (var8_9.endsWith(cYh.d("2C"))) {
-                                            var4_15 = var8_9.substring(0, var8_9.length() - 1);
-                                        }
-                                        var7_6 = var4_15;
-                                        if (var4_15.endsWith(cYh.d("48616E38393E0228"))) {
-                                            var7_6 = var4_15.substring(0, var4_15.length() - 6);
-                                        }
-                                        var4_15 = var7_6;
-                                        if (var7_6.endsWith(cYh.d("48392F353222"))) {
-                                            var4_15 = var7_6.substring(0, var7_6.length() - 6);
-                                        }
-                                        var7_6 = var4_15;
-                                        if (var4_15.endsWith(cYh.d("4A61"))) {
-                                            var7_6 = var4_15.substring(0, var4_15.length() - 2);
-                                        }
-                                        var4_15 = var7_6;
-                                        if (var7_6.endsWith(cYh.d("1961"))) {
-                                            var4_15 = var7_6.substring(0, var7_6.length() - 2);
-                                        }
-                                        var7_6 = var4_15;
-                                        if (!var4_15.startsWith(var10_10)) {
-                                            var7_6 = var4_15.substring(var4_15.lastIndexOf(var11_2) + 1, var4_15.length());
-                                        }
-                                        var4_15 = var7_6 = var7_6.replace(cYh.d("0E3E25342F"), "").replace(cYh.d("4A7D6C7C7A774A7D6C7C7A"), "");
-                                        if (var7_6.startsWith(cYh.d("0A7D"))) {
-                                            var4_15 = var7_6.substring(2, var7_6.length());
-                                        }
-                                        var7_6 = var6_21;
-                                        if (var4_15.length() < 1) break block145;
-                                        var7_6 = var6_21;
-                                        if (var4_15.length() > 21) break block145;
-                                        var7_6 = var6_21;
-                                        if (var4_15.startsWith(var10_10)) break block145;
-                                        var8_9 = var4_15;
-                                        if (var20_7.toString().indexOf((String)var4_15) < 0) break block149;
-                                        var7_6 = var6_21;
-                                        break block145;
-                                    }
-                                    var20_7.append((String)var14_24);
-                                    var20_7.append(var17_12);
-                                    var20_7.append((String)var8_9);
-                                    var20_7.append(var19_25);
-                                    var7_6 = var6_21;
-                                    break block145;
-                                }
-                                var7_6 = var4_15;
-                            }
-                            ++var1_22;
-                            var4_15 = var7_6;
-                        }
-                        var5_20 = var3_1;
-                        try {
-                            if (var20_7.toString().length() < 6) break block150;
-                            var4_15 = var20_7.toString().substring(0, var20_7.toString().length() - 1);
-                            var3_1 = var5_20;
-                            break block131;
-                        }
-                        catch (Exception var4_16) {
-                            break block151;
-                        }
-                        catch (Exception var4_17) {
-                            var3_1 = var6_21;
-                        }
-                        break block151;
-                        catch (Exception var4_18) {
-                            // empty catch block
-                        }
-                    }
-                    if (this.m) {
-                        var5_20 = new StringBuilder();
-                        var5_20.append(this.G);
-                        var5_20.append(cYh.d("8FE0C2B9F8CF4A6E2223323B13350230233F82D7FBB8C3C388ECDB"));
-                        var5_20.append(var4_15.toString());
-                        Init.show(var5_20.toString());
-                    }
-                    var6_21 = this.I;
-                    var5_20 = var3_1;
-                    if (var6_21 != null) {
-                        com.github.catvod.spider.merge.i.b.a((Exception)var4_15, com.github.catvod.spider.merge.d.d.b(cYh.d("04222430233F243135347F738EC4D8B9F8F54A7D7F")), (SpiderApi)var6_21);
-                        var5_20 = var3_1;
-                    }
-                }
-                var4_15 = var15_19;
-                var3_1 = var5_20;
-            }
-            this.c = var4_15.replace(cYh.d("8ECBFAB4EAEB"), cYh.d("80C4F4B4EAEB")).replace(cYh.d("8ED0E2B6EDD682DAC6"), cYh.d("8FEFDFB6ECF782D9E6")).replace(cYh.d("8ECBFAB9F1CC82DAC6"), cYh.d("80C4F4B9F0DC82D9E6")).replace(cYh.d("82DAC6B8CCDC"), cYh.d("82D9E6B8CCDC")).replace(cYh.d("82DBD4B7EBF1"), cYh.d("82DAE9B7EBF1")).replace(cYh.d("80E6DDB9C0C7"), cYh.d("80EBFDB9DEE0")).replaceAll((String)var3_1, "");
-            if (this.I != null && this.B(var16_14).length() < 1) {
-                var4_15 = this.I;
-                var3_1 = com.github.catvod.spider.merge.d.d.b(cYh.d("8FD7EBB4DDF28FDEF6B4D8CC82D8C7B6E6E14A7D7F71"));
-                var3_1.append(this.c);
-                var4_15.log(var3_1.toString());
-            }
-        }
-        return this.c;
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
      */
     public static Object[] loadPic(Map<String, String> object) {
-        try {
-            Object object2 = (String)object.get(cYh.d("14393534"));
-            String string = (String)object.get(cYh.d("173922"));
-            if (L == null) {
-                object = new HashMap();
-                L = object;
-                ((HashMap)object).put(cYh.d("322324237A1B00352F25"), cYh.d("2A3F3B383B36067F747F677A4F07283F33351023611F037A56606F616C7A30392F676361472877657E7A2620313D320D02320A3823755263767F646C47780A1903172B7C613D3E31027006343431087961123F28083D247E6E6E49606F65616A517E74657709063620233E755263767F646C"));
-                L.put(cYh.d("15352734253F15"), (String)object2);
-            }
-            XBPQ$7 xBPQ$7 = new XBPQ$7();
-            com.github.catvod.spider.merge.k.g.c(com.github.catvod.spider.merge.k.g.b(), string, L, xBPQ$7);
-            if (((Response)xBPQ$7.getResult()).code() != 200) return null;
-            object = object2 = ((Response)xBPQ$7.getResult()).headers().get(cYh.d("243F2F253234137D1528273F"));
-            if (object2 == null) {
-                object = cYh.d("0620313D3E390624283E3975083335342377142433343637");
+        block5: {
+            XBPQ$7 xBPQ$7;
+            String string;
+            Object object2;
+            block6: {
+                try {
+                    object2 = (String)object.get("site");
+                    string = (String)object.get("pic");
+                    if (L == null) {
+                        object = new HashMap();
+                        L = object;
+                        ((HashMap)object).put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.54 Safari/537.36");
+                        L.put("referer", (String)object2);
+                    }
+                    xBPQ$7 = new XBPQ$7();
+                    com.github.catvod.spider.merge.mk.g.c(com.github.catvod.spider.merge.mk.g.b(), string, L, xBPQ$7);
+                    if (((Response)xBPQ$7.getResult()).code() != 200) break block5;
+                    object = object2 = ((Response)xBPQ$7.getResult()).headers().get("Content-Type");
+                    if (object2 != null) break block6;
+                    object = "application/octet-stream";
+                }
+                catch (Throwable throwable) {
+                    return null;
+                }
             }
             System.out.println(string);
             System.out.println((String)object);
             object2 = ((Response)xBPQ$7.getResult()).body().byteStream();
             return new Object[]{200, object, object2};
         }
-        catch (Throwable throwable) {
-            return null;
+        return null;
+    }
+
+    /*
+     * Unable to fully structure code
+     */
+    private String m() {
+        block156: {
+            block133: {
+                block154: {
+                    block155: {
+                        block145: {
+                            block157: {
+                                block142: {
+                                    block141: {
+                                        block144: {
+                                            block143: {
+                                                block140: {
+                                                    block139: {
+                                                        block138: {
+                                                            block134: {
+                                                                block136: {
+                                                                    block135: {
+                                                                        block132: {
+                                                                            block131: {
+                                                                                if (this.c.length() >= 3) break block156;
+                                                                                var10_1 = "/";
+                                                                                var4_2 = this.E("\u5206\u7c7b");
+                                                                                var3_6 = this.E("\u4e3b\u9875url");
+                                                                                var9_7 = "http";
+                                                                                var5_8 = this.g;
+                                                                                if (var5_8 == null) break block131;
+                                                                                var3_6 = var3_6.replace((CharSequence)var5_8, this.f);
+                                                                            }
+                                                                            var11_9 = "/@href";
+                                                                            if (var4_2.indexOf("$") < 0) break block132;
+                                                                            var3_6 = "\\s";
+                                                                            break block133;
+                                                                        }
+                                                                        var1_10 = this.E("\u5206\u7c7b\u6570\u7ec4").indexOf("&&");
+                                                                        var13_11 = "\u76f4\u64ad";
+                                                                        var12_12 = "\u5206\u7c7b\u6807\u9898";
+                                                                        var8_13 = "\\s";
+                                                                        if (var1_10 < 0) break block134;
+                                                                        var6_14 = var8_13;
+                                                                        if (this.E("\u5206\u7c7b\u6570\u7ec4").startsWith("//")) break block134;
+                                                                        var6_14 = var8_13;
+                                                                        var4_2 = this.k((String)var3_6);
+                                                                        var6_14 = var8_13;
+                                                                        if (this.E("\u5206\u7c7b\u4e8c\u6b21\u622a\u53d6").isEmpty()) break block135;
+                                                                        var6_14 = var8_13;
+                                                                        var3_6 = this.a0((String)var4_2, this.E("\u5206\u7c7b\u4e8c\u6b21\u622a\u53d6"), "").get(0);
+                                                                        break block136;
+                                                                    }
+                                                                    var3_6 = var4_2;
+                                                                }
+                                                                var6_14 = var8_13;
+                                                                if (!var3_6.isEmpty()) {
+                                                                    var4_2 = var3_6;
+                                                                }
+                                                                var6_14 = var8_13;
+                                                                var4_2 = this.a0((String)var4_2, this.E("\u5206\u7c7b\u6570\u7ec4"), "");
+                                                                var6_14 = var8_13;
+                                                                var6_14 = var8_13;
+                                                                var3_6 = new StringBuilder();
+                                                                var1_10 = 0;
+                                                                while (true) {
+                                                                    block137: {
+                                                                        var6_14 = var8_13;
+                                                                        if (var1_10 >= var4_2.size()) break;
+                                                                        var6_14 = var8_13;
+                                                                        if (((String)var4_2.get(var1_10)).equals("\u4e0d\u8981")) break block137;
+                                                                        var6_14 = var8_13;
+                                                                        var6_14 = var8_13;
+                                                                        var5_8 = new StringBuilder();
+                                                                        var6_14 = var8_13;
+                                                                        var5_8.append((String)var4_2.get(var1_10));
+                                                                        var6_14 = var8_13;
+                                                                        var5_8.append("</a>");
+                                                                        var6_14 = var8_13;
+                                                                        var5_8 = this.a0(var5_8.toString(), this.E("\u5206\u7c7b\u6807\u9898"), ">&&</a>").get(0).replaceAll("\\&#?[a-zA-Z0-9]{1,10};", "").replaceAll("<[^>]*>", "").replaceAll("[><]", "").trim();
+                                                                        var6_14 = var8_13;
+                                                                        var7_15 = this.a0((String)var4_2.get(var1_10), this.E("\u5206\u7c7bID"), "href=\"&&\"").get(0);
+                                                                        var6_14 = var8_13;
+                                                                        if (var5_8.equals("\u4e0d\u8981")) break block137;
+                                                                        var6_14 = var8_13;
+                                                                        if (var5_8.isEmpty()) break block137;
+                                                                        var6_14 = var8_13;
+                                                                        if (var7_15.isEmpty()) break block137;
+                                                                        var6_14 = var8_13;
+                                                                        var3_6.append((String)var5_8);
+                                                                        var6_14 = var8_13;
+                                                                        var3_6.append("$");
+                                                                        var6_14 = var8_13;
+                                                                        var3_6.append(var7_15);
+                                                                        var6_14 = var8_13;
+                                                                        var3_6.append("#");
+                                                                    }
+                                                                    ++var1_10;
+                                                                }
+                                                                var6_14 = var8_13;
+                                                                var3_6 = var3_6.toString().substring(0, var3_6.toString().length() - 1);
+                                                                break block138;
+                                                            }
+                                                            var6_14 = var8_13;
+                                                            var6_14 = var8_13;
+                                                            var15_17 = new StringBuilder();
+                                                            var6_14 = var8_13;
+                                                            if (this.E("cateManual").isEmpty()) break block139;
+                                                            var6_14 = var8_13;
+                                                            var5_8 = this.B.optJSONObject("cateManual");
+                                                            if (var5_8 == null) break block139;
+                                                            var6_14 = var8_13;
+                                                            var4_2 = var5_8.keys();
+                                                            while (true) {
+                                                                var6_14 = var8_13;
+                                                                if (!var4_2.hasNext()) break;
+                                                                var6_14 = var8_13;
+                                                                var3_6 = (String)var4_2.next();
+                                                                var6_14 = var8_13;
+                                                                var15_17.append(var3_6.trim());
+                                                                var6_14 = var8_13;
+                                                                var15_17.append("$");
+                                                                var6_14 = var8_13;
+                                                                var15_17.append(var5_8.getString((String)var3_6).trim());
+                                                                var6_14 = var8_13;
+                                                                var15_17.append("#");
+                                                                continue;
+                                                                break;
+                                                            }
+                                                            var6_14 = var8_13;
+                                                            var3_6 = var15_17.toString().substring(0, var15_17.toString().length() - 1);
+                                                        }
+                                                        var4_2 = var3_6;
+                                                        var3_6 = "\\s";
+                                                        break block133;
+                                                    }
+                                                    var6_14 = var8_13;
+                                                    var14_18 = this.i0((String)var3_6);
+                                                    var5_8 = var4_2;
+                                                    var6_14 = var8_13;
+                                                    if (var4_2.length() >= 1) break block140;
+                                                    var5_8 = var4_2;
+                                                    var6_14 = var8_13;
+                                                    if (!this.E("\u5206\u7c7b\u6570\u7ec4").startsWith("//")) break block140;
+                                                    var6_14 = var8_13;
+                                                    var5_8 = this.E("\u5206\u7c7b\u6570\u7ec4");
+                                                }
+                                                var7_16 = "ul";
+                                                var4_2 = "a";
+                                                var6_14 = var8_13;
+                                                if (var5_8.length() < 1) {
+                                                    var3_6 = "";
+                                                    var5_8 = var7_16;
+                                                    break block141;
+                                                }
+                                                var6_14 = var8_13;
+                                                if (var5_8.startsWith("//")) break block142;
+                                                var6_14 = var8_13;
+                                                if (var5_8.indexOf("\\.") < 0) break block142;
+                                                var6_14 = var8_13;
+                                                if (var5_8.split("\\.")[0].indexOf("[") < 0) break block143;
+                                                var6_14 = var8_13;
+                                                var7_16 = var5_8.split("\\.")[0].split("\\[")[0];
+                                                var6_14 = var8_13;
+                                                var6_14 = var8_13;
+                                                var3_6 = new StringBuilder();
+                                                var6_14 = var8_13;
+                                                var3_6.append("[");
+                                                var6_14 = var8_13;
+                                                var3_6.append(var5_8.split("\\.")[0].split("\\[")[1]);
+                                                var6_14 = var8_13;
+                                                var3_6 = var3_6.toString();
+                                                break block144;
+                                            }
+                                            var6_14 = var8_13;
+                                            var7_16 = var5_8.split("\\.")[0];
+                                            var3_6 = "";
+                                        }
+                                        var6_14 = var8_13;
+                                        var4_2 = var5_8.split("\\.")[1];
+                                        var5_8 = var7_16;
+                                    }
+                                    var6_14 = "\u841d\u8389";
+                                    var7_16 = var5_8;
+                                    var5_8 = var6_14;
+                                    break block157;
+                                }
+                                var3_6 = "";
+                            }
+                            var6_14 = var8_13;
+                            if (var5_8.startsWith("//")) {
+                                var3_6 = var5_8;
+                                break block145;
+                            }
+                            var6_14 = var8_13;
+                            var6_14 = var8_13;
+                            var16_19 = new StringBuilder();
+                            var6_14 = var8_13;
+                            var16_19.append("//");
+                            var6_14 = var8_13;
+                            var16_19.append((String)var7_16);
+                            var6_14 = var8_13;
+                            var16_19.append("[(contains(//text(),'");
+                            var6_14 = var8_13;
+                            var16_19.append((String)var5_8);
+                            var6_14 = var8_13;
+                            var16_19.append("') or contains(//text(),'\u8fde\u7eed\u5267') or contains(//@title,'\u9023\u7e8c\u5287') or contains(//text(),'\u7535\u89c6\u5267') or contains(//@title,'\u96fb\u8996\u5287') or contains(//text(),'\u5267\u96c6') or contains(//@title,'\u5287\u96c6') or contains(//text(),'\u7535\u5f71') or contains(//@title,'\u96fb\u5f71') or contains(//text(),'\u65e0\u7801') or contains(//@title,'\u65e0\u7801') or contains(//text(),'\u7121\u78bc') or contains(//@title,'\u7121\u78bc') or contains(//text(),'\u56fd\u4ea7') or contains(//@title,'\u570b\u7522') or contains(//text(),'\u4e9a\u6d32') or contains(//@title,'\u4e9a\u6d32') or contains(//text(),'\u4e9e\u6d32') or contains(//@title,'\u4e9e\u6d32')) and not(contains(//@data-original,'/') or contains(//@data-src,'/') or contains(//@src,'/') or contains(//@background,'/'))]");
+                            var6_14 = var8_13;
+                            var16_19.append((String)var3_6);
+                            var6_14 = var8_13;
+                            var16_19.append("//");
+                            var6_14 = var8_13;
+                            var16_19.append((String)var4_2);
+                            var6_14 = var8_13;
+                            var16_19.append("[not(contains(//text(),'\u9875') or contains(//text(),'\u8baf') or contains(//text(),'\u65b0') or contains(//text(),'\u8ffd\u5267') or contains(//text(),'\u70ed\u641c') or contains(//text(),'\u699c\u5355') or contains(//text(),'\u4f1a\u5458') or contains(//text(),'\u6392\u884c') or contains(//text(),'\u7559\u8a00') or contains(//text(),'\u79c1\u4eba') or contains(//text(),'\u5f71\u9662') or contains(//text(),'\u7f51') or contains(//text(),'\u5f71\u89c6') or contains(//text(),'\u8054\u7cfb') or contains(//text(),'\u4e13\u9898') or contains(//text(),'\u660e\u661f') or contains(//text(),'\u89d2\u8272') or contains(//text(),'\u56fe') or contains(//text(),'\u8282\u76ee') or contains(//text(),'\u97e9\u5a31') or contains(//text(),'\u6f14\u5458') or contains(//text(),'\u6587\u7ae0') or contains(//text(),'\u5176\u4ed6') or contains(//text(),'\u97f3\u4e50') or contains(//text(),'\u63a8\u8350') or contains(//text(),'APP') or contains(//text(),'\u4e0b\u8f7d'))]");
+                            var6_14 = var8_13;
+                            var3_6 = var16_19.toString();
+                        }
+                        var6_14 = var8_13;
+                        var7_16 = var14_18.a((String)var3_6);
+                        var1_10 = 0;
+                        var3_6 = var8_13;
+                        var8_13 = var13_11;
+                        var4_2 = var11_9;
+                        var11_9 = var7_16;
+                        while (true) {
+                            block148: {
+                                block146: {
+                                    block153: {
+                                        block152: {
+                                            block151: {
+                                                block150: {
+                                                    block149: {
+                                                        block147: {
+                                                            var6_14 = var3_6;
+                                                            var14_18 = (LinkedList)var11_9;
+                                                            var6_14 = var3_6;
+                                                            if (var1_10 >= var14_18.size()) break;
+                                                            var6_14 = var3_6;
+                                                            var7_16 = ((com.github.catvod.spider.merge.fb.b)var14_18.get(var1_10)).c(this.G(var12_12, "cateName", "//text()")).a();
+                                                            var6_14 = var7_16.replaceAll((String)var3_6, "").trim();
+                                                            var13_11 = var6_14;
+                                                            if (var6_14.length() < 2) {
+                                                                var13_11 = ((com.github.catvod.spider.merge.fb.b)var14_18.get(var1_10)).c("/@title").a().trim();
+                                                            }
+                                                            if (var13_11.length() > 9 || var13_11.length() < 2 || var15_17.toString().indexOf(var13_11) >= 0) break block146;
+                                                            if ((var13_11.indexOf(var8_13) < 0 || var5_8.indexOf(var8_13) >= 0) && (this.s.indexOf("!") < 0 || var13_11.indexOf("\u7406") < 0 && var13_11.indexOf("\u798f") < 0 && var13_11.indexOf("\u7f8e\u5973") < 0)) break block147;
+                                                            var7_16 = var4_2;
+                                                            break block148;
+                                                        }
+                                                        var6_14 = var7_16 = this.H("\u5206\u7c7bID", "\u5206\u7c7b\u94fe\u63a5", "cateId", (String)var4_2);
+                                                        if (!var7_16.startsWith(var9_7)) break block149;
+                                                        var6_14 = var4_2;
+                                                    }
+                                                    var7_16 = ((com.github.catvod.spider.merge.fb.b)var14_18.get(var1_10)).c((String)var6_14).a().trim();
+                                                    var2_20 = var7_16.indexOf("search");
+                                                    var6_14 = var4_2;
+                                                    if (var2_20 < 0) break block150;
+                                                    if (var15_17.toString().indexOf("\u5267") < 0 && var15_17.toString().indexOf("\u5287") < 0) ** GOTO lbl323
+                                                    var7_16 = var6_14;
+                                                    if (this.s.indexOf("s0") >= 0) break block148;
+                                                    var7_16 = var6_14;
+                                                    if (this.s.indexOf("s") < 0) break block148;
+lbl323:
+                                                    // 2 sources
+
+                                                    var15_17.append(var13_11);
+                                                    var15_17.append("$");
+                                                    var15_17.append(var13_11);
+                                                    var15_17.append("#");
+                                                    var7_16 = var6_14;
+                                                    break block148;
+                                                }
+                                                if (this.s.indexOf("s0") < 0 && this.s.indexOf("s") >= 0) {
+                                                    var7_16 = var6_14;
+                                                    break block148;
+                                                }
+                                                var4_2 = var7_16;
+                                                if (var7_16.startsWith(var9_7)) {
+                                                    var4_2 = var7_16.replace(this.f, "");
+                                                }
+                                                var7_16 = var6_14;
+                                                if (var4_2.length() < 2) break block148;
+                                                var7_16 = var6_14;
+                                                if (var4_2.indexOf(var10_1) < 0) break block148;
+                                                var7_16 = var6_14;
+                                                if (var4_2.indexOf("detail") >= 0) break block148;
+                                                var7_16 = var6_14;
+                                                if (var4_2.indexOf("Detail") >= 0) break block148;
+                                                var7_16 = var6_14;
+                                                if (var4_2.indexOf("show") >= 0) break block148;
+                                                if (var4_2.indexOf("play") < 0) break block151;
+                                                var7_16 = var6_14;
+                                                break block148;
+                                            }
+                                            var7_16 = var4_2.matches("/.*?[-_~/]\\d+[-_~/][10].*") != false ? var4_2.replaceAll("/.*?[/-_~/](\\d+)[[-_~/]][10].*", "$1") : var4_2;
+                                            if (var7_16 == null) break block152;
+                                            var14_18 = var7_16;
+                                            if (var7_16.matches("\\d+")) break block153;
+                                        }
+                                        var7_16 = var4_2;
+                                        if (var4_2.matches(".*id[-_~/=].*")) {
+                                            var7_16 = new StringBuilder();
+                                            var7_16.append(var10_1);
+                                            var7_16.append(var4_2.split("id[-_~/=]")[1]);
+                                            var7_16 = var7_16.toString();
+                                        }
+                                        var4_2 = var7_16;
+                                        if (var7_16.endsWith(".html")) {
+                                            var4_2 = var7_16.substring(0, var7_16.length() - 5);
+                                        }
+                                        var7_16 = var4_2;
+                                        if (var4_2.endsWith("K")) {
+                                            var7_16 = var4_2.substring(0, var4_2.length() - 1);
+                                        }
+                                        var4_2 = var7_16;
+                                        if (var7_16.endsWith("/1/index")) {
+                                            var4_2 = var7_16.substring(0, var7_16.length() - 6);
+                                        }
+                                        var7_16 = var4_2;
+                                        if (var4_2.endsWith("/index")) {
+                                            var7_16 = var4_2.substring(0, var4_2.length() - 6);
+                                        }
+                                        var4_2 = var7_16;
+                                        if (var7_16.endsWith("-1")) {
+                                            var4_2 = var7_16.substring(0, var7_16.length() - 2);
+                                        }
+                                        var7_16 = var4_2;
+                                        if (var4_2.endsWith("~1")) {
+                                            var7_16 = var4_2.substring(0, var4_2.length() - 2);
+                                        }
+                                        var4_2 = var7_16;
+                                        if (!var7_16.startsWith(var9_7)) {
+                                            var4_2 = var7_16.substring(var7_16.lastIndexOf(var10_1) + 1, var7_16.length());
+                                        }
+                                        var4_2 = var7_16 = var4_2.replace("index", "").replace("-----------", "");
+                                        if (var7_16.startsWith("m-")) {
+                                            var4_2 = var7_16.substring(2, var7_16.length());
+                                        }
+                                        var7_16 = var6_14;
+                                        if (var4_2.length() < 1) break block148;
+                                        var7_16 = var6_14;
+                                        if (var4_2.length() > 21) break block148;
+                                        var7_16 = var6_14;
+                                        if (var4_2.startsWith(var9_7)) break block148;
+                                        var14_18 = var4_2;
+                                        if (var15_17.toString().indexOf((String)var4_2) < 0) break block153;
+                                        var7_16 = var6_14;
+                                        break block148;
+                                    }
+                                    var15_17.append(var13_11);
+                                    var15_17.append("$");
+                                    var15_17.append((String)var14_18);
+                                    var15_17.append("#");
+                                    var7_16 = var6_14;
+                                    break block148;
+                                }
+                                var7_16 = var4_2;
+                            }
+                            ++var1_10;
+                            var4_2 = var7_16;
+                        }
+                        var5_8 = var3_6;
+                        try {
+                            if (var15_17.toString().length() < 6) break block154;
+                            var4_2 = var15_17.toString().substring(0, var15_17.toString().length() - 1);
+                            var3_6 = var5_8;
+                            break block133;
+                        }
+                        catch (Exception var4_3) {
+                            break block155;
+                        }
+                        catch (Exception var4_4) {
+                            var3_6 = var6_14;
+                        }
+                        break block155;
+                        catch (Exception var4_5) {
+                            var3_6 = "\\s";
+                        }
+                    }
+                    if (this.m) {
+                        var5_8 = new StringBuilder();
+                        var5_8.append(this.G);
+                        var5_8.append("\u8c03\u8bd5->createCate\u51fa\u9519\uff1a");
+                        var5_8.append(var4_2.toString());
+                        Init.show(var5_8.toString());
+                    }
+                    var6_14 = this.I;
+                    var5_8 = var3_6;
+                    if (var6_14 != null) {
+                        com.github.catvod.spider.merge.Dw.f.a((Exception)var4_2, com.github.catvod.spider.merge.ka.d.b("createCate()\u9519\u8bef-->"), (SpiderApi)var6_14);
+                        var5_8 = var3_6;
+                    }
+                }
+                var4_2 = "\u7535\u5f71$1#\u8fde\u7eed\u5267$2#\u7efc\u827a$3#\u52a8\u6f2b$4";
+                var3_6 = var5_8;
+            }
+            this.c = var4_2.replace("\u96fb\u5f71", "\u7535\u5f71").replace("\u9023\u7e8c\u5287", "\u8fde\u7eed\u5267").replace("\u96fb\u8996\u5287", "\u7535\u89c6\u5267").replace("\u5287\u96c6", "\u5267\u96c6").replace("\u52d5\u6f2b", "\u52a8\u6f2b").replace("\u7d9c\u85dd", "\u7efc\u827a").replaceAll((String)var3_6, "");
+            if (this.I != null && this.E("\u5206\u7c7b").length() < 1) {
+                var4_2 = this.I;
+                var3_6 = com.github.catvod.spider.merge.ka.d.b("\u81ea\u52a8\u83b7\u53d6\u5206\u7c7b--> ");
+                var3_6.append(this.c);
+                var4_2.log(var3_6.toString());
+            }
         }
+        return this.c;
     }
 
     /*
@@ -2931,153 +3288,140 @@ lbl329:
      * Enabled unnecessary exception pruning
      * Enabled aggressive exception aggregation
      */
-    private JSONObject m(String var1_1, String var2_3) {
-        var7_4 = cYh.d("80F9FB");
+    private JSONObject n(String var1_1, String var2_2) {
         try {
-            block25: {
-                block24: {
-                    if (var2_3.equals(cYh.d("173F3225"))) break block24;
-                    var5_5 = var2_3;
-                    if (!var2_3.equals(cYh.d("80F9FB722735142462B6FEE0"))) break block25;
+            block28: {
+                block27: {
+                    block26: {
+                        block25: {
+                            if (var2_2.equals("post")) break block25;
+                            var5_4 = var2_2;
+                            if (!var2_2.equals("\u7a7a#post#\u7a7a")) break block26;
+                        }
+                        var2_2 = new StringBuilder();
+                        var2_2.append("\u7a7a#");
+                        var2_2.append(this.f);
+                        var2_2.append("/index.php/ajax/verify_check?type=show&verify={code};post;#\u7a7a");
+                        var5_4 = var2_2.toString();
+                    }
+                    var6_5 = var5_4.split("#");
+                    var3_6 = var5_4.length();
+                    if (var3_6 >= 1) break block27;
+                    if ("\u641c\u7d22".equals(this.r)) {
+                        var2_2 = new StringBuilder();
+                        var2_2.append(this.f);
+                        var2_2.append("/index.php/ajax/verify_check?type=search&verify=");
+                    } else {
+                        var2_2 = new StringBuilder();
+                        var2_2.append(this.f);
+                        var2_2.append("/index.php/ajax/verify_check?type=show&verify=");
+                    }
+                    var5_4 = var2_2.toString();
+                    var2_2 = var1_1;
+                    var1_1 = var5_4;
+                    if (this.s.indexOf("y") >= 0) {
+                        var1_1 = new StringBuilder();
+                        var1_1.append(this.f);
+                        var1_1.append("/index.php/verify/index.html?");
+                        var2_2 = var1_1.toString();
+                        var1_1 = var5_4;
+                    }
+                    ** GOTO lbl132
                 }
-                var2_3 = new StringBuilder();
-                var2_3.append(cYh.d("80F9FB72"));
-                var2_3.append(this.f);
-                var2_3.append(cYh.d("48392F35322249202921783B0D31397E213F1539272808390F35223A682E1E20246C24320827672732280E36386C2C390834242C6C2A0823356A74BDCEEA"));
-                var5_5 = var2_3.toString();
+                if (this.s.indexOf("y") >= 0) {
+                    var1_1 = new StringBuilder();
+                    var1_1.append(this.f);
+                    var1_1.append("/index.php/verify/index.html?");
+                    var1_1 = var1_1.toString();
+                }
+                if (!(var4_7 = "\u7a7a".equals(var6_5[0]))) break block28;
+                var2_2 = var1_1;
+                ** GOTO lbl81
             }
-            var6_6 = var5_5.split(cYh.d("44"));
-            var3_7 = var5_5.length();
+            if (var6_5[0].startsWith("http")) {
+            }
+            ** GOTO lbl-1000
         }
-        catch (Exception var1_2) {
-            var2_3 = this.I;
-            if (var2_3 != null) {
-                com.github.catvod.spider.merge.i.b.a(var1_2, com.github.catvod.spider.merge.d.d.b(cYh.d("00353512383E0205333D7F738EC4D8B9F8F54A7D7F")), (SpiderApi)var2_3);
+        catch (Exception var2_3) {
+            var1_1 = this.I;
+            if (var1_1 != null) {
+                com.github.catvod.spider.merge.Dw.f.a(var2_3, com.github.catvod.spider.merge.ka.d.b("getCodeUrl()\u9519\u8bef-->"), (SpiderApi)var1_1);
             }
             return null;
         }
-        var5_5 = cYh.d("48392F35322249202921783B0D31397E213F1539272808390F35223A682E1E20246C243F06222239712C022228372E67");
-        var8_8 = cYh.d("48392F35322249202921783B0D31397E213F1539272808390F35223A682E1E20246C24320827672732280E36386C");
-        var9_9 = cYh.d("48392F35322249202921782C022228372E750E3E25342F740F242C3D68");
-        var11_10 = cYh.d("1E");
-        var10_11 = cYh.d("81C0DDB6E3F8");
-        if (var3_7 >= 1) ** GOTO lbl54
-        {
-            if (var10_11.equals(this.r)) {
-                var2_3 = new StringBuilder();
-                var2_3.append(this.f);
-                var2_3.append((String)var5_5);
-            } else {
-                var2_3 = new StringBuilder();
-                var2_3.append(this.f);
-                var2_3.append(var8_8);
-            }
-            var5_5 = var2_3.toString();
-            var2_3 = var1_1;
-            var1_1 = var5_5;
-            if (this.s.indexOf(var11_10) >= 0) {
-                var1_1 = new StringBuilder();
-                var1_1.append(this.f);
-                var1_1.append(var9_9);
-                var2_3 = var1_1.toString();
-                var1_1 = var5_5;
-            }
-            ** GOTO lbl138
-lbl54:
-            // 1 sources
-
-            if (this.s.indexOf(var11_10) >= 0) {
-                var1_1 = new StringBuilder();
-                var1_1.append(this.f);
-                var1_1.append(var9_9);
-                var1_1 = var1_1.toString();
-            }
-            var4_12 = var7_4.equals(var6_6[0]);
-        }
-        var11_10 = cYh.d("0F243521");
-        var9_9 = cYh.d("48");
-        if (!var4_12) ** GOTO lbl-1000
-        var2_3 = var1_1;
-        ** GOTO lbl87
+        var2_2 = var6_5[0];
+        ** GOTO lbl81
 lbl-1000:
         // 1 sources
 
         {
-            if (!var6_6[0].startsWith(var11_10)) ** GOTO lbl-1000
+            if (!var6_5[0].startsWith("/")) ** GOTO lbl73
+            var2_2 = new StringBuilder();
+            var2_2.append(this.f);
         }
-        var2_3 = var6_6[0];
-        ** GOTO lbl87
-lbl-1000:
-        // 1 sources
-
-        {
-            if (!var6_6[0].startsWith(var9_9)) ** GOTO lbl79
-            var2_3 = new StringBuilder();
-            var2_3.append(this.f);
-        }
-        var1_1 = var6_6[0];
+        var1_1 = var6_5[0];
 lbl-1000:
         // 2 sources
 
         {
             while (true) {
-                var2_3.append((String)var1_1);
+                var2_2.append((String)var1_1);
                 ** GOTO lbl-1000
                 break;
             }
-lbl79:
+lbl73:
             // 1 sources
 
-            var2_3 = new StringBuilder();
-            var2_3.append(this.f);
-            var2_3.append(var9_9);
+            var2_2 = new StringBuilder();
+            var2_2.append(this.f);
+            var2_2.append("/");
         }
-        var1_1 = var6_6[0];
+        var1_1 = var6_5[0];
         ** while (true)
 lbl-1000:
         // 1 sources
 
         {
-            var2_3 = var2_3.toString();
-lbl87:
+            var2_2 = var2_2.toString();
+lbl81:
             // 3 sources
 
-            if (!var10_11.equals(this.r)) ** GOTO lbl-1000
+            if (!"\u641c\u7d22".equals(this.r)) ** GOTO lbl-1000
             var1_1 = new StringBuilder();
             var1_1.append(this.f);
-            var1_1.append((String)var5_5);
+            var1_1.append("/index.php/ajax/verify_check?type=search&verify=");
             var1_1 = var1_1.toString();
-            if (var7_4.equals(var6_6[2])) ** GOTO lbl138
-            if (!var6_6[2].startsWith(var11_10)) ** GOTO lbl-1000
+            if ("\u7a7a".equals(var6_5[2])) ** GOTO lbl132
+            if (!var6_5[2].startsWith("http")) ** GOTO lbl-1000
         }
-        var1_1 = var6_6[2];
-        ** GOTO lbl138
+        var1_1 = var6_5[2];
+        ** GOTO lbl132
 lbl-1000:
         // 1 sources
 
         {
-            if (!var6_6[2].startsWith(var9_9)) ** GOTO lbl107
-            var5_5 = new StringBuilder();
-            var5_5.append(this.f);
+            if (!var6_5[2].startsWith("/")) ** GOTO lbl101
+            var5_4 = new StringBuilder();
+            var5_4.append(this.f);
         }
-        var1_1 = var6_6[2];
+        var1_1 = var6_5[2];
 lbl-1000:
         // 4 sources
 
         {
             while (true) {
-                var5_5.append((String)var1_1);
+                var5_4.append((String)var1_1);
                 ** GOTO lbl-1000
                 break;
             }
-lbl107:
+lbl101:
             // 1 sources
 
-            var5_5 = new StringBuilder();
-            var5_5.append(this.f);
-            var5_5.append(var9_9);
+            var5_4 = new StringBuilder();
+            var5_4.append(this.f);
+            var5_4.append("/");
         }
-        var1_1 = var6_6[2];
+        var1_1 = var6_5[2];
         ** GOTO lbl-1000
 lbl-1000:
         // 1 sources
@@ -3085,586 +3429,827 @@ lbl-1000:
         {
             var1_1 = new StringBuilder();
             var1_1.append(this.f);
-            var1_1.append(var8_8);
+            var1_1.append("/index.php/ajax/verify_check?type=show&verify=");
             var1_1 = var1_1.toString();
-            if (var7_4.equals(var6_6[1])) ** GOTO lbl138
-            if (!var6_6[1].startsWith(var11_10)) ** GOTO lbl-1000
+            if ("\u7a7a".equals(var6_5[1])) ** GOTO lbl132
+            if (!var6_5[1].startsWith("http")) ** GOTO lbl-1000
         }
-        var1_1 = var6_6[1];
-        ** GOTO lbl138
+        var1_1 = var6_5[1];
+        ** GOTO lbl132
 lbl-1000:
         // 1 sources
 
         {
-            if (!var6_6[1].startsWith(var9_9)) ** GOTO lbl-1000
-            var5_5 = new StringBuilder();
-            var5_5.append(this.f);
+            if (!var6_5[1].startsWith("/")) ** GOTO lbl-1000
+            var5_4 = new StringBuilder();
+            var5_4.append(this.f);
         }
-        var1_1 = var6_6[1];
+        var1_1 = var6_5[1];
         ** GOTO lbl-1000
 lbl-1000:
         // 1 sources
 
         {
-            var5_5 = new StringBuilder();
-            var5_5.append(this.f);
-            var5_5.append(var9_9);
+            var5_4 = new StringBuilder();
+            var5_4.append(this.f);
+            var5_4.append("/");
         }
-        var1_1 = var6_6[1];
+        var1_1 = var6_5[1];
         ** while (true)
 lbl-1000:
         // 1 sources
 
         {
-            var1_1 = var5_5.toString();
-lbl138:
+            var1_1 = var5_4.toString();
+lbl132:
             // 6 sources
 
-            var5_5 = new JSONObject();
-            var5_5.put(cYh.d("142433"), (Object)var2_3);
-            var5_5.put(cYh.d("043F253402280B"), (Object)var1_1);
-            return var5_5;
+            var5_4 = new JSONObject();
+            var5_4.put("str", (Object)var2_2);
+            var5_4.put("codeUrl", (Object)var1_1);
+            return var5_4;
         }
     }
 
     /*
-     * WARNING - Removed back jump from a try to a catch block - possible behaviour change.
-     * Unable to fully structure code
      * Enabled aggressive block sorting
      * Enabled unnecessary exception pruning
      * Enabled aggressive exception aggregation
      */
-    private JSONObject o(String var1_1, String var2_2, String var3_4) {
-        var6_5 = cYh.d("54");
-        var7_6 = cYh.d("56");
-        var9_7 = cYh.d("322324237A1B00352F25");
+    private JSONObject p(String object, String string, String string2) {
         try {
-            var8_8 /* !! */  = new Request.Builder();
-            var1_1 = var8_8 /* !! */ .url((String)var1_1).addHeader(var9_7, this.J("")).build();
-            var1_1 = com.github.catvod.spider.merge.k.g.b().newCall((Request)var1_1).execute();
-            var8_8 /* !! */  = var1_1.headers().get(cYh.d("3435357C1435083B2834"));
-            var10_9 = var1_1.body().byteStream();
-            var1_1 = new byte[1024];
-            var11_10 = new ByteArrayOutputStream();
-            while ((var4_11 = var10_9.read((byte[])var1_1)) != -1) {
-                var11_10.write((byte[])var1_1, 0, var4_11);
+            int n2;
+            Object object2 = new Request.Builder();
+            object = object2.url((String)object).addHeader("User-Agent", this.M("")).build();
+            object = com.github.catvod.spider.merge.mk.g.b().newCall((Request)object).execute();
+            object2 = object.headers().get("Set-Cookie");
+            InputStream inputStream = object.body().byteStream();
+            Object object3 = new byte[1024];
+            object = new ByteArrayOutputStream();
+            while ((n2 = inputStream.read((byte[])object3)) != -1) {
+                ((ByteArrayOutputStream)object).write((byte[])object3, 0, n2);
             }
-            var10_9 = Base64.encodeToString((byte[])var11_10.toByteArray(), (int)0).replaceAll(cYh.d("3B23"), "");
-            if (var3_4.equals(var7_6)) {
-                var1_1 = new StringBuilder();
-                var1_1.append(cYh.d("1C722E322505132931347560567C63383A3D456A63"));
-                var1_1.append((String)var10_9);
-                var1_1.append(cYh.d("457C633336390C37333E2234033C2C367560451E2E3F32781A"));
-                var1_1 = var1_1.toString();
+            object3 = Base64.encodeToString((byte[])((ByteArrayOutputStream)object).toByteArray(), (int)0).replaceAll("\\s", "");
+            if (string2.equals("1")) {
+                object = new StringBuilder();
+                ((StringBuilder)object).append("{\"ocr_type\":1,\"img\":\"");
+                ((StringBuilder)object).append((String)object3);
+                ((StringBuilder)object).append("\",\"backgroundlmg\":\"None\"}");
+                object = ((StringBuilder)object).toString();
             } else {
-                var1_1 = "";
+                object = "";
             }
-            if (var3_4.equals(var6_5)) {
-                var1_1 = new StringBuilder();
-                var1_1.append(cYh.d("1C722E322505132931347560547C63383A3D456A63"));
-                var1_1.append((String)var10_9);
-                var1_1.append(cYh.d("452D"));
-                var1_1 = var1_1.toString();
+            if (string2.equals("3")) {
+                object = new StringBuilder();
+                ((StringBuilder)object).append("{\"ocr_type\":3,\"img\":\"");
+                ((StringBuilder)object).append((String)object3);
+                ((StringBuilder)object).append("\"}");
+                object = ((StringBuilder)object).toString();
             }
-            var10_9 = RequestBody.create((MediaType)MediaType.parse((String)cYh.d("0620313D3E390624283E39750D232E3F")), (String)var1_1);
-            var1_1 = new Request.Builder();
-            var1_1 = var1_1.url(var2_2).post((RequestBody)var10_9).addHeader(var9_7, this.J("")).build();
-            var2_2 = com.github.catvod.spider.merge.k.g.b().newCall((Request)var1_1).execute();
-            var1_1 = new JSONObject(var2_2.body().string());
-            var2_2 = new JSONObject();
-            var5_12 = var3_4.equals(var7_6);
+            object3 = RequestBody.create((MediaType)MediaType.parse((String)"application/json"), (String)object);
+            object = new Request.Builder();
+            object = object.url(string).post((RequestBody)object3).addHeader("User-Agent", this.M("")).build();
+            string = com.github.catvod.spider.merge.mk.g.b().newCall((Request)object).execute();
+            object = new JSONObject(string.body().string());
+            string = new JSONObject();
+            boolean bl = string2.equals("1");
+            if (bl) {
+                string.put("cookie", object2);
+                string.put("code", (Object)object.getString("result"));
+                return string;
+            }
+            if (!string2.equals("3")) return null;
+            string.put("cookie", object2);
+            string.put("code", (Object)object.getJSONObject("result").getString("target").replaceAll("[\\[\\]]", ""));
+            return string;
         }
-        catch (Exception var2_3) {
-            var1_1 = this.I;
-            if (var1_1 == null) return null;
-            com.github.catvod.spider.merge.i.b.a(var2_3, com.github.catvod.spider.merge.d.d.b(cYh.d("00353515362E06236978BECEFEB8EEFE7A7759")), (SpiderApi)var1_1);
-            return null;
+        catch (Exception exception) {
+            object = this.I;
+            if (object == null) return null;
+            com.github.catvod.spider.merge.Dw.f.a(exception, com.github.catvod.spider.merge.ka.d.b("getDatas()\u9519\u8bef-->"), (SpiderApi)object);
         }
-        var9_7 = cYh.d("153532243B2E");
-        var7_6 = cYh.d("043F2534");
-        var10_9 = cYh.d("043F2E3A3E3F");
-        if (!var5_12) ** GOTO lbl58
-        {
-            var2_2.put((String)var10_9, (Object)var8_8 /* !! */ );
-            var2_2.put(var7_6, (Object)var1_1.getString(var9_7));
-            return var2_2;
-lbl58:
-            // 1 sources
-
-            if (!var3_4.equals(var6_5)) return null;
-            var2_2.put((String)var10_9, (Object)var8_8 /* !! */ );
-            var2_2.put(var7_6, (Object)var1_1.getJSONObject(var9_7).getString(cYh.d("13313336322E")).replaceAll(cYh.d("3C0C1A0D0A07"), ""));
-            return var2_2;
-        }
+        return null;
     }
 
-    private String p(String string, String string2) {
+    private String q(String string, String string2) {
         if (string.indexOf(string2) < 0) {
             return "";
         }
         StringBuilder stringBuilder = new StringBuilder();
-        String string3 = cYh.d("44");
-        stringBuilder.append(string3);
+        stringBuilder.append("#");
         stringBuilder.append(string);
-        stringBuilder.append(string3);
+        stringBuilder.append("#");
         string = stringBuilder.toString();
         stringBuilder = new StringBuilder();
-        stringBuilder.append(cYh.d("497A"));
+        stringBuilder.append(".*");
         stringBuilder.append(string2);
-        stringBuilder.append(cYh.d("3B74690A09793A7B7E7874744D"));
-        return string.replaceAll(stringBuilder.toString(), cYh.d("4361"));
+        stringBuilder.append("\\$([^#]+?)#.*");
+        return string.replaceAll(stringBuilder.toString(), "$1");
     }
 
     /*
      * Unable to fully structure code
+     * Could not resolve type clashes
      */
-    private JSONObject q() {
-        block53: {
-            block52: {
-                block51: {
-                    block50: {
-                        block49: {
-                            block59: {
-                                var22_1 = cYh.d("1C32382C");
-                                var26_2 = cYh.d("1C2924302527");
-                                var27_3 = cYh.d("1C3133343627");
-                                var19_4 = cYh.d("1C332D3024291A");
-                                var10_5 = cYh.d("80C4F4B9F0DC82D9E6");
-                                var9_6 = cYh.d("44");
-                                var4_7 = this.c;
-                                var20_9 = new ArrayList();
-                                var16_10 = var4_7.split((String)var9_6);
-                                var1_11 = var16_10.length;
-                                var12_12 = cYh.d("8FEFDFB6ECF782D9E6");
-                                var14_13 = "";
-                                var2_14 = 0;
-                                var4_7 = var12_12;
-                                var5_15 = "";
-                                var8_17 = var7_16 = "";
-                                while (true) {
-                                    block46: {
-                                        block48: {
-                                            block47: {
-                                                var6_19 = cYh.d("80C4F4B4EAEB");
-                                                var21_23 = cYh.d("3B74");
-                                                if (var2_14 >= var1_11) break;
-                                                var15_22 = var16_10[var2_14];
-                                                var20_9.add(var15_22.split(var21_23)[1]);
-                                                var3_18 = var10_5.equals(var15_22.split(var21_23)[0]);
-                                                var11_20 = cYh.d("82D9E6B8CCDC");
-                                                var13_21 = cYh.d("80C4F4B9F0DC");
-                                                if (var3_18) {
-                                                    var6_19 = var15_22.split(var21_23)[1];
-                                                    var4_7 = var10_5;
-                                                    break block46;
-                                                }
-                                                if (!var13_21.equals(var15_22.split(var21_23)[0])) break block47;
-                                                var6_19 = var15_22.split(var21_23)[1];
-                                                var4_7 = var13_21;
-lbl38:
-                                                // 3 sources
+    private JSONObject r(String var1_1) {
+        block40: {
+            block45: {
+                block46: {
+                    block44: {
+                        block43: {
+                            block41: {
+                                block42: {
+                                    block39: {
+                                        block47: {
+                                            var10_3 = "";
+                                            var17_4 = new JSONObject();
+                                            var12_5 = this.G("\u7b80\u4ecb", "\u8be6\u60c5", "");
+                                            var6_6 = this.E("\u5f71\u7247\u7c7b\u578b");
+                                            var7_7 = this.E("\u5f71\u7247\u5730\u533a");
+                                            var8_8 = this.E("\u5f71\u7247\u5e74\u4ee3");
+                                            var5_9 = this.G("\u5f71\u7247\u72b6\u6001", "\u72b6\u6001", "");
+                                            var11_10 = this.E("\u5bfc\u6f14");
+                                            var9_11 /* !! */  = this.G("\u4e3b\u6f14", "\u6f14\u5458", "");
+                                            var4_12 = (this.H("\u64ad\u653e\u4e8c\u6b21\u622a\u53d6", "bfjiequqian", "list_twice_pre", "").isEmpty() ^ true) != false ? this.a0((String)var1_1, this.H("\u64ad\u653e\u4e8c\u6b21\u622a\u53d6", "bfjiequqian", "list_twice_pre", ""), "").get(0) : var1_1;
+                                            if (var12_5.indexOf(".") <= 0 && var9_11 /* !! */ .indexOf(".") <= 0 && var11_10.indexOf(".") <= 0 && var5_9.indexOf(".") <= 0 && var7_7.indexOf(".") <= 0 && var8_8.indexOf(".") <= 0 || var12_5.indexOf("&&") >= 0 || var9_11 /* !! */ .indexOf("&&") >= 0 || var11_10.indexOf("&&") >= 0 || var5_9.indexOf("&&") >= 0 || var7_7.indexOf("&&") >= 0 || var8_8.indexOf("&&") >= 0) break block39;
+                                            if (!var4_12.startsWith("{")) ** GOTO lbl18
+                                            var1_1 = var4_12;
+                                            if (var4_12.endsWith("}")) break block47;
+lbl18:
+                                            // 2 sources
 
-                                                while (true) {
-                                                    var11_20 = var4_7;
-lbl40:
-                                                    // 3 sources
-
-                                                    while (true) {
-                                                        var4_7 = var11_20;
-                                                        break block46;
-                                                        break;
-                                                    }
-                                                    break;
-                                                }
-                                            }
-                                            if (!var11_20.equals(var15_22.split(var21_23)[0])) break block48;
-                                            var6_19 = var15_22.split(var21_23)[1];
-                                            var4_7 = var11_20;
-                                            ** GOTO lbl38
+                                            var1_1 = var4_12.replaceAll("[\\S\\s]\\{([\\S\\s])\\}[\\S\\s]", "$1");
                                         }
-                                        if (var12_12.equals(var15_22.split(var21_23)[0])) {
-                                            var6_19 = var15_22.split(var21_23)[1];
-                                            ** continue;
-                                        }
-                                        if (var6_19.equals(var15_22.split(var21_23)[0])) {
-                                            var5_15 = var15_22.split(var21_23)[1];
-                                            var6_19 = var8_17;
-                                            break block46;
-                                        }
-                                        var11_20 = var4_7;
-                                        var6_19 = var8_17;
-                                        if (!cYh.d("82DAE9B7EBF1").equals(var15_22.split(var21_23)[0])) ** GOTO lbl40
-                                        var7_16 = var15_22.split(var21_23)[1];
-                                        var11_20 = var4_7;
-                                        var6_19 = var8_17;
-                                        ** continue;
+                                        this.G("bfjiequhou", "list_twice_suf", "");
+                                        var6_6 = this.w((String)var1_1, (String)var6_6);
+                                        var5_9 = this.w((String)var1_1, (String)var5_9);
+                                        var10_3 = this.w((String)var1_1, var12_5);
+                                        var8_8 = this.w((String)var1_1, (String)var8_8);
+                                        var7_7 = this.w((String)var1_1, var7_7);
+                                        var4_12 = this.w((String)var1_1, var11_10);
+                                        var9_11 /* !! */  = this.w((String)var1_1, (String)var9_11 /* !! */ );
+                                        var1_1 = var5_9;
+                                        var5_9 = var7_7;
+                                        var7_7 = var9_11 /* !! */ ;
+                                        break block40;
                                     }
-                                    ++var2_14;
-                                    var8_17 = var6_19;
+                                    var4_12 = this.H("\u7b80\u4ecb", "\u64ad\u653e\u9875\u5267\u60c5", "juqingqian", "\u8ff0\u4e86&&</div>");
+                                    var11_10 = this.G("\u5f71\u7247\u7c7b\u578b", "leixinqian", "\u7c7b\u578b\uff1a&&</div>");
+                                    var12_5 = this.F("\u5f71\u7247\u5730\u533a", "\u5730\u533a\uff1a&&</div>");
+                                    var13_13 = this.G("\u5f71\u7247\u5e74\u4ee3", "niandaiqian", "\u5e74\u4efd\uff1a&&</div>");
+                                    var9_11 /* !! */  = this.I("\u5f71\u7247\u72b6\u6001", "\u72b6\u6001", "\u64ad\u653e\u9875\u72b6\u6001", "zhuangtaiqian", "\u72b6\u6001\uff1a&&</div>");
+                                    var5_9 = this.H("\u5bfc\u6f14", "\u64ad\u653e\u9875\u5bfc\u6f14", "daoyanqian", "\u5bfc\u6f14\uff1a&&</div>");
+                                    var7_7 = this.I("\u4e3b\u6f14", "\u6f14\u5458", "\u64ad\u653e\u9875\u6f14\u5458", "zhuyanqian", "\u4e3b\u6f14\uff1a&&</div>");
+                                    if (var1_1.indexOf("</a>") >= 0 || var1_1.indexOf("</div>") >= 0) break block41;
+                                    if (!"\u8ff0\u4e86&&</div>".equals(this.E("\u7b80\u4ecb"))) break block42;
+                                    var4_12 = "vod_blurb*:*\"&&\"";
                                 }
-                                var13_21 = var9_6;
-                                var11_20 = this.D(cYh.d("80E1FAB4C9D1"), cYh.d("80FDDAB8D7D382FDD1B4DFDC80E1FAB4C7D780F7F1"), cYh.d("57"));
-                                var23_24 = this.b;
-                                var15_22 = this.D(cYh.d("82D9E6B7D4DF"), cYh.d("80FDDAB8D7D380E1FAB4C9D182C0CCB6F0EA"), "");
-                                var1_11 = var23_24.indexOf(var19_4);
-                                var18_25 = cYh.d("4A7D");
-                                var24_26 = cYh.d("4A7D67");
-                                var25_27 = cYh.d("41");
-                                var10_5 = var6_19;
-                                var28_28 = cYh.d("3B766A");
-                                var29_29 = cYh.d("3CB6DAEEB1D7C5");
-                                if (var1_11 < 0) break block59;
-                                if (var15_22.isEmpty()) ** GOTO lbl89
+                                if ("\u5bfc\u6f14\uff1a&&</div>".equals(this.E("\u5bfc\u6f14"))) {
+                                    var5_9 = "vod_director*:*\"&&\"";
+                                }
+                                var6_6 = var4_12;
+                                var8_8 = var5_9;
+                                if ("\u4e3b\u6f14\uff1a&&</div>".equals(this.E("\u4e3b\u6f14"))) {
+                                    var7_7 = "vod_actor*:*\"&&\"";
+                                    var6_6 = var4_12;
+                                    var8_8 = var5_9;
+                                }
+                                break block43;
                             }
-                            var6_19 = var15_22;
-                            if (var15_22.indexOf(var29_29) < 0) break block49;
-lbl89:
-                            // 2 sources
-
-                            var9_6 = cYh.d("80C4F4B4EAEB4A7DA4C7CBBFEEF767B6DFEB81D3C477B2D0CFB4FCCD71BDC0C1A4E8EC7C82D9E6B7D4DF41B6C9C9B3E0EE76A9FCF1BFEBFA67B6DDF580EDEB77B2D0CFB7D5EA71BFC2D7A4E8EC7C81FDE7B5E9FA41B5C7C3BEC3CE76A7CFFDBCEFC867B7D6CA81D0D777B1D8CBB7D7C071B3FAC2A7C9F27C82DFE5B9F4DF41B5CFD7B2D5D576A9EEC7BFEDF867B4D3E580FBE477B3E6C1B7D1D72B268FEFDFB6ECF782D9E67C7ABFE8F4A9F2D27C80F5DFB9F8C741B6C9C9B3E0EE76A4D0E1BFE4DF67B6DFEB81D3C477B2CCFBB5C8F671BFC9E6A4EBFA7C80DAEEB6EAF041B6C3FDB0CCF676A7D0C7BCE7C667B7FAFC83EEE177B2D0CFB4FCCD71BFC2D7A4E8EC7C82D9E6B7D4DF41B4FDF7B0CAE176A4DFD1BFE8E23D2DB0E1DBB8C8EB7A778FD4F0B4D8F980F7C177B0C6F8B4FBEBB0FDE776A7D2D2BCE3CF67B7C0DF81E8F977BEC5D4B4F8C171B2EFCEA9E8DF7C80EECFB8F4C541B7FBFBB2F4F976A6C5C8BCD3EB3D2DB2D0CFB6FDFA7A7780F7D0B4EEE141B7C2FCBFFBE776A7C1C9BDCBC167B4D1C88EC9E877B1FAC6B5DAFC71BFEDF8A5ECCB7C8FEFD1B4DDF21B2CA6EBFDBFDAC5A6D8D0774AB7FBFBB2E7F276A4DFD1BFE8E267B5EBFA8FFEF177BEC5D4B4F8C171BCCADCA9D9C97C80CFECB6DEDD41B7E6C0B2E3DC");
-                            var6_19 = var9_6;
-                            if (!var12_12.equals(var4_7)) {
-                                var6_19 = var9_6.replace((CharSequence)var12_12, (CharSequence)var4_7);
-                            }
-                            var9_6 = var6_19;
-                            if (var15_22.indexOf(var29_29) < 0) break block50;
-                            var6_19 = this.a0((String)var15_22, var6_19).replaceAll(var28_28, (String)var25_27).replace((CharSequence)var24_26, var18_25);
+                            var6_6 = var4_12;
+                            var8_8 = var5_9;
                         }
-                        var9_6 = var6_19;
+                        var4_12 = this.a0((String)var1_1, var11_10, this.E("leixinhou")).get(0).trim().replaceAll("\\&#?[a-zA-Z0-9]{1,10};", "").replaceAll("<[^>]*>", "/").replaceAll("[><]", "").replaceAll("\uff0c", ",").replaceAll("/+", "/").replaceAll("\u5730\u533a.*", "").replaceAll("\\s+", "").replaceAll("\u4e0a\u6620.*", "");
+                        var14_14 = "\u8ff0\u4e86&&</div>";
+                        var11_10 = this.g(var4_12.replaceAll("\u66f4\u65b0.*", "").replaceAll("\u4e3b\u6f14.*", "").replaceAll("\u72b6\u6001.*", "").replaceAll("\u603b\u96c6\u6570.*", "").replaceAll("\u7f16\u5267.*", "").replaceAll("\u5e74\u4ee3.*", "").replaceAll("\u5e74\u4efd.*", "").replaceAll("\u56fd\u5bb6.*", "").replaceAll("\u5bfc\u6f14.*", "").replaceAll("\u5267\u60c5.*", "").replaceAll("\u7b80\u4ecb.*", ""));
+                        var12_5 = this.a0((String)var1_1, var12_5, "").get(0).replaceAll("\\&#?[a-zA-Z0-9]{1,10};", "").replaceAll("<[^>]*>", " ").replaceAll("[><]", "").replaceAll("\\s+", " ").trim().split(" ")[0];
+                        var4_12 = var5_9 = this.a0((String)var1_1, var13_13, this.E("niandaihou")).get(0).replaceAll("\\&#?[a-zA-Z0-9]{1,10};", "").replaceAll("<[^>]*>", " ").replaceAll("[><]", "").replaceAll("\\s+", " ").trim().split(" ")[0];
+                        if (var5_9.trim().isEmpty()) {
+                            var4_12 = this.a0((String)var1_1, "\u5e74\u4ee3\uff1a&&</div>", "").get(0).replaceAll("\\&#?[a-zA-Z0-9]{1,10};", "").replaceAll("<[^>]*>", " ").replaceAll("[><]", "").replaceAll("\\s+", " ").trim().split(" ")[0];
+                        }
+                        var9_11 /* !! */  = this.a0((String)var1_1, (String)var9_11 /* !! */ , this.E("zhuangtaihou")).get(0).replaceAll("\\&#?[a-zA-Z0-9]{1,10};", "").replaceAll("<[^>]*>", " ").replaceAll("[><]", "").replaceAll("\\s+", " ").trim().split(" ")[0];
+                        var5_9 = var9_11 /* !! */ ;
+                        if (var9_11 /* !! */ .trim().isEmpty()) {
+                            var5_9 = this.a0((String)var1_1, "\u66f4\u65b0\uff1a&&</div>", "").get(0).replaceAll("\\&#?[a-zA-Z0-9]{1,10};", "").replaceAll("<[^>]*>", " ").replaceAll("[><]", "").replaceAll("\\s+", " ").trim().split(" ")[0];
+                        }
+                        var9_11 /* !! */  = new String[]{var7_7, "\u6f14\u5458\uff1a&&</div>", "\u4e3b\u6f14\uff1a&&</p>", "\u6f14\u5458\uff1a&&</p>"};
+                        var7_7 = "";
+                        for (var2_15 = 0; var2_15 < 4; ++var2_15) {
+                            var7_7 = this.a0((String)var1_1, var9_11 /* !! */ [var2_15], "").get(0).replaceAll("\\&#?[a-zA-Z0-9]{1,10};", "").replaceAll("<[^>]*>", "/").replaceAll("[><]", "").replaceAll(" ", "\u7a7a\u7a7a\u7a7a").replaceAll("\\s+", "").replaceAll("\u7a7a\u7a7a\u7a7a", " ").replaceAll("/+", "/").trim();
+                            if (var7_7.length() > 1) break;
+                            continue;
+                        }
+                        var13_13 = this.g(var7_7.replaceAll("\u7c7b\u578b.*", "").replaceAll("\u5bfc\u6f14.*", "").replaceAll("\u4e3b\u6f14.*", "").replaceAll("\u4e0a\u6620.*", "").replaceAll("\u66f4\u65b0.*", "").replaceAll("\u603b\u96c6\u6570.*", "").replaceAll("\u7f16\u5267.*", "").replaceAll("\u72b6\u6001.*", "").replaceAll("\u5e74\u4ee3.*", "").replaceAll("\u5e74\u4efd.*", "").replaceAll("\u56fd\u5bb6.*", "").replaceAll("\u5730\u533a.*", "").replaceAll("\u7b80\u4ecb.*", "").replaceAll("\u5267\u60c5.*", "").replaceAll("\u7acb\u5373\u64ad\u653e.*", "").replaceAll("\u300a.*", "").replaceAll("\u201c.*", "").replaceAll("\u8be5\u7247.*", "").trim());
+                        var8_8 = this.a0((String)var1_1, (String)var8_8, this.E("daoyanhou")).get(0).replaceAll("\\&#?[a-zA-Z0-9]{1,10};", "").replaceAll("<[^>]*>", "/").replaceAll("[><]", "").replaceAll(" ", "\u7a7a\u7a7a\u7a7a").replaceAll("\\s+", "").replaceAll("\u7a7a\u7a7a\u7a7a", " ").replaceAll("/+", "/").trim();
+                        var7_7 = var8_8;
+                        if (var8_8.isEmpty()) {
+                            var7_7 = this.a0((String)var1_1, "\u5bfc\u6f14\uff1a&&</p>", "").get(0).replaceAll("\\&#?[a-zA-Z0-9]{1,10};", "").replaceAll("<[^>]*>", "/").replaceAll("[><]", "").replaceAll(" ", "\u7a7a\u7a7a\u7a7a").replaceAll("\\s+", "").replaceAll("\u7a7a\u7a7a\u7a7a", " ").replaceAll("/+", "/").trim();
+                        }
+                        var15_16 = this.g(var7_7.replaceAll("\u4e3b\u6f14.*", "").replaceAll("\u6f14\u5458.*", "").replaceAll("\u7c7b\u578b.*", "").replaceAll("\u4e0a\u6620.*", "").replaceAll("\u66f4\u65b0.*", "").replaceAll("\u72b6\u6001.*", "").replaceAll("\u603b\u96c6\u6570.*", "").replaceAll("\u7f16\u5267.*", "").replaceAll("\u5e74\u4ee3.*", "").replaceAll("\u5e74\u4efd.*", "").replaceAll("\u56fd\u5bb6.*", "").replaceAll("\u5730\u533a.*", "").replaceAll("\u5267\u60c5.*", "").replaceAll("\u7b80\u4ecb.*", "").replaceAll("\u7acb\u5373\u64ad\u653e.*", "").replaceAll("\u300a.*", "").replaceAll("\u8bed\u8a00.*", "").trim());
+                        var18_17 = new String[]{"$.", "$(", "=", "vod_", "font", "\":\"", "\": \"", "height", "width", "size"};
+                        var7_7 = this.E("juqinghou");
+                        var16_18 = this.a0((String)var1_1, (String)var6_6, var7_7).get(0).trim().replaceAll("<script[. ]*?>[. ]*?</script>", "").replaceAll("<style[. ]*?>[. ]*?</style>", "").replace("\u8be6\u60c5", "").replaceAll("\\&#?[a-zA-Z0-9]{1,10};", "").replaceAll("<[^>]*>", "").replaceAll("[><]", "").replaceAll(" ", "\u7a7a\u7a7a\u7a7a").replaceAll("\\s+", "").replaceAll("\u7a7a\u7a7a\u7a7a", " ").replaceAll("\"?var.*", "").replaceAll("\u7acb\u5373\u64ad\u653e.*", "").replaceAll("\u64ad\u653e.*", "").replaceAll("\"?\u70ed\u641c.*", "").replaceAll("\u70ed\u95e8.*", "").replaceAll("name=.*", "").split("\u9009\u96c6")[0].split("\u9009\u7ebf")[0].split("\u7ebf\u8def")[0].trim();
+                        for (var2_15 = 0; var2_15 < 10; ++var2_15) {
+                            if (var16_18.indexOf(var18_17[var2_15]) < 0) continue;
+                            var2_15 = 1;
+                            break block44;
+                        }
+                        var2_15 = 0;
                     }
-                    var6_19 = cYh.d("82CCF1B4DBE0");
-                    var15_22 = this.D(var6_19, cYh.d("80FDDAB8D7D382CCF1B4DBE082C0CCB6F0EA"), "");
-                    if (var23_24.indexOf(var27_3) >= 0 && var15_22.isEmpty()) ** GOTO lbl108
-                    var6_19 = var15_22;
-                    if (var15_22.indexOf(var29_29) < 0) break block51;
-lbl108:
-                    // 2 sources
+                    var9_11 /* !! */  = new String[]{"\u7b80\u4ecb&&</div>", "\u5267\u60c5&&</div>", "\u4ecb\u7ecd&&</div>", "\u6982\u8981&&</div>", "\u6982\u8981&&</p>", "\u7b80\u4ecb&&</p>", "\u5267\u60c5&&</p>[\u4e0d\u5305\u542b:\u9996\u9875]", "\u4ecb\u7ecd&&</p>[\u4e0d\u5305\u542b:\u9996\u9875]", "<p*>&&</p>[\u4e0d\u5305\u542b:\u70ed\u641c#\u70ed\u95e8#\u64ad\u653e#\u672c\u7ad9#\u5bfc\u6f14\uff1a#\u66f4\u65b0\uff1a#\u72b6\u6001\uff1a#\u4e3b\u6f14\uff1a#\u6f14\u5458\uff1a#\u5730\u533a\uff1a#\u5e74\u4efd\uff1a#\u5e74\u4ee3\uff1a#\u7c7b\u578b\uff1a]"};
+                    var7_7 = var14_14;
+                    var8_8 = var6_6;
+                    var6_6 = var16_18;
+                    block26: for (var3_19 = 0; var3_19 < 9; ++var3_19) {
+                        var14_14 = var9_11 /* !! */ [var3_19];
+                        if (!var7_7.equals(var8_8)) break;
+                        if (var2_15 != 0) ** GOTO lbl114
+                        if (var8_8.indexOf("\u5185\u8be6") >= 0 || var8_8.indexOf("\u672a\u77e5") >= 0 || var6_6.length() >= 10) break;
+lbl114:
+                        // 2 sources
 
-                    var6_19 = var17_30 = cYh.d("80C4F4B4EAEB4A7DA4F5F0B3FED667B8F1C381E8EE77B2D5D7B6F8EF71BDD9DEA4CAEA7C81E3D4B4CCE741B8CAE0B2C1DA76A7C6F2BCFBFC67B8C8F382CBFC77B2E4D0B5DAEC71BCD4E0A4CAEA7C82DDF1B4EDFC41B4FED5B0E7F0B6D7FE71BCE3DFA4F5F0BFEFF967B9F2E580DFECB6DEC341B5CBF1B1D1D8B5E5F62B268FEFDFB6ECF782D9E67C7ABFC3F7A8C8D17C8EF6D8B7EFF541B5CEE1B1E3D976A6EFD9BFFCED67B7E4CF82CBFC77BFD1D6B5DAEC71BCF0F5A7CDFB7C8ECFE8B4CCE741B5FFE6B2C1DA76A7E2E7BFFCED67B4DAEA82EAE777B3E5E3B7FCC6B1CCC876A7D5D8BFC3F7A4D9FE7C8FF5FEB6D8F780D9D877B2D0C7B6CAEEB2FEC02C3DB6ECE68FD9FB7C7ABFC3F7A8C8D17C8EF6D8B7EFF541B5CEE1B1E3D976A7C6F2BCFBFC67B8C8F382CBFC77B0E4E9B5DAEC71B2ECE1A4CAEA261BB5CBF9B1E6CC7D6CB4F3FD8EC9C777B1CDC2B6DDFD71B3F8F9A4CAEA7C80EECFB4CCE741B8CAE0B2C1DA76A7E2C2BFFCED3D2DB0E0CDB5FCC4B0D3E07D6CB4F3FD8EC9C777BEFCFEB6F9FE71BFE8E0A7E8E97C80EECFB4CCE741B6F2C4B2C1DA76A9DAE6BFFCED67B7C0FF81CCED77BEC5CEB5DAEC71BFD9E7A4CAEA7C81E3F1B4CCE741B5CCE1B2E0C176A5EED3BDDAC7A7C7F87C81D4CEB4F3FD82D8E877BFFFD8B7CEFCB0D3FE76A4DBF7BCECEFA4F5F0");
-                    if (!var12_12.equals(var4_7)) {
-                        var6_19 = var17_30.replace((CharSequence)var12_12, (CharSequence)var4_7);
+                        var6_6 = this.a0((String)var1_1, "\u6982\u8981&&</p>", "").get(0).trim().replaceAll("<script[. ]*?>[. ]*?</script>", "").replaceAll("<style[. ]*?>[. ]*?</style>", "").replace("\u8be6\u60c5", "").replaceAll("\\&#?[a-zA-Z0-9]{1,10};", "").replaceAll("<[^>]*>", "").replaceAll("[><]", "").replaceAll(" ", "\u7a7a\u7a7a\u7a7a").replaceAll("\\s+", "").replaceAll("\u7a7a\u7a7a\u7a7a", " ").replaceAll("\"?var.*", "").replaceAll("\u7acb\u5373\u64ad\u653e.*", "").replaceAll("\u64ad\u653e.*", "").replaceAll("\"?\u70ed\u641c.*", "").replaceAll("\u70ed\u95e8.*", "").replaceAll("\u5927\u5bb6\u90fd\u5728.*", "").replace("\u4ecb\u7ecd", "").split("\u9009\u96c6")[0].split("\u9009\u7ebf")[0].split("\u7ebf\u8def")[0].trim();
+                        for (var2_15 = 0; var2_15 < 10; ++var2_15) {
+                            if (var6_6.indexOf(var18_17[var2_15]) < 0) continue;
+                            var2_15 = 1;
+                            continue block26;
+                        }
+                        var2_15 = 0;
                     }
-                    if (var15_22.indexOf(var29_29) < 0) {
-                        var17_30 = var6_19;
-                        break block52;
+                    var1_1 = var10_3;
+                    try {
+                        if ("\u672a\u77e5".equals(var6_6)) break block45;
+                        var1_1 = var10_3;
                     }
-                    var6_19 = this.a0((String)var15_22, var6_19).replaceAll(var28_28, (String)var25_27).replace((CharSequence)var24_26, var18_25);
+                    catch (Exception var1_2) {
+                        if (this.m) {
+                            var4_12 = new StringBuilder();
+                            var4_12.append(this.G);
+                            var4_12.append("\u8c03\u8bd5->getDescInfo\u51fa\u9519\uff1a");
+                            var4_12.append(var1_2.toString());
+                            Init.show(var4_12.toString());
+                        }
+                        if ((var4_12 = this.I) != null) {
+                            com.github.catvod.spider.merge.Dw.f.a(var1_2, com.github.catvod.spider.merge.ka.d.b("\u8be6\u60c5\u4fe1\u606f\u83b7\u53d6\u9519\u8bef\uff01getDescInfo()-->"), (SpiderApi)var4_12);
+                        }
+                        return null;
+                    }
+                    if ("\u5185\u8be6".equals(var6_6)) break block45;
+                    if (!var7_7.equals(var8_8)) break block46;
+                    var1_1 = var10_3;
+                    if (var2_15 != 0) break block45;
+                    if (var8_8.indexOf("\u5185\u8be6") >= 0 || var8_8.indexOf("\u672a\u77e5") >= 0 || var6_6.length() >= 10) break block46;
+                    var1_1 = var10_3;
+                    break block45;
                 }
-                var17_30 = var6_19;
+                var1_1 = var6_6;
             }
-            var4_7 = this.E(cYh.d("82E9F5B5ECE7"), cYh.d("81C7F7B8C2E5"), cYh.d("80FDDAB8D7D382E9F5B5ECE782C0CCB6F0EA"), "");
-            var18_25 = var4_7;
-            if (var23_24.indexOf(var26_2) < 0) ** GOTO lbl137
-            var18_25 = var4_7;
-            if (var4_7.isEmpty()) {
-                var4_7 = new Date();
-                var1_11 = var4_7.getYear() + 1900;
-                var4_7 = new StringBuilder();
-                var4_7.append(var1_11 - 15);
-                var4_7.append(cYh.d("4A"));
-                var4_7.append(var1_11);
-                var18_25 = var4_7.toString();
-            }
-lbl137:
-            // 4 sources
+            var7_7 = var15_16;
+            var8_8 = var12_5;
+            var6_6 = var11_10;
+            var10_3 = var4_12;
+            var9_11 /* !! */  = var5_9;
+            var5_9 = var13_13;
+            var4_12 = var7_7;
+            var7_7 = var5_9;
+            var5_9 = var8_8;
+            var8_8 = var10_3;
+            var10_3 = var1_1;
+            var1_1 = var9_11 /* !! */ ;
+        }
+        var9_11 /* !! */  = this.g((String)var10_3);
+        var17_4.put("category", var6_6);
+        var17_4.put("remark", (Object)var1_1);
+        var17_4.put("desc", (Object)var9_11 /* !! */ );
+        var17_4.put("year", var8_8);
+        var17_4.put("area", var5_9);
+        var17_4.put("director", var4_12);
+        var17_4.put("actor", (Object)var7_7);
+        return var17_4;
+    }
 
-            var6_19 = this.D(cYh.d("81DED3B4EDD5"), cYh.d("80FDDAB8D7D381DED3B4EDD582C0CCB6F0EA"), "");
-            var4_7 = var6_19;
-            if (var23_24.indexOf(var22_1) < 0) break block53;
-            var4_7 = var6_19;
-            if (!var6_19.isEmpty()) break block53;
-            var4_7 = cYh.d("81C7F7B8C0EE4324283C327983EAFBB7E7CE4338282524798FFFC5B4DFDC4323223E253F");
-        }
-        var12_12 = var4_7;
+    /*
+     * WARNING - Removed back jump from a try to a catch block - possible behaviour change.
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    private JSONObject s() {
+        Object object;
+        Object object2;
+        Object object3;
+        Object object4;
+        String string;
+        Object object5;
+        String string2;
+        String string3;
+        String string4;
+        String string5;
+        Object object6;
+        Object object7;
+        int n2;
+        Object object8;
+        int n3;
+        String[] stringArray;
+        Object object9;
+        Object object10;
+        String string6 = "{year}";
+        String string7 = "{letter}";
+        Object object11 = "\u7535\u89c6\u5267";
         try {
-            var29_29 = new JSONObject();
-            new JSONArray();
-            var28_28 = this.E(cYh.d("80D9F8B7F9D082D8C7B6E6E1"), cYh.d("80D9F8B7F9D082D8C7B6E6E112222D"), cYh.d("80D9F8B7F9D082D8C7B6E6E18EC3FFB7D9FF"), "");
-            var30_31 = var20_9.iterator();
-            var1_11 = 0;
-            var20_9 = var9_6;
-            var6_19 = var11_20;
-            var4_7 = var14_13;
-            var9_6 = var12_12;
+            object10 = this.c;
+            object9 = new ArrayList();
+            stringArray = ((String)object10).split("#");
+            n3 = stringArray.length;
+            object8 = "";
+            n2 = 0;
+            object7 = "\u8fde\u7eed\u5267";
+            object6 = "";
+            string3 = string5 = (string4 = "");
+            string2 = "#";
         }
-        catch (Exception var4_8) {
+        catch (Exception exception) {
             if (this.m) {
-                var5_15 = new StringBuilder();
-                var5_15.append(this.G);
-                var5_15.append(cYh.d("8FE0C2B9F8CF4A6E2634231C0E3C3534251E062420B4D0E08EC4D8BEEBC0"));
-                var5_15.append(var4_8.toString());
-                Init.show(var5_15.toString());
+                object5 = new StringBuilder();
+                ((StringBuilder)object5).append(this.G);
+                ((StringBuilder)object5).append("\u8c03\u8bd5->getFilterData\u51fa\u9519\uff1a");
+                ((StringBuilder)object5).append(((Object)exception).toString());
+                Init.show(((StringBuilder)object5).toString());
             }
-            if ((var5_15 = this.I) != null) {
-                com.github.catvod.spider.merge.i.b.a(var4_8, com.github.catvod.spider.merge.d.d.b(cYh.d("003535173E3613353315362E067868B8C3C38FFFEE7C7A64")), (SpiderApi)var5_15);
+            if ((object5 = this.I) != null) {
+                com.github.catvod.spider.merge.Dw.f.a(exception, com.github.catvod.spider.merge.ka.d.b("getFilterData()\u9519\u8bef-->"), (SpiderApi)object5);
             }
             return null;
         }
         while (true) {
-            block58: {
-                block57: {
-                    block55: {
-                        block56: {
-                            block54: {
-                                if (!var30_31.hasNext()) break;
-                                var12_12 = (String)var30_31.next();
-                                var24_26 = var16_10[var1_11].split(var21_23)[0];
-                                if (var24_26.indexOf(cYh.d("82D9E6")) < 0 || var24_26.indexOf(cYh.d("80C5EBB4DEFD")) >= 0) break block54;
-                                var15_22 = var12_12;
-                                var14_13 = var8_17;
-                                break block55;
-                            }
-                            if (var24_26.indexOf(cYh.d("80D9C6")) < 0 && var24_26.indexOf(var10_5) < 0 || var24_26.indexOf(cYh.d("80EAEBB4EACF80D9C6")) >= 0 || var24_26.indexOf(cYh.d("82DAE9B6C3E180D9C6")) >= 0) break block56;
-                            var14_13 = var12_12;
-                            var15_22 = var5_15;
-                            break block55;
+            string = "\u7535\u5f71";
+            if (n2 >= n3) break;
+            object4 = stringArray[n2];
+            {
+                ((ArrayList)object9).add(((String)object4).split("\\$")[1]);
+                boolean bl = ((String)object11).equals(((String)object4).split("\\$")[0]);
+                if (bl) {
+                    object10 = ((String)object4).split("\\$")[1];
+                    object5 = object11;
+                    object3 = object6;
+                    object2 = string4;
+                    object = string3;
+                } else if ("\u7535\u89c6".equals(((String)object4).split("\\$")[0])) {
+                    object10 = ((String)object4).split("\\$")[1];
+                    object5 = "\u7535\u89c6";
+                    object3 = object6;
+                    object2 = string4;
+                    object = string3;
+                } else if ("\u5267\u96c6".equals(((String)object4).split("\\$")[0])) {
+                    object10 = ((String)object4).split("\\$")[1];
+                    object5 = "\u5267\u96c6";
+                    object3 = object6;
+                    object2 = string4;
+                    object = string3;
+                } else if ("\u8fde\u7eed\u5267".equals(((String)object4).split("\\$")[0])) {
+                    object10 = ((String)object4).split("\\$")[1];
+                    object5 = object7;
+                    object3 = object6;
+                    object2 = string4;
+                    object = string3;
+                } else if ("\u7535\u5f71".equals(((String)object4).split("\\$")[0])) {
+                    object3 = ((String)object4).split("\\$")[0];
+                    object2 = ((String)object4).split("\\$")[1];
+                    object5 = object7;
+                    object10 = string5;
+                    object = string3;
+                } else if ("\u52a8\u6f2b".equals(((String)object4).split("\\$")[0])) {
+                    object = ((String)object4).split("\\$")[1];
+                    object5 = object7;
+                    object3 = object6;
+                    object2 = string4;
+                    object10 = string5;
+                } else if (((String)object4).split("\\$")[0].indexOf("\u7535\u5f71") > 0 && string4.length() < 1) {
+                    object3 = ((String)object4).split("\\$")[0];
+                    object2 = ((String)object4).split("\\$")[1];
+                    object5 = object7;
+                    object10 = string5;
+                    object = string3;
+                } else {
+                    object5 = object7;
+                    object3 = object6;
+                    object2 = string4;
+                    object10 = string5;
+                    object = string3;
+                    if (((String)object4).split("\\$")[0].indexOf("\u5267") >= 0) {
+                        object5 = object7;
+                        object3 = object6;
+                        object2 = string4;
+                        object10 = string5;
+                        object = string3;
+                        if (string5.length() < 1) {
+                            object5 = ((String)object4).split("\\$")[0];
+                            object10 = ((String)object4).split("\\$")[1];
+                            object = string3;
+                            object2 = string4;
+                            object3 = object6;
                         }
-                        var11_20 = var24_26.indexOf(cYh.d("80C5EB")) < 0 && var24_26.indexOf(cYh.d("82DAE9B6C3E1")) < 0 && var24_26.indexOf(cYh.d("82C3D5B4C4F3")) < 0 ? var12_12 : var7_16;
-                        var14_13 = var11_20;
-                        var15_22 = var11_20;
                     }
-                    if (var28_28.length() <= 0 || var28_28.indexOf(cYh.d("43")) < 0 || var28_28.indexOf((String)var24_26) < 0) break block57;
-                    var11_20 = new StringBuilder();
-                    var11_20.append(var28_28);
-                    var11_20.append((String)var13_21);
-                    var11_20 = var11_20.toString();
-                    var23_24 = var13_21;
-                    var13_21 = new StringBuilder();
-                    var13_21.append(cYh.d("497A"));
-                    var13_21.append((String)var24_26);
-                    var13_21.append(cYh.d("497A7E0D7372497A7E7874744D"));
-                    var25_27 = var11_20.replaceAll(var13_21.toString(), cYh.d("4361"));
-                    var11_20 = var25_27.indexOf(var26_2) > 0 ? this.s(var1_11, (String)var12_12, var18_25) : var4_7;
-                    var15_22 = var25_27.indexOf(var27_3) > 0 ? this.s(var1_11, (String)var15_22, var17_30) : var4_7;
-                    var13_21 = var25_27.indexOf(var19_4) > 0 ? this.s(var1_11, (String)var14_13, (String)var20_9) : var4_7;
-                    var24_26 = var15_22;
-                    var14_13 = var25_27.indexOf(cYh.d("1C3320253213032D")) > 0 ? this.s(var1_11, (String)var12_12, var6_19) : var4_7;
-                    var15_22 = var25_27.indexOf(var22_1) < 0 ? var4_7 : var9_6;
-                    var25_27 = var6_19;
-                    var25_27 = var13_21;
-                    var13_21 = var23_24;
-                    break block58;
                 }
-                var23_24 = var6_19;
-                var11_20 = this.s(var1_11, (String)var12_12, var18_25);
-                var24_26 = this.s(var1_11, (String)var15_22, var17_30);
-                var25_27 = this.s(var1_11, (String)var14_13, (String)var20_9);
-                var14_13 = this.s(var1_11, (String)var12_12, var23_24);
-                var15_22 = var9_6;
+                ++n2;
+                object7 = object5;
+                object6 = object3;
+                string4 = object2;
+                string5 = object10;
+                string3 = object;
+                continue;
             }
-            var29_29.put((String)var12_12, (Object)this.g((String)var14_13, (String)var25_27, (String)var24_26, (String)var11_20, (String)var15_22));
-            ++var1_11;
-            continue;
             break;
         }
-        return var29_29;
+        {
+            Object object12;
+            String string8;
+            String string9;
+            block57: {
+                block56: {
+                    block54: {
+                        block55: {
+                            string9 = this.G("\u7c7b\u578b", "\u7b5b\u9009\u5b50\u5206\u7c7b\u540d\u79f0", "0");
+                            string8 = this.b;
+                            object11 = this.G("\u5267\u60c5", "\u7b5b\u9009\u7c7b\u578b\u540d\u79f0", "");
+                            n3 = string8.indexOf("{class}");
+                            object3 = "{class}";
+                            object = "\u5267";
+                            object12 = "\\$";
+                            if ((n3 < 0 || !((String)object11).isEmpty()) && ((String)object11).indexOf("[\u66ff\u6362") < 0) break block54;
+                            object10 = "\u7535\u5f71--\u559c\u5267&\u7231\u60c5&\u52a8\u4f5c&\u79d1\u5e7b&\u6218\u4e89&\u8b66\u532a&\u72af\u7f6a&\u52a8\u753b&\u5947\u5e7b&\u53e4\u88c5&\u6b66\u4fa0&\u5192\u9669&\u6050\u6016&\u60ca\u609a&\u707e\u96be&\u60ac\u7591&\u67aa\u6218&\u5267\u60c5&\u9752\u6625&\u6587\u827a&\u5386\u53f2&\u4f20\u5947&\u97f3\u4e50&\u6b4c\u821e&\u90fd\u5e02&\u8fd0\u52a8&\u513f\u7ae5&\u4f26\u7406&\u60c5\u8272&\u5176\u4ed6||\u8fde\u7eed\u5267--\u53e4\u88c5&\u795e\u8bdd&\u6218\u4e89&\u559c\u5267&\u7231\u60c5&\u6b66\u4fa0&\u52a8\u4f5c&\u7a7f\u8d8a&\u5947\u5e7b&\u5076\u50cf&\u5bb6\u5ead&\u72af\u7f6a&\u60ac\u7591&\u6050\u6016&\u60ca\u609a&\u707e\u96be&\u5267\u60c5&\u4e61\u6751&\u90fd\u5e02&\u7ecf\u5178&\u5386\u53f2&\u4f20\u5947&\u97f3\u4e50&\u6b4c\u821e&\u7f51\u5267&\u60c5\u666f&\u4f26\u7406&\u60c5\u8272&\u5176\u4ed6||\u7efc\u827a--\u8131\u53e3\u79c0&\u771f\u4eba\u79c0&\u8bbf\u8c08&\u60c5\u611f&\u9009\u79c0&\u751f\u6d3b&\u7f8e\u98df&\u65c5\u6e38&\u97f3\u4e50&\u821e\u8e48&\u8d22\u7ecf&\u7eaa\u5b9e&\u6e38\u620f&\u6b4c\u821e&\u6c42\u804c&\u60c5\u8272&\u5176\u4ed6||\u52a8\u6f2b--\u79d1\u5e7b&\u70ed\u8840&\u641e\u7b11&\u5192\u9669&\u63a8\u7406&\u6218\u4e89&\u673a\u6218&\u52a8\u4f5c&\u6821\u56ed&\u793e\u4f1a&\u4eb2\u5b50&\u52b1\u5fd7&\u5c11\u5e74&\u5c11\u5973&\u841d\u8389&\u76ca\u667a&\u539f\u521b&\u8fd0\u52a8&\u60c5\u8272&\u5176\u4ed6||\u7eaa\u5f55\u7247--\u7eaa\u5f55&\u5386\u53f2&\u4f20\u8bb0&\u97f3\u4e50&\u6b4c\u821e&\u77ed\u7247&\u79d1\u5e7b&\u5176\u4ed6||\u901a\u7528--\u559c\u5267&\u7231\u60c5&\u52a8\u4f5c&\u79d1\u5e7b&\u6218\u4e89&\u72af\u7f6a&\u795e\u8bdd&\u5947\u5e7b&\u7a7f\u8d8a&\u53e4\u88c5&\u6b66\u4fa0&\u5192\u9669&\u6050\u6016&\u60ca\u609a&\u707e\u96be&\u60ac\u7591&\u513f\u7ae5&\u4f26\u7406&\u60c5\u8272&\u5176\u4ed6";
+                            if (this.s.indexOf("\u7b80") >= 0) {
+                                object10 = "\u7535\u5f71--\u559c\u5267&\u7231\u60c5&\u52a8\u4f5c&\u79d1\u5e7b&\u6218\u4e89&\u8b66\u532a&\u72af\u7f6a&\u52a8\u753b&\u5947\u5e7b&\u53e4\u88c5&\u6b66\u4fa0&\u5192\u9669&\u6050\u6016&\u60ca\u609a&\u707e\u96be&\u60ac\u7591&\u67aa\u6218&\u5267\u60c5&\u9752\u6625&\u6587\u827a&\u5386\u53f2&\u4f20\u5947&\u97f3\u4e50&\u6b4c\u821e&\u90fd\u5e02&\u8fd0\u52a8&\u513f\u7ae5&\u4f26\u7406&\u60c5\u8272&\u5176\u4ed6||\u8fde\u7eed\u5267--\u53e4\u88c5&\u795e\u8bdd&\u6218\u4e89&\u559c\u5267&\u7231\u60c5&\u6b66\u4fa0&\u52a8\u4f5c&\u7a7f\u8d8a&\u5947\u5e7b&\u5076\u50cf&\u5bb6\u5ead&\u72af\u7f6a&\u60ac\u7591&\u6050\u6016&\u60ca\u609a&\u707e\u96be&\u5267\u60c5&\u4e61\u6751&\u90fd\u5e02&\u7ecf\u5178&\u5386\u53f2&\u4f20\u5947&\u97f3\u4e50&\u6b4c\u821e&\u7f51\u5267&\u60c5\u666f&\u4f26\u7406&\u60c5\u8272&\u5176\u4ed6||\u7efc\u827a--\u8131\u53e3\u79c0&\u771f\u4eba\u79c0&\u8bbf\u8c08&\u60c5\u611f&\u9009\u79c0&\u751f\u6d3b&\u7f8e\u98df&\u65c5\u6e38&\u97f3\u4e50&\u821e\u8e48&\u8d22\u7ecf&\u7eaa\u5b9e&\u6e38\u620f&\u6b4c\u821e&\u6c42\u804c&\u60c5\u8272&\u5176\u4ed6||\u52a8\u6f2b--\u79d1\u5e7b&\u70ed\u8840&\u641e\u7b11&\u5192\u9669&\u63a8\u7406&\u6218\u4e89&\u673a\u6218&\u52a8\u4f5c&\u6821\u56ed&\u793e\u4f1a&\u4eb2\u5b50&\u52b1\u5fd7&\u5c11\u5e74&\u5c11\u5973&\u841d\u8389&\u76ca\u667a&\u539f\u521b&\u8fd0\u52a8&\u60c5\u8272&\u5176\u4ed6||\u7eaa\u5f55\u7247--\u7eaa\u5f55&\u5386\u53f2&\u4f20\u8bb0&\u97f3\u4e50&\u6b4c\u821e&\u77ed\u7247&\u79d1\u5e7b&\u5176\u4ed6||\u901a\u7528--\u559c\u5267&\u7231\u60c5&\u52a8\u4f5c&\u79d1\u5e7b&\u6218\u4e89&\u72af\u7f6a&\u795e\u8bdd&\u5947\u5e7b&\u7a7f\u8d8a&\u53e4\u88c5&\u6b66\u4fa0&\u5192\u9669&\u6050\u6016&\u60ca\u609a&\u707e\u96be&\u60ac\u7591&\u513f\u7ae5&\u4f26\u7406&\u60c5\u8272&\u5176\u4ed6".replaceAll("\\&\u5267\u60c5.*?\u5176\u4ed6", "").replaceAll("\\&\u8d22\u7ecf.*?\u5176\u4ed6", "").replaceAll("\\&\u5c11\u5e74.*?\u5176\u4ed6", "");
+                            } else if (this.s.indexOf("!") >= 0) {
+                                object10 = "\u7535\u5f71--\u559c\u5267&\u7231\u60c5&\u52a8\u4f5c&\u79d1\u5e7b&\u6218\u4e89&\u8b66\u532a&\u72af\u7f6a&\u52a8\u753b&\u5947\u5e7b&\u53e4\u88c5&\u6b66\u4fa0&\u5192\u9669&\u6050\u6016&\u60ca\u609a&\u707e\u96be&\u60ac\u7591&\u67aa\u6218&\u5267\u60c5&\u9752\u6625&\u6587\u827a&\u5386\u53f2&\u4f20\u5947&\u97f3\u4e50&\u6b4c\u821e&\u90fd\u5e02&\u8fd0\u52a8&\u513f\u7ae5&\u4f26\u7406&\u60c5\u8272&\u5176\u4ed6||\u8fde\u7eed\u5267--\u53e4\u88c5&\u795e\u8bdd&\u6218\u4e89&\u559c\u5267&\u7231\u60c5&\u6b66\u4fa0&\u52a8\u4f5c&\u7a7f\u8d8a&\u5947\u5e7b&\u5076\u50cf&\u5bb6\u5ead&\u72af\u7f6a&\u60ac\u7591&\u6050\u6016&\u60ca\u609a&\u707e\u96be&\u5267\u60c5&\u4e61\u6751&\u90fd\u5e02&\u7ecf\u5178&\u5386\u53f2&\u4f20\u5947&\u97f3\u4e50&\u6b4c\u821e&\u7f51\u5267&\u60c5\u666f&\u4f26\u7406&\u60c5\u8272&\u5176\u4ed6||\u7efc\u827a--\u8131\u53e3\u79c0&\u771f\u4eba\u79c0&\u8bbf\u8c08&\u60c5\u611f&\u9009\u79c0&\u751f\u6d3b&\u7f8e\u98df&\u65c5\u6e38&\u97f3\u4e50&\u821e\u8e48&\u8d22\u7ecf&\u7eaa\u5b9e&\u6e38\u620f&\u6b4c\u821e&\u6c42\u804c&\u60c5\u8272&\u5176\u4ed6||\u52a8\u6f2b--\u79d1\u5e7b&\u70ed\u8840&\u641e\u7b11&\u5192\u9669&\u63a8\u7406&\u6218\u4e89&\u673a\u6218&\u52a8\u4f5c&\u6821\u56ed&\u793e\u4f1a&\u4eb2\u5b50&\u52b1\u5fd7&\u5c11\u5e74&\u5c11\u5973&\u841d\u8389&\u76ca\u667a&\u539f\u521b&\u8fd0\u52a8&\u60c5\u8272&\u5176\u4ed6||\u7eaa\u5f55\u7247--\u7eaa\u5f55&\u5386\u53f2&\u4f20\u8bb0&\u97f3\u4e50&\u6b4c\u821e&\u77ed\u7247&\u79d1\u5e7b&\u5176\u4ed6||\u901a\u7528--\u559c\u5267&\u7231\u60c5&\u52a8\u4f5c&\u79d1\u5e7b&\u6218\u4e89&\u72af\u7f6a&\u795e\u8bdd&\u5947\u5e7b&\u7a7f\u8d8a&\u53e4\u88c5&\u6b66\u4fa0&\u5192\u9669&\u6050\u6016&\u60ca\u609a&\u707e\u96be&\u60ac\u7591&\u513f\u7ae5&\u4f26\u7406&\u60c5\u8272&\u5176\u4ed6".replaceAll("\\&\u4f26\u7406.*?\u60c5\u8272", "");
+                            }
+                            object5 = object10;
+                            if (!"\u8fde\u7eed\u5267".equals(object7)) {
+                                object5 = ((String)object10).replace("\u8fde\u7eed\u5267", (CharSequence)object7);
+                            }
+                            object10 = object5;
+                            if (!"\u7535\u5f71".equals(object6)) {
+                                object10 = ((String)object5).replace("\u7535\u5f71", (CharSequence)object6);
+                            }
+                            if (((String)object11).indexOf("[\u66ff\u6362") < 0) break block55;
+                            object10 = this.c0((String)object11, (String)object10).replaceAll("\\&+", "&").replace("--&", "--");
+                            break block56;
+                        }
+                        object5 = object10;
+                        break block57;
+                    }
+                    object10 = object11;
+                }
+                object5 = object10;
+            }
+            object2 = this.G("\u5730\u533a", "\u7b5b\u9009\u5730\u533a\u540d\u79f0", "");
+            if (string8.indexOf("{area}") >= 0 && ((String)object2).isEmpty() || ((String)object2).indexOf("[\u66ff\u6362") >= 0) {
+                object11 = "\u7535\u5f71--\u4e2d\u56fd\u5927\u9646&\u4e2d\u56fd\u9999\u6e2f&\u4e2d\u56fd\u53f0\u6e7e&\u7f8e\u56fd&\u6cd5\u56fd&\u82f1\u56fd&\u65e5\u672c&\u97e9\u56fd&\u5fb7\u56fd&\u6cf0\u56fd&\u5370\u5ea6&\u4fc4\u7f57\u65af&\u610f\u5927\u5229&\u897f\u73ed\u7259&\u52a0\u62ff\u5927&\u5176\u4ed6||\u8fde\u7eed\u5267--\u4e2d\u56fd\u5927\u9646&\u4e2d\u56fd\u9999\u6e2f&\u4e2d\u56fd\u53f0\u6e7e&\u7f8e\u56fd&\u6cd5\u56fd&\u82f1\u56fd&\u65e5\u672c&\u97e9\u56fd&\u5fb7\u56fd&\u6cf0\u56fd&\u5370\u5ea6&\u4fc4\u7f57\u65af&\u610f\u5927\u5229&\u897f\u73ed\u7259&\u52a0\u62ff\u5927&\u5176\u4ed6||\u7efc\u827a--\u4e2d\u56fd\u5927\u9646&\u4e2d\u56fd\u9999\u6e2f&\u4e2d\u56fd\u53f0\u6e7e&\u65e5\u672c&\u97e9\u56fd&\u7f8e\u56fd&\u82f1\u56fd&\u5176\u4ed6||\u52a8\u6f2b--\u4e2d\u56fd\u5927\u9646&\u65e5\u672c&\u97e9\u56fd&\u7f8e\u56fd&\u82f1\u56fd&\u6cd5\u56fd&\u5176\u4ed6||\u7eaa\u5f55\u7247--\u4e2d\u56fd\u5927\u9646&\u4e2d\u56fd\u9999\u6e2f&\u4e2d\u56fd\u53f0\u6e7e&\u7f8e\u56fd&\u6cd5\u56fd&\u82f1\u56fd&\u65e5\u672c&\u97e9\u56fd&\u5fb7\u56fd&\u6cf0\u56fd&\u5370\u5ea6&\u4fc4\u7f57\u65af&\u610f\u5927\u5229&\u897f\u73ed\u7259&\u52a0\u62ff\u5927&\u5176\u4ed6||\u901a\u7528--\u4e2d\u56fd\u5927\u9646&\u4e2d\u56fd\u9999\u6e2f&\u4e2d\u56fd\u53f0\u6e7e&\u7f8e\u56fd&\u6cd5\u56fd&\u82f1\u56fd&\u65e5\u672c&\u97e9\u56fd&\u5fb7\u56fd&\u6cf0\u56fd&\u5370\u5ea6&\u4fc4\u7f57\u65af&\u610f\u5927\u5229&\u897f\u73ed\u7259&\u52a0\u62ff\u5927&\u5176\u4ed6";
+                if (this.s.indexOf("\u4e2d") < 0) {
+                    object11 = "\u7535\u5f71--\u4e2d\u56fd\u5927\u9646&\u4e2d\u56fd\u9999\u6e2f&\u4e2d\u56fd\u53f0\u6e7e&\u7f8e\u56fd&\u6cd5\u56fd&\u82f1\u56fd&\u65e5\u672c&\u97e9\u56fd&\u5fb7\u56fd&\u6cf0\u56fd&\u5370\u5ea6&\u4fc4\u7f57\u65af&\u610f\u5927\u5229&\u897f\u73ed\u7259&\u52a0\u62ff\u5927&\u5176\u4ed6||\u8fde\u7eed\u5267--\u4e2d\u56fd\u5927\u9646&\u4e2d\u56fd\u9999\u6e2f&\u4e2d\u56fd\u53f0\u6e7e&\u7f8e\u56fd&\u6cd5\u56fd&\u82f1\u56fd&\u65e5\u672c&\u97e9\u56fd&\u5fb7\u56fd&\u6cf0\u56fd&\u5370\u5ea6&\u4fc4\u7f57\u65af&\u610f\u5927\u5229&\u897f\u73ed\u7259&\u52a0\u62ff\u5927&\u5176\u4ed6||\u7efc\u827a--\u4e2d\u56fd\u5927\u9646&\u4e2d\u56fd\u9999\u6e2f&\u4e2d\u56fd\u53f0\u6e7e&\u65e5\u672c&\u97e9\u56fd&\u7f8e\u56fd&\u82f1\u56fd&\u5176\u4ed6||\u52a8\u6f2b--\u4e2d\u56fd\u5927\u9646&\u65e5\u672c&\u97e9\u56fd&\u7f8e\u56fd&\u82f1\u56fd&\u6cd5\u56fd&\u5176\u4ed6||\u7eaa\u5f55\u7247--\u4e2d\u56fd\u5927\u9646&\u4e2d\u56fd\u9999\u6e2f&\u4e2d\u56fd\u53f0\u6e7e&\u7f8e\u56fd&\u6cd5\u56fd&\u82f1\u56fd&\u65e5\u672c&\u97e9\u56fd&\u5fb7\u56fd&\u6cf0\u56fd&\u5370\u5ea6&\u4fc4\u7f57\u65af&\u610f\u5927\u5229&\u897f\u73ed\u7259&\u52a0\u62ff\u5927&\u5176\u4ed6||\u901a\u7528--\u4e2d\u56fd\u5927\u9646&\u4e2d\u56fd\u9999\u6e2f&\u4e2d\u56fd\u53f0\u6e7e&\u7f8e\u56fd&\u6cd5\u56fd&\u82f1\u56fd&\u65e5\u672c&\u97e9\u56fd&\u5fb7\u56fd&\u6cf0\u56fd&\u5370\u5ea6&\u4fc4\u7f57\u65af&\u610f\u5927\u5229&\u897f\u73ed\u7259&\u52a0\u62ff\u5927&\u5176\u4ed6".replace("\u4e2d\u56fd", "");
+                }
+                object10 = object11;
+                if (!"\u8fde\u7eed\u5267".equals(object7)) {
+                    object10 = ((String)object11).replace("\u8fde\u7eed\u5267", (CharSequence)object7);
+                }
+                object11 = object10;
+                if (!"\u7535\u5f71".equals(object6)) {
+                    object11 = ((String)object10).replace("\u7535\u5f71", (CharSequence)object6);
+                }
+                object10 = ((String)object2).indexOf("[\u66ff\u6362") >= 0 ? this.c0((String)object2, (String)object11).replaceAll("\\&+", "&").replace("--&", "--") : object11;
+            } else {
+                object10 = object2;
+            }
+            Object object13 = object5;
+            String string10 = "{area}";
+            object5 = this.G("\u8bed\u8a00", "\u7b5b\u9009\u8bed\u8a00\u540d\u79f0", "");
+            String string11 = "{lang}";
+            object4 = object5;
+            if (string8.indexOf("{lang}") >= 0) {
+                object4 = object5;
+                if (((String)object5).isEmpty()) {
+                    object4 = "\u56fd\u8bed&\u82f1\u8bed&\u7ca4\u8bed&\u95fd\u5357\u8bed&\u97e9\u8bed&\u65e5\u8bed&\u6cd5\u8bed&\u5fb7\u8bed&\u5176\u5b83";
+                }
+            }
+            Object object14 = object5 = this.G("\u5b57\u6bcd", "\u7b5b\u9009\u5b57\u6bcd\u540d\u79f0", "");
+            if (string8.indexOf(string7) >= 0) {
+                object14 = object5;
+                if (((String)object5).isEmpty()) {
+                    object14 = "A&B&C&D&E&F&G&H&I&J&K&L&M&N&O&P&Q&R&S&T&U&V&W&X&Y&Z";
+                }
+            }
+            object5 = object11 = this.H("\u5e74\u4efd", "\u65f6\u957f", "\u7b5b\u9009\u5e74\u4efd\u540d\u79f0", "");
+            if (string8.indexOf(string6) >= 0) {
+                object5 = object11;
+                if (((String)object11).isEmpty()) {
+                    object5 = new Date();
+                    n3 = ((Date)object5).getYear() + 1900;
+                    object5 = new StringBuilder();
+                    ((StringBuilder)object5).append(n3 - 20);
+                    ((StringBuilder)object5).append("-");
+                    ((StringBuilder)object5).append(n3);
+                    object5 = ((StringBuilder)object5).toString();
+                }
+            }
+            Object object15 = object5;
+            object2 = object5 = this.G("\u6392\u5e8f", "\u7b5b\u9009\u6392\u5e8f\u540d\u79f0", "");
+            if (string8.indexOf("{by}") >= 0) {
+                object2 = object5;
+                if (((String)object5).isEmpty()) {
+                    object2 = "\u65f6\u95f4$time#\u4eba\u6c14$hits#\u8bc4\u5206$score";
+                }
+            }
+            JSONObject jSONObject = new JSONObject();
+            new JSONArray();
+            string8 = this.H("\u7279\u6b8a\u5206\u7c7b", "\u7279\u6b8a\u5206\u7c7burl", "\u7279\u6b8a\u5206\u7c7b\u94fe\u63a5", "");
+            Iterator iterator = ((ArrayList)object9).iterator();
+            n3 = 0;
+            object5 = object12;
+            object11 = object;
+            object6 = object3;
+            object12 = object10;
+            object10 = object8;
+            while (iterator.hasNext()) {
+                Object object16;
+                Object object17;
+                String string12;
+                Object object18;
+                object9 = (String)iterator.next();
+                object7 = stringArray[n3].split((String)object5)[0];
+                Object object19 = object5;
+                if (((String)object7).indexOf("\u7247") >= 0 && ((String)object7).indexOf("\u7eaa\u5f55\u7247") < 0 && ((String)object7).indexOf("\u52a8\u753b\u7247") < 0 || ((String)object7).indexOf(string) > 0) {
+                    object3 = object9;
+                    object5 = string4;
+                } else if (((String)object7).indexOf((String)object11) >= 0 && ((String)object7).indexOf("\u756a\u5267") < 0) {
+                    object5 = object9;
+                    object3 = string5;
+                } else if (((String)object7).indexOf("\u756a") < 0 && ((String)object7).indexOf("\u52a8\u753b") < 0 && ((String)object7).indexOf("\u54d4\u54e9") < 0) {
+                    n2 = ((String)object7).indexOf("\u5168");
+                    if (n2 < 0 && ((String)object7).indexOf("\u65b0") < 0 && ((String)object7).indexOf("\u70ed") < 0 && ((String)object7).indexOf("\u699c") < 0 && ((String)object7).indexOf("\u8350") < 0) {
+                        object5 = new StringBuilder();
+                        ((StringBuilder)object5).append((String)object9);
+                        ((StringBuilder)object5).append("$$$\u901a\u7528");
+                        object5 = ((StringBuilder)object5).toString();
+                        object3 = object9;
+                    } else {
+                        object5 = new StringBuilder();
+                        ((StringBuilder)object5).append((String)object9);
+                        ((StringBuilder)object5).append("$$$\u901a\u7528");
+                        object5 = ((StringBuilder)object5).toString();
+                        object3 = new StringBuilder();
+                        ((StringBuilder)object3).append((String)object9);
+                        ((StringBuilder)object3).append("$$$\u901a\u7528");
+                        object3 = ((StringBuilder)object3).toString();
+                    }
+                } else {
+                    object3 = object5 = string3;
+                }
+                if (string8.length() > 0 && string8.indexOf("$") >= 0 && string8.indexOf((String)object7) >= 0) {
+                    object = new StringBuilder();
+                    ((StringBuilder)object).append(string8);
+                    ((StringBuilder)object).append(string2);
+                    object = ((StringBuilder)object).toString();
+                    object8 = new StringBuilder();
+                    ((StringBuilder)object8).append(".*");
+                    ((StringBuilder)object8).append((String)object7);
+                    ((StringBuilder)object8).append(".*?\\$(.*?)#.*");
+                    object18 = ((String)object).replaceAll(((StringBuilder)object8).toString(), "$1");
+                    object7 = ((String)object18).indexOf("{cateId}") > 0 ? this.u(n3, (String)object9, string9) : object10;
+                    object3 = ((String)object18).indexOf((String)object6) > 0 ? this.u(n3, (String)object3, (String)object13) : object10;
+                    string12 = object6;
+                    object8 = ((String)object18).indexOf(string10) > 0 ? this.u(n3, (String)object5, (String)object12) : object10;
+                    object = ((String)object18).indexOf(string11) > 0 ? this.u(n3, (String)object9, (String)object4) : object10;
+                    object5 = ((String)object18).indexOf(string6) > 0 ? this.u(n3, (String)object9, (String)object15) : object10;
+                    object6 = ((String)object18).indexOf(string7) > 0 ? this.u(n3, (String)object9, (String)object14) : object10;
+                    object17 = object8;
+                    object8 = ((String)object18).indexOf("{by}") < 0 ? object10 : object2;
+                    object18 = object3;
+                    object16 = object7;
+                    object3 = object;
+                    object7 = object18;
+                    object18 = object16;
+                    object = object8;
+                    object16 = object5;
+                    object8 = object6;
+                } else {
+                    object7 = this.u(n3, (String)object9, string9);
+                    object = this.u(n3, (String)object3, (String)object13);
+                    object17 = this.u(n3, (String)object5, (String)object12);
+                    object3 = this.u(n3, (String)object9, (String)object4);
+                    object16 = this.u(n3, (String)object9, (String)object15);
+                    object8 = this.u(n3, (String)object9, (String)object14);
+                    object5 = object;
+                    object = object2;
+                    string12 = object6;
+                    object18 = object7;
+                    object7 = object5;
+                }
+                jSONObject.put((String)object9, (Object)this.h((String)object18, (String)object7, (String)object17, (String)object3, (String)object16, (String)object8, (String)object));
+                ++n3;
+                object6 = string12;
+                object5 = object19;
+            }
+            return jSONObject;
+        }
     }
 
     /*
      * Could not resolve type clashes
      * Unable to fully structure code
      */
-    private String s(int var1_1, String var2_2, String var3_3) {
-        block3: {
-            block7: {
-                block8: {
-                    block2: {
-                        block6: {
-                            block5: {
-                                block4: {
-                                    var6_4 = cYh.d("44");
-                                    var6_4 = com.github.catvod.spider.merge.b.n.b(com.github.catvod.spider.merge.d.d.b(var6_4), this.c, var6_4);
-                                    var7_5 = new StringBuilder();
-                                    var7_5.append(cYh.d("497A6279797058791D75"));
-                                    var7_5.append((String)var2_2);
-                                    var7_5.append(cYh.d("447E6B"));
-                                    var12_6 = var6_4.replaceAll(var7_5.toString(), cYh.d("4361"));
-                                    var11_7 = cYh.d("1B2C");
-                                    var4_8 = var3_3.indexOf(var11_7);
-                                    var9_9 = cYh.d("4A7D");
-                                    if (var4_8 < 0 && var3_3.indexOf(var9_9) < 0) break block3;
-                                    var4_8 = var3_3.indexOf(var9_9);
-                                    var10_10 = cYh.d("3B2C1D2D");
-                                    if (var4_8 >= 0) break block4;
-                                    var2_2 = new StringBuilder((String)var2_2);
-                                    var2_2.append(var9_9);
-                                    var2_2.append(var3_3.split((String)var10_10)[var1_1]);
+    private String u(int var1_1, String var2_2, String var3_3) {
+        block6: {
+            block10: {
+                block11: {
+                    block5: {
+                        block9: {
+                            block8: {
+                                block7: {
+                                    if (var2_2.indexOf("$$$") < 0) {
+                                        var7_4 = com.github.catvod.spider.merge.dp.n.b(com.github.catvod.spider.merge.ka.d.b("#"), this.c, "#");
+                                        var6_5 = new StringBuilder();
+                                        var6_5.append(".*#(.*?)\\$");
+                                        var6_5.append((String)var2_2);
+                                        var6_5.append("#.*");
+                                        var7_4 = var7_4.replaceAll(var6_5.toString(), "$1");
+                                        var6_5 = var2_2;
+                                    } else {
+                                        var7_4 = var2_2.split("\\$\\$\\$")[1];
+                                        var6_5 = var2_2.split("\\$\\$\\$")[0];
+                                    }
+                                    if (var3_3.indexOf("||") < 0 && var3_3.indexOf("--") < 0) break block6;
+                                    if (var3_3.indexOf("--") >= 0) break block7;
+                                    var2_2 = new StringBuilder((String)var6_5);
+                                    var2_2.append("--");
+                                    var2_2.append(var3_3.split("\\|\\|")[var1_1]);
                                     var3_3 = var2_2.toString();
-                                    break block3;
+                                    break block6;
                                 }
-                                var4_8 = var3_3.indexOf(var11_7);
-                                var8_11 = cYh.d("57");
-                                if (var4_8 >= 0) break block5;
-                                if (!var12_6.equals(var3_3.split(var9_9)[0])) break block6;
-                                var7_5 = new StringBuilder((String)var2_2);
-                                var7_5.append(var9_9);
-                                var6_4 = var3_3.split(var9_9)[1];
-                                ** GOTO lbl45
+                                if (var3_3.indexOf("||") >= 0) break block8;
+                                if (!var7_4.equals(var3_3.split("--")[0])) break block9;
+                                var2_2 = new StringBuilder((String)var6_5);
+                                var2_2.append("--");
+                                var7_4 = var3_3.split("--")[1];
+                                ** GOTO lbl43
                             }
-                            var7_5 = var3_3.split((String)var10_10);
-                            var5_12 = ((String[])var7_5).length;
-                            for (var4_8 = 0; var4_8 < var5_12; ++var4_8) {
-                                var6_4 = var7_5[var4_8];
-                                if (!var12_6.equals(var6_4.split(var9_9)[0])) continue;
-                                var7_5 = new StringBuilder((String)var2_2);
-                                var7_5.append(var9_9);
-                                var6_4 = var6_4.split(var9_9)[1];
-lbl45:
+                            var2_2 = var3_3.split("\\|\\|");
+                            var5_6 = ((CharSequence)var2_2).length;
+                            for (var4_7 = 0; var4_7 < var5_6; ++var4_7) {
+                                var8_8 = var2_2[var4_7];
+                                if (!(var7_4.equals(var8_8.split("--")[0]) || var7_4.indexOf(var8_8.split("--")[0]) >= 0 && var7_4.indexOf("\u7535\u5f71") < 0 && var7_4.indexOf("\u5267") < 0)) {
+                                    continue;
+                                }
+                                var2_2 = new StringBuilder((String)var6_5);
+                                var2_2.append("--");
+                                var7_4 = var8_8.split("--")[1];
+lbl43:
                                 // 2 sources
 
-                                var7_5.append(var6_4);
-                                var6_4 = var7_5.toString();
-                                break block2;
+                                var2_2.append(var7_4);
+                                var2_2 = var2_2.toString();
+                                break block5;
                             }
                         }
-                        var6_4 = var8_11;
+                        var2_2 = "0";
                     }
-                    if (!var6_4.equals(var8_11)) break block7;
-                    if (var3_3.indexOf(var11_7) >= 0) break block8;
-                    var7_5 = var3_3.split(var9_9)[0];
-                    var8_11 = com.github.catvod.spider.merge.d.d.b("");
-                    var8_11.append(var1_1 + 1);
-                    if (!var7_5.equals(var8_11.toString())) break block7;
-                    var2_2 = new StringBuilder((String)var2_2);
-                    var2_2.append(var9_9);
-                    var3_3 = var3_3.split(var9_9)[1];
-                    ** GOTO lbl75
+                    if (!var2_2.equals("0")) break block10;
+                    if (var3_3.indexOf("||") >= 0) break block11;
+                    var7_4 = var3_3.split("--")[0];
+                    var8_8 = com.github.catvod.spider.merge.ka.d.b("");
+                    var8_8.append(var1_1 + 1);
+                    if (!var7_4.equals(var8_8.toString())) break block10;
+                    var2_2 = new StringBuilder((String)var6_5);
+                    var2_2.append("--");
+                    var3_3 = var3_3.split("--")[1];
+                    ** GOTO lbl73
                 }
-                for (Object var3_3 : var3_3.split((String)var10_10)) {
-                    var8_11 = var3_3.split(var9_9)[0];
-                    var10_10 = com.github.catvod.spider.merge.d.d.b("");
-                    var10_10.append(var1_1 + 1);
-                    if (!var8_11.equals(var10_10.toString())) continue;
-                    var2_2 = new StringBuilder((String)var2_2);
-                    var2_2.append(var9_9);
-                    var3_3 = var3_3.split(var9_9)[1];
-lbl75:
+                for (CharSequence var3_3 : var3_3.split("\\|\\|")) {
+                    var7_4 = var3_3.split("--")[0];
+                    var8_8 = com.github.catvod.spider.merge.ka.d.b("");
+                    var8_8.append(var1_1 + 1);
+                    if (!var7_4.equals(var8_8.toString())) continue;
+                    var2_2 = new StringBuilder((String)var6_5);
+                    var2_2.append("--");
+                    var3_3 = var3_3.split("--")[1];
+lbl73:
                     // 2 sources
 
                     var2_2.append((String)var3_3);
                     var3_3 = var2_2.toString();
-                    break block3;
+                    break block6;
                 }
             }
-            var3_3 = var6_4;
+            var3_3 = var2_2;
         }
         return var3_3;
     }
 
     /*
-     * Unable to fully structure code
-     * Could not resolve type clashes
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
      */
-    private JSONArray t(String var1_1, String var2_3) {
-        if (var2_3.length() < 1) {
-            return new JSONArray(var1_1);
-        }
-        var7_4 = var2_3;
-        if (var2_3.indexOf(cYh.d("4176")) >= 0) {
-            var7_4 = cYh.d("03313530");
-        }
-        var9_5 = new JSONArray();
-        var3_6 = var7_4.indexOf(cYh.d("3C"));
-        var2_3 = "";
-        var10_7 = cYh.d("4361");
-        var8_8 /* !! */  = var7_4;
-        if (var3_6 < 0) ** GOTO lbl17
+    private JSONArray v(String string, String charSequence) {
+        JSONArray jSONArray;
         try {
-            var2_3 = var7_4.replaceAll(cYh.d("497A1D0A7F744D6F680D0A744D"), var10_7);
-            var8_8 /* !! */  = var7_4.replaceAll(cYh.d("3B0B6F7B"), "");
-lbl17:
-            // 2 sources
-
-            var7_4 = var8_8 /* !! */ .split(cYh.d("3B7E"));
-            var6_9 = 0;
-            var3_6 = 0;
-        }
-        catch (JSONException var1_2) {
-            if (this.m) {
-                var2_3 = new StringBuilder();
-                var2_3.append(this.G);
-                var2_3.append(cYh.d("8FE0C2B9F8CF4A6E26342310143F2F1025280629A4D6EDB3F3C9AEEDCD"));
-                var2_3.append(var1_2.toString());
-                Init.show(var2_3.toString());
+            if (((String)charSequence).length() < 1) {
+                return new JSONArray(string);
             }
-            if ((var7_4 = this.I) != null) {
-                var2_3 = com.github.catvod.spider.merge.d.d.b(cYh.d("0035351B24350911332336234F79A8C5CEB2C8FFAEEDD6774A6E"));
-                var2_3.append(var1_2.toString());
-                var7_4.log(var2_3.toString());
+            jSONArray = charSequence;
+            if (((String)charSequence).indexOf("&&") >= 0) {
+                jSONArray = "data";
             }
-            return null;
-        }
-        while (true) {
-            block27: {
-                block29: {
-                    block31: {
-                        block32: {
-                            block30: {
-                                block28: {
-                                    if (var3_6 >= ((String[])var7_4).length) break;
-                                    var8_8 /* !! */  = new JSONObject(var1_1);
-                                    if (var3_6 != ((String[])var7_4).length - 1) break block27;
-                                    if (!(var8_8 /* !! */ .get(var7_4[var3_6]) instanceof JSONObject)) break block28;
-                                    var9_5.put((Object)var8_8 /* !! */ .getJSONObject(var7_4[var3_6]));
-                                    return var9_5;
-                                }
-                                var7_4 = var8_8 /* !! */ .getJSONArray(var7_4[var3_6]);
-                                var3_6 = var7_4.length();
-                                if (var2_3 == null) break block29;
-                                if (var2_3.length() <= 0) break block29;
-                                var4_10 = var2_3.indexOf(cYh.d("4B"));
-                                var8_8 /* !! */  = cYh.d("3B346A");
-                                if (var4_10 < 0) {
-                                    if (!var2_3.matches((String)var8_8 /* !! */ )) break block30;
-                                    var4_10 = var3_6;
-                                    if (var3_6 > Integer.parseInt((String)var2_3)) {
-                                        var4_10 = Integer.parseInt((String)var2_3);
+            JSONArray jSONArray2 = new JSONArray();
+            int n2 = jSONArray.indexOf("[");
+            charSequence = "";
+            CharSequence charSequence2 = jSONArray;
+            if (n2 >= 0) {
+                charSequence = jSONArray.replaceAll(".*\\[(.*?)\\].*", "$1");
+                charSequence2 = jSONArray.replaceAll("\\[.*", "");
+            }
+            jSONArray = ((String)charSequence2).split("\\.");
+            int n3 = 0;
+            for (n2 = 0; n2 < ((String[])jSONArray).length; ++n2) {
+                charSequence2 = new JSONObject(string);
+                if (n2 == ((String[])jSONArray).length - 1) {
+                    if (charSequence2.get(jSONArray[n2]) instanceof JSONObject) {
+                        jSONArray2.put((Object)charSequence2.getJSONObject(jSONArray[n2]));
+                        return jSONArray2;
+                    }
+                    jSONArray = charSequence2.getJSONArray(jSONArray[n2]);
+                    n2 = jSONArray.length();
+                    if (charSequence != null && ((String)charSequence).length() > 0) {
+                        int n4;
+                        int n5 = ((String)charSequence).indexOf(",");
+                        if (n5 < 0 && ((String)charSequence).matches("\\d+")) {
+                            n5 = n2;
+                            if (n2 > Integer.parseInt((String)charSequence)) {
+                                n5 = Integer.parseInt((String)charSequence);
+                            }
+                            n2 = n5 - 1;
+                            n4 = n5;
+                        } else {
+                            string = ((String)charSequence).replaceAll("(.*),.*", "$1");
+                            charSequence = ((String)charSequence).replaceAll(".*,(.*)", "$1");
+                            n5 = n2;
+                            if (charSequence != null) {
+                                n5 = n2;
+                                if (((String)charSequence).length() > 0) {
+                                    n5 = n2;
+                                    if (((String)charSequence).matches("\\d+")) {
+                                        n5 = n2;
+                                        if (Integer.parseInt((String)charSequence) < n2) {
+                                            n5 = Integer.parseInt((String)charSequence);
+                                        }
                                     }
-                                    var3_6 = var4_10 - 1;
-                                    var5_11 = var4_10;
-                                    break block31;
                                 }
                             }
-                            var1_1 = var2_3.replaceAll(cYh.d("4F7E6B787B744D"), var10_7);
-                            var2_3 = var2_3.replaceAll(cYh.d("497A6D7979704E"), var10_7);
-                            var4_10 = var3_6;
-                            if (var2_3 == null) break block32;
-                            var4_10 = var3_6;
-                            if (var2_3.length() <= 0) break block32;
-                            var4_10 = var3_6;
-                            if (!var2_3.matches((String)var8_8 /* !! */ )) break block32;
-                            var4_10 = var3_6;
-                            if (Integer.parseInt((String)var2_3) >= var3_6) break block32;
-                            var4_10 = Integer.parseInt((String)var2_3);
+                            n2 = n3;
+                            n4 = n5;
+                            if (string != null) {
+                                n2 = n3;
+                                n4 = n5;
+                                if (string.length() > 0) {
+                                    n2 = n3;
+                                    n4 = n5;
+                                    if (string.matches("\\d+")) {
+                                        n2 = n3;
+                                        n4 = n5;
+                                        if (Integer.parseInt(string) <= n5) {
+                                            n2 = Integer.parseInt(string) - 1;
+                                            n4 = n5;
+                                        }
+                                    }
+                                }
+                            }
                         }
-                        var3_6 = var6_9;
-                        var5_11 = var4_10;
-                        if (var1_1 != null) {
-                            var3_6 = var6_9;
-                            var5_11 = var4_10;
-                            if (var1_1.length() <= 0) break block31;
-                            var3_6 = var6_9;
-                            var5_11 = var4_10;
-                            if (!var1_1.matches((String)var8_8 /* !! */ )) break block31;
-                            var3_6 = var6_9;
-                            var5_11 = var4_10;
-                            if (Integer.parseInt(var1_1) > var4_10) break block31;
-                            var3_6 = Integer.parseInt(var1_1) - 1;
-                            var5_11 = var4_10;
+                        while (true) {
+                            if (n2 >= n4) {
+                                return jSONArray2;
+                            }
+                            jSONArray2.put((Object)jSONArray.getJSONObject(n2));
+                            ++n2;
                         }
                     }
-                    while (var3_6 < var5_11) {
-                        var9_5.put((Object)var7_4.getJSONObject(var3_6));
-                        ++var3_6;
-                    }
-                    return var9_5;
+                    return jSONArray;
                 }
-                return var7_4;
+                string = charSequence2.getJSONObject(jSONArray[n2]).toString();
             }
-            var1_1 = var8_8 /* !! */ .getJSONObject(var7_4[var3_6]).toString();
-            ++var3_6;
-            continue;
-            break;
+        }
+        catch (JSONException jSONException) {
+            if (this.m) {
+                charSequence = new StringBuilder();
+                ((StringBuilder)charSequence).append(this.G);
+                ((StringBuilder)charSequence).append("\u8c03\u8bd5->getJsonArray\u51fa\u9519\uff1a");
+                ((StringBuilder)charSequence).append(((Object)((Object)jSONException)).toString());
+                Init.show(((StringBuilder)charSequence).toString());
+            }
+            if ((charSequence = this.I) != null) {
+                jSONArray = com.github.catvod.spider.merge.ka.d.b("getJsonArray()\u9519\u8bef\uff01-->");
+                jSONArray.append(((Object)((Object)jSONException)).toString());
+                charSequence.log(jSONArray.toString());
+            }
+            return null;
         }
         return null;
     }
@@ -3673,52 +4258,52 @@ lbl17:
      * Unable to fully structure code
      * Could not resolve type clashes
      */
-    private String u(String var1_1, String var2_2) {
-        var3_3 = var2_2.indexOf(cYh.d("81CBFEB7DAF8"));
+    private String w(String var1_1, String var2_2) {
+        var3_3 = var2_2.indexOf("\u66ff\u6362");
         var6_4 = "";
         var4_5 /* !! */  = var2_2;
         if (var3_3 >= 0) {
-            var6_4 = var2_2.replaceAll(cYh.d("497A690D0CBEDCD57EB7CCE581DDE30A6DB5DBCA1C0A09063A0D6A6E0B074E7E6B"), cYh.d("4361"));
-            var4_5 /* !! */  = var2_2.replaceAll(cYh.d("3B0BA5EAD26581CBFEB7DAF83C6AAEEDCD074F0B1F0D0A074C6F680D0A"), "");
+            var6_4 = var2_2.replaceAll(".*(\\[\u4ec5?\u66ff\u6362[:\uff1a][^\\]]+?\\]).*", "$1");
+            var4_5 /* !! */  = var2_2.replaceAll("\\[\u4ec5?\u66ff\u6362[:\uff1a]([^\\]]+?)\\]", "");
         }
-        if (var4_5 /* !! */ .indexOf(cYh.d("4C")) < 0) {
-            var1_1 = this.v(var1_1, (String)var4_5 /* !! */ );
+        if (var4_5 /* !! */ .indexOf("+") < 0) {
+            var1_1 = this.x(var1_1, (String)var4_5 /* !! */ );
 lbl9:
             // 2 sources
 
-            return this.a0(var6_4, var1_1);
+            return this.c0(var6_4, var1_1);
         }
-        var7_6 = var4_5 /* !! */ .split(cYh.d("3B7B"));
+        var7_6 = var4_5 /* !! */ .split("\\+");
         var2_2 = new StringBuilder();
         for (var3_3 = 0; var3_3 < var7_6.length; ++var3_3) {
             block11: {
                 block10: {
-                    if (var7_6[var3_3].startsWith(cYh.d("12222D6B"))) break block10;
-                    var4_5 /* !! */  = this.v(var1_1, var7_6[var3_3]);
+                    if (var7_6[var3_3].startsWith("url:")) break block10;
+                    var4_5 /* !! */  = this.x(var1_1, var7_6[var3_3]);
                     break block11;
                 }
                 var5_7 /* !! */  = var7_6[var3_3].substring(4);
                 var4_5 /* !! */  = var5_7 /* !! */ ;
-                if (var5_7 /* !! */ .indexOf(cYh.d("432334336D")) <= 0) ** GOTO lbl26
-                var4_5 /* !! */  = var5_7 /* !! */ .split(cYh.d("3B74322435065D"));
+                if (var5_7 /* !! */ .indexOf("$sub:") <= 0) ** GOTO lbl26
+                var4_5 /* !! */  = var5_7 /* !! */ .split("\\$sub\\:");
                 if (var4_5 /* !! */ .length > 1) {
-                    var4_5 /* !! */  = this.v(this.j(var4_5 /* !! */ [0]), var4_5 /* !! */ [1]);
+                    var4_5 /* !! */  = this.x(this.k(var4_5 /* !! */ [0]), var4_5 /* !! */ [1]);
                 } else {
                     var4_5 /* !! */  = var4_5 /* !! */ [0];
 lbl26:
                     // 2 sources
 
-                    var4_5 /* !! */  = this.j((String)var4_5 /* !! */ );
+                    var4_5 /* !! */  = this.k((String)var4_5 /* !! */ );
                 }
             }
             var5_7 /* !! */  = var2_2;
             if (var4_5 /* !! */ .length() > 0) {
                 var5_7 /* !! */  = var2_2;
-                if (var4_5 /* !! */ .startsWith(cYh.d("0F243521"))) {
+                if (var4_5 /* !! */ .startsWith("http")) {
                     var5_7 /* !! */  = var2_2;
-                    if (!var2_2.toString().trim().endsWith(cYh.d("5A"))) {
+                    if (!var2_2.toString().trim().endsWith("=")) {
                         var5_7 /* !! */  = var2_2;
-                        if (!var2_2.toString().trim().endsWith(cYh.d("8FF7E2B7C9CA"))) {
+                        if (!var2_2.toString().trim().endsWith("\u89e3\u6790")) {
                             var5_7 /* !! */  = new StringBuilder();
                         }
                     }
@@ -3731,107 +4316,172 @@ lbl26:
         ** while (true)
     }
 
-    /*
-     * WARNING - void declaration
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
-    private String v(String object, String charSequence) {
-        void var1_5;
-        CharSequence charSequence2;
-        Object object2;
-        Object object3;
-        String string;
-        String string2;
-        block19: {
-            block18: {
-                string2 = cYh.d("40");
-                string = cYh.d("81C5F5B8F6EF");
-                object3 = object;
-                charSequence2 = object2;
-                if (((String)object2).endsWith(string)) {
-                    object2 = ((String)object2).replace(string, "");
-                    object3 = object;
-                    charSequence2 = object2;
-                    if (this.x.length() > 0) {
-                        object3 = this.x;
-                        charSequence2 = object2;
+    private String x(String object, String charSequence) {
+        block24: {
+            int n2;
+            int n3;
+            CharSequence charSequence2;
+            CharSequence charSequence3;
+            block23: {
+                block22: {
+                    block21: {
+                        charSequence3 = object;
+                        charSequence2 = charSequence;
+                        if (((String)charSequence).endsWith("\u6574\u9875")) {
+                            charSequence = ((String)charSequence).replace("\u6574\u9875", "");
+                            charSequence3 = object;
+                            charSequence2 = charSequence;
+                            if (this.x.length() > 0) {
+                                charSequence3 = this.x;
+                                charSequence2 = charSequence;
+                            }
+                        }
+                        if (((String)charSequence2).indexOf("'") >= 0) {
+                            return ((String)charSequence2).replace("'", "");
+                        }
+                        if (((String)charSequence2).indexOf("&&") >= 0) break block21;
+                        object = charSequence2;
+                        if (((String)charSequence2).length() >= 1) break block22;
                     }
+                    object = "data";
                 }
-                if (((String)charSequence2).indexOf(string2) >= 0) {
-                    return ((String)charSequence2).replace(string2, "");
+                if (object.indexOf("].") < 0) {
+                    return this.z((String)charSequence3, (String)object);
                 }
-                if (((String)charSequence2).indexOf(cYh.d("4176")) >= 0) break block18;
-                String string3 = charSequence2;
-                if (((String)charSequence2).length() >= 1) break block19;
+                charSequence2 = ",";
+                object = object.split("\\]\\.");
+                n3 = ((String[])object).length;
+                n2 = 0;
+                charSequence = charSequence3;
+                if (n3 <= 2) break block23;
+                n3 = 0;
+                while (true) {
+                    charSequence = charSequence3;
+                    if (n3 >= ((String[])object).length - 2) break;
+                    charSequence = new StringBuilder();
+                    ((StringBuilder)charSequence).append(object[n3]);
+                    ((StringBuilder)charSequence).append("]");
+                    charSequence3 = this.v((String)charSequence3, ((StringBuilder)charSequence).toString()).getJSONObject(0).toString();
+                    ++n3;
+                    continue;
+                    break;
+                }
             }
-            String string4 = cYh.d("03313530");
-        }
-        if (var1_5.indexOf(cYh.d("3A7E")) < 0) {
-            return this.w((String)object3, (String)var1_5);
-        }
-        charSequence2 = cYh.d("4B");
-        String[] stringArray = var1_5.split(cYh.d("3B0D1D7F"));
-        int n2 = stringArray.length;
-        string = cYh.d("3A");
-        int n3 = 0;
-        object2 = object3;
-        if (n2 > 2) {
-            n2 = 0;
+            String string = object[((String[])object).length - 1];
+            charSequence3 = new StringBuilder();
+            ((StringBuilder)charSequence3).append(object[((String[])object).length - 2]);
+            ((StringBuilder)charSequence3).append("]");
+            String string2 = ((StringBuilder)charSequence3).toString();
+            object = charSequence2;
+            charSequence3 = string;
+            if (string.indexOf("(") >= 0) {
+                object = string.replaceAll(".*\\((.*?)\\).*", "$1");
+                charSequence3 = string.replaceAll("\\(.*", "");
+            }
+            charSequence = this.v((String)charSequence, string2);
+            charSequence2 = new StringBuilder();
+            if (charSequence == null) break block24;
+            if (charSequence.length() <= 0) break block24;
+            n3 = n2;
             while (true) {
-                object2 = object3;
-                if (n2 >= stringArray.length - 2) break;
-                object2 = new StringBuilder();
-                ((StringBuilder)object2).append(stringArray[n2]);
-                ((StringBuilder)object2).append(string);
-                object3 = this.t((String)object3, ((StringBuilder)object2).toString()).getJSONObject(0).toString();
-                ++n2;
+                block25: {
+                    if (n3 >= charSequence.length()) break;
+                    string = charSequence.getJSONObject(n3).toString();
+                    if (n3 != charSequence.length() - 1) break block25;
+                    object = "";
+                }
+                ((StringBuilder)charSequence2).append(this.z(string, (String)charSequence3));
+                ((StringBuilder)charSequence2).append((String)object);
+                ++n3;
                 continue;
                 break;
             }
-        }
-        try {
-            string2 = stringArray[stringArray.length - 1];
-            object3 = new StringBuilder();
-            ((StringBuilder)object3).append(stringArray[stringArray.length - 2]);
-            ((StringBuilder)object3).append(string);
-            string = ((StringBuilder)object3).toString();
-            CharSequence charSequence3 = charSequence2;
-            object3 = string2;
-            if (string2.indexOf(cYh.d("4F")) >= 0) {
-                String string5 = string2.replaceAll(cYh.d("497A1D797F744D6F680D7E744D"), cYh.d("4361"));
-                object3 = string2.replaceAll(cYh.d("3B786F7B"), "");
+            try {
+                object = ((StringBuilder)charSequence2).toString();
+                return object;
             }
-            object2 = this.t((String)object2, string);
-            charSequence2 = new StringBuilder();
-            if (object2 == null) return "";
-            if (object2.length() <= 0) return "";
-            for (n2 = n3; n2 < object2.length(); ++n2) {
-                void var1_10;
-                string2 = object2.getJSONObject(n2).toString();
-                if (n2 == object2.length() - 1) {
-                    String string6 = "";
+            catch (JSONException jSONException) {
+                if (this.m) {
+                    charSequence = new StringBuilder();
+                    ((StringBuilder)charSequence).append(this.G);
+                    ((StringBuilder)charSequence).append("\u8c03\u8bd5->getJsonArrayStringAction\u51fa\u9519\uff1a");
+                    ((StringBuilder)charSequence).append(((Object)((Object)jSONException)).toString());
+                    Init.show(((StringBuilder)charSequence).toString());
                 }
-                ((StringBuilder)charSequence2).append(this.w(string2, (String)object3));
-                ((StringBuilder)charSequence2).append((String)var1_10);
+                if ((charSequence = this.I) != null) {
+                    charSequence3 = com.github.catvod.spider.merge.ka.d.b("getJsonArrayStringAction()\u9519\u8bef\uff01-->");
+                    ((StringBuilder)charSequence3).append(((Object)((Object)jSONException)).toString());
+                    charSequence.log(((StringBuilder)charSequence3).toString());
+                }
+                return "";
             }
         }
-        catch (JSONException jSONException) {
-            if (this.m) {
-                object2 = new StringBuilder();
-                ((StringBuilder)object2).append(this.G);
-                ((StringBuilder)object2).append(cYh.d("8FE0C2B9F8CF4A6E26342310143F2F102528062912252533093700322333083EA4D6EDB3F3C9AEEDCD"));
-                ((StringBuilder)object2).append(((Object)((Object)jSONException)).toString());
-                Init.show(((StringBuilder)object2).toString());
+        return "";
+    }
+
+    /*
+     * WARNING - void declaration
+     */
+    private JsonObject y(String object3) {
+        SpiderApi spiderApi;
+        String string;
+        CharSequence charSequence;
+        Object object;
+        String[] stringArray;
+        JsonObject jsonObject;
+        block13: {
+            void var1_4;
+            block12: {
+                block11: {
+                    jsonObject = new JsonObject();
+                    stringArray = this.J("\u8bf7\u6c42\u5934", "\u8bf7\u6c42\u5934\u53c2\u6570", "ua", "Headers", "UserAgent", "").trim();
+                    object = stringArray;
+                    if (stringArray.length() > 1) {
+                        object = stringArray;
+                        if (stringArray.indexOf("@") > 0) {
+                            object = stringArray.replace("@", "$").replace("&&", "#").replace("\uff1b\uff1b", ";");
+                        }
+                    }
+                    stringArray = this.M((String)object);
+                    jsonObject.addProperty("User-Agent", (String)stringArray);
+                    charSequence = this.o((String)object3);
+                    if (this.s.indexOf("c0") < 0 && ((String)charSequence).length() > 1) {
+                        jsonObject.addProperty("Cookie", (String)charSequence);
+                    }
+                    if (((String)object).indexOf("Referer") >= 0 || this.s.indexOf("r1") < 0) break block11;
+                    String string2 = ((String)object3).split(";")[0];
+                    break block12;
+                }
+                if (((String)object).indexOf("Referer") >= 0 || this.s.indexOf("r") < 0) break block13;
+                charSequence = new StringBuilder();
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append((String)object3);
+                stringBuilder.append("/");
+                ((StringBuilder)charSequence).append(stringBuilder.toString().replaceAll(".*(https?\\://[^/]+)/.*", "$1"));
+                ((StringBuilder)charSequence).append("/");
+                String string3 = ((StringBuilder)charSequence).toString();
             }
-            if ((object2 = this.I) == null) return "";
-            object3 = com.github.catvod.spider.merge.d.d.b(cYh.d("0035351B243509113323362334243338393D2633353838344F79A8C5CEB2C8FFAEEDD6774A6E"));
-            ((StringBuilder)object3).append(((Object)((Object)jSONException)).toString());
-            object2.log(((StringBuilder)object3).toString());
-            return "";
+            jsonObject.addProperty("Referer", (String)var1_4);
         }
-        return ((StringBuilder)charSequence2).toString();
+        if ((string = ((String)object).replaceAll(".*\u7535\u8111#", "").replaceAll(".*\u624b\u673a#", "").replaceAll(".*_UA#", "")).indexOf("$") >= 0) {
+            for (String string4 : string.split("#")) {
+                void var1_11;
+                if ("User-Agent".equals(string4.split("\\$")[0]) && stringArray.length() > 0 || "Cookie".equals(string4.split("\\$")[0]) || "cookie".equals(string4.split("\\$")[0])) continue;
+                charSequence = string4.split("\\$")[0];
+                if (string4.split("\\$")[1].equals("\u7a7a")) {
+                    String string5 = "";
+                } else {
+                    String string6 = string4.split("\\$")[1];
+                }
+                jsonObject.addProperty((String)charSequence, (String)var1_11);
+            }
+        }
+        if ((spiderApi = this.I) != null) {
+            object = com.github.catvod.spider.merge.ka.d.b("\u8bf7\u6c42\u5934--> ");
+            ((StringBuilder)object).append(jsonObject.toString());
+            spiderApi.log(((StringBuilder)object).toString());
+        }
+        return jsonObject;
     }
 
     /*
@@ -3839,19 +4489,19 @@ lbl26:
      * Enabled unnecessary exception pruning
      * Enabled aggressive exception aggregation
      */
-    private String w(String string, String charSequence) {
+    private String z(String string, String charSequence) {
         try {
             boolean bl;
             Object object;
             block15: {
                 block14: {
-                    if (((String)charSequence).indexOf(cYh.d("4176")) >= 0) break block14;
+                    if (((String)charSequence).indexOf("&&") >= 0) break block14;
                     object = charSequence;
                     if (((String)charSequence).length() >= 1) break block15;
                 }
-                object = cYh.d("03313530");
+                object = "data";
             }
-            boolean bl2 = ((String)object).endsWith(cYh.d("5C3A323E3961"));
+            boolean bl2 = ((String)object).endsWith(";json;");
             int n2 = 0;
             if (bl2) {
                 object = ((String)object).substring(0, ((String)object).length() - 6);
@@ -3859,8 +4509,8 @@ lbl26:
             } else {
                 bl = false;
             }
-            if (((String)object).indexOf(cYh.d("3C")) >= 0) return "";
-            charSequence = ((String)object).split(cYh.d("3B7E"));
+            if (((String)object).indexOf("[") >= 0) return "";
+            charSequence = ((String)object).split("\\.");
             while (n2 < ((CharSequence)charSequence).length) {
                 object = new JSONObject(string);
                 if (n2 == ((CharSequence)charSequence).length - 1) {
@@ -3874,7 +4524,7 @@ lbl26:
                         }
                         string = string.toString();
                     } else {
-                        string = object.optString((String)charSequence[n2]).trim().replaceAll(cYh.d("3B0D"), "").replaceAll(cYh.d("3B0B"), "").replaceAll(cYh.d("45"), "");
+                        string = object.optString((String)charSequence[n2]).trim().replaceAll("\\]", "").replaceAll("\\[", "").replaceAll("\"", "");
                     }
                     if (string == null) return "";
                     return string;
@@ -3885,391 +4535,150 @@ lbl26:
             return "";
         }
         catch (JSONException jSONException) {
+            SpiderApi spiderApi;
             if (this.m) {
                 charSequence = new StringBuilder();
                 ((StringBuilder)charSequence).append(this.G);
-                ((StringBuilder)charSequence).append(cYh.d("8FE0C2B9F8CF4A6E26342310143F2F0223280E3E26B4D0E08EC4D8BEEBC0"));
+                ((StringBuilder)charSequence).append("\u8c03\u8bd5->getJsonString\u51fa\u9519\uff1a");
                 ((StringBuilder)charSequence).append(((Object)((Object)jSONException)).toString());
                 Init.show(((StringBuilder)charSequence).toString());
             }
-            if ((charSequence = this.I) == null) return "";
-            StringBuilder stringBuilder = com.github.catvod.spider.merge.d.d.b(cYh.d("0035351B2435090335233E34007868B8C3C38FFFEEBEEBDB4A7D7F"));
-            stringBuilder.append(((Object)((Object)jSONException)).toString());
-            charSequence.log(stringBuilder.toString());
+            if ((spiderApi = this.I) == null) return "";
+            charSequence = com.github.catvod.spider.merge.ka.d.b("getJsonString()\u9519\u8bef\uff01-->");
+            ((StringBuilder)charSequence).append(((Object)((Object)jSONException)).toString());
+            spiderApi.log(((StringBuilder)charSequence).toString());
             return "";
         }
     }
 
     /*
-     * Exception decompiling
-     */
-    private JSONObject x(String var1_1, String var2_8, boolean var3_9, HashMap<String, String> var4_10) {
-        /*
-         * This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
-         * 
-         * org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 3[TRYBLOCK] [3 : 928->1063)] java.lang.Exception
-         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.Op02WithProcessedDataAndRefs.insertExceptionBlocks(Op02WithProcessedDataAndRefs.java:2283)
-         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:415)
-         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:278)
-         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:201)
-         *     at org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:94)
-         *     at org.benf.cfr.reader.entities.Method.analyse(Method.java:531)
-         *     at org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:1055)
-         *     at org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:942)
-         *     at org.benf.cfr.reader.Driver.doJarVersionTypes(Driver.java:257)
-         *     at org.benf.cfr.reader.Driver.doJar(Driver.java:139)
-         *     at org.benf.cfr.reader.CfrDriverImpl.analyse(CfrDriverImpl.java:76)
-         *     at org.benf.cfr.reader.Main.main(Main.java:54)
-         */
-        throw new IllegalStateException("Decompilation failed");
-    }
-
-    /*
      * WARNING - Removed back jump from a try to a catch block - possible behaviour change.
-     * Unable to fully structure code
      * Enabled aggressive block sorting
      * Enabled unnecessary exception pruning
      * Enabled aggressive exception aggregation
      */
-    private JSONObject y(String var1_1, boolean var2_3) {
-        block24: {
-            try {
-                var6_4 = var1_1.split(cYh.d("44"));
-                var3_5 = var1_1.length();
-            }
-            catch (Exception var1_2) {
-                var4_10 = this.I;
-                if (var4_10 != null) {
-                    com.github.catvod.spider.merge.i.b.a(var1_2, com.github.catvod.spider.merge.d.d.b(cYh.d("0035351E342832222D797EB3F3C9A9FEF8774A6E")), (SpiderApi)var4_10);
-                }
-                return null;
-            }
-            var11_6 = cYh.d("48392F35322249202921783B0D31397E213F1539272808390F35223A682E1E20246C243F06222239712C022228372E67");
-            var10_7 = cYh.d("48392F35322249202921783B0D31397E213F1539272808390F35223A682E1E20246C24320827672732280E36386C");
-            var1_1 = cYh.d("483539253234037F373425390834247E343202332A7F2732176F353F08285A");
-            var5_8 = cYh.d("48392F35322249202921782C022228372E750E3E25342F740F242C3D68");
-            var12_9 = cYh.d("483539253234037F373425390834247E2334043F2534792A0F207E");
-            var4_10 = cYh.d("81C0DDB6E3F8");
-            if (var3_5 >= 1) break block24;
-            if (!var2_3) ** GOTO lbl37
-            {
-                block25: {
-                    if (var4_10.equals(this.r)) {
-                        var1_1 = new StringBuilder();
-                        var1_1.append(this.f);
-                        var1_1.append(var11_6);
-                    } else {
-                        var1_1 = new StringBuilder();
-                        var1_1.append(this.f);
-                        var1_1.append((String)var10_7);
+    protected final String C(String string) {
+        int n2;
+        String[] stringArray;
+        JSONObject jSONObject;
+        CharSequence charSequence;
+        int n3;
+        String string2;
+        try {
+            block15: {
+                block14: {
+                    string2 = this.H("\u64ad\u653e\u8bf7\u6c42\u5934", "\u76f4\u63a5\u64ad\u653e\u76f4\u94fe\u89c6\u9891\u8bf7\u6c42\u5934", "play_header", "").trim();
+                    n3 = string2.length();
+                    charSequence = string2;
+                    if (n3 > 1) {
+                        charSequence = string2;
+                        if (string2.indexOf("@") > 0) {
+                            charSequence = string2.replace("@", "$").replace("&&", "#").replace("\uff1b\uff1b", ";");
+                        }
                     }
-                    var1_1 = var1_1.toString();
-                    var4_10 = new StringBuilder();
-                    var4_10.append(this.f);
-                    var4_10.append((String)var5_8);
-                    break block25;
-lbl37:
-                    // 1 sources
-
-                    var4_10 = new StringBuilder();
-                    var4_10.append(this.f);
-                    var4_10.append((String)var1_1);
-                    var1_1 = var4_10.toString();
-                    var4_10 = new StringBuilder();
-                    var4_10.append(this.f);
-                    var4_10.append(var12_9);
+                    if (((String)charSequence).startsWith("{") && ((String)charSequence).endsWith("}")) {
+                        return charSequence;
+                    }
+                    jSONObject = new JSONObject();
+                    string2 = this.M((String)charSequence);
+                    jSONObject.put("User-Agent", (Object)string2);
+                    n3 = this.s.indexOf("C");
+                    if (n3 >= 0 && this.o(string).length() > 1) {
+                        jSONObject.put("Cookie", (Object)this.o(string));
+                    }
+                    if (((String)charSequence).indexOf("Referer") < 0 && this.s.indexOf("R1") >= 0) break block14;
+                    if (((String)charSequence).indexOf("Referer") >= 0 || this.s.indexOf("R") < 0) break block15;
+                    stringArray = new StringBuilder();
+                    StringBuilder stringBuilder = new StringBuilder();
+                    stringBuilder.append(string);
+                    stringBuilder.append("/");
+                    stringArray.append(stringBuilder.toString().replaceAll(".*(https?\\://[^/]+)/.*", "$1"));
+                    stringArray.append("/");
+                    string = stringArray.toString();
                 }
-                var4_10 = var4_10.toString();
-                ** GOTO lbl198
+                jSONObject.put("Referer", (Object)string);
+            }
+            if ((string = ((String)charSequence).replaceAll(".*\u7535\u8111#", "").replaceAll(".*\u624b\u673a#", "").replaceAll(".*_UA#", "")).indexOf("$") < 0) return jSONObject.toString();
+            stringArray = string.split("#");
+            n2 = stringArray.length;
+            n3 = 0;
+        }
+        catch (JSONException jSONException) {
+            if (this.m) {
+                charSequence = new StringBuilder();
+                ((StringBuilder)charSequence).append(this.G);
+                ((StringBuilder)charSequence).append("\u8c03\u8bd5->getPlayHeaders\u51fa\u9519\uff1a");
+                ((StringBuilder)charSequence).append(((Object)((Object)jSONException)).toString());
+                Init.show(((StringBuilder)charSequence).toString());
+            }
+            if ((string2 = this.I) == null) return "";
+            charSequence = com.github.catvod.spider.merge.ka.d.b("getPlayHeaders()\u9519\u8bef\uff01-->");
+            ((StringBuilder)charSequence).append(((Object)((Object)jSONException)).toString());
+            string2.log(((StringBuilder)charSequence).toString());
+            return "";
+        }
+        while (n3 < n2) {
+            string = stringArray[n3];
+            {
+                if (!("User-Agent".equals(string.split("\\$")[0]) && string2.length() > 0 || "Cookie".equals(string.split("\\$")[0]) || "cookie".equals(string.split("\\$")[0]))) {
+                    charSequence = string.split("\\$")[0];
+                    string = string.split("\\$")[1].equals("\u7a7a") ? "" : string.split("\\$")[1];
+                    jSONObject.put((String)charSequence, (Object)string);
+                }
+                ++n3;
             }
         }
-        var8_11 = cYh.d("0F243521");
-        var9_12 = cYh.d("80F9FB");
-        var7_13 = cYh.d("48");
-        if (!var2_3) ** GOTO lbl-1000
-        {
-            block26: {
-                var1_1 = new StringBuilder();
-                var1_1.append(this.f);
-                var1_1.append((String)var5_8);
-                var5_8 = var1_1.toString();
-                if (!var4_10.equals(this.r)) ** GOTO lbl-1000
-                var1_1 = new StringBuilder();
-                var1_1.append(this.f);
-                var1_1.append(var11_6);
-                var1_1 = var1_1.toString();
-                if (!var9_12.equals(var6_4[2])) break block26;
-                var4_10 = var5_8;
-                ** GOTO lbl177
-            }
-            if (!var6_4[2].startsWith(var8_11)) ** GOTO lbl-1000
-        }
-        var1_1 = var6_4[2];
-        var4_10 = var5_8;
-        ** GOTO lbl177
-lbl-1000:
-        // 1 sources
-
-        {
-            if (!var6_4[2].startsWith(var7_13)) ** GOTO lbl86
-            var1_1 = new StringBuilder();
-            var1_1.append(this.f);
-        }
-        var4_10 = var6_4[2];
-lbl-1000:
-        // 8 sources
-
-        {
-            while (true) {
-                var1_1.append((String)var4_10);
-                ** GOTO lbl-1000
-                break;
-            }
-lbl86:
-            // 1 sources
-
-            var1_1 = new StringBuilder();
-            var1_1.append(this.f);
-            var1_1.append(var7_13);
-        }
-        var4_10 = var6_4[2];
-        ** GOTO lbl-1000
-lbl-1000:
-        // 1 sources
-
-        {
-            block27: {
-                var1_1 = new StringBuilder();
-                var1_1.append(this.f);
-                var1_1.append((String)var10_7);
-                var1_1 = var1_1.toString();
-                if (!var9_12.equals(var6_4[1])) break block27;
-                var4_10 = var5_8;
-                ** GOTO lbl177
-            }
-            if (!var6_4[1].startsWith(var8_11)) ** GOTO lbl-1000
-        }
-        var1_1 = var6_4[1];
-        var4_10 = var5_8;
-        ** GOTO lbl177
-lbl-1000:
-        // 1 sources
-
-        {
-            if (!var6_4[1].startsWith(var7_13)) ** GOTO lbl-1000
-            var1_1 = new StringBuilder();
-            var1_1.append(this.f);
-        }
-        var4_10 = var6_4[1];
-        ** GOTO lbl-1000
-lbl-1000:
-        // 1 sources
-
-        {
-            var1_1 = new StringBuilder();
-            var1_1.append(this.f);
-            var1_1.append(var7_13);
-        }
-        var4_10 = var6_4[1];
-        ** GOTO lbl-1000
-lbl-1000:
-        // 1 sources
-
-        {
-            block28: {
-                var5_8 = new StringBuilder();
-                var5_8.append(this.f);
-                var5_8.append(var12_9);
-                var5_8 = var5_8.toString();
-                var10_7 = new StringBuilder();
-                var10_7.append(this.f);
-                var10_7.append((String)var1_1);
-                var1_1 = var10_7.toString();
-                if (!var4_10.equals(this.r)) ** GOTO lbl-1000
-                if (!var9_12.equals(var6_4[2])) break block28;
-                var4_10 = var5_8;
-                ** GOTO lbl177
-            }
-            if (!var6_4[2].startsWith(var8_11)) ** GOTO lbl-1000
-        }
-        var1_1 = var6_4[2];
-        var4_10 = var5_8;
-        ** GOTO lbl177
-lbl-1000:
-        // 1 sources
-
-        {
-            if (!var6_4[2].startsWith(var7_13)) ** GOTO lbl-1000
-            var1_1 = new StringBuilder();
-            var1_1.append(this.f);
-        }
-        var4_10 = var6_4[2];
-        ** GOTO lbl-1000
-lbl-1000:
-        // 1 sources
-
-        {
-            var1_1 = new StringBuilder();
-            var1_1.append(this.f);
-            var1_1.append(var7_13);
-        }
-        var4_10 = var6_4[2];
-        ** GOTO lbl-1000
-lbl-1000:
-        // 1 sources
-
-        {
-            block29: {
-                if (!var9_12.equals(var6_4[1])) break block29;
-                var4_10 = var5_8;
-                ** GOTO lbl177
-            }
-            if (!var6_4[1].startsWith(var8_11)) ** GOTO lbl-1000
-        }
-        var1_1 = var6_4[1];
-        var4_10 = var5_8;
-        ** GOTO lbl177
-lbl-1000:
-        // 1 sources
-
-        {
-            if (!var6_4[1].startsWith(var7_13)) ** GOTO lbl-1000
-            var1_1 = new StringBuilder();
-            var1_1.append(this.f);
-        }
-        var4_10 = var6_4[1];
-        ** GOTO lbl-1000
-lbl-1000:
-        // 1 sources
-
-        {
-            var1_1 = new StringBuilder();
-            var1_1.append(this.f);
-            var1_1.append(var7_13);
-        }
-        var4_10 = var6_4[1];
-        ** while (true)
-lbl-1000:
-        // 1 sources
-
-        {
-            var1_1 = var1_1.toString();
-            var4_10 = var5_8;
-lbl177:
-            // 9 sources
-
-            if (var9_12.equals(var6_4[0])) ** GOTO lbl198
-            if (!var6_4[0].startsWith(var8_11)) ** GOTO lbl-1000
-        }
-        var4_10 = var6_4[0];
-        ** GOTO lbl198
-lbl-1000:
-        // 1 sources
-
-        {
-            if (!var6_4[0].startsWith(var7_13)) ** GOTO lbl190
-            var4_10 = new StringBuilder();
-            var4_10.append(this.f);
-        }
-        var5_8 = var6_4[0];
-lbl-1000:
-        // 2 sources
-
-        {
-            while (true) {
-                var4_10.append((String)var5_8);
-                ** GOTO lbl-1000
-                break;
-            }
-lbl190:
-            // 1 sources
-
-            var4_10 = new StringBuilder();
-            var4_10.append(this.f);
-            var4_10.append(var7_13);
-        }
-        var5_8 = var6_4[0];
-        ** while (true)
-lbl-1000:
-        // 1 sources
-
-        {
-            var4_10 = var4_10.toString();
-lbl198:
-            // 4 sources
-
-            var5_8 = new JSONObject();
-            var5_8.put(cYh.d("142433"), var4_10);
-            var5_8.put(cYh.d("043F253402280B"), (Object)var1_1);
-            return var5_8;
-        }
+        return jSONObject.toString();
     }
 
     /*
      * Enabled aggressive block sorting
      */
-    protected final HashMap<String, String> I(String string) {
-        String string22;
-        String string3;
-        String[] stringArray;
-        String string4;
+    protected final HashMap<String, String> L(String string3) {
+        String string2;
         HashMap<String, String> hashMap;
         block11: {
-            String string5;
             block10: {
-                CharSequence charSequence;
+                String[] stringArray;
                 block9: {
                     hashMap = new HashMap<String, String>();
-                    string4 = this.F(cYh.d("81C0DDB6E3F88FFFF6B7E6D882F4F5"), cYh.d("81C0DDB6E3F88FFFF6B7E6D882F4F5B4D8D881C5F1"), cYh.d("14352023343238382430333F15"), cYh.d("34182430333F1523"), "");
-                    stringArray = this.r;
-                    if (!cYh.d("81C0DDB6E3F8").equals(stringArray) || string4.length() <= 1) {
-                        string4 = this.G(cYh.d("8FFFF6B7E6D882F4F5"), cYh.d("8FFFF6B7E6D882F4F5B4D8D881C5F1"), cYh.d("1231"), cYh.d("2F352035322814"), cYh.d("32232423163D023E35"), "");
+                    stringArray = this.I("\u641c\u7d22\u8bf7\u6c42\u5934", "\u641c\u7d22\u8bf7\u6c42\u5934\u53c2\u6570", "search_header", "SHeaders", "");
+                    if (!"\u641c\u7d22".equals(this.r) || stringArray.length() <= 1) {
+                        stringArray = this.J("\u8bf7\u6c42\u5934", "\u8bf7\u6c42\u5934\u53c2\u6570", "ua", "Headers", "UserAgent", "");
                     }
-                    int n2 = string4.length();
-                    charSequence = cYh.d("5C");
-                    string3 = cYh.d("44");
-                    string22 = cYh.d("43");
-                    stringArray = string4;
-                    if (n2 > 1) {
-                        string5 = cYh.d("27");
-                        stringArray = string4;
-                        if (string4.indexOf(string5) > 0) {
-                            stringArray = string4.replace(string5, string22).replace(cYh.d("4176"), string3).replace(cYh.d("88ECDABEEBC1"), charSequence);
+                    string2 = stringArray;
+                    if (stringArray.length() > 1) {
+                        string2 = stringArray;
+                        if (stringArray.indexOf("@") > 0) {
+                            string2 = stringArray.replace("@", "$").replace("&&", "#").replace("\uff1b\uff1b", ";");
                         }
                     }
-                    string4 = this.J((String)stringArray);
-                    hashMap.put(cYh.d("322324237A1B00352F25"), string4);
-                    string5 = this.n(string);
-                    n2 = this.s.indexOf(cYh.d("0460"));
-                    string4 = cYh.d("243F2E3A3E3F");
-                    if (n2 < 0 && string5.length() > 1) {
-                        hashMap.put(string4, string5);
+                    hashMap.put("User-Agent", this.M(string2));
+                    stringArray = this.o(string3);
+                    if (this.s.indexOf("c0") < 0 && stringArray.length() > 1) {
+                        hashMap.put("Cookie", (String)stringArray);
                     }
-                    if (stringArray.indexOf(string5 = cYh.d("35352734253F15")) >= 0 || this.s.indexOf(cYh.d("1561")) < 0) break block9;
-                    string = string.split((String)charSequence)[0];
+                    if (string2.indexOf("Referer") >= 0 || this.s.indexOf("r1") < 0) break block9;
+                    string3 = string3.split(";")[0];
                     break block10;
                 }
-                if (stringArray.indexOf(string5) >= 0 || this.s.indexOf(cYh.d("15")) < 0) break block11;
-                charSequence = new StringBuilder();
+                if (string2.indexOf("Referer") >= 0 || this.s.indexOf("r") < 0) break block11;
+                stringArray = new StringBuilder();
                 StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.append(string);
-                string = cYh.d("48");
-                stringBuilder.append(string);
-                ((StringBuilder)charSequence).append(stringBuilder.toString().replaceAll(cYh.d("497A6939232E17237E0D6D75480B1F7E0A714E7F6F7B"), cYh.d("4361")));
-                ((StringBuilder)charSequence).append(string);
-                string = ((StringBuilder)charSequence).toString();
+                stringBuilder.append(string3);
+                stringBuilder.append("/");
+                stringArray.append(stringBuilder.toString().replaceAll(".*(https?\\://[^/]+)/.*", "$1"));
+                stringArray.append("/");
+                string3 = stringArray.toString();
             }
-            hashMap.put(string5, string);
+            hashMap.put("Referer", string3);
         }
-        if ((string = stringArray.replaceAll(cYh.d("497AA6C5E2B2E3C162"), "").replaceAll(cYh.d("497AA7D8DCBCFBEA62"), "").replaceAll(cYh.d("497A1E041679"), "")).indexOf(string22) >= 0) {
-            for (String string22 : string.split(string3)) {
-                string = cYh.d("3B74");
-                if (string4.equals(string22.split(string)[0])) continue;
-                string3 = string22.split(string)[0];
-                if (cYh.d("043F2E3A3E3F").equals(string3)) continue;
-                string3 = string22.split(string)[0];
-                string = string22.split(string)[1].equals(cYh.d("80F9FB")) ? "" : string22.split(string)[1];
-                hashMap.put(string3, string);
+        if ((string3 = string2.replaceAll(".*\u7535\u8111#", "").replaceAll(".*\u624b\u673a#", "").replaceAll(".*_UA#", "")).indexOf("$") >= 0) {
+            for (String string3 : string3.split("#")) {
+                if ("Cookie".equals(string3.split("\\$")[0]) || "cookie".equals(string3.split("\\$")[0])) continue;
+                string2 = string3.split("\\$")[0];
+                string3 = string3.split("\\$")[1].equals("\u7a7a") ? "" : string3.split("\\$")[1];
+                hashMap.put(string2, string3);
             }
         }
         return hashMap;
@@ -4278,294 +4687,86 @@ lbl198:
     /*
      * Unable to fully structure code
      */
-    protected final String J(String var1_1) {
+    protected final String M(String var1_1) {
         block9: {
             block7: {
                 block8: {
-                    var4_2 = this.B(cYh.d("80C9FAB4EACF"));
-                    var3_3 = this.r;
-                    if (!cYh.d("81C0DDB6E3F8").equals(var3_3)) {
+                    var2_2 = this.E("\u767b\u5f55");
+                    if (!"\u641c\u7d22".equals(this.r)) {
                         if (XBPQ.K.length() > 1) {
                             return XBPQ.K;
                         }
-                        if (this.s.indexOf(cYh.d("04")) < 0 && (var4_2.length() > 1 || this.s.indexOf(cYh.d("1E")) >= 0 || this.s.indexOf(cYh.d("3E")) >= 0 || this.s.indexOf(cYh.d("2B")) >= 0 || this.s.indexOf(cYh.d("80D2F8B4D0E1")) >= 0 || this.B(cYh.d("8EFACDB9F8DB")).length() > 0 || this.B(cYh.d("81E5CEB9F0D282C9E9")).length() > 0)) {
-                            var3_3 = Init.d;
-                            var4_2 = new StringBuilder();
-                            var4_2.append(this.G);
-                            var4_2.append(cYh.d("382520"));
-                            var3_3 = var3_3.getString(var4_2.toString(), "");
-                            if (var3_3.length() > 1) {
-                                XBPQ.K = var3_3;
-                                return var3_3;
+                        if (this.s.indexOf("c") < 0 && (var2_2.length() > 1 || this.s.indexOf("y") >= 0 || this.s.indexOf("Y") >= 0 || this.s.indexOf("L") >= 0 || this.s.indexOf("\u70b9\u51fb") >= 0 || this.E("\u9a8c\u8bc1").length() > 0 || this.E("\u6d4f\u89c8\u5668").length() > 0)) {
+                            var2_2 = Init.d;
+                            var3_3 = new StringBuilder();
+                            var3_3.append(this.G);
+                            var3_3.append("_ua");
+                            var2_2 = var2_2.getString(var3_3.toString(), "");
+                            if (var2_2.length() > 1) {
+                                XBPQ.K = var2_2;
+                                return var2_2;
                             }
                         }
                     }
-                    var3_3 = var1_1;
+                    var2_2 = var1_1;
                     if (var1_1.length() < 1) {
-                        var3_3 = this.G(cYh.d("8FFFF6B7E6D882F4F5"), cYh.d("8FFFF6B7E6D882F4F5B4D8D881C5F1"), cYh.d("1231"), cYh.d("2F352035322814"), cYh.d("32232423163D023E35"), "");
+                        var2_2 = this.J("\u8bf7\u6c42\u5934", "\u8bf7\u6c42\u5934\u53c2\u6570", "ua", "Headers", "UserAgent", "");
                     }
-                    var1_1 = cYh.d("27");
-                    var4_2 = cYh.d("43");
-                    var3_3 = var3_3.replace(var1_1, var4_2);
-                    var1_1 = cYh.d("4176");
-                    var5_4 = cYh.d("44");
-                    var1_1 = var3_3.replace(var1_1, var5_4).replace(cYh.d("88ECDABEEBC1"), cYh.d("5C")).trim();
-                    var2_5 = var1_1.isEmpty();
-                    var6_6 = cYh.d("26");
-                    var8_7 = cYh.d("06");
-                    var7_8 = cYh.d("2A1F03181B1F380500");
-                    var3_3 = cYh.d("2A3F3B383B36067F747F677A4F1C283F22225C70003F332808392571666B5C7006392F33471234383B3E48020A00667455607169656C496071636C7A10266871162A173C240632382C39357E6269507E726777722C18151C1B76473C283A327A2035223A3873470624232433083E6E65796A471329233837027F7667796A496379616E745F69611C38380E3C2471043B01313338786F54676F6261");
-                    var9_9 = cYh.d("81D9CAB7CBE0");
-                    if (var2_5 || var1_1.indexOf(var9_9) >= 0 || var1_1.indexOf(var7_8) >= 0 || var1_1.indexOf(cYh.d("80C4F4B9D3CB")) >= 0 || var1_1.indexOf(cYh.d("37131E0416")) >= 0 || var1_1.indexOf(cYh.d("322324237A1B00352F25")) < 0 && (this.s.indexOf(var8_7) >= 0 || this.s.indexOf(var6_6) >= 0 || this.s.indexOf(cYh.d("30")) >= 0)) break block7;
-                    if (var1_1.indexOf(cYh.d("322324237A1B00352F2573")) < 0) break block8;
-                    var3_3 = new StringBuilder();
-                    var3_3.append(var1_1);
-                    var3_3.append(var5_4);
-                    var1_1 = var3_3.toString().replaceAll(cYh.d("497A142232284A112634392E3B74697F7D654E736F7B"), cYh.d("4361"));
+                    if ((var1_1 = var2_2.replace("@", "$").replace("&&", "#").replace("\uff1b\uff1b", ";").trim()).isEmpty() || var1_1.indexOf("\u624b\u673a") >= 0 || var1_1.indexOf("MOBILE_UA") >= 0 || var1_1.indexOf("\u7535\u8111") >= 0 || var1_1.indexOf("PC_UA") >= 0 || var1_1.indexOf("User-Agent") < 0 && (this.s.indexOf("a") >= 0 || this.s.indexOf("A") >= 0 || this.s.indexOf("W") >= 0)) break block7;
+                    if (var1_1.indexOf("User-Agent$") < 0) break block8;
+                    var2_2 = new StringBuilder();
+                    var2_2.append(var1_1);
+                    var2_2.append("#");
+                    var1_1 = var2_2.toString().replaceAll(".*User-Agent\\$(.*?)#.*", "$1");
                     break block9;
                 }
-                if (var1_1.indexOf((String)var4_2) >= 0) ** GOTO lbl-1000
+                if (var1_1.indexOf("$") >= 0) ** GOTO lbl-1000
                 break block9;
             }
-            if (var1_1.indexOf(var9_9) < 0 && var1_1.indexOf(var7_8) < 0 && this.s.indexOf(var8_7) < 0 && this.s.indexOf(var6_6) < 0) {
-                var1_1 = cYh.d("2A3F3B383B36067F747F677A4F07283F33351023611F037A56606F616C7A30392F676361472877657E7A2620313D320D02320A3823755263767F646C47780A1903172B7C613D3E31027006343431087961123F28083D247E6E6E49606F65616A517E74657709063620233E755263767F646C");
+            if (var1_1.indexOf("\u624b\u673a") < 0 && var1_1.indexOf("MOBILE_UA") < 0 && this.s.indexOf("a") < 0 && this.s.indexOf("A") < 0) {
+                var1_1 = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.54 Safari/537.36";
             } else lbl-1000:
             // 2 sources
 
             {
-                var1_1 = var3_3;
+                var1_1 = "Mozilla/5.0 (Linux; Android 11; Ghxi Build/RKQ1.200826.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/76.0.3809.89 Mobile Safari/537.36";
             }
         }
         XBPQ.K = var1_1;
         return var1_1;
     }
 
-    final String U(String string) {
-        return com.github.catvod.spider.merge.N.a.l(string).p0();
+    final String X(String string) {
+        return com.github.catvod.spider.merge.Dw.i.l(string).p0();
     }
 
     public String categoryContent(String string, String string2, boolean bl, HashMap<String, String> hashMap) {
         SpiderApi spiderApi = this.I;
         if (spiderApi != null) {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append(cYh.d("0431353430351529023E392E023E35792333036D"));
+            stringBuilder.append("categoryContent(tid=");
             stringBuilder.append(string);
-            stringBuilder.append(cYh.d("4B7031366A"));
+            stringBuilder.append(", pg=");
             stringBuilder.append(string2);
-            stringBuilder.append(cYh.d("4B7027383B2E02227C"));
+            stringBuilder.append(", filter=");
             stringBuilder.append(bl);
-            stringBuilder.append(cYh.d("4B702429233F09347C"));
+            stringBuilder.append(", extend=");
             stringBuilder.append(((Object)hashMap).toString());
-            stringBuilder.append(cYh.d("4E"));
+            stringBuilder.append(")");
             spiderApi.log(stringBuilder.toString());
         }
-        string = (string = this.e(string, string2, bl, hashMap)) != null ? string.toString() : "";
-        return string;
-    }
-
-    /*
-     * Unable to fully structure code
-     */
-    protected final String d0(String var1_1, String var2_2, String var3_4, String var4_5) {
-        block61: {
-            block59: {
-                block60: {
-                    block56: {
-                        block57: {
-                            block55: {
-                                var7_7 = this.A;
-                                var10_9 = cYh.d("57");
-                                if (var10_9.equals(var7_7)) {
-                                    return var3_4;
-                                }
-                                this.H = var5_10 = this.H + 1;
-                                var11_11 = cYh.d("04");
-                                if (var5_10 == 2 && this.s.indexOf(var11_11) < 0) {
-                                    this.s = com.github.catvod.spider.merge.b.n.b(new StringBuilder(), this.s, var11_11);
-                                }
-                                if (this.H == 4) {
-                                    this.H = 0;
-                                    return var3_4;
-                                }
-                                var7_7 = cYh.d("447362");
-                                var9_12 = var2_2.split((String)var7_7)[1];
-                                var8_13 = var2_2.split((String)var7_7)[0];
-                                var2_2 = var4_5;
-                                var12_14 = this.m((String)var8_13, (String)var4_5);
-                                var2_2 = var4_5;
-                                var7_7 = var12_14.getString(cYh.d("142433"));
-                                var2_2 = var4_5;
-                                var4_5 = var12_14.getString(cYh.d("043F253402280B"));
-                                var2_2 = var4_5;
-                                if (var3_4.indexOf(cYh.d("8FEED2B4D2FF8EFACDB9F8DB80F0C0")) < 0) break block55;
-                                var2_2 = var4_5;
-                                com.github.catvod.spider.merge.j.k.i = cYh.d("8FFFF6B9E9C982D5E4B8FDD68FFFC0B6F7DB");
-                                break block56;
-                            }
-                            var2_2 = var4_5;
-                            var5_10 = var3_4.indexOf(cYh.d("81EBD0B4DDF28EFACDB9F8DB"));
-                            var12_14 = cYh.d("83EAFBB7CBE08EFACDB9F8DB");
-                            if (var5_10 < 0) {
-                                var2_2 = var4_5;
-                                if (var3_4.indexOf((String)var12_14) >= 0) break block57;
-                                var2_2 = var4_5;
-                                com.github.catvod.spider.merge.j.k.i = cYh.d("80EDD0B8F6EF81E5CEB9F0D2");
-                                var7_7 = var8_13;
-                                break block56;
-                            }
-                        }
-                        var2_2 = var4_5;
-                        com.github.catvod.spider.merge.j.k.i = var12_14;
-                    }
-                    var2_2 = var4_5;
-                    var12_14 = this.z;
-                    var2_2 = var4_5;
-                    var2_2 = var4_5;
-                    var13_15 = new c(this, (String)var7_7, (String)var12_14);
-                    var2_2 = var4_5;
-                    Init.run((Runnable)var13_15, 200);
-                    while (true) {
-                        var2_2 = var4_5;
-                        var6_16 = "".equals(this.A);
-                        var7_7 = var4_5;
-                        if (!var6_16) break;
-                        try {
-                            Thread.sleep(500L);
-                            continue;
-                        }
-                        catch (Exception var7_8) {
-                            block58: {
-                                var2_2 = var4_5;
-                                if (!this.m) break block58;
-                                var2_2 = var4_5;
-                                var2_2 = var4_5;
-                                var12_14 = new StringBuilder();
-                                var2_2 = var4_5;
-                                var12_14.append(this.G);
-                                var2_2 = var4_5;
-                                var12_14.append(cYh.d("8FE0C2B9F8CF4A6E3634350C0E3536153E3B0B3F26B6CAFB80CCE1B8C3C388ECDB"));
-                                var2_2 = var4_5;
-                                var12_14.append(var7_8.toString());
-                                var2_2 = var4_5;
-                                Init.show(var12_14.toString());
-                            }
-                            var2_2 = var4_5;
-                            var12_14 = this.I;
-                            if (var12_14 == null) continue;
-                            var2_2 = var4_5;
-                            var2_2 = var4_5;
-                            var13_15 = new StringBuilder();
-                            var2_2 = var4_5;
-                            var13_15.append(cYh.d("103523073E3F101428303B3500B7DCF0B0C6C7B9D5C8BFF5C87D6C6F"));
-                            var2_2 = var4_5;
-                            var13_15.append(var7_8.toString());
-                            var2_2 = var4_5;
-                            try {
-                                var12_14.log(var13_15.toString());
-                                continue;
-                            }
-                            catch (Exception var4_6) {
-                                if (this.m) {
-                                    var7_7 = new StringBuilder();
-                                    var7_7.append(this.G);
-                                    var7_7.append(cYh.d("8FE0C2B9F8CF4A6EA8FBDBB2C8D1A4D6EDB3F3C9AEEDCD"));
-                                    var7_7.append(var4_6.toString());
-                                    Init.show(var7_7.toString());
-                                }
-                                var12_14 = this.I;
-                                var7_7 = var2_2;
-                                if (var12_14 == null) break;
-                                com.github.catvod.spider.merge.i.b.a(var4_6, com.github.catvod.spider.merge.d.d.b(cYh.d("8EFACDB9F8DB8EC4D8B9F8F54A7D7F")), (SpiderApi)var12_14);
-                                var7_7 = var2_2;
-                            }
-                        }
-                        break;
-                    }
-                    var2_2 = this.A;
-                    if (cYh.d("56").equals(var2_2)) {
-                        this.A = "";
-                    }
-                    if ("".equals(this.A) || var10_9.equals(this.A) || this.s.indexOf(cYh.d("3E")) >= 0) break block61;
-                    var2_2 = cYh.d("1C332E353227");
-                    if (var7_7.indexOf((String)var2_2) > 0) {
-                        var4_5 = var7_7.replace((CharSequence)var2_2, this.A);
-                    } else {
-                        var2_2 = com.github.catvod.spider.merge.d.d.b((String)var7_7);
-                        var2_2.append(this.A);
-                        var4_5 = var2_2.toString();
-                    }
-                    var2_2 = this.r;
-                    if (!cYh.d("81C0DDB6E3F8").equals(var2_2)) {
-                        if (this.s.indexOf(var11_11) >= 0) {
-                            var2_2 = this.r((String)var8_13);
-                        } else {
-                            this.s = com.github.catvod.spider.merge.b.n.b(new StringBuilder(), this.s, var11_11);
-                            var2_2 = this.r((String)var8_13);
-                            this.s = this.s.replace(var11_11, "");
-                        }
-                    } else {
-                        var2_2 = this.I((String)var8_13);
-                    }
-                    if (this.m) {
-                        Init.show(this.z);
-                    }
-                    if (var4_5.indexOf(cYh.d("5C202E222361")) < 0) {
-                        com.github.catvod.spider.merge.h.b.g((String)var4_5, var2_2);
-                        break block59;
-                    }
-                    var7_7 = new XBPQ$5();
-                    com.github.catvod.spider.merge.k.g.e(com.github.catvod.spider.merge.k.g.b(), var4_5.split(cYh.d("5C"))[0], null, (Map<String, String>)var2_2, (com.github.catvod.spider.merge.k.c)var7_7);
-                    var2_2 = (String)var7_7.getResult();
-                    var6_16 = this.m;
-                    var4_5 = cYh.d("8EFACDB9F8DB82F4F0B9E3FF");
-                    if (!var6_16) ** GOTO lbl166
-                    var7_7 = var2_2 != null ? var2_2 : var4_5;
-                    Init.show((String)var7_7);
-lbl166:
-                    // 2 sources
-
-                    if ((var7_7 = this.I) == null) break block59;
-                    var8_13 = new StringBuilder();
-                    var8_13.append(cYh.d("8EFACDB9F8DB80EBD2B7C9C64A7D7F71"));
-                    var8_13.append((String)var2_2);
-                    if (var8_13.toString() != null) break block60;
-                    var2_2 = var4_5;
-                }
-                try {
-                    var7_7.log((String)var2_2);
-                }
-                catch (Exception var2_3) {
-                    if (this.m) {
-                        var4_5 = new StringBuilder();
-                        var4_5.append(this.G);
-                        var4_5.append(cYh.d("8FE0C2B9F8CF4A6E3634350C0E3536153E3B0B3F26B8FDD68FFFC0B4C7D4173F3225BECEFEBFFDCB"));
-                        var4_5.append(var2_3.toString());
-                        Init.show(var4_5.toString());
-                    }
-                    if ((var4_5 = this.I) == null) break block59;
-                    com.github.catvod.spider.merge.i.b.a(var2_3, com.github.catvod.spider.merge.d.d.b(cYh.d("103523073E3F101428303B3500B9EBDDBFF5E6B5D1DF27351424A8C5CEB2C8FF6C7C69")), (SpiderApi)var4_5);
-                }
-            }
-            if (!var10_9.equals(this.A)) {
-                this.A = "";
-            }
+        string = this.e(string, string2, bl, hashMap);
+        string2 = "";
+        if ((string = string != null ? string.toString() : "").length() > 20) {
+            string2 = string;
         }
-        if (var10_9.equals(this.A)) {
-            return var3_4;
-        }
-        if (cYh.d("013535323F").equals(var1_1)) {
-            var3_4 = this.j(var9_12);
-        }
-        if (cYh.d("013535323F0A082335").equals(var1_1)) {
-            var3_4 = this.k(var9_12);
-        }
-        return var3_4;
+        return string2;
     }
 
     public String decrypt(String string, String string2, String object, String string3) {
         try {
-            SecretKeySpec secretKeySpec = new SecretKeySpec(((String)object).getBytes(cYh.d("3204077C6F")), cYh.d("261512"));
-            Cipher cipher = Cipher.getInstance(cYh.d("2615127E140E357F111A14095200203533330937"));
+            SecretKeySpec secretKeySpec = new SecretKeySpec(((String)object).getBytes("UTF-8"), "AES");
+            Cipher cipher = Cipher.getInstance("AES/CTR/PKCS5Padding");
             object = new IvParameterSpec(string3.getBytes());
             cipher.init(2, (Key)secretKeySpec, (AlgorithmParameterSpec)object);
             string = new String(cipher.doFinal(Base64.decode((String)string, (int)0)), string2);
@@ -4574,7 +4775,7 @@ lbl166:
         catch (Exception exception) {
             string2 = this.I;
             if (string2 != null) {
-                com.github.catvod.spider.merge.i.b.a(exception, com.github.catvod.spider.merge.d.d.b(cYh.d("033522232E2A137868B8C3C38FFFEE7C7A64")), (SpiderApi)string2);
+                com.github.catvod.spider.merge.Dw.f.a(exception, com.github.catvod.spider.merge.ka.d.b("decrypt()\u9519\u8bef-->"), (SpiderApi)string2);
             }
             return null;
         }
@@ -4587,7 +4788,7 @@ lbl166:
         /*
          * This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
          * 
-         * org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 2[TRYBLOCK] [2 : 104->166)] java.lang.Exception
+         * org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 35[TRYBLOCK] [60 : 2005->2155)] java.lang.Exception
          *     at org.benf.cfr.reader.bytecode.analysis.opgraph.Op02WithProcessedDataAndRefs.insertExceptionBlocks(Op02WithProcessedDataAndRefs.java:2283)
          *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:415)
          *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:278)
@@ -4606,8 +4807,8 @@ lbl166:
 
     public String encrypt(String string, String string2, String object, String string3) {
         try {
-            Cipher cipher = Cipher.getInstance(cYh.d("2615127E140E357F111A14095200203533330937"));
-            SecretKeySpec secretKeySpec = new SecretKeySpec(((String)object).getBytes(), cYh.d("261512"));
+            Cipher cipher = Cipher.getInstance("AES/CTR/PKCS5Padding");
+            SecretKeySpec secretKeySpec = new SecretKeySpec(((String)object).getBytes(), "AES");
             object = new IvParameterSpec(string3.getBytes());
             cipher.init(1, (Key)secretKeySpec, (AlgorithmParameterSpec)object);
             string = Base64.encodeToString((byte[])cipher.doFinal(string.getBytes(string2)), (int)0);
@@ -4616,101 +4817,297 @@ lbl166:
         catch (Exception exception) {
             string2 = this.I;
             if (string2 != null) {
-                com.github.catvod.spider.merge.i.b.a(exception, com.github.catvod.spider.merge.d.d.b(cYh.d("023E22232E2A137868B8C3C38FFFEE7C7A64")), (SpiderApi)string2);
+                com.github.catvod.spider.merge.Dw.f.a(exception, com.github.catvod.spider.merge.ka.d.b("encrypt()\u9519\u8bef-->"), (SpiderApi)string2);
             }
             return null;
         }
     }
 
-    protected final String f(String string, String object, boolean bl, HashMap<String, String> object2) {
-        CharSequence charSequence;
-        String string2;
-        String string3;
-        Object object3;
+    protected final String f(String charSequence, String object, boolean bl, HashMap<String, String> object2) {
         CharSequence charSequence2;
-        block14: {
-            block13: {
-                if (string.startsWith(cYh.d("0F243521"))) {
-                    return string;
+        Object object3;
+        String string;
+        CharSequence charSequence3;
+        block21: {
+            block20: {
+                if (((String)charSequence).startsWith("http")) {
+                    return charSequence;
                 }
-                charSequence2 = this.b;
-                object3 = this.E(cYh.d("80D9F8B7F9D082D8C7B6E6E1"), cYh.d("80D9F8B7F9D082D8C7B6E6E112222D"), cYh.d("80D9F8B7F9D082D8C7B6E6E18EC3FFB7D9FF"), "");
-                string3 = this.F(cYh.d("8FE5F6B4F0D18EF1F4"), cYh.d("82D8C7B6E6E18FE5F6B4F0D18EF1F4B6F7DB"), cYh.d("163932393E2302"), cYh.d("01393322232A063724"), cYh.d("56"));
-                int n2 = this.r.length();
-                string2 = cYh.d("4361");
-                charSequence = charSequence2;
-                if (n2 > 0) {
-                    charSequence = charSequence2;
-                    if (((String)object3).indexOf(cYh.d("43")) >= 0) {
-                        charSequence = charSequence2;
-                        if (((String)object3).indexOf(this.r) >= 0) {
-                            charSequence = com.github.catvod.spider.merge.b.n.a((String)object3, cYh.d("44"));
-                            charSequence2 = com.github.catvod.spider.merge.d.d.b(cYh.d("497A"));
-                            ((StringBuilder)charSequence2).append(this.r);
-                            ((StringBuilder)charSequence2).append(cYh.d("497A7E0D7372497A7E7874744D"));
-                            charSequence = ((String)charSequence).replaceAll(((StringBuilder)charSequence2).toString(), string2);
+                charSequence3 = this.b;
+                string = this.H("\u7279\u6b8a\u5206\u7c7b", "\u7279\u6b8a\u5206\u7c7burl", "\u7279\u6b8a\u5206\u7c7b\u94fe\u63a5", "");
+                object3 = this.I("\u8d77\u59cb\u9875", "\u5206\u7c7b\u8d77\u59cb\u9875\u7801", "qishiye", "firstpage", "1");
+                charSequence2 = charSequence3;
+                if (this.r.length() > 0) {
+                    charSequence2 = charSequence3;
+                    if (string.indexOf("$") >= 0) {
+                        charSequence2 = charSequence3;
+                        if (string.indexOf(this.r) >= 0) {
+                            charSequence2 = com.github.catvod.spider.merge.dp.n.a(string, "#");
+                            charSequence3 = com.github.catvod.spider.merge.ka.d.b(".*");
+                            ((StringBuilder)charSequence3).append(this.r);
+                            ((StringBuilder)charSequence3).append(".*?\\$(.*?)#.*");
+                            charSequence2 = ((String)charSequence2).replaceAll(((StringBuilder)charSequence3).toString(), "$1");
                         }
                     }
                 }
-                if (((String)charSequence).indexOf(cYh.d("3C")) >= 0) break block13;
-                charSequence2 = charSequence;
-                if (((String)charSequence).indexOf(cYh.d("1B")) < 0) break block14;
+                if (((String)charSequence2).indexOf("[") >= 0) break block20;
+                charSequence3 = charSequence2;
+                if (((String)charSequence2).indexOf("|") < 0) break block21;
             }
-            charSequence2 = ((String)object).equals(string3) ? ((String)charSequence).replaceAll(cYh.d("497A1A0D0C263B2C1C7F7D720F2435210C043B0D1C7B7E063A6F6F7B"), string2).replace(cYh.d("01393322230A0637246C"), "") : ((String)charSequence).replaceAll(cYh.d("3B2C1D2D"), cYh.d("3B2C")).replaceAll(cYh.d("4F7E6B780C063C2C1D2D0A744D"), string2);
+            charSequence3 = ((String)object).equals(object3) ? ((String)charSequence2).replaceAll(".*[\\[|\\|].*(http[^\\]]*)\\]?.*", "$1").replace("firstPage=", "") : ((String)charSequence2).replaceAll("\\|\\|", "\\|").replaceAll("(.*)[\\[|\\|].*", "$1");
         }
-        string2 = cYh.d("1A");
-        string3 = cYh.d("1C");
-        charSequence = charSequence2;
+        charSequence2 = charSequence3;
         if (bl) {
-            charSequence = charSequence2;
+            charSequence2 = charSequence3;
             if (this.a) {
-                charSequence = charSequence2;
+                charSequence2 = charSequence3;
                 if (object2 != null) {
-                    charSequence = charSequence2;
+                    charSequence2 = charSequence3;
                     if (((HashMap)object2).size() > 0) {
                         object3 = ((HashMap)object2).keySet().iterator();
                         while (true) {
-                            charSequence = charSequence2;
+                            charSequence2 = charSequence3;
                             if (!object3.hasNext()) break;
-                            String string4 = (String)object3.next();
-                            charSequence = ((HashMap)object2).get(string4);
-                            if (((String)charSequence).length() <= 0) continue;
-                            StringBuilder stringBuilder = new StringBuilder();
-                            stringBuilder.append(string3);
-                            stringBuilder.append(string4);
-                            stringBuilder.append(string2);
-                            charSequence2 = ((String)charSequence2).replace(stringBuilder.toString(), URLEncoder.encode((String)charSequence));
+                            string = (String)object3.next();
+                            String string2 = (String)((HashMap)object2).get(string);
+                            if (string2.length() <= 0) continue;
+                            charSequence2 = new StringBuilder();
+                            ((StringBuilder)charSequence2).append("{");
+                            ((StringBuilder)charSequence2).append(string);
+                            ((StringBuilder)charSequence2).append("}");
+                            charSequence3 = ((String)charSequence3).replace(((StringBuilder)charSequence2).toString(), URLEncoder.encode(string2));
                         }
                     }
                 }
             }
         }
-        string = ((String)charSequence).replace(cYh.d("1C3320253213032D"), string).replace(cYh.d("1C332025320A002D"), (CharSequence)object);
-        object = Pattern.compile(cYh.d("3B2B697F7D654E0C3C")).matcher(string);
-        while (((Matcher)object).find()) {
-            object2 = ((Matcher)object).group(0).replace(string3, "").replace(string2, "");
-            string = string.replace(((Matcher)object).group(0), "");
-            charSequence2 = new StringBuilder();
-            charSequence = cYh.d("48");
-            ((StringBuilder)charSequence2).append((String)charSequence);
-            ((StringBuilder)charSequence2).append((String)object2);
-            ((StringBuilder)charSequence2).append((String)charSequence);
-            string = string.replace(((StringBuilder)charSequence2).toString(), "");
+        object2 = charSequence2;
+        if (((String)charSequence2).startsWith("/")) {
+            object2 = charSequence2;
+            if (!((String)charSequence2).startsWith("//")) {
+                object2 = com.github.catvod.spider.merge.dp.n.b(new StringBuilder(), this.f, (String)charSequence2);
+            }
         }
-        return string;
+        if (((String)object2).indexOf("{catePg}") < 0) {
+            charSequence = ((String)object2).replace("{cateId}", charSequence);
+        } else {
+            int n2 = ((String)object).indexOf("-");
+            object2 = ((String)object2).replace("{cateId}", charSequence);
+            if (n2 < 1) {
+                charSequence = ((String)object2).replace("{catePg}", (CharSequence)object);
+            } else {
+                charSequence = ((String)object2).replace("{catePg}", ((String)object).split("-")[0]);
+                for (n2 = Integer.parseInt(((String)object).split("-")[0]) + 1; n2 <= Integer.parseInt(((String)object).split("-")[1]); ++n2) {
+                    charSequence3 = new StringBuilder();
+                    ((StringBuilder)charSequence3).append((String)charSequence);
+                    ((StringBuilder)charSequence3).append("$$$");
+                    charSequence = new StringBuilder();
+                    ((StringBuilder)charSequence).append("");
+                    ((StringBuilder)charSequence).append(n2);
+                    ((StringBuilder)charSequence3).append(((String)object2).replace("{catePg}", ((StringBuilder)charSequence).toString()));
+                    charSequence = ((StringBuilder)charSequence3).toString();
+                }
+            }
+        }
+        object = Pattern.compile("\\{(.*?)\\}").matcher(charSequence);
+        while (((Matcher)object).find()) {
+            object2 = ((Matcher)object).group(0).replace("{", "").replace("}", "");
+            charSequence3 = ((String)charSequence).replace(((Matcher)object).group(0), "");
+            charSequence = new StringBuilder();
+            ((StringBuilder)charSequence).append("/");
+            ((StringBuilder)charSequence).append((String)object2);
+            ((StringBuilder)charSequence).append("/");
+            charSequence = ((String)charSequence3).replace(((StringBuilder)charSequence).toString(), "");
+        }
+        return charSequence;
     }
 
-    protected final com.github.catvod.spider.merge.f0.a g0(String string) {
-        int n2 = string.indexOf(cYh.d("5C202E2223"));
-        CharSequence charSequence = cYh.d("1F20");
-        if (n2 >= 0) {
-            string = this.k(com.github.catvod.spider.merge.b.n.a((String)charSequence, string));
-        } else {
-            charSequence = com.github.catvod.spider.merge.d.d.b((String)charSequence);
-            ((StringBuilder)charSequence).append(string.split(cYh.d("5C"))[0]);
-            string = this.j(((StringBuilder)charSequence).toString());
+    /*
+     * Unable to fully structure code
+     */
+    protected final String f0(String var1_1, String var2_2, String var3_4, String var4_5) {
+        block60: {
+            block58: {
+                block59: {
+                    block55: {
+                        block56: {
+                            block54: {
+                                if ("0".equals(this.A)) {
+                                    return var3_4;
+                                }
+                                this.H = var5_7 = this.H + 1;
+                                if (var5_7 == 2 && this.s.indexOf("c") < 0) {
+                                    this.s = com.github.catvod.spider.merge.dp.n.b(new StringBuilder(), this.s, "c");
+                                }
+                                if (this.H == 4) {
+                                    this.H = 0;
+                                    return var3_4;
+                                }
+                                var9_8 = var2_2.split("###")[1];
+                                var8_9 = var2_2.split("###")[0];
+                                var2_2 = var4_5;
+                                var10_10 = this.n(var8_9, (String)var4_5);
+                                var2_2 = var4_5;
+                                var7_11 = var10_10.getString("str");
+                                var2_2 = var4_5;
+                                var2_2 = var4_5 = var10_10.getString("codeUrl");
+                                if (var3_4.indexOf("\u8f93\u5165\u9a8c\u8bc1\u7801") < 0) break block54;
+                                var2_2 = var4_5;
+                                com.github.catvod.spider.merge.nz.k.i = "\u8bf7\u8f93\u5165\u9a8c\u8bc1\u7801";
+                                break block55;
+                            }
+                            var2_2 = var4_5;
+                            var5_7 = var3_4.indexOf("\u6ed1\u52a8\u9a8c\u8bc1");
+                            if (var5_7 >= 0) break block56;
+                            var2_2 = var4_5;
+                            if (var3_4.indexOf("\u4eba\u673a\u9a8c\u8bc1") >= 0) break block56;
+                            var2_2 = var4_5;
+                            com.github.catvod.spider.merge.nz.k.i = "\u7f51\u9875\u6d4f\u89c8";
+                            var7_11 = var8_9;
+                            break block55;
+                        }
+                        var2_2 = var4_5;
+                        com.github.catvod.spider.merge.nz.k.i = "\u4eba\u673a\u9a8c\u8bc1";
+                    }
+                    var2_2 = var4_5;
+                    var10_10 = this.z;
+                    var2_2 = var4_5;
+                    var2_2 = var4_5;
+                    var11_13 = new XBPQc(this, (String)var7_11, (String)var10_10);
+                    var2_2 = var4_5;
+                    Init.run(var11_13, 200);
+                    while (true) {
+                        var2_2 = var4_5;
+                        var6_14 = "".equals(this.A);
+                        var7_11 = var4_5;
+                        if (!var6_14) break;
+                        try {
+                            Thread.sleep(500L);
+                            continue;
+                        }
+                        catch (Exception var7_12) {
+                            block57: {
+                                var2_2 = var4_5;
+                                if (!this.m) break block57;
+                                var2_2 = var4_5;
+                                var2_2 = var4_5;
+                                var10_10 = new StringBuilder();
+                                var2_2 = var4_5;
+                                var10_10.append(this.G);
+                                var2_2 = var4_5;
+                                var10_10.append("\u8c03\u8bd5->webViewDialog\u7761\u7720\u9519\uff1a");
+                                var2_2 = var4_5;
+                                var10_10.append(var7_12.toString());
+                                var2_2 = var4_5;
+                                Init.show(var10_10.toString());
+                            }
+                            var2_2 = var4_5;
+                            var11_13 = this.I;
+                            if (var11_13 == null) continue;
+                            var2_2 = var4_5;
+                            var2_2 = var4_5;
+                            var10_10 = new StringBuilder();
+                            var2_2 = var4_5;
+                            var10_10.append("webViewDialog\u7761\u7720\u9519\u8bef-->");
+                            var2_2 = var4_5;
+                            var10_10.append(var7_12.toString());
+                            var2_2 = var4_5;
+                            try {
+                                var11_13.log(var10_10.toString());
+                                continue;
+                            }
+                            catch (Exception var4_6) {
+                                if (this.m) {
+                                    var7_11 = new StringBuilder();
+                                    var7_11.append(this.G);
+                                    var7_11.append("\u8c03\u8bd5->\u9a8c\u8bc1\u51fa\u9519\uff1a");
+                                    var7_11.append(var4_6.toString());
+                                    Init.show(var7_11.toString());
+                                }
+                                var10_10 = this.I;
+                                var7_11 = var2_2;
+                                if (var10_10 == null) break;
+                                com.github.catvod.spider.merge.Dw.f.a(var4_6, com.github.catvod.spider.merge.ka.d.b("\u9a8c\u8bc1\u9519\u8bef-->"), (SpiderApi)var10_10);
+                                var7_11 = var2_2;
+                            }
+                        }
+                        break;
+                    }
+                    if ("1".equals(this.A)) {
+                        this.A = "";
+                    }
+                    if ("".equals(this.A) || "0".equals(this.A) || this.s.indexOf("Y") >= 0) break block60;
+                    if (var7_11.indexOf("{code}") > 0) {
+                        var4_5 = var7_11.replace("{code}", this.A);
+                    } else {
+                        var2_2 = com.github.catvod.spider.merge.ka.d.b((String)var7_11);
+                        var2_2.append(this.A);
+                        var4_5 = var2_2.toString();
+                    }
+                    if (!"\u641c\u7d22".equals(this.r)) {
+                        if (this.s.indexOf("c") >= 0) {
+                            var2_2 = this.t(var8_9);
+                        } else {
+                            this.s = com.github.catvod.spider.merge.dp.n.b(new StringBuilder(), this.s, "c");
+                            var2_2 = this.t(var8_9);
+                            this.s = this.s.replace("c", "");
+                        }
+                    } else {
+                        var2_2 = this.L(var8_9);
+                    }
+                    if (this.m) {
+                        Init.show(this.z);
+                    }
+                    if (var4_5.indexOf(";post;") < 0) {
+                        com.github.catvod.spider.merge.lq.b.g((String)var4_5, (Map<String, String>)var2_2);
+                        break block58;
+                    }
+                    var7_11 = new XBPQ$5();
+                    com.github.catvod.spider.merge.mk.g.e(com.github.catvod.spider.merge.mk.g.b(), var4_5.split(";")[0], null, var2_2, (c)var7_11);
+                    var2_2 = (String)var7_11.getResult();
+                    var6_14 = this.m;
+                    if (!var6_14) ** GOTO lbl156
+                    var4_5 = var2_2 != null ? var2_2 : "\u9a8c\u8bc1\u5931\u8d25";
+                    Init.show((String)var4_5);
+lbl156:
+                    // 2 sources
+
+                    if ((var4_5 = this.I) == null) break block58;
+                    var7_11 = new StringBuilder();
+                    var7_11.append("\u9a8c\u8bc1\u7ed3\u679c--> ");
+                    var7_11.append((String)var2_2);
+                    if (var7_11.toString() != null) break block59;
+                    var2_2 = "\u9a8c\u8bc1\u5931\u8d25";
+                }
+                try {
+                    var4_5.log((String)var2_2);
+                }
+                catch (Exception var2_3) {
+                    if (this.m) {
+                        var4_5 = new StringBuilder();
+                        var4_5.append(this.G);
+                        var4_5.append("\u8c03\u8bd5->webViewDialog\u9a8c\u8bc1\u540epost\u9519\uff1a");
+                        var4_5.append(var2_3.toString());
+                        Init.show(var4_5.toString());
+                    }
+                    if ((var4_5 = this.I) == null) break block58;
+                    com.github.catvod.spider.merge.Dw.f.a(var2_3, com.github.catvod.spider.merge.ka.d.b("webViewDialog\u9a8c\u8bc1\u540epost\u9519\u8bef-->"), (SpiderApi)var4_5);
+                }
+            }
+            if (!"0".equals(this.A)) {
+                this.A = "";
+            }
         }
-        return new com.github.catvod.spider.merge.f0.a(com.github.catvod.spider.merge.N.a.l(string).R());
+        if ("0".equals(this.A)) {
+            return var3_4;
+        }
+        if ("fetch".equals(var1_1)) {
+            var3_4 = this.k(var9_8);
+        }
+        if ("fetchPost".equals(var1_1)) {
+            var3_4 = this.l(var9_8);
+        }
+        return var3_4;
     }
 
     public String getToken(String string, String string2, String string3, String string4) {
@@ -4719,431 +5116,430 @@ lbl166:
 
     /*
      * Unable to fully structure code
+     * Could not resolve type clashes
      */
     public String homeContent(boolean var1_1) {
-        block69: {
-            block68: {
+        block70: {
+            block69: {
                 block65: {
-                    block67: {
-                        block63: {
-                            block64: {
-                                block62: {
-                                    block60: {
-                                        block55: {
-                                            block49: {
-                                                var14_2 = cYh.d("043C203F6D75483C2E3236360F3F322578");
-                                                var15_3 = cYh.d("043C203F6D7548");
-                                                var21_4 = cYh.d("0F");
-                                                var16_5 = cYh.d("80E1FAB4C9D1");
-                                                var13_6 = cYh.d("80FDDAB8D7D3");
-                                                var12_7 = new JSONObject();
-                                                var9_8 = new JSONArray();
-                                                var18_9 = this.D(cYh.d("81F8EBB4CCE4"), cYh.d("81F8EBB4CCE481F8E0B4EBD5"), "");
-                                                var7_10 = this.B(cYh.d("82D8C7B6E6E18FFFE7B7D4DF"));
-                                                if (var7_10.indexOf(var16_5) < 0 && var7_10.indexOf(cYh.d("82E9F5B5ECE7")) < 0 && var7_10.indexOf(cYh.d("82CCF1B4DBE0")) < 0 && var7_10.indexOf(cYh.d("82FFFDB7EBCE")) < 0 && var7_10.indexOf(cYh.d("83E8FAB7EBCE")) < 0 && var7_10.indexOf(cYh.d("80FEC1B5ECD1")) < 0) {
-                                                    var2_11 = false;
-                                                    break block49;
-                                                }
-                                                var2_11 = true;
-                                            }
-                                            var3_12 = this.s.indexOf(var21_4);
-                                            var17_13 = cYh.d("547D");
-                                            var19_14 = cYh.d("4A18");
-                                            var20_15 = cYh.d("557D");
-                                            var10_16 = cYh.d("5561");
-                                            var11_17 = cYh.d("5462");
-                                            var25_18 = cYh.d("3B34");
-                                            var22_19 = cYh.d("82D5E9B8D4F2");
-                                            var6_20 = cYh.d("82D8D6B7C2EA");
-                                            var8_26 = cYh.d("57");
-                                            var23_27 = cYh.d("56");
-                                            var24_28 = cYh.d("13293134083C0B3126");
-                                            if (var3_12 < 0) {
-                                                block51: {
+                    block66: {
+                        block68: {
+                            block63: {
+                                block64: {
+                                    block62: {
+                                        block59: {
+                                            block60: {
+                                                block61: {
                                                     block54: {
-                                                        block53: {
-                                                            block52: {
-                                                                if (var23_27.equals(var18_9) || var22_19.equals(var18_9) || var18_9.indexOf(cYh.d("8EF6D7B8F6EF")) >= 0) ** break block50
-                                                                if (!var2_11) break block51;
-                                                                var6_20 = this.p((String)var7_10, (String)var6_20);
-                                                                if (var6_20.length() <= 0) break block52;
-                                                                var7_10 = var6_20;
-                                                                if (var6_20.matches(var25_18)) break block53;
+                                                        block58: {
+                                                            block57: {
+                                                                block56: {
+                                                                    block55: {
+                                                                        block48: {
+                                                                            block49: {
+                                                                                block53: {
+                                                                                    block52: {
+                                                                                        block51: {
+                                                                                            block50: {
+                                                                                                block47: {
+                                                                                                    var11_2 = new JSONObject();
+                                                                                                    var8_3 = new JSONArray();
+                                                                                                    var12_4 = this.G("\u6a2a\u56fe", "\u6a2a\u56fe\u6a21\u5f0f", "");
+                                                                                                    var6_5 /* !! */  = this.E("\u5206\u7c7b\u8be6\u60c5");
+                                                                                                    if (var6_5 /* !! */ .indexOf("\u7c7b\u578b") < 0 && var6_5 /* !! */ .indexOf("\u5e74\u4efd") < 0 && var6_5 /* !! */ .indexOf("\u5730\u533a") < 0 && var6_5 /* !! */ .indexOf("\u5bfc\u6f14") < 0 && var6_5 /* !! */ .indexOf("\u4e3b\u6f14") < 0 && var6_5 /* !! */ .indexOf("\u7b80\u4ecb") < 0) {
+                                                                                                        var2_12 = false;
+                                                                                                        break block47;
+                                                                                                    }
+                                                                                                    var2_12 = true;
+                                                                                                }
+                                                                                                var3_13 = this.s.indexOf("h");
+                                                                                                if (var3_13 >= 0) break block48;
+                                                                                                if ("1".equals(var12_4) || "\u5168\u90e8".equals(var12_4) || var12_4.indexOf("\u9996\u9875") >= 0) break block48;
+                                                                                                if (!var2_12) break block49;
+                                                                                                var7_14 = this.q((String)var6_5 /* !! */ , "\u5217\u6570");
+                                                                                                if (var7_14.length() <= 0) break block50;
+                                                                                                var6_5 /* !! */  = var7_14;
+                                                                                                if (var7_14.matches("\\d")) break block51;
+                                                                                            }
+                                                                                            var6_5 /* !! */  = "0";
+                                                                                        }
+                                                                                        if (!"2".equals(var6_5 /* !! */ )) break block52;
+                                                                                        var6_5 /* !! */  = "32";
+                                                                                        break block53;
+                                                                                    }
+                                                                                    if (!"1".equals(var6_5 /* !! */ )) break block53;
+                                                                                    var6_5 /* !! */  = "21";
+                                                                                }
+                                                                                var7_14 = new StringBuilder();
+                                                                                var7_14.append("3-");
+                                                                                var7_14.append((String)var6_5 /* !! */ );
+                                                                                var11_2.put("type_flag", (Object)var7_14.toString());
+                                                                                var7_14 = "";
+                                                                                break block54;
+                                                                            }
+                                                                            var6_5 /* !! */  = "";
+                                                                            var7_14 = "";
+                                                                            break block54;
+                                                                        }
+                                                                        var7_14 = this.q(var12_4, "\u5217\u6570");
+                                                                        if (var7_14.length() <= 0) break block55;
+                                                                        var6_5 /* !! */  = var7_14;
+                                                                        if (var7_14.matches("\\d")) break block56;
+                                                                    }
+                                                                    var6_5 /* !! */  = "0";
+                                                                }
+                                                                if (this.s.indexOf("h2") < 0) break block57;
+                                                                var6_5 /* !! */  = "32";
+                                                                break block58;
                                                             }
-                                                            var7_10 = var8_26;
+                                                            if (this.s.indexOf("h1") < 0) break block58;
+                                                            var6_5 /* !! */  = "21";
                                                         }
-                                                        if (cYh.d("55").equals(var7_10)) {
-                                                            var6_20 = var11_17;
-                                                            break block54;
-                                                        }
-                                                        var6_20 = var7_10;
-                                                        if (!var23_27.equals(var7_10)) break block54;
-                                                        var6_20 = var10_16;
+                                                        var7_14 = new StringBuilder();
+                                                        var7_14.append("2-");
+                                                        var7_14.append((String)var6_5 /* !! */ );
+                                                        var7_14.append("-H");
+                                                        var11_2.put("type_flag", (Object)var7_14.toString());
+                                                        var9_15 = "";
+                                                        var7_14 = var6_5 /* !! */ ;
+                                                        var6_5 /* !! */  = var9_15;
                                                     }
-                                                    var7_10 = new StringBuilder();
-                                                    var7_10.append(var17_13);
-                                                    var7_10.append((String)var6_20);
-                                                    var12_7.put(var24_28, (Object)var7_10.toString());
-                                                    var7_10 = "";
-                                                    break block55;
-                                                }
-                                                var6_20 = "";
-                                                var7_10 = "";
-                                            } else {
-                                                block59: {
-                                                    block58: {
-                                                        block57: {
-                                                            block56: {
-                                                                var7_10 = this.p(var18_9, (String)var6_20);
-                                                                if (var7_10.length() <= 0) break block56;
-                                                                var6_20 = var7_10;
-                                                                if (var7_10.matches(var25_18)) break block57;
-                                                            }
-                                                            var6_20 = var8_26;
-                                                        }
-                                                        if (this.s.indexOf(cYh.d("0F62")) < 0) break block58;
-                                                        var6_20 = var11_17;
-                                                        break block59;
+                                                    this.c = this.m();
+                                                    var10_16 /* !! */  = this.G("\u5217\u8868\u5206\u7c7b", "fenlei", "");
+                                                    var9_15 = var10_16 /* !! */ ;
+                                                    if (var10_16 /* !! */ .isEmpty()) {
+                                                        var9_15 = this.c;
                                                     }
-                                                    if (this.s.indexOf(cYh.d("0F61")) < 0) break block59;
-                                                    var6_20 = var10_16;
+                                                    var10_16 /* !! */  = var9_15.split("#");
+                                                    var3_13 = var10_16 /* !! */ .length;
+                                                    var9_15 = var8_3;
+                                                    var8_3 = var11_2;
+                                                    for (var4_17 = 0; var4_17 < var3_13; ++var4_17) {
+                                                        block67: {
+                                                            var11_2 = var10_16 /* !! */ [var4_17].split("\\$");
+                                                            var13_18 = new JSONObject();
+                                                            var13_18.put("type_name", (Object)var11_2[0]);
+                                                            var13_18.put("type_id", (Object)var11_2[1]);
+                                                            if (this.s.indexOf("h") >= 0 || "1".equals(var12_4) || "\u5168\u90e8".equals(var12_4) || var12_4.indexOf((String)var11_2[0]) >= 0) ** GOTO lbl111
+                                                            if (!var2_12) ** GOTO lbl122
+                                                            var11_2 = new StringBuilder();
+                                                            var11_2.append("3-");
+                                                            var11_2.append((String)var6_5 /* !! */ );
+                                                            var11_2 = var11_2.toString();
+                                                            break block67;
+lbl111:
+                                                            // 1 sources
+
+                                                            var11_2 = new StringBuilder();
+                                                            var11_2.append("2-");
+                                                            var11_2.append((String)var7_14);
+                                                            var11_2.append("-H");
+                                                            var11_2 = var11_2.toString();
+                                                        }
+                                                        var13_18.put("type_flag", var11_2);
+lbl122:
+                                                        // 2 sources
+
+                                                        var9_15.put((Object)var13_18);
+                                                        continue;
+                                                    }
+                                                    var8_3.put("class", var9_15);
+                                                    var7_14 = this.B.optJSONObject("\u7b5b\u9009");
+                                                    var6_5 /* !! */  = "filterdata";
+                                                    if (var7_14 != null) break block59;
+                                                    if (!this.E("\u7b5b\u9009").isEmpty()) break block59;
+                                                    if (this.B.optJSONObject("\u7b5b\u9009\u6570\u636e") != null || !this.E("\u7b5b\u9009\u6570\u636e").isEmpty()) break block60;
+                                                    if (this.B.optJSONObject("filter") == null) break block61;
+                                                    var6_5 /* !! */  = "filter";
+                                                    break block62;
                                                 }
-                                                var7_10 = new StringBuilder();
-                                                var7_10.append(var20_15);
-                                                var7_10.append((String)var6_20);
-                                                var7_10.append(var19_14);
-                                                var12_7.put(var24_28, (Object)var7_10.toString());
-                                                var10_16 = "";
-                                                var7_10 = var6_20;
-                                                var6_20 = var10_16;
-                                            }
-                                        }
-                                        this.c = this.l();
-                                        var11_17 = this.D(cYh.d("82D8D6B9F6F282D8C7B6E6E1"), cYh.d("01352F3D3233"), "");
-                                        var10_16 = var11_17;
-                                        if (var11_17.isEmpty()) {
-                                            var10_16 = this.c;
-                                        }
-                                        var10_16 = var10_16.split(cYh.d("44"));
-                                        var3_12 = ((String[])var10_16).length;
-                                        var11_17 = var9_8;
-                                        var9_8 = var12_7;
-                                        for (var4_29 = 0; var4_29 < var3_12; ++var4_29) {
-                                            block66: {
-                                                var12_7 = var10_16[var4_29].split(cYh.d("3B74"));
-                                                var25_18 = new JSONObject();
-                                                var25_18.put(cYh.d("132931340834063D24"), (Object)var12_7[0]);
-                                                var25_18.put(cYh.d("13293134083303"), (Object)var12_7[1]);
-                                                if (this.s.indexOf(var21_4) >= 0 || var23_27.equals(var18_9) || var22_19.equals(var18_9) || var18_9.indexOf((String)var12_7[0]) >= 0) ** GOTO lbl127
-                                                if (!var2_11) ** GOTO lbl138
-                                                var12_7 = new StringBuilder();
-                                                var12_7.append(var17_13);
-                                                var12_7.append((String)var6_20);
-                                                var12_7 = var12_7.toString();
-                                                break block66;
-lbl127:
-                                                // 1 sources
-
-                                                var12_7 = new StringBuilder();
-                                                var12_7.append(var20_15);
-                                                var12_7.append((String)var7_10);
-                                                var12_7.append(var19_14);
-                                                var12_7 = var12_7.toString();
-                                            }
-                                            var25_18.put(var24_28, var12_7);
-lbl138:
-                                            // 2 sources
-
-                                            var11_17.put((Object)var25_18);
-                                            continue;
-                                        }
-                                        var9_8.put(cYh.d("043C202224"), (Object)var11_17);
-                                        var10_16 = this.B.optJSONObject(var13_6);
-                                        var6_20 = cYh.d("01392D25322803313530");
-                                        var7_10 = cYh.d("01392D253228");
-                                        if (var10_16 == null) {
-                                            block61: {
-                                                if (!this.B(var13_6).isEmpty()) break block60;
-                                                if (this.B.optJSONObject((String)var7_10) == null) break block61;
-                                                var6_20 = var7_10;
+                                                if (this.B.optJSONObject("filterdata") == null) {
+                                                    var6_5 /* !! */  = "";
+                                                }
                                                 break block62;
                                             }
-                                            if (this.B.optJSONObject((String)var6_20) == null) {
-                                                var6_20 = "";
-                                            }
+                                            var6_5 /* !! */  = "\u7b5b\u9009\u6570\u636e";
                                             break block62;
                                         }
+                                        var6_5 /* !! */  = "\u7b5b\u9009";
                                     }
-                                    var6_20 = var13_6;
-                                }
-                                var7_10 = this.B.optJSONObject((String)var6_20);
-                                var10_16 = cYh.d("80FDDAB8D7D381C5F1B7DAF4");
-                                try {
-                                    var10_16 = this.D((String)var6_20, (String)var10_16, "");
-                                    var6_20 = this.b;
-                                    if (var8_26.equals(this.B(var13_6))) break block63;
-                                    if (var6_20.indexOf(cYh.d("1C332D3024291A")) >= 0 || var6_20.indexOf(cYh.d("1C3133343627")) >= 0 || var6_20.indexOf(cYh.d("1C2924302527")) >= 0 || var6_20.indexOf(cYh.d("1C32382C")) >= 0 || this.D(var16_5, cYh.d("80FDDAB8D7D382FDD1B4DFDC80E1FAB4C7D780F7F1"), "").length() > 1) break block64;
-                                    if (var7_10 == null) ** GOTO lbl174
-                                }
-                                catch (Exception var6_21) {}
-                                if (var7_10.length() > 0) break block64;
-lbl174:
-                                // 2 sources
+                                    var7_14 = this.B.optJSONObject((String)var6_5 /* !! */ );
+                                    var9_15 = this.E((String)var6_5 /* !! */ );
+                                    var6_5 /* !! */  = this.b;
+                                    if ("0".equals(this.E("\u7b5b\u9009"))) break block63;
+                                    if (var6_5 /* !! */ .indexOf("{class}") >= 0 || var6_5 /* !! */ .indexOf("{area}") >= 0 || var6_5 /* !! */ .indexOf("{year}") >= 0 || var6_5 /* !! */ .indexOf("{by}") >= 0 || var6_5 /* !! */ .indexOf("{letter}") >= 0 || var6_5 /* !! */ .indexOf("{lang}") >= 0) break block64;
+                                    try {
+                                        if (this.G("\u7c7b\u578b", "\u7b5b\u9009\u5b50\u5206\u7c7b\u540d\u79f0", "").length() > 1) break block64;
+                                        if (var7_14 == null) ** GOTO lbl161
+                                    }
+                                    catch (Exception var6_6) {}
+                                    if (var7_14.length() > 0) break block64;
+lbl161:
+                                    // 2 sources
 
-                                if (var10_16.length() <= 1) break block63;
+                                    if (var9_15.length() <= 1) break block63;
+                                }
+                                var5_19 = true;
+                                break block68;
                             }
-                            var5_30 = true;
-                            break block67;
+                            var5_19 = false;
                         }
-                        var5_30 = false;
+                        this.a = var5_19;
+                        if (!var1_1 || !var5_19) ** GOTO lbl234
+                        if (var9_15.startsWith("http") || var9_15.startsWith("clan")) ** GOTO lbl179
+                        if (var7_14 == null) ** GOTO lbl177
+                        var6_5 /* !! */  = var7_14;
+                        if (!var9_15.equals("ext")) break block65;
+lbl177:
+                        // 2 sources
+
+                        var6_5 /* !! */  = this.s();
+                        break block65;
+lbl179:
+                        // 1 sources
+
+                        var6_5 /* !! */  = InetAddress.getLocalHost();
+                        var11_2 = new StringBuilder("http://");
+                        var11_2.append(var6_5 /* !! */ .getHostAddress());
+                        var11_2.append(":");
+                        var11_2.append(this.J);
+                        var11_2.append("/file/");
+                        var10_16 /* !! */  = "clan://";
+                        var6_5 /* !! */  = var9_15;
+                        if (!var9_15.startsWith("clan://")) ** GOTO lbl200
+                        var6_5 /* !! */  = var10_16 /* !! */ ;
+                        if (!var9_15.startsWith("clan://localhost/")) break block66;
+                        var6_5 /* !! */  = "clan://localhost/";
                     }
-                    this.a = var5_30;
-                    if (!var1_1 || !var5_30) ** GOTO lbl240
-                    if (var10_16.startsWith(cYh.d("0F243521")) || var10_16.startsWith(cYh.d("043C203F"))) ** GOTO lbl192
-                    if (var7_10 == null) ** GOTO lbl190
-                    var6_20 = var7_10;
-                    if (!var10_16.equals(cYh.d("022835"))) break block65;
-lbl190:
+                    var6_5 /* !! */  = var9_15.replace((CharSequence)var6_5 /* !! */ , var11_2.toString());
+lbl200:
                     // 2 sources
 
-                    var6_20 = this.q();
-                    break block65;
-lbl192:
-                    // 1 sources
-
-                    var6_20 = InetAddress.getLocalHost();
-                    var8_26 = new StringBuilder(cYh.d("0F2435216D7548"));
-                    var8_26.append(var6_20.getHostAddress());
-                    var8_26.append(cYh.d("5D"));
-                    var8_26.append(this.J);
-                    var8_26.append(cYh.d("4836283D3275"));
-                    var6_20 = var10_16;
-                    if (var10_16.startsWith(var15_3)) {
-                        var6_20 = var10_16.startsWith(var14_2) != false ? var10_16.replace(var14_2, var8_26.toString()) : var10_16.replace(var15_3, var8_26.toString());
-                    }
-                    var8_26 = com.github.catvod.spider.merge.h.b.h((String)var6_20, null, null);
-                    var6_20 = var7_10;
-                    if (var8_26 == null) break block65;
-                    var6_20 = new JSONObject((String)var8_26);
+                    var9_15 = com.github.catvod.spider.merge.lq.b.h((String)var6_5 /* !! */ , null, null);
+                    var6_5 /* !! */  = var7_14;
+                    if (var9_15 == null) break block65;
+                    var6_5 /* !! */  = new JSONObject((String)var9_15);
                 }
-                if (var6_20 == null) ** GOTO lbl240
-                var9_8.put(cYh.d("01392D25322814"), var6_20);
-                ** GOTO lbl240
-                break block68;
-                catch (Exception var6_22) {
+                if (var6_5 /* !! */  == null) ** GOTO lbl234
+                var8_3.put("filters", (Object)var6_5 /* !! */ );
+                ** GOTO lbl234
+                break block69;
+                catch (Exception var6_7) {
                     // empty catch block
                 }
             }
             try {
                 if (this.m) {
-                    var7_10 = new StringBuilder();
-                    var7_10.append(this.G);
-                    var7_10.append(cYh.d("8FE0C2B9F8CF4A6EA9DFE0BFE8C6A6FCCCB3E7D9A4D6EDB3F3C9AEEDCD"));
-                    var7_10.append(var6_20.toString());
-                    Init.show(var7_10.toString());
+                    var7_14 = new StringBuilder();
+                    var7_14.append(this.G);
+                    var7_14.append("\u8c03\u8bd5->\u83b7\u53d6\u7b5b\u9009\u51fa\u9519\uff1a");
+                    var7_14.append(var6_5 /* !! */ .toString());
+                    Init.show(var7_14.toString());
                 }
-                if ((var7_10 = this.I) == null) ** GOTO lbl240
+                if ((var7_14 = this.I) == null) ** GOTO lbl234
             }
-            catch (Exception var6_23) {}
-            var8_26 = new StringBuilder();
-            var8_26.append(cYh.d("8FDEF6B4D8CC80FDDAB8D7D38EC4D8B9F8F588ECC07C7A64"));
-            var8_26.append(var6_20.toString());
-            var7_10.log(var8_26.toString());
-lbl240:
+            catch (Exception var6_8) {}
+            var9_15 = new StringBuilder();
+            var9_15.append("\u83b7\u53d6\u7b5b\u9009\u9519\u8bef\uff01-->");
+            var9_15.append(var6_5 /* !! */ .toString());
+            var7_14.log(var9_15.toString());
+lbl234:
             // 5 sources
 
-            var6_20 = var9_8.toString();
-            return var6_20;
-            break block69;
-            catch (Exception var6_24) {
+            var6_5 /* !! */  = var8_3.toString();
+            return var6_5 /* !! */ ;
+            break block70;
+            catch (Exception var6_9) {}
+            break block70;
+            catch (Exception var6_10) {
                 // empty catch block
             }
         }
         if (this.m) {
-            var7_10 = new StringBuilder();
-            var7_10.append(this.G);
-            var7_10.append(cYh.d("8FE0C2B9F8CF4A6E293E3A3F243F2F25323413B5C6EBBECEFEBFFDCB"));
-            var7_10.append(var6_25.toString());
-            Init.show(var7_10.toString());
+            var7_14 = new StringBuilder();
+            var7_14.append(this.G);
+            var7_14.append("\u8c03\u8bd5->homeContent\u51fa\u9519\uff1a");
+            var7_14.append(var6_11.toString());
+            Init.show(var7_14.toString());
         }
-        if ((var7_10 = this.I) != null) {
-            com.github.catvod.spider.merge.i.b.a((Exception)var6_25, com.github.catvod.spider.merge.d.d.b(cYh.d("0F3F2C3414350924243F23724EB9D5C8BFF5C8BFFDD07A7759")), (SpiderApi)var7_10);
+        if ((var7_14 = this.I) != null) {
+            com.github.catvod.spider.merge.Dw.f.a((Exception)var6_11, com.github.catvod.spider.merge.ka.d.b("homeContent()\u9519\u8bef\uff01-->"), (SpiderApi)var7_14);
         }
         return "";
     }
 
     /*
      * Unable to fully structure code
-     * Could not resolve type clashes
      */
     public String homeVideoContent() {
-        block12: {
-            block13: {
-                block11: {
-                    block16: {
-                        block15: {
-                            block14: {
-                                var8_1 = cYh.d("3B74");
-                                var10_2 = cYh.d("01352F3D3233");
-                                var9_3 = cYh.d("82D8D6B9F6F282D8C7B6E6E1");
-                                var6_4 = cYh.d("56");
-                                var5_5 = "";
-                                var4_6 = this.F(cYh.d("8EF6D7B8F6EF"), cYh.d("80D3ECB8C0F2"), cYh.d("0F3F2C3414350924243F23"), cYh.d("14382E242E3F"), cYh.d("5360"));
-                                var2_7 = var4_6.equals(var6_4);
-                                var7_8 = cYh.d("8EF6D7B8F6EF");
-                                if (var2_7) ** GOTO lbl14
-                                var3_9 = var4_6;
-                                if (!var4_6.equals(var7_8)) break block14;
-lbl14:
-                                // 2 sources
+        block14: {
+            block16: {
+                block15: {
+                    block13: {
+                        block18: {
+                            block17: {
+                                block12: {
+                                    block11: {
+                                        var5_1 = "";
+                                        var3_2 = this.I("\u9996\u9875", "\u70ed\u95e8", "homeContent", "shouye", "40");
+                                        var2_4 = var3_2.equals("1");
+                                        if (var2_4) break block11;
+                                        var4_5 = var3_2;
+                                        if (!var3_2.equals("\u9996\u9875")) break block12;
+                                    }
+                                    var4_5 = "40";
+                                }
+                                var1_6 = this.G("\u5217\u8868\u5206\u7c7b", "fenlei", "").length();
+                                if (var1_6 >= 3) ** GOTO lbl23
+                                var3_2 = new StringBuilder();
+                                var3_2.append(this.c);
+                                var3_2.append("#");
+                                var3_2 = var3_2.toString();
+                                break block17;
+lbl23:
+                                // 1 sources
 
-                                var3_9 = cYh.d("5360");
+                                var3_2 = new StringBuilder();
+                                var3_2.append(this.G("\u5217\u8868\u5206\u7c7b", "fenlei", ""));
+                                var3_2.append("#");
+                                var3_2 = var3_2.toString();
                             }
-                            var1_11 = this.D((String)var9_3, var10_2, "").length();
-                            var4_6 = cYh.d("44");
-                            if (var1_11 >= 3) ** GOTO lbl27
-                            var9_3 = new StringBuilder();
-                            var9_3.append(this.c);
-                            var9_3.append((String)var4_6);
-                            var4_6 = var9_3.toString();
-                            break block15;
-lbl27:
+                            this.e = 40;
+                            var1_6 = var4_5.indexOf("$");
+                            if (var1_6 < 0) ** GOTO lbl46
+                            this.e = Integer.parseInt(var4_5.split("\\$")[1]);
+                            var4_5 = var4_5.split("\\$")[0];
+                            if (var4_5.equals("\u9996\u9875")) break block18;
+                            var6_7 = new StringBuilder();
+                            var6_7.append(".*");
+                            var6_7.append((String)var4_5);
+                            var6_7.append("\\$(.*?)#.*");
+                            var4_5 = var6_7.toString();
+                            ** GOTO lbl61
+lbl46:
                             // 1 sources
 
-                            var11_12 /* !! */  = new StringBuilder();
-                            var11_12 /* !! */ .append(this.D((String)var9_3, var10_2, ""));
-                            var11_12 /* !! */ .append((String)var4_6);
-                            var4_6 = var11_12 /* !! */ .toString();
+                            if (!var4_5.matches("\\d+")) break block13;
+                            this.e = Integer.parseInt((String)var4_5);
                         }
-                        this.e = 40;
-                        var1_11 = var3_9.indexOf(cYh.d("43"));
-                        var9_3 = cYh.d("4361");
-                        var11_12 /* !! */  = cYh.d("3B74697F7D654E736F7B");
-                        var10_2 = cYh.d("497A");
-                        if (var1_11 < 0) ** GOTO lbl53
-                        this.e = Integer.parseInt(var3_9.split((String)var8_1)[1]);
-                        var8_1 = var3_9.split((String)var8_1)[0];
-                        if (var8_1.equals(var7_8)) break block16;
-                        var3_9 = new StringBuilder();
-                        var3_9.append(var10_2);
-                        var3_9.append((String)var8_1);
-                        var3_9.append((String)var11_12 /* !! */ );
-                        var3_9 = var3_9.toString();
-                        ** GOTO lbl68
-lbl53:
-                        // 1 sources
-
-                        if (!var3_9.matches(cYh.d("3B346A"))) break block11;
-                        this.e = Integer.parseInt((String)var3_9);
+                        var3_2 = "";
+                        ** GOTO lbl62
                     }
-                    var3_9 = "";
-                    ** GOTO lbl69
-                }
-                var8_1 = new StringBuilder();
-                var8_1.append(var10_2);
-                var8_1.append((String)var3_9);
-                var8_1.append((String)var11_12 /* !! */ );
-                var3_9 = var8_1.toString();
-lbl68:
-                // 2 sources
+                    var6_8 = new StringBuilder();
+                    var6_8.append(".*");
+                    var6_8.append((String)var4_5);
+                    var6_8.append("\\$(.*?)#.*");
+                    var4_5 = var6_8.toString();
+lbl61:
+                    // 2 sources
 
-                var3_9 = var4_6.replaceAll((String)var3_9, (String)var9_3);
-lbl69:
-                // 2 sources
+                    var3_2 = var3_2.replaceAll((String)var4_5, "$1");
+lbl62:
+                    // 2 sources
 
-                if (this.e <= 0) break block12;
-                this.d = true;
-                this.r = var7_8;
-                var4_6 = new HashMap();
-                var4_6 = this.e((String)var3_9, var6_4, false, (HashMap<String, String>)var4_6);
-                this.r = "";
-                this.d = false;
-                var3_9 = var5_5;
-                if (var4_6 == null) break block13;
-                try {
-                    var3_9 = var4_6.toString();
+                    if (this.e <= 0) break block14;
+                    this.d = true;
+                    this.r = "\u9996\u9875";
+                    var4_5 = new HashMap();
+                    var3_2 = this.e((String)var3_2, "1", false, (HashMap<String, String>)var4_5);
+                    this.r = "";
+                    this.d = false;
+                    if (var3_2 == null) break block15;
+                    var3_2 = var3_2.toString();
+                    break block16;
                 }
-                catch (Exception var3_10) {
-                    if (this.m) {
-                        var4_6 = new StringBuilder();
-                        var4_6.append(this.G);
-                        var4_6.append(cYh.d("8FE0C2B9F8CF4A6EA9DFE0BFE8C6A8F7C1B3C6E5A9E4D3BCDDC0A4D6EDB3F3C9AEEDCD"));
-                        var4_6.append(var3_10.toString());
-                        Init.show(var4_6.toString());
-                    }
-                    if ((var4_6 = this.I) == null) break block12;
-                    com.github.catvod.spider.merge.i.b.a(var3_10, com.github.catvod.spider.merge.d.d.b(cYh.d("8FDEF6B4D8CC8EF6D7B8F6EF8FE5C5B7EDCA8EC4D8B9F8F588ECC07C7A64")), (SpiderApi)var4_6);
-                }
+                var3_2 = "";
             }
-            return var3_9;
+            try {
+                var1_6 = var3_2.length();
+                var4_5 = var5_1;
+                if (var1_6 > 20) {
+                    var4_5 = var3_2;
+                }
+                return var4_5;
+            }
+            catch (Exception var3_3) {
+                if (this.m) {
+                    var4_5 = new StringBuilder();
+                    var4_5.append(this.G);
+                    var4_5.append("\u8c03\u8bd5->\u83b7\u53d6\u9996\u9875\u8d44\u6e90\u51fa\u9519\uff1a");
+                    var4_5.append(var3_3.toString());
+                    Init.show(var4_5.toString());
+                }
+                if ((var4_5 = this.I) == null) break block14;
+                com.github.catvod.spider.merge.Dw.f.a(var3_3, com.github.catvod.spider.merge.ka.d.b("\u83b7\u53d6\u9996\u9875\u8d44\u6e90\u9519\u8bef\uff01-->"), (SpiderApi)var4_5);
+            }
         }
         return "";
     }
 
-    final String i(String string) {
-        CharSequence charSequence = string;
-        if (!string.isEmpty()) {
-            int n2 = 0;
-            String string2 = cYh.d("3B");
-            String string3 = cYh.d("43");
-            String string4 = cYh.d("4F");
-            String string5 = cYh.d("4E");
-            String string6 = cYh.d("4D");
-            String string7 = cYh.d("4C");
-            String string8 = cYh.d("49");
-            String string9 = cYh.d("3C");
-            String string10 = cYh.d("3A");
-            String string11 = cYh.d("58");
-            String string12 = cYh.d("39");
-            String string13 = cYh.d("1C");
-            String string14 = cYh.d("1A");
-            String string15 = cYh.d("1B");
-            while (true) {
-                charSequence = string;
-                if (n2 >= 14) break;
-                String string16 = (new String[]{string2, string3, string4, string5, string6, string7, string8, string9, string10, string11, string12, string13, string14, string15})[n2];
-                charSequence = string;
-                if (string.indexOf(string16) >= 0) {
-                    charSequence = new StringBuilder();
-                    ((StringBuilder)charSequence).append(string2);
-                    ((StringBuilder)charSequence).append(string16);
-                    charSequence = string.replace(string16, ((StringBuilder)charSequence).toString());
-                }
-                ++n2;
-                string = charSequence;
-            }
+    protected final v i0(String string) {
+        if (string.indexOf(";post") >= 0) {
+            string = this.l(com.github.catvod.spider.merge.dp.n.a("xp", string));
+        } else {
+            StringBuilder stringBuilder = com.github.catvod.spider.merge.ka.d.b("xp");
+            stringBuilder.append(string.split(";")[0]);
+            string = this.k(stringBuilder.toString());
         }
-        return charSequence;
+        return new v(com.github.catvod.spider.merge.Dw.i.l(string).R());
     }
 
     public void init(Context context) {
         super.init(context);
     }
 
-    /*
-     * Exception decompiling
-     */
-    public void init(Context var1_1, String var2_3) {
-        /*
-         * This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
-         * 
-         * org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [8[SIMPLE_IF_TAKEN]], but top level block is 1[TRYBLOCK]
-         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.Op04StructuredStatement.processEndingBlocks(Op04StructuredStatement.java:435)
-         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.Op04StructuredStatement.buildNestedBlocks(Op04StructuredStatement.java:484)
-         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.Op03SimpleStatement.createInitialStructuredBlock(Op03SimpleStatement.java:736)
-         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:850)
-         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:278)
-         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:201)
-         *     at org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:94)
-         *     at org.benf.cfr.reader.entities.Method.analyse(Method.java:531)
-         *     at org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:1055)
-         *     at org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:942)
-         *     at org.benf.cfr.reader.Driver.doJarVersionTypes(Driver.java:257)
-         *     at org.benf.cfr.reader.Driver.doJar(Driver.java:139)
-         *     at org.benf.cfr.reader.CfrDriverImpl.analyse(CfrDriverImpl.java:76)
-         *     at org.benf.cfr.reader.Main.main(Main.java:54)
-         */
-        throw new IllegalStateException("Decompilation failed");
+    public void init(Context object2, String stringArray) {
+        block12: {
+            block11: {
+                String string;
+                block13: {
+                    JSONObject jSONObject;
+                    String[] stringArray2;
+                    this.C = object2;
+                    super.init((Context)object2, (String)stringArray2);
+                    if (stringArray2 == null) break block12;
+                    if (stringArray2.startsWith("http")) {
+                        if (stringArray2.indexOf("{cateId}") < 0) {
+                            String string2 = com.github.catvod.spider.merge.lq.b.h((String)stringArray2, null, null);
+                            stringArray2 = new JSONObject(string2);
+                            this.B = stringArray2;
+                        } else {
+                            JSONObject jSONObject2;
+                            this.B = jSONObject2 = new JSONObject();
+                            jSONObject2.put("\u5206\u7c7burl", (Object)stringArray2);
+                        }
+                        break block11;
+                    }
+                    if (stringArray2.startsWith("{")) {
+                        JSONObject jSONObject3;
+                        this.B = jSONObject3 = new JSONObject((String)stringArray2);
+                        break block11;
+                    }
+                    this.B = jSONObject = new JSONObject();
+                    string = stringArray2.replace("\\,", "\u9017\u53f7");
+                    int n2 = string.indexOf(",");
+                    if (n2 >= 0) break block13;
+                    this.B.put(string.substring(0, string.indexOf(":")), (Object)string.substring(string.indexOf(":") + 1).replace("\u9017\u53f7", ","));
+                    break block11;
+                }
+                for (String string3 : string.split(",")) {
+                    this.B.put(string3.substring(0, string3.indexOf(":")), (Object)string3.substring(string3.indexOf(":") + 1).replace("\u9017\u53f7", ","));
+                }
+            }
+            try {
+                this.O();
+            }
+            catch (JSONException jSONException) {
+                SpiderApi spiderApi;
+                if (this.m) {
+                    Init.show("\u8bf7\u68c0\u914d\u7f6eext");
+                }
+                if ((spiderApi = this.I) == null) break block12;
+                StringBuilder stringBuilder = com.github.catvod.spider.merge.ka.d.b("\u8bf7\u68c0\u914d\u7f6eext-->");
+                stringBuilder.append(((Object)((Object)jSONException)).toString());
+                spiderApi.log(stringBuilder.toString());
+            }
+        }
     }
 
     public void initApi(SpiderApi spiderApi) {
@@ -5152,19 +5548,17 @@ lbl69:
         CharSequence charSequence = spiderApi.getPort();
         this.J = charSequence;
         Init.e = charSequence;
-        charSequence = com.github.catvod.spider.merge.d.d.b(cYh.d("2E34A6D8DFBDCCFFA4DEF4B5DBCA"));
+        charSequence = com.github.catvod.spider.merge.ka.d.b("Id\u7248\u7aef\u53e3\uff1a");
         ((StringBuilder)charSequence).append(this.J);
         spiderApi.log(((StringBuilder)charSequence).toString());
     }
 
     public boolean isVideoFormat(String string) {
-        if (!(string = string.toLowerCase()).startsWith(cYh.d("0F243521")) && !string.startsWith(cYh.d("0A31263F322E"))) {
+        if (!(string = string.toLowerCase()).startsWith("http") && !string.startsWith("magnet")) {
             return false;
         }
-        String[] stringArray = this.D(cYh.d("82C7C4B7D9F88FFFCC"), cYh.d("31392534381C08222C3023"), cYh.d("0A63346974740A207572793C0B26627F3A2A54736F3C633B443D2036393F136A623433680C6A6237232A5D73353922340335336B742A1223296B742E11322E297A22006A"));
-        String[] stringArray2 = cYh.d("44");
-        stringArray = stringArray.split((String)stringArray2);
-        stringArray2 = this.D(cYh.d("8FEFC6B7ECFE8FFFCC"), cYh.d("31392534381C0E3C353425"), cYh.d("12222D6C3F2E1320626A273514247A72793014")).split((String)stringArray2);
+        String[] stringArray = this.G("\u55c5\u63a2\u8bcd", "VideoFormat", "m3u8#.mp4#.flv#.mp3#.m4a#magnet:#ed2k:#ftp:#thunder:#push:#tvbox-xg:").split("#");
+        String[] stringArray2 = this.G("\u8fc7\u6ee4\u8bcd", "VideoFilter", "url=http#;post;#.js").split("#");
         int n2 = stringArray.length;
         for (int i2 = 0; i2 < n2; ++i2) {
             if (string.indexOf(stringArray[i2]) < 0) continue;
@@ -5178,10 +5572,32 @@ lbl69:
         return false;
     }
 
+    final String j(String string) {
+        CharSequence charSequence = string;
+        if (!string.isEmpty()) {
+            int n2 = 0;
+            while (true) {
+                charSequence = string;
+                if (n2 >= 14) break;
+                String string2 = (new String[]{"\\", "$", "(", ")", "*", "+", ".", "[", "]", "?", "^", "{", "}", "|"})[n2];
+                charSequence = string;
+                if (string.indexOf(string2) >= 0) {
+                    charSequence = new StringBuilder();
+                    ((StringBuilder)charSequence).append("\\");
+                    ((StringBuilder)charSequence).append(string2);
+                    charSequence = string.replace(string2, ((StringBuilder)charSequence).toString());
+                }
+                ++n2;
+                string = charSequence;
+            }
+        }
+        return charSequence;
+    }
+
     /*
      * Exception decompiling
      */
-    protected final String j(String var1_1) {
+    protected final String k(String var1_1) {
         /*
          * This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
          * 
@@ -5205,195 +5621,160 @@ lbl69:
         throw new IllegalStateException("Decompilation failed");
     }
 
-    /*
-     * WARNING - void declaration
-     */
-    protected final String k(String string) {
-        String string2;
-        Object object;
+    protected final String l(String charSequence) {
+        String string;
         boolean bl;
-        Object object2;
-        block37: {
-            Object object3;
-            block38: {
-                String string3;
-                String string4;
-                String string5;
-                Object object4;
-                Object object5;
+        Object object;
+        block34: {
+            block35: {
                 int n2;
-                String string52;
-                block34: {
-                    block36: {
+                Object object2;
+                Object object3;
+                String string2;
+                block31: {
+                    block33: {
                         int n3;
-                        block35: {
-                            string52 = com.github.catvod.spider.merge.b.n.a(cYh.d("447362"), string);
-                            object2 = this.K(string);
-                            bl = ((String)object2).startsWith(cYh.d("1F20"));
-                            String charSequence2 = cYh.d("4361");
-                            string = object2;
+                        block32: {
+                            string2 = com.github.catvod.spider.merge.dp.n.a("###", (String)charSequence);
+                            object = this.N((String)charSequence);
+                            bl = ((String)object).startsWith("xp");
+                            charSequence = object;
                             if (bl) {
-                                string = ((String)object2).replaceAll(cYh.d("1F206939232E177E6B78"), charSequence2);
+                                charSequence = ((String)object).replaceAll("xp(http.*)", "$1");
                             }
-                            n2 = this.s.indexOf(cYh.d("00"));
-                            object = cYh.d("3204077C6F");
-                            object2 = n2 >= 0 ? cYh.d("20120A") : this.E(cYh.d("80ECD7B6F7DB"), cYh.d("80EDD0B8F6EF80ECD7B6F7DB81F0FDB4EBD5"), cYh.d("243F2538393D38362E233A3B13"), (String)object);
-                            boolean bl2 = object.equals(object2);
-                            string2 = "";
+                            object = this.s.indexOf("g") >= 0 ? "GBK" : this.H("\u7f16\u7801", "\u7f51\u9875\u7f16\u7801\u683c\u5f0f", "Coding_format", "UTF-8");
+                            boolean bl2 = "UTF-8".equals(object);
+                            string = "";
                             if (!bl2) {
-                                object = this.I;
-                                if (object != null) {
-                                    object3 = new StringBuilder();
-                                    ((StringBuilder)object3).append(cYh.d("80ECD7B6F7DB4A7D7F71"));
-                                    ((StringBuilder)object3).append((String)object2);
-                                    object.log(((StringBuilder)object3).toString());
+                                object3 = this.I;
+                                if (object3 != null) {
+                                    object2 = new StringBuilder();
+                                    ((StringBuilder)object2).append("\u7f16\u7801--> ");
+                                    ((StringBuilder)object2).append((String)object);
+                                    object3.log(((StringBuilder)object2).toString());
                                 }
-                                object2 = this.h(string);
+                                object = this.i((String)charSequence);
                             } else {
-                                object2 = "";
+                                object = "";
                             }
-                            n2 = ((String)object2).length();
+                            n2 = ((String)object).length();
                             n3 = 0;
-                            object = string;
+                            object2 = charSequence;
                             if (n2 < 1) {
-                                block33: {
-                                    void var11_18;
-                                    object3 = string.split(cYh.d("5C202E222361"))[1].trim();
-                                    string = string.split(cYh.d("5C"))[0];
-                                    object = this.s;
-                                    if (object.indexOf(cYh.d("2D")) >= 0 && string.indexOf(cYh.d("082535342512331D0D")) < 0 && string.indexOf(cYh.d("0E3E2F342512331D0D")) < 0 && this.I != null) {
-                                        object2 = this.s.indexOf(cYh.d("2D32")) >= 0 ? cYh.d("5D342E322237023E357F353503296F383934022209051A16") : cYh.d("5D342E322237023E357F333504252C34392E223C243C3234137E2E24233F1518151C1B");
-                                        object = object.matches(cYh.d("497A0B336806037B6F7B")) ? object.replaceAll(cYh.d("497A0B3368723B346A787970"), charSequence2) : "";
-                                        StringBuilder stringBuilder = new StringBuilder();
-                                        stringBuilder.append(this.I.getAddress(true));
-                                        stringBuilder.append(cYh.d("10352321362814356E"));
-                                        stringBuilder.append(string);
-                                        stringBuilder.append(cYh.d("5B6C24273636"));
-                                        stringBuilder.append((String)object);
-                                        stringBuilder.append((String)object2);
-                                        object = stringBuilder.toString();
-                                        object2 = this.I;
-                                        if (object2 != null) {
-                                            StringBuilder stringBuilder2 = new StringBuilder();
-                                            stringBuilder2.append(cYh.d("81FDE2B4CBF2173F3225B3E1C4B7D1D77A775970"));
-                                            stringBuilder2.append((String)object);
-                                            object2.log(stringBuilder2.toString());
-                                        }
-                                        SpiderApi spiderApi = this.I;
-                                        object2 = object;
-                                        if (spiderApi != null) {
-                                            object2 = new StringBuilder();
-                                            ((StringBuilder)object2).append(cYh.d("173F3225153503296C7C697A"));
-                                            ((StringBuilder)object2).append((String)object3);
-                                            spiderApi.log(((StringBuilder)object2).toString());
-                                            object2 = object;
+                                XBPQ$6 xBPQ$6;
+                                block30: {
+                                    Object object4;
+                                    object3 = ((String)charSequence).split(";post;")[1].trim();
+                                    charSequence = ((String)charSequence).split(";")[0];
+                                    object2 = this.s;
+                                    if (((String)object2).indexOf("J") >= 0 && ((String)charSequence).indexOf("outerHTML") < 0 && ((String)charSequence).indexOf("innerHTML") < 0 && this.I != null) {
+                                        object = this.s.indexOf("Jb") >= 0 ? ":document.body.innerHTML" : ":document.documentElement.outerHTML";
+                                        object2 = ((String)object2).matches(".*Jb?\\d+.*") ? ((String)object2).replaceAll(".*Jb?(\\d+).*", "$1") : "";
+                                        object4 = new StringBuilder();
+                                        ((StringBuilder)object4).append(this.I.getAddress(true));
+                                        ((StringBuilder)object4).append("webparse/");
+                                        ((StringBuilder)object4).append((String)charSequence);
+                                        ((StringBuilder)object4).append("<<eval");
+                                        ((StringBuilder)object4).append((String)object2);
+                                        ((StringBuilder)object4).append((String)object);
+                                        object2 = ((StringBuilder)object4).toString();
+                                        object4 = this.I;
+                                        object = object2;
+                                        if (object4 != null) {
+                                            object = new StringBuilder();
+                                            ((StringBuilder)object).append("\u6b63\u5728post\u4ee3\u7406--> ");
+                                            ((StringBuilder)object).append((String)object2);
+                                            ((StringBuilder)object).append("\npostBody--> ");
+                                            ((StringBuilder)object).append((String)object3);
+                                            object4.log(((StringBuilder)object).toString());
+                                            object = object2;
                                         }
                                     } else {
-                                        object2 = string;
+                                        object = charSequence;
                                     }
-                                    object = this.r;
-                                    object = !cYh.d("81C0DDB6E3F8").equals(object) ? this.r(string) : this.I(string);
-                                    object5 = new XBPQ$6();
-                                    SpiderApi spiderApi = this.I;
-                                    if (spiderApi != null) {
-                                        spiderApi.log(cYh.d("82DFD0B4D0E0173F3225BFF5D0B6F0D3797449"));
+                                    object2 = !"\u641c\u7d22".equals(this.r) ? this.t((String)charSequence) : this.L((String)charSequence);
+                                    xBPQ$6 = new XBPQ$6();
+                                    object4 = this.I;
+                                    if (object4 != null) {
+                                        object4.log("\u53d1\u51fapost\u8bf7\u6c42...");
                                     }
                                     if (!((String)object3).isEmpty()) {
-                                        if (((String)object3).startsWith(cYh.d("1C")) && ((String)object3).endsWith(cYh.d("1A"))) {
+                                        if (((String)object3).startsWith("{") && ((String)object3).endsWith("}")) {
                                             try {
-                                                JSONObject jSONObject = new JSONObject((String)object3);
-                                                com.github.catvod.spider.merge.k.g.f(com.github.catvod.spider.merge.k.g.b(), (String)object2, jSONObject.toString(), (Map<String, String>)object, (com.github.catvod.spider.merge.k.c)object5);
+                                                object4 = new JSONObject((String)object3);
+                                                com.github.catvod.spider.merge.mk.g.f(com.github.catvod.spider.merge.mk.g.b(), (String)object, object4.toString(), (Map<String, String>)object2, xBPQ$6);
                                             }
                                             catch (JSONException jSONException) {
                                                 if (this.m) {
-                                                    object = new StringBuilder();
-                                                    object.append(this.G);
-                                                    object.append(cYh.d("8FE0C2B9F8CF4A6E273423390F002E2223BFE0EAA8C5CEB5DBCA"));
-                                                    object.append(((Object)((Object)jSONException)).toString());
-                                                    Init.show(object.toString());
+                                                    object2 = new StringBuilder();
+                                                    ((StringBuilder)object2).append(this.G);
+                                                    ((StringBuilder)object2).append("\u8c03\u8bd5->fetchPost\u51fa\u9519\uff1a");
+                                                    ((StringBuilder)object2).append(((Object)((Object)jSONException)).toString());
+                                                    Init.show(((StringBuilder)object2).toString());
                                                 }
                                                 if ((object3 = this.I) != null) {
-                                                    object = com.github.catvod.spider.merge.d.d.b(cYh.d("013535323F0A082335797EB3F3C9A9FEF8774A6E"));
-                                                    object.append(((Object)((Object)jSONException)).toString());
-                                                    object3.log(object.toString());
+                                                    object2 = com.github.catvod.spider.merge.ka.d.b("fetchPost()\u9519\u8bef-->");
+                                                    ((StringBuilder)object2).append(((Object)((Object)jSONException)).toString());
+                                                    object3.log(((StringBuilder)object2).toString());
                                                 }
-                                                break block33;
+                                                break block30;
                                             }
                                         }
                                         object4 = new LinkedHashMap();
-                                        for (CharSequence charSequence : ((String)object3).split(cYh.d("3B76"))) {
-                                            string5 = cYh.d("5A");
-                                            if (((String)charSequence).endsWith(string5)) continue;
-                                            int n4 = ((String)charSequence).indexOf(string5);
-                                            ((AbstractMap)object4).put(((String)charSequence).substring(0, n4), ((String)charSequence).substring(n4 + 1));
+                                        for (String string3 : ((String)object3).split("\\&")) {
+                                            if (string3.endsWith("=")) continue;
+                                            int n4 = string3.indexOf("=");
+                                            ((AbstractMap)object4).put(string3.substring(0, n4), string3.substring(n4 + 1));
                                         }
-                                        OkHttpClient okHttpClient = com.github.catvod.spider.merge.k.g.b();
-                                        object3 = object4;
+                                        object3 = com.github.catvod.spider.merge.mk.g.b();
                                     } else {
-                                        OkHttpClient okHttpClient = com.github.catvod.spider.merge.k.g.b();
-                                        object3 = null;
+                                        object3 = com.github.catvod.spider.merge.mk.g.b();
+                                        object4 = null;
                                     }
-                                    com.github.catvod.spider.merge.k.g.e((OkHttpClient)var11_18, (String)object2, (Map<String, String>)object3, (Map<String, String>)object, (com.github.catvod.spider.merge.k.c)object5);
+                                    com.github.catvod.spider.merge.mk.g.e((OkHttpClient)object3, (String)object, (Map<String, String>)object4, (Map<String, String>)object2, xBPQ$6);
                                 }
-                                object2 = (String)((com.github.catvod.spider.merge.k.c)object5).getResult();
-                                object = string;
+                                object = (String)xBPQ$6.getResult();
+                                object2 = charSequence;
                             }
-                            if (object2 == null) {
-                                object2 = "";
+                            if (object == null) {
+                                object = "";
                             }
-                            object2 = XBPQ.V(this.P((String)object, (String)object2));
-                            string = this.A;
-                            object3 = cYh.d("57");
-                            bl2 = ((String)object3).equals(string);
-                            string4 = cYh.d("83EAFBB7CBE08EFACDB9F8DB");
-                            object5 = cYh.d("81EBD0B4DDF28EFACDB9F8DB");
-                            string3 = cYh.d("8EFACDB9F8DB");
-                            object4 = cYh.d("8FEED2B4D2FF8EFACDB9F8DB80F0C0");
-                            string5 = cYh.d("82FEC8B4D2F28EFACDB9F8DB");
+                            object = XBPQ.Y(this.R((String)object2, (String)object));
                             n2 = n3;
-                            if (bl2) break block34;
-                            if (this.s.indexOf(cYh.d("1E")) >= 0 || this.s.indexOf(cYh.d("3E")) >= 0) break block35;
+                            if ("0".equals(this.A)) break block31;
+                            if (this.s.indexOf("y") >= 0 || this.s.indexOf("Y") >= 0) break block32;
                             n2 = n3;
-                            if (this.B(string3).length() <= 0) break block34;
+                            if (this.E("\u9a8c\u8bc1").length() <= 0) break block31;
                         }
-                        if (((String)object2).indexOf(string5) >= 0 || ((String)object2).indexOf((String)object4) >= 0 || ((String)object2).indexOf((String)object5) >= 0) break block36;
+                        if (((String)object).indexOf("\u5b89\u5168\u9a8c\u8bc1") >= 0 || ((String)object).indexOf("\u8f93\u5165\u9a8c\u8bc1\u7801") >= 0 || ((String)object).indexOf("\u6ed1\u52a8\u9a8c\u8bc1") >= 0) break block33;
                         n2 = n3;
-                        if (((String)object2).indexOf(string4) < 0) break block34;
+                        if (((String)object).indexOf("\u4eba\u673a\u9a8c\u8bc1") < 0) break block31;
                     }
                     n2 = 1;
                 }
-                string = object2;
-                if (n2 == 0) break block37;
-                string = this.I;
-                if (string != null) {
-                    StringBuilder stringBuilder = new StringBuilder();
-                    stringBuilder.append(cYh.d("8ECCC1B9F1DB8EFACDB9F8DB88ECCDB7EDCA80F0C0B5EFE04A7D7F71"));
-                    stringBuilder.append((String)object2);
-                    string.log(stringBuilder.toString());
+                charSequence = object;
+                if (n2 == 0) break block34;
+                object3 = this.I;
+                if (object3 != null) {
+                    charSequence = new StringBuilder();
+                    ((StringBuilder)charSequence).append("\u9700\u8981\u9a8c\u8bc1\uff0c\u6e90\u7801\u4e3a--> ");
+                    ((StringBuilder)charSequence).append((String)object);
+                    object3.log(((StringBuilder)charSequence).toString());
                 }
-                string = com.github.catvod.spider.merge.b.n.a(object, string52);
-                object = this.B(string3);
-                object2 = this.d0(cYh.d("013535323F0A082335"), string, (String)object2, (String)object);
-                if (((String)object2).indexOf(string5) < 0 || ((String)object2).indexOf((String)object4) < 0 || ((String)object2).indexOf((String)object5) < 0) break block38;
-                string = object2;
-                if (((String)object2).indexOf(string4) >= 0) break block37;
+                if (((String)(object = this.f0("fetchPost", com.github.catvod.spider.merge.dp.n.a((String)object2, string2), (String)object, this.E("\u9a8c\u8bc1")))).indexOf("\u5b89\u5168\u9a8c\u8bc1") < 0 || ((String)object).indexOf("\u8f93\u5165\u9a8c\u8bc1\u7801") < 0 || ((String)object).indexOf("\u6ed1\u52a8\u9a8c\u8bc1") < 0) break block35;
+                charSequence = object;
+                if (((String)object).indexOf("\u4eba\u673a\u9a8c\u8bc1") >= 0) break block34;
             }
-            Init.show(cYh.d("8EFACDB9F8DB81D8D1B4DDC588ECC0"));
-            this.A = object3;
-            string = object2;
+            Init.show("\u9a8c\u8bc1\u6210\u529f\uff01");
+            this.A = "0";
+            charSequence = object;
         }
-        object2 = string2;
-        if (string != null) {
-            if (bl) {
-                object2 = string;
-            } else {
-                object2 = cYh.d("47");
-                object = cYh.d("80F9FBB6FEE080F9FB");
-                object2 = string.replace((CharSequence)object2, (CharSequence)object).replaceAll(cYh.d("3B236A"), "").replace((CharSequence)object, (CharSequence)object2).trim();
-            }
+        object = string;
+        if (charSequence != null) {
+            object = bl ? charSequence : ((String)charSequence).replace(" ", "\u7a7a\u7a7a\u7a7a").replaceAll("\\s+", "").replace("\u7a7a\u7a7a\u7a7a", " ").trim();
         }
-        this.x = object2;
-        return object2;
+        this.x = object;
+        return object;
     }
 
     public Object[] mProxy(Map<String, String> map) {
@@ -5401,151 +5782,113 @@ lbl69:
     }
 
     public boolean manualVideoCheck() {
-        boolean bl = !this.D(cYh.d("82C7C4B7D9F88FFFCC"), cYh.d("8FEFC6B7ECFE8FFFCC"), "").isEmpty() || this.C(cYh.d("81D9CAB4DDF282C7C4B7D9F8"), cYh.d("2A312F243636343E2837313F15")).equals(cYh.d("56")) || this.s.indexOf(cYh.d("1F")) >= 0;
+        boolean bl = !this.G("\u55c5\u63a2\u8bcd", "\u8fc7\u6ee4\u8bcd", "").isEmpty() || this.F("\u624b\u52a8\u55c5\u63a2", "ManualSniffer").equals("1") || this.s.indexOf("x") >= 0;
         return bl;
     }
 
     /*
      * WARNING - void declaration
      */
-    protected final String n(String charSequence4) {
+    protected final String o(String charSequence) {
         Object object;
         String string;
         String string2;
-        String string3;
-        String string4;
-        String string5;
-        String string6;
-        String string7;
-        String string8;
-        String string9;
-        CharSequence charSequence;
-        String string10;
-        String string11;
-        block23: {
-            block22: {
-                block21: {
-                    string11 = this.z;
-                    string10 = cYh.d("57");
-                    if (string10.equals(string11)) {
+        block24: {
+            block23: {
+                String string3;
+                block22: {
+                    String charSequence22;
+                    if ("0".equals(this.z)) {
                         return "";
                     }
-                    string11 = this.B(cYh.d("80C9FAB4EACF"));
-                    charSequence = this.r;
-                    boolean bl = cYh.d("81C0DDB6E3F8").equals(charSequence);
-                    string9 = cYh.d("88ECDABEEBC1");
-                    string8 = cYh.d("4176");
-                    string7 = cYh.d("43");
-                    string6 = cYh.d("27");
-                    string5 = cYh.d("44");
-                    string4 = cYh.d("5C");
-                    if (bl) break block21;
+                    string2 = this.E("\u767b\u5f55");
+                    if ("\u641c\u7d22".equals(this.r)) break block22;
                     if (this.z.length() > 1) {
                         return this.z;
                     }
-                    if (this.s.indexOf(cYh.d("04")) < 0 && (string11.length() > 1 || this.s.indexOf(cYh.d("1E")) >= 0 || this.s.indexOf(cYh.d("3E")) >= 0 || this.s.indexOf(cYh.d("2B")) >= 0 || this.s.indexOf(cYh.d("80D2F8B4D0E1")) >= 0 || this.B(cYh.d("8EFACDB9F8DB")).length() > 0 || this.B(cYh.d("81E5CEB9F0D282C9E9")).length() > 0) && ((String)(charSequence = Init.d.getString(this.G, ""))).length() > 1) {
-                        this.z = charSequence;
-                        return charSequence;
+                    if (this.s.indexOf("c") < 0 && (string2.length() > 1 || this.s.indexOf("y") >= 0 || this.s.indexOf("Y") >= 0 || this.s.indexOf("L") >= 0 || this.s.indexOf("\u70b9\u51fb") >= 0 || this.E("\u9a8c\u8bc1").length() > 0 || this.E("\u6d4f\u89c8\u5668").length() > 0) && (charSequence22 = Init.d.getString(this.G, "")).length() > 1) {
+                        this.z = charSequence22;
+                        return charSequence22;
                     }
-                    string3 = cYh.d("8FFFF6B7E6D882F4F5");
-                    string2 = cYh.d("8FFFF6B7E6D882F4F5B4D8D881C5F1");
-                    charSequence = cYh.d("1231");
-                    string = cYh.d("2F352035322814");
-                    object = cYh.d("32232423163D023E35");
-                    break block22;
+                    break block23;
                 }
-                charSequence = this.F(cYh.d("81C0DDB6E3F88FFFF6B7E6D882F4F5"), cYh.d("81C0DDB6E3F88FFFF6B7E6D882F4F5B4D8D881C5F1"), cYh.d("14352023343238382430333F15"), cYh.d("34182430333F1523"), "").replace(string6, string7).replace(string8, string5).replace(string9, string4).trim();
-                string3 = charSequence;
-                if (((String)charSequence).length() >= 1) break block23;
-                string3 = cYh.d("8FFFF6B7E6D882F4F5");
-                string2 = cYh.d("8FFFF6B7E6D882F4F5B4D8D881C5F1");
-                charSequence = cYh.d("1231");
-                string = cYh.d("2F352035322814");
-                object = cYh.d("32232423163D023E35");
+                string = string3 = this.I("\u641c\u7d22\u8bf7\u6c42\u5934", "\u641c\u7d22\u8bf7\u6c42\u5934\u53c2\u6570", "search_header", "SHeaders", "").replace("@", "$").replace("&&", "#").replace("\uff1b\uff1b", ";").trim();
+                if (string3.length() >= 1) break block24;
             }
-            string3 = this.G(string3, string2, (String)charSequence, string, (String)object, "").replace(string6, string7).replace(string8, string5).replace(string9, string4).trim();
+            string = this.J("\u8bf7\u6c42\u5934", "\u8bf7\u6c42\u5934\u53c2\u6570", "ua", "Headers", "UserAgent", "").replace("@", "$").replace("&&", "#").replace("\uff1b\uff1b", ";").trim();
         }
-        Object object2 = new HashMap<String, String>();
-        charSequence = this.J(string3);
-        ((HashMap)object2).put(cYh.d("322324237A1B00352F25"), charSequence);
-        Object object3 = new HashMap();
-        Object object4 = new HashMap<String, List<String>>();
-        int n2 = string11.length();
-        string = cYh.d("5A");
-        string2 = cYh.d("4361");
-        object = cYh.d("5C202E222361");
-        if (n2 > 0 && string11.indexOf((String)object) >= 0 || ((String)charSequence4).indexOf((String)object) >= 0) {
-            if (string11.length() > 0) {
-                charSequence = string11.split((String)object)[0];
-                string11 = string11.split((String)object).length > 1 ? string11.split((String)object)[1] : "";
-            } else if (((String)charSequence4).indexOf((String)object) >= 0) {
-                charSequence = ((String)charSequence4).split((String)object)[0];
-                string11 = ((String)charSequence4).split((String)object).length > 1 ? ((String)charSequence4).split((String)object)[1] : "";
+        HashMap<String, String> hashMap = new HashMap<String, String>();
+        hashMap.put("User-Agent", this.M(string));
+        HashMap<String, String> hashMap2 = new HashMap<String, String>();
+        Object object2 = new HashMap<String, List<String>>();
+        if (string2.length() > 0 && string2.indexOf(";post;") >= 0 || ((String)charSequence).indexOf(";post;") >= 0) {
+            void var5_9;
+            if (string2.length() > 0) {
+                String string4 = string2.split(";post;")[0];
+                string2 = string2.split(";post;").length > 1 ? string2.split(";post;")[1] : "";
+            } else if (((String)charSequence).indexOf(";post;") >= 0) {
+                String string5 = ((String)charSequence).split(";post;")[0];
+                string2 = ((String)charSequence).split(";post;").length > 1 ? ((String)charSequence).split(";post;")[1] : "";
+            } else {
+                String string6 = "";
+            }
+            if (string2.length() > 0) {
+                for (String string7 : string2.split("\\&")) {
+                    if (string7.endsWith("=")) continue;
+                    hashMap2.put(string7.split("=")[0], string7.split("=")[1]);
+                }
+            }
+            hashMap.put("Referer", (String)var5_9);
+            object = new StringBuilder();
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append((String)charSequence);
+            stringBuilder.append("/");
+            ((StringBuilder)object).append(stringBuilder.toString().replaceAll(".*(https?\\://[^/]+)/.*", "$1"));
+            ((StringBuilder)object).append("/");
+            hashMap.put("Origin", ((StringBuilder)object).toString());
+            com.github.catvod.spider.merge.lq.b.d((String)var5_9, hashMap2, hashMap, (Map<String, List<String>>)object2);
+        }
+        this.W((Map<String, List<String>>)object2);
+        object = new StringBuilder(this.z);
+        object2 = this.G("\u64ad\u653e\u8bf7\u6c42\u5934", "\u76f4\u63a5\u64ad\u653e\u76f4\u94fe\u89c6\u9891\u8bf7\u6c42\u5934", "");
+        if (string.indexOf("ookie") >= 0 || ((String)object2).indexOf("ookie") >= 0) {
+            void var5_14;
+            if (string.indexOf("ookie") >= 0) {
+                charSequence = new StringBuilder();
+                ((StringBuilder)charSequence).append(string);
+                ((StringBuilder)charSequence).append("#");
+                charSequence = ((StringBuilder)charSequence).toString().replaceAll(".*ookie\\$([^#]+?)#.*", "$1");
             } else {
                 charSequence = "";
             }
-            if (string11.length() > 0) {
-                for (String string12 : string11.split(cYh.d("3B76"))) {
-                    ((HashMap)object3).put(string12.split(string)[0], string12.split(string)[1]);
-                }
-            }
-            ((HashMap)object2).put(cYh.d("35352734253F15"), charSequence);
-            StringBuilder stringBuilder = new StringBuilder();
-            object = new StringBuilder();
-            ((StringBuilder)object).append((String)charSequence4);
-            String string13 = cYh.d("48");
-            ((StringBuilder)object).append(string13);
-            stringBuilder.append(((StringBuilder)object).toString().replaceAll(cYh.d("497A6939232E17237E0D6D75480B1F7E0A714E7F6F7B"), string2));
-            stringBuilder.append(string13);
-            String string14 = stringBuilder.toString();
-            ((HashMap)object2).put(cYh.d("282228363E34"), string14);
-            com.github.catvod.spider.merge.h.b.d((String)charSequence, (Map<String, String>)object3, (Map<String, String>)object2, (Map<String, List<String>>)object4);
-        }
-        this.T((Map<String, List<String>>)object4);
-        object = new StringBuilder(this.z);
-        object4 = this.D(cYh.d("81C2ECB7C3E48FFFF6B7E6D882F4F5"), cYh.d("80CBF5B7D9FF81C2ECB7C3E480CBF5B8C4E48FF7C7B8F5CB8FFFF6B7E6D882F4F5"), "");
-        object3 = cYh.d("083F2A3832");
-        if (string3.indexOf((String)object3) >= 0 || ((String)object4).indexOf((String)object3) >= 0) {
-            void var1_8;
-            n2 = string3.indexOf((String)object3);
-            object2 = cYh.d("497A2E3E3C33020C65790C04440D6A6E7E79497A");
-            if (n2 >= 0) {
+            CharSequence charSequence2 = charSequence;
+            if (((String)object2).indexOf("ookie") >= 0) {
                 StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.append(string3);
-                stringBuilder.append(string5);
-                String string15 = stringBuilder.toString().replaceAll((String)object2, string2);
-            } else {
-                String string16 = "";
-            }
-            charSequence = var1_8;
-            if (((String)object4).indexOf((String)object3) >= 0) {
+                stringBuilder.append((String)charSequence);
+                stringBuilder.append(";");
                 charSequence = new StringBuilder();
-                ((StringBuilder)charSequence).append((String)var1_8);
-                ((StringBuilder)charSequence).append(string4);
-                StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.append(((String)object4).replace(string6, string7).replace(string8, string5));
-                stringBuilder.append(string5);
-                ((StringBuilder)charSequence).append(stringBuilder.toString().replace(string9, string4).replaceAll((String)object2, string2));
-                charSequence = ((StringBuilder)charSequence).toString();
+                ((StringBuilder)charSequence).append(((String)object2).replace("@", "$").replace("&&", "#"));
+                ((StringBuilder)charSequence).append("#");
+                stringBuilder.append(((StringBuilder)charSequence).toString().replace("\uff1b\uff1b", ";").replaceAll(".*ookie\\$([^#]+?)#.*", "$1"));
+                String string8 = stringBuilder.toString();
             }
-            for (CharSequence charSequence2 : ((String)charSequence).replaceAll(cYh.d("5C7B"), string4).split(string4)) {
-                if (((StringBuilder)object).indexOf(((String)charSequence2).split(string)[0]) >= 0) continue;
-                ((StringBuilder)object).append((String)charSequence2);
-                ((StringBuilder)object).append(string4);
+            for (CharSequence charSequence3 : var5_14.replaceAll(";+", ";").split(";")) {
+                if (((StringBuilder)object).indexOf(((String)charSequence3).split("=")[0]) >= 0) continue;
+                ((StringBuilder)object).append((String)charSequence3);
+                ((StringBuilder)object).append(";");
             }
         }
         if (((StringBuilder)object).toString().length() < 2) {
-            this.z = string10;
+            this.z = "0";
             return "";
         }
-        if (string11.length() > 1) {
-            SharedPreferences.Editor editor = Init.d.edit();
-            this.z = string11 = ((StringBuilder)object).toString();
-            editor.putString(this.G, string11);
-            editor.apply();
+        if (string2.length() > 1) {
+            charSequence = Init.d.edit();
+            this.z = string2 = ((StringBuilder)object).toString();
+            charSequence.putString(this.G, string2);
+            charSequence.apply();
         }
-        String string17 = this.o;
-        if (cYh.d("043F2E3A3E3F").equals(string17)) {
+        if ("cookie".equals(this.o)) {
             Init.show(((StringBuilder)object).toString());
         }
         return ((StringBuilder)object).toString();
@@ -5558,7 +5901,7 @@ lbl69:
         /*
          * This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
          * 
-         * org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 129[TRYBLOCK] [147 : 3847->3856)] java.lang.Exception
+         * org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 127[TRYBLOCK] [150 : 3446->3456)] java.lang.Exception
          *     at org.benf.cfr.reader.bytecode.analysis.opgraph.Op02WithProcessedDataAndRefs.insertExceptionBlocks(Op02WithProcessedDataAndRefs.java:2283)
          *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:415)
          *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:278)
@@ -5575,245 +5918,183 @@ lbl69:
         throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final HashMap<String, String> r(String object) {
-        String string;
-        String string2;
-        String string3;
-        String string4;
-        String string5;
-        HashMap<String, String> hashMap;
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    public String searchContent(String string, boolean bl) {
         int n2;
-        Object object2;
-        String[] stringArray;
-        block12: {
-            String string6;
-            block11: {
-                CharSequence charSequence;
-                block10: {
-                    stringArray = this.F;
-                    charSequence = cYh.d("1561");
-                    if (stringArray != null && !stringArray.isEmpty() && this.s.indexOf((String)charSequence) < 0 && this.s.indexOf(cYh.d("04")) < 0) {
-                        return this.F;
-                    }
-                    this.F = new HashMap();
-                    object2 = this.G(cYh.d("8FFFF6B7E6D882F4F5"), cYh.d("8FFFF6B7E6D882F4F5B4D8D881C5F1"), cYh.d("1231"), cYh.d("2F352035322814"), cYh.d("32232423163D023E35"), "").trim();
-                    n2 = ((String)object2).length();
-                    hashMap = cYh.d("5C");
-                    string5 = cYh.d("44");
-                    string4 = cYh.d("43");
-                    stringArray = object2;
-                    if (n2 > 1) {
-                        string3 = cYh.d("27");
-                        stringArray = object2;
-                        if (((String)object2).indexOf(string3) > 0) {
-                            stringArray = ((String)object2).replace(string3, string4).replace(cYh.d("4176"), string5).replace(cYh.d("88ECDABEEBC1"), (CharSequence)((Object)hashMap));
-                        }
-                    }
-                    string2 = this.J((String)stringArray);
-                    object2 = this.F;
-                    string3 = cYh.d("322324237A1B00352F25");
-                    ((HashMap)object2).put(string3, string2);
-                    object2 = this.n((String)object);
-                    n2 = this.s.indexOf(cYh.d("0460"));
-                    string = cYh.d("243F2E3A3E3F");
-                    if (n2 < 0 && ((String)object2).length() > 1) {
-                        this.F.put(string, (String)object2);
-                    }
-                    if (stringArray.indexOf(string6 = cYh.d("35352734253F15")) >= 0 || this.s.indexOf((String)charSequence) < 0) break block10;
-                    object2 = this.F;
-                    hashMap = ((String)object).split((String)((Object)hashMap))[0];
-                    object = object2;
-                    object2 = hashMap;
-                    break block11;
+        StringBuilder stringBuilder;
+        CharSequence charSequence;
+        String string2 = "";
+        Object object = this.I;
+        if (object != null) {
+            charSequence = new StringBuilder();
+            ((StringBuilder)charSequence).append("searchContent(key=");
+            ((StringBuilder)charSequence).append(string);
+            ((StringBuilder)charSequence).append(", quick=");
+            ((StringBuilder)charSequence).append(bl);
+            ((StringBuilder)charSequence).append(")");
+            object.log(((StringBuilder)charSequence).toString());
+        }
+        this.r = "\u641c\u7d22";
+        object = this.Z("", string, bl);
+        charSequence = this.H("\u7279\u6b8a\u5206\u7c7b", "\u7279\u6b8a\u5206\u7c7burl", "\u7279\u6b8a\u5206\u7c7b\u94fe\u63a5", "").replace(this.f, "");
+        boolean bl2 = this.G("\u641c\u7d22\u6a21\u5f0f", "ssmoshi", "").equals("0");
+        int n3 = !(bl2 || this.G("\u641c\u7d22\u540e\u7f00", "sousuohouzhui", "").length() > 0 && !this.G("\u641c\u7d22\u6a21\u5f0f", "ssmoshi", "").equals("1") || this.K("\u641c\u7d22url", "\u641c\u7d22\u94fe\u63a5", "\u641c\u7d22\u524d", "sousuoqian", "search_url", "searchUrl").indexOf("/ajax/") >= 0 && !(bl2 = this.G("\u641c\u7d22\u6a21\u5f0f", "ssmoshi", "").equals("1"))) ? 0 : 1;
+        if (n3 != 0 && (object == null || object.getJSONArray("list") == null || object.getJSONArray("list").length() < 1)) {
+            this.B.put("\u641c\u7d22\u6a21\u5f0f", (Object)"1");
+            this.B.put("\u641c\u7d22\u6a21\u5f0f0", (Object)"0");
+            object = this.Z("", string, bl);
+            this.B.put("\u641c\u7d22\u6a21\u5f0f0", (Object)"");
+        }
+        if (object != null && object.getJSONArray("list") != null && object.getJSONArray("list").length() > 0 && ((String)charSequence).indexOf("#http") < 0) {
+            return object.toString();
+        }
+        object = object != null ? object.getJSONArray("list") : new JSONArray();
+        for (String string3 : ((String)charSequence).split("#h")) {
+            if (!string3.startsWith("ttp")) continue;
+            charSequence = new StringBuilder();
+            ((StringBuilder)charSequence).append("h");
+            stringBuilder = new StringBuilder();
+            stringBuilder.append(string3);
+            stringBuilder.append("#");
+            ((StringBuilder)charSequence).append(stringBuilder.toString().replaceAll(".*(ttp.*?)#.*", "$1"));
+            charSequence = this.Z(((StringBuilder)charSequence).toString(), string, bl);
+            charSequence = charSequence != null ? charSequence.getJSONArray("list") : new JSONArray();
+            if (charSequence.length() <= 0) continue;
+            for (n2 = 0; n2 < charSequence.length(); ++n2) {
+                object.put(charSequence.get(n2));
+            }
+        }
+        if (object.length() > 0) {
+            string = new JSONObject();
+            return string.put("list", object).toString();
+        }
+        if (this.s.indexOf("k0") >= 0) {
+            this.s = this.s.replace("k0", "");
+        }
+        charSequence = new StringBuilder();
+        ((StringBuilder)charSequence).append(this.f);
+        ((StringBuilder)charSequence).append("/;;\u641c\u9996\u9875");
+        charSequence = this.Z(((StringBuilder)charSequence).toString(), string, bl);
+        if (charSequence != null && charSequence.getJSONArray("list") != null && charSequence.getJSONArray("list").length() > 0) {
+            return charSequence.toString();
+        }
+        String[] stringArray = this.c.split("#");
+        n2 = stringArray.length;
+        for (n3 = 0; n3 < n2; ++n3) {
+            block20: {
+                charSequence = stringArray[n3];
+                stringBuilder = new StringBuilder();
+                stringBuilder.append(this.f(((String)charSequence).split("\\$")[1], "1", false, null));
+                stringBuilder.append(";;\u641c\u9996\u9875");
+                charSequence = this.Z(stringBuilder.toString(), string, bl);
+                charSequence = charSequence != null ? charSequence.getJSONArray("list") : new JSONArray();
+                if (charSequence.length() <= 0) break block20;
+                for (n3 = 0; n3 < charSequence.length(); ++n3) {
+                    object.put(charSequence.get(n3));
                 }
-                if (stringArray.indexOf(string6) >= 0 || this.s.indexOf(cYh.d("15")) < 0) break block12;
-                hashMap = this.F;
-                object2 = new StringBuilder();
-                charSequence = new StringBuilder();
-                ((StringBuilder)charSequence).append((String)object);
-                object = cYh.d("48");
-                ((StringBuilder)charSequence).append((String)object);
-                ((StringBuilder)object2).append(((StringBuilder)charSequence).toString().replaceAll(cYh.d("497A6939232E17237E0D6D75480B1F7E0A714E7F6F7B"), cYh.d("4361")));
-                ((StringBuilder)object2).append((String)object);
-                object2 = ((StringBuilder)object2).toString();
-                object = hashMap;
+                break;
             }
-            ((HashMap)object).put(string6, object2);
-        }
-        if (((String)(object = stringArray.replaceAll(cYh.d("497AA6C5E2B2E3C162"), "").replaceAll(cYh.d("497AA7D8DCBCFBEA62"), "").replaceAll(cYh.d("497A1E041679"), ""))).indexOf(string4) >= 0) {
-            stringArray = ((String)object).split(string5);
-            int n3 = stringArray.length;
-            for (n2 = 0; n2 < n3; ++n2) {
-                string4 = stringArray[n2];
-                object = cYh.d("3B74");
-                if (string3.equals(string4.split((String)object)[0]) && string2.length() > 0 || string.equals(string4.split((String)object)[0])) continue;
-                object2 = string4.split((String)object)[0];
-                if (cYh.d("043F2E3A3E3F").equals(object2)) continue;
-                hashMap = this.F;
-                object2 = string4.split((String)object)[0];
-                object = string4.split((String)object)[1].equals(cYh.d("80F9FB")) ? "" : string4.split((String)object)[1];
-                hashMap.put((String)object2, (String)object);
+            try {
+                Thread.sleep(1000L);
+                continue;
             }
+            catch (Exception exception) {}
         }
-        if ((stringArray = this.I) != null) {
-            object = com.github.catvod.spider.merge.d.d.b(cYh.d("8FFFF6B7E6D882F4F57C7A6447"));
-            ((StringBuilder)object).append(((Object)this.F).toString());
-            stringArray.log(((StringBuilder)object).toString());
+        try {
+            this.r = "";
+            string = string2;
+            if (object.length() <= 0) return string;
+            string = new JSONObject();
+            return string.put("list", object).toString();
         }
-        return this.F;
+        catch (Exception exception) {
+            if (this.m) {
+                object = new StringBuilder();
+                ((StringBuilder)object).append(this.G);
+                ((StringBuilder)object).append("\u8c03\u8bd5->searchContent\u51fa\u9519\uff1a");
+                ((StringBuilder)object).append(((Object)exception).toString());
+                Init.show(((StringBuilder)object).toString());
+            }
+            if ((object = this.I) != null) {
+                com.github.catvod.spider.merge.Dw.f.a(exception, com.github.catvod.spider.merge.ka.d.b("searchContent()\u9519\u8bef-->"), (SpiderApi)object);
+            }
+            this.r = "";
+            return "";
+        }
     }
 
     /*
-     * Unable to fully structure code
+     * WARNING - void declaration
      */
-    public String searchContent(String var1_1, boolean var2_3) {
-        block31: {
-            block28: {
-                var11_4 = cYh.d("0C60");
-                var9_5 = "";
-                var8_6 = this.I;
-                if (var8_6 == null) ** GOTO lbl19
-                var7_8 = new StringBuilder();
-                var7_8.append(cYh.d("143520233432243F2F25323413782A342E67"));
-                var7_8.append(var1_1);
-                var7_8.append(cYh.d("4B7030243E390C6D"));
-                var7_8.append(var2_3);
-                var7_8.append(cYh.d("4E"));
-                var8_6.log(var7_8.toString());
-lbl19:
-                // 2 sources
-
-                this.r = cYh.d("81C0DDB6E3F8");
-                var7_8 = this.W("", var1_1, var2_3);
-                var8_6 = this.E(cYh.d("80D9F8B7F9D082D8C7B6E6E1"), cYh.d("80D9F8B7F9D082D8C7B6E6E112222D"), cYh.d("80D9F8B7F9D082D8C7B6E6E18EC3FFB7D9FF"), "").replace(this.f, "");
-                var10_9 = cYh.d("0B393225");
-                if (var7_8 != null) {
-                    if (var7_8.getJSONArray(var10_9) == null || var7_8.getJSONArray(var10_9).length() <= 0 || var8_6.indexOf(cYh.d("4438352527")) >= 0) break block28;
-                    return var7_8.toString();
+    protected final HashMap<String, String> t(String charSequence2) {
+        String string;
+        String string2;
+        HashMap<String, String> hashMap;
+        HashMap<String, String> hashMap2;
+        block14: {
+            void var1_4;
+            block13: {
+                block12: {
+                    hashMap2 = this.F;
+                    if (hashMap2 != null && !hashMap2.isEmpty() && this.s.indexOf("r1") < 0 && this.s.indexOf("c") < 0) {
+                        return this.F;
+                    }
+                    this.F = new HashMap();
+                    hashMap = this.J("\u8bf7\u6c42\u5934", "\u8bf7\u6c42\u5934\u53c2\u6570", "ua", "Headers", "UserAgent", "").trim();
+                    hashMap2 = hashMap;
+                    if (((String)((Object)hashMap)).length() > 1) {
+                        hashMap2 = hashMap;
+                        if (((String)((Object)hashMap)).indexOf("@") > 0) {
+                            hashMap2 = ((String)((Object)hashMap)).replace("@", "$").replace("&&", "#").replace("\uff1b\uff1b", ";");
+                        }
+                    }
+                    string2 = this.M((String)((Object)hashMap2));
+                    this.F.put("User-Agent", string2);
+                    hashMap = this.o((String)charSequence2);
+                    if (this.s.indexOf("c0") < 0 && ((String)((Object)hashMap)).length() > 1) {
+                        this.F.put("Cookie", (String)((Object)hashMap));
+                    }
+                    if (((String)((Object)hashMap2)).indexOf("Referer") >= 0 || this.s.indexOf("r1") < 0) break block12;
+                    hashMap = this.F;
+                    String string3 = ((String)charSequence2).split(";")[0];
+                    break block13;
                 }
+                if (((String)((Object)hashMap2)).indexOf("Referer") >= 0 || this.s.indexOf("r") < 0) break block14;
+                hashMap = this.F;
+                StringBuilder stringBuilder = new StringBuilder();
+                String[] stringArray = new StringBuilder();
+                stringArray.append((String)charSequence2);
+                stringArray.append("/");
+                stringBuilder.append(stringArray.toString().replaceAll(".*(https?\\://[^/]+)/.*", "$1"));
+                stringBuilder.append("/");
+                String string4 = stringBuilder.toString();
             }
-            if (var7_8 == null) ** GOTO lbl32
-            var7_8 = var7_8.getJSONArray(var10_9);
-            break block31;
-lbl32:
-            // 1 sources
-
-            var7_8 = new JSONArray();
+            hashMap.put("Referer", (String)var1_4);
         }
-        var12_10 = var8_6.split(cYh.d("4438"));
-        var6_11 = ((String[])var12_10).length;
-        var5_12 = 0;
-        var3_13 = 0;
-        while (true) {
-            block29: {
-                block32: {
-                    var8_6 = cYh.d("44");
-                    if (var3_13 >= var6_11) break;
-                    var14_16 = var12_10[var3_13];
-                    if (!var14_16.startsWith(cYh.d("132431"))) break block29;
-                    var13_15 = new StringBuilder();
-                    var13_15.append(cYh.d("0F"));
-                    var15_17 = new StringBuilder();
-                    var15_17.append(var14_16);
-                    var15_17.append((String)var8_6);
-                    var13_15.append(var15_17.toString().replaceAll(cYh.d("497A6925232A497A7E7874744D"), cYh.d("4361")));
-                    var8_6 = this.W(var13_15.toString(), var1_1, var2_3);
-                    if (var8_6 == null) ** GOTO lbl59
-                    var8_6 = var8_6.getJSONArray(var10_9);
-                    break block32;
-lbl59:
-                    // 1 sources
-
-                    var8_6 = new JSONArray();
+        if ((string = ((String)((Object)hashMap2)).replaceAll(".*\u7535\u8111#", "").replaceAll(".*\u624b\u673a#", "").replaceAll(".*_UA#", "")).indexOf("$") >= 0) {
+            for (String string5 : string.split("#")) {
+                void var1_11;
+                if ("User-Agent".equals(string5.split("\\$")[0]) && string2.length() > 0 || "Cookie".equals(string5.split("\\$")[0]) || "cookie".equals(string5.split("\\$")[0])) continue;
+                hashMap = this.F;
+                hashMap2 = string5.split("\\$")[0];
+                if (string5.split("\\$")[1].equals("\u7a7a")) {
+                    String string6 = "";
+                } else {
+                    String string7 = string5.split("\\$")[1];
                 }
-                if (var8_6.length() <= 0) break block29;
-                var4_14 = 0;
-                while (true) {
-                    if (var4_14 >= var8_6.length()) break;
-                    var7_8.put(var8_6.get(var4_14));
-                    ++var4_14;
-                    continue;
-                    break;
-                }
+                hashMap.put((String)((Object)hashMap2), (String)var1_11);
             }
-            ++var3_13;
         }
-        if (this.s.indexOf((String)var11_4) >= 0) {
-            this.s = this.s.replace(var11_4, "");
+        if ((hashMap2 = this.I) != null) {
+            StringBuilder stringBuilder = com.github.catvod.spider.merge.ka.d.b("\u8bf7\u6c42\u5934--> ");
+            stringBuilder.append(((Object)this.F).toString());
+            hashMap2.log(stringBuilder.toString());
         }
-        if (var7_8.length() > 0) {
-            var1_1 = new JSONObject();
-            return var1_1.put(var10_9, (Object)var7_8).toString();
-        }
-        var11_4 = new StringBuilder();
-        var11_4.append(this.f);
-        var11_4.append(cYh.d("486B7AB7C7C68EF6D7B8F6EF"));
-        var11_4 = this.W(var11_4.toString(), var1_1, var2_3);
-        if (var11_4 == null) ** GOTO lbl89
-        if (var11_4.getJSONArray(var10_9) != null && var11_4.getJSONArray(var10_9).length() > 0) {
-            return var11_4.toString();
-        }
-lbl89:
-        // 3 sources
-
-        var11_4 = this.c.split((String)var8_6);
-        var4_14 = ((CharSequence)var11_4).length;
-        block18: for (var3_13 = 0; var3_13 < var4_14; ++var3_13) {
-            block30: {
-                block33: {
-                    var12_10 = var11_4[var3_13];
-                    var8_6 = new StringBuilder();
-                    var8_6.append(this.f(var12_10.split(cYh.d("3B74"))[1], cYh.d("56"), false, null));
-                    var8_6.append(cYh.d("5C6BA7C1CBB3C1C6A8F0E2"));
-                    var8_6 = this.W(var8_6.toString(), var1_1, var2_3);
-                    if (var8_6 == null) ** GOTO lbl104
-                    var8_6 = var8_6.getJSONArray(var10_9);
-                    break block33;
-lbl104:
-                    // 1 sources
-
-                    var8_6 = new JSONArray();
-                }
-                if (var8_6.length() <= 0) break block30;
-                var3_13 = var5_12;
-                while (true) {
-                    if (var3_13 >= var8_6.length()) break block18;
-                    var7_8.put(var8_6.get(var3_13));
-                    ++var3_13;
-                    continue;
-                    break;
-                }
-            }
-            Thread.sleep(1000L);
-lbl118:
-            // 2 sources
-
-            continue block18;
-        }
-        var1_1 = var9_5;
-        try {
-            if (var7_8.length() > 0) {
-                var1_1 = new JSONObject();
-                var1_1 = var1_1.put(var10_9, (Object)var7_8).toString();
-            }
-            return var1_1;
-        }
-        catch (Exception var1_2) {
-            if (this.m) {
-                var7_8 = new StringBuilder();
-                var7_8.append(this.G);
-                var7_8.append(cYh.d("8FE0C2B9F8CF4A6E323436280438023E392E023E35B4D0E08EC4D8BEEBC0"));
-                var7_8.append(var1_2.toString());
-                Init.show(var7_8.toString());
-            }
-            if ((var7_8 = this.I) != null) {
-                com.github.catvod.spider.merge.i.b.a(var1_2, com.github.catvod.spider.merge.d.d.b(cYh.d("143520233432243F2F253234137868B8C3C38FFFEE7C7A64")), (SpiderApi)var7_8);
-            }
-            return "";
-        }
-        catch (Exception var8_7) {
-            ** continue;
-        }
+        return this.F;
     }
 
     /*
@@ -5821,343 +6102,251 @@ lbl118:
      * Could not resolve type clashes
      */
     public String xpDetailContent(List<String> var1_1) {
-        block54: {
-            block46: {
-                block51: {
-                    block47: {
-                        block48: {
-                            block49: {
-                                block50: {
-                                    block45: {
-                                        block44: {
-                                            var16_3 = cYh.d("437465");
-                                            var15_4 = cYh.d("3B741D750B7E");
-                                            var8_5 /* !! */  = var1_1.get(0).split(var15_4);
-                                            if (!var8_5 /* !! */ [2].startsWith(cYh.d("48")) || var8_5 /* !! */ [2].startsWith(cYh.d("487F"))) break block44;
-                                            var6_6 = new StringBuilder();
-                                            var6_6.append(this.f);
-                                            var6_6.append(var8_5 /* !! */ [2]);
-                                            var6_6 = var6_6.toString();
-                                            break block45;
+        block56: {
+            block55: {
+                block48: {
+                    block53: {
+                        block49: {
+                            block50: {
+                                block51: {
+                                    block52: {
+                                        block47: {
+                                            block46: {
+                                                var8_3 = var1_1.get(0).split("\\$\\$\\$");
+                                                if (!var8_3[2].startsWith("/") || var8_3[2].startsWith("//")) break block46;
+                                                var6_4 = new StringBuilder();
+                                                var6_4.append(this.f);
+                                                var6_4.append(var8_3[2]);
+                                                var6_4 = var6_4.toString();
+                                                break block47;
+                                            }
+                                            var6_4 = var8_3[2];
                                         }
-                                        var6_6 = var8_5 /* !! */ [2];
+                                        var15_5 = this.i0((String)var6_4);
+                                        var9_6 = this.G("\u64ad\u653e\u4e8c\u6b21\u622a\u53d6", "dtNode", "");
+                                        var7_14 = var8_3[1];
+                                        var16_15 = var8_3[0];
+                                        var13_16 = var7_14;
+                                        if (this.h) {
+                                            var13_16 = this.fixCover((String)var7_14, (String)var6_4);
+                                        }
+                                        var11_17 = this.G("\u7b80\u4ecb", "dtDesc", "");
+                                        var6_4 = this.G("\u5f71\u7247\u7c7b\u578b", "dtCate", "");
+                                        var10_18 = this.G("\u5f71\u7247\u5730\u533a", "dtArea", "");
+                                        var7_14 = this.G("\u5f71\u7247\u5e74\u4ee3", "dtYear", "");
+                                        var12_19 = this.G("\u5f71\u7247\u72b6\u6001", "dtMark", "");
+                                        var14_20 = this.G("\u5bfc\u6f14", "dtDirector", "");
+                                        var8_3 = this.H("\u4e3b\u6f14", "\u6f14\u5458", "dtActor", "");
+                                        var9_6 = (LinkedList)var15_5.a((String)var9_6);
+                                        var9_6 = var9_6.size() > 0 ? (com.github.catvod.spider.merge.fb.b)var9_6.get(0) : null;
+                                        var6_4 = var9_6.c((String)var6_4).a().trim();
+                                        try {
+                                            var7_14 = var9_6.c((String)var7_14).a().trim();
+                                        }
+                                        catch (Exception var9_12) {
+                                            break block52;
+                                        }
+                                        try {
+                                            var10_18 = var9_6.c(var10_18).a().trim();
+                                        }
+                                        catch (Exception var9_11) {
+                                            break block51;
+                                        }
+                                        try {
+                                            var12_19 = var9_6.c((String)var12_19).a().trim();
+                                        }
+                                        catch (Exception var9_10) {
+                                            var11_17 = var6_4;
+                                            break block50;
+                                        }
+                                        try {
+                                            var8_3 = var9_6.c((String)var8_3).a().trim();
+                                        }
+                                        catch (Exception var9_9) {
+                                            var8_3 = "";
+                                            var14_20 = "";
+                                            var11_17 = var6_4;
+                                            var6_4 = var14_20;
+                                            break block49;
+                                        }
+                                        try {
+                                            var14_20 = var9_6.c((String)var14_20).a().trim();
+                                        }
+                                        catch (Exception var9_8) {
+                                            var14_20 = "";
+                                            var11_17 = var6_4;
+                                            var6_4 = var14_20;
+                                            break block49;
+                                        }
+                                        try {
+                                            var9_6 = var9_6.c((String)var11_17).a().trim();
+                                            break block48;
+                                        }
+                                        catch (Exception var9_7) {
+                                            var11_17 = var6_4;
+                                            var6_4 = var14_20;
+                                            break block49;
+                                        }
+                                        catch (Exception var9_13) {
+                                            var6_4 = "";
+                                        }
                                     }
-                                    var17_7 = this.g0((String)var6_6);
-                                    var9_8 = this.D(cYh.d("81C2ECB7C3E483EACDB7FBFB81D8EBB4D8CC"), cYh.d("03240F3E333F"), "");
-                                    var7_16 = var8_5 /* !! */ [1];
-                                    var18_17 = var8_5 /* !! */ [0];
-                                    var13_18 = var7_16;
-                                    if (this.h) {
-                                        var13_18 = this.fixCover((String)var7_16, (String)var6_6);
-                                    }
-                                    var11_19 = this.D(cYh.d("80FEC1B5ECD1"), cYh.d("032405342439"), "");
-                                    var6_6 = this.D(cYh.d("82EDF0B6DEDD80E1FAB4C9D1"), cYh.d("03240230233F"), "");
-                                    var10_20 = this.D(cYh.d("82EDF0B6DEDD82CCF1B4DBE0"), cYh.d("03240023323B"), "");
-                                    var7_16 = this.D(cYh.d("82EDF0B6DEDD82E9F5B5ECF9"), cYh.d("032418343628"), "");
-                                    var12_21 = this.D(cYh.d("82EDF0B6DEDD80DAF7B7D7DB"), cYh.d("03240C302531"), "");
-                                    var14_22 = this.D(cYh.d("82FFFDB7EBCE"), cYh.d("03240538253F04242E23"), "");
-                                    var8_5 /* !! */  = this.E(cYh.d("83E8FAB7EBCE"), cYh.d("81ECD5B4C6C2"), cYh.d("03240032233515"), "");
-                                    var9_8 = (LinkedList)var17_7.a((String)var9_8);
-                                    var9_8 = var9_8.size() > 0 ? (com.github.catvod.spider.merge.f0.b)var9_8.get(0) : null;
-                                    var6_6 = var9_8.c((String)var6_6).a().trim();
-                                    try {
-                                        var7_16 = var9_8.c((String)var7_16).a().trim();
-                                    }
-                                    catch (Exception var9_14) {
-                                        break block50;
-                                    }
-                                    try {
-                                        var10_20 = var9_8.c(var10_20).a().trim();
-                                    }
-                                    catch (Exception var9_13) {
-                                        break block49;
-                                    }
-                                    try {
-                                        var12_21 = var9_8.c((String)var12_21).a().trim();
-                                    }
-                                    catch (Exception var9_12) {
-                                        var11_19 = var6_6;
-                                        break block48;
-                                    }
-                                    try {
-                                        var8_5 /* !! */  = var9_8.c((String)var8_5 /* !! */ ).a().trim();
-                                    }
-                                    catch (Exception var9_11) {
-                                        var8_5 /* !! */  = "";
-                                        var14_22 = "";
-                                        var11_19 = var6_6;
-                                        var6_6 = var14_22;
-                                        break block47;
-                                    }
-                                    try {
-                                        var14_22 = var9_8.c((String)var14_22).a().trim();
-                                    }
-                                    catch (Exception var9_10) {
-                                        var14_22 = "";
-                                        var11_19 = var6_6;
-                                        var6_6 = var14_22;
-                                        break block47;
-                                    }
-                                    try {
-                                        var9_8 = var9_8.c((String)var11_19).a().trim();
-                                        var11_19 = var6_6;
-                                        var6_6 = var14_22;
-                                        break block46;
-                                    }
-                                    catch (Exception var9_9) {
-                                        var11_19 = var6_6;
-                                        var6_6 = var14_22;
-                                        break block47;
-                                    }
-                                    catch (Exception var9_15) {
-                                        var6_6 = "";
-                                    }
+                                    var7_14 = "";
                                 }
-                                var7_16 = "";
+                                var10_18 = "";
+                                var11_17 = var6_4;
                             }
-                            var10_20 = "";
-                            var11_19 = var6_6;
+                            var12_19 = "";
+                            var8_3 = "";
+                            var6_4 = "";
                         }
-                        var12_21 = "";
-                        var8_5 /* !! */  = "";
-                        var6_6 = "";
+                        if (this.m) {
+                            var14_20 = new StringBuilder();
+                            var14_20.append(this.G);
+                            var14_20.append("\u8c03\u8bd5->xpDetailContent\u83b7\u53d6\u5217\u8868\u9519\uff1a");
+                            var14_20.append(var9_6.toString());
+                            Init.show(var14_20.toString());
+                        }
+                        if ((var14_20 = this.I) == null) break block53;
+                        var17_21 = new StringBuilder();
+                        var17_21.append("xpDetailContent\u83b7\u53d6\u5217\u8868\u9519\u8bef\uff01-->");
+                        var17_21.append(var9_6.toString());
+                        var14_20.log(var17_21.toString());
                     }
-                    if (this.m) {
-                        var14_22 = new StringBuilder();
-                        var14_22.append(this.G);
-                        var14_22.append(cYh.d("8FE0C2B9F8CF4A6E3921133F1331283D14350924243F23B2E9E7A4DEC1BFEFC7A9F0FFB3F3C9AEEDCD"));
-                        var14_22.append(var9_8.toString());
-                        Init.show(var14_22.toString());
-                    }
-                    if ((var14_22 = this.I) == null) break block51;
-                    var19_23 = new StringBuilder();
-                    var19_23.append(cYh.d("1F200534233B0E3C023E392E023E35B9D9ED82DFD7B4DFCD8FF1E9B8C3C38FFFEEBEEBDB4A7D7F"));
-                    var19_23.append(var9_8.toString());
-                    var14_22.log(var19_23.toString());
+                    var9_6 = "";
+                    var14_20 = var6_4;
+                    var6_4 = var11_17;
                 }
-                var9_8 = "";
-            }
-            var14_22 = new JSONObject();
-            var14_22.put(cYh.d("113F250E3E3E"), (Object)var1_1.get(0));
-            var14_22.put(cYh.d("113F250E393B0A35"), (Object)var18_17);
-            var14_22.put(cYh.d("113F250E273304"), (Object)var13_18);
-            var14_22.put(cYh.d("132931340834063D24"), (Object)var11_19);
-            var14_22.put(cYh.d("113F250E2E3F0622"), var7_16);
-            var14_22.put(cYh.d("113F250E36280231"), (Object)var10_20);
-            var14_22.put(cYh.d("113F250E253F0A31333A24"), (Object)var12_21);
-            var14_22.put(cYh.d("113F250E3639133F33"), (Object)var8_5 /* !! */ );
-            var14_22.put(cYh.d("113F250E3333153522253828"), var6_6);
-            var14_22.put(cYh.d("113F250E34350924243F23"), var9_8);
-            var6_6 = new ArrayList();
-            var8_5 /* !! */  = var17_7.a(this.D(cYh.d("80EAFEB9E0F581C5F1B6ECDE"), cYh.d("032407233837293F2534"), ""));
-            var2_24 = 0;
-            while (true) {
-                var7_16 = (LinkedList)var8_5 /* !! */ ;
-                var3_25 = var7_16.size();
-                var1_1 = cYh.d("4824242923724E");
-                if (var2_24 >= var3_25) break;
-                var6_6.add(((com.github.catvod.spider.merge.f0.b)var7_16.get(var2_24)).c(this.D(cYh.d("80EAFEB9E0F581F0C6B8F5C2"), cYh.d("03240723383729312C34"), (String)var1_1)).a().trim());
-                ++var2_24;
-                continue;
-                break;
-            }
-            var7_16 = new ArrayList();
-            var11_19 = this.D(cYh.d("81C2ECB7C3E481C5F1B6ECDE"), cYh.d("032414233B14083424"), "");
-            var8_5 /* !! */  = this.D(cYh.d("81C2ECB7C3E482D8D6B9F6F2"), cYh.d("032414233B0912320F3E333F"), cYh.d("487F20"));
-            var10_20 = this.D(cYh.d("81C2ECB7C3E481F0C6B8F5C2"), cYh.d("032414233B14063D24"), (String)var1_1);
-            var9_8 = this.D(cYh.d("81C2ECB7C3E48EC3FFB7D9FF"), cYh.d("032414233B1303"), cYh.d("48102923323C"));
-            var1_1 = var17_7.a((String)var11_19);
-            var3_25 = 0;
-            while (true) {
-                var11_19 = (LinkedList)var1_1;
-                if (var3_25 >= var11_19.size()) break;
-                var11_19 = ((com.github.catvod.spider.merge.f0.b)var11_19.get(var3_25)).b((String)var8_5 /* !! */ );
-                var12_21 = new ArrayList<String>();
-                var2_24 = 0;
+                var11_17 = new JSONObject();
+                var11_17.put("vod_id", (Object)var1_1.get(0));
+                var11_17.put("vod_name", (Object)var16_15);
+                var11_17.put("vod_pic", var13_16);
+                var11_17.put("type_name", var6_4);
+                var11_17.put("vod_year", (Object)var7_14);
+                var11_17.put("vod_area", (Object)var10_18);
+                var11_17.put("vod_remarks", (Object)var12_19);
+                var11_17.put("vod_actor", var8_3);
+                var11_17.put("vod_director", var14_20);
+                var11_17.put("vod_content", var9_6);
+                var6_4 = new ArrayList();
+                var1_1 = var15_5.a(this.G("\u7ebf\u8def\u6570\u7ec4", "dtFromNode", ""));
+                var2_22 = 0;
                 while (true) {
-                    block52: {
-                        var17_7 = (LinkedList)var11_19;
-                        if (var2_24 >= var17_7.size()) break;
-                        var4_26 = this.y != false ? var17_7.size() - 1 - var2_24 : var2_24;
-                        var13_18 = ((com.github.catvod.spider.merge.f0.b)var17_7.get(var4_26)).c(var10_20).a().trim();
-                        var18_17 = ((com.github.catvod.spider.merge.f0.b)var17_7.get(var4_26)).c((String)var9_8).a().trim();
-                        if (var18_17 == null) break block52;
-                        if (var18_17.length() < 1) break block52;
-                        var17_7 = new StringBuilder(var13_18);
-                        var17_7.append(cYh.d("43"));
-                        var17_7.append(var18_17);
-                        var12_21.add(var17_7.toString());
-                    }
-                    ++var2_24;
-                }
-                if (var12_21.size() == 0 && var6_6.size() > var3_25) {
-                    var6_6.set(var3_25, "");
-                }
-                var7_16.add(TextUtils.join((CharSequence)cYh.d("44"), var12_21));
-                ++var3_25;
-                continue;
-                break;
-            }
-            ** try [egrp 22[TRYBLOCK] [26 : 1310->1318)] { 
-lbl188:
-            // 3 sources
-
-            for (var2_24 = var6_6.size() - 1; var2_24 >= 0; --var2_24) {
-                if (!((String)var6_6.get(var2_24)).isEmpty()) continue;
-                var6_6.remove(var2_24);
-                continue;
-            }
-            var8_5 /* !! */  = TextUtils.join((CharSequence)var16_3, (Iterable)var6_6);
-            var9_8 = TextUtils.join((CharSequence)var16_3, var7_16);
-            if (this.I == null) ** GOTO lbl227
-            if (var7_16.size() >= 1) break block54;
-            var1_1 = this.I;
-            var6_6 = cYh.d("3F2020253FBCF1E9A4EDD8BCFBFAA9DFE0BFE8C6A4D9E7BCF5FDA7C5E9BFEFC7A9F0FFB5DBD1");
-            ** GOTO lbl225
-        }
-        var5_27 = this.m;
-        var7_16 = cYh.d("3F2020253FBCF1E9A4EDD8B2E9E7A4DEC1BCF5FDA7C5E9BFEFE0A4D9C0B2C6F86C7C697A");
-        if (!var5_27) ** GOTO lbl216
-        try {
-            block53: {
-                var1_1 = this.I;
-                var6_6 = new StringBuilder();
-                var6_6.append((String)var7_16);
-                var6_6.append((String)var9_8);
-lbl213:
-                // 2 sources
-
-                while (true) {
-                    var6_6 = var6_6.toString();
-                    break block53;
+                    var7_14 = (LinkedList)var1_1;
+                    var3_23 = var7_14.size();
+                    if (var2_22 >= var3_23) break;
+                    var6_4.add(((com.github.catvod.spider.merge.fb.b)var7_14.get(var2_22)).c(this.G("\u7ebf\u8def\u6807\u9898", "dtFromName", "/text()")).a().trim());
+                    ++var2_22;
+                    continue;
                     break;
                 }
-lbl216:
-                // 1 sources
+                var7_14 = new ArrayList<String>();
+                var1_1 = this.G("\u64ad\u653e\u6570\u7ec4", "dtUrlNode", "");
+                var10_18 = this.G("\u64ad\u653e\u5217\u8868", "dtUrlSubNode", "//a");
+                var9_6 = this.G("\u64ad\u653e\u6807\u9898", "dtUrlName", "/text()");
+                var8_3 = this.G("\u64ad\u653e\u94fe\u63a5", "dtUrlId", "/@href");
+                var1_1 = var15_5.a((String)var1_1);
+                var3_23 = 0;
+                while (true) {
+                    var12_19 = (LinkedList)var1_1;
+                    if (var3_23 >= var12_19.size()) break;
+                    var13_16 = ((com.github.catvod.spider.merge.fb.b)var12_19.get(var3_23)).b(var10_18);
+                    var12_19 = new ArrayList<String>();
+                    var2_22 = 0;
+                    while (true) {
+                        block54: {
+                            var15_5 = (LinkedList)var13_16;
+                            if (var2_22 >= var15_5.size()) break;
+                            var4_24 = this.y != false ? var15_5.size() - 1 - var2_22 : var2_22;
+                            var14_20 = ((com.github.catvod.spider.merge.fb.b)var15_5.get(var4_24)).c((String)var9_6).a().trim();
+                            var15_5 = ((com.github.catvod.spider.merge.fb.b)var15_5.get(var4_24)).c((String)var8_3).a().trim();
+                            if (var15_5 == null) break block54;
+                            if (var15_5.length() < 1) break block54;
+                            var16_15 = new StringBuilder((String)var14_20);
+                            var16_15.append("$");
+                            var16_15.append((String)var15_5);
+                            var12_19.add(var16_15.toString());
+                        }
+                        ++var2_22;
+                    }
+                    if (var12_19.size() == 0 && var6_4.size() > var3_23) {
+                        var6_4.set(var3_23, "");
+                    }
+                    var7_14.add(TextUtils.join((CharSequence)"#", var12_19));
+                    ++var3_23;
+                    continue;
+                    break;
+                }
+                ** try [egrp 22[TRYBLOCK] [26 : 1144->1152)] { 
+lbl185:
+                // 3 sources
 
-                var1_1 = this.I;
-                var6_6 = new StringBuilder();
-                var6_6.append((String)var7_16);
-                var6_6.append(var9_8.split(var15_4)[0]);
-                var6_6.append(cYh.d("497E6F7F7974"));
-                ** continue;
+                for (var2_22 = var6_4.size() - 1; var2_22 >= 0; --var2_22) {
+                    if (!((String)var6_4.get(var2_22)).isEmpty()) continue;
+                    var6_4.remove(var2_22);
+                    continue;
+                }
+                var9_6 = TextUtils.join((CharSequence)"$$$", (Iterable)var6_4);
+                var8_3 = TextUtils.join((CharSequence)"$$$", var7_14);
+                if (this.I == null) ** GOTO lbl223
+                if (var7_14.size() >= 1) break block55;
+                this.I.log("Xpath\u65b9\u5f0f\u672a\u83b7\u53d6\u5230\u64ad\u653e\u5217\u8868\uff01");
+                return "";
             }
-            var1_1.log((String)var6_6);
-lbl227:
+            var5_25 = this.m;
+            if (!var5_25) ** GOTO lbl211
+            var1_1 = this.I;
+            var6_4 = new StringBuilder();
+            var6_4.append("Xpath\u65b9\u5f0f\u83b7\u53d6\u64ad\u653e\u5230\u5217\u8868--> ");
+            var6_4.append((String)var8_3);
+lbl209:
             // 2 sources
 
-            var14_22.put(cYh.d("113F250E273606291E3725350A"), (Object)var8_5 /* !! */ );
-            var14_22.put(cYh.d("113F250E273606291E242536"), var9_8);
-            var1_1 = new JSONObject();
-            var6_6 = new JSONArray();
-            var6_6.put((Object)var14_22);
-            var1_1.put(cYh.d("0B393225"), var6_6);
-            var1_1 = var1_1.toString();
+            while (true) {
+                continue;
+                break;
+            }
+lbl211:
+            // 1 sources
+
+            var1_1 = this.I;
+            var6_4 = new StringBuilder();
+            var6_4.append("Xpath\u65b9\u5f0f\u83b7\u53d6\u64ad\u653e\u5230\u5217\u8868--> ");
+            var6_4.append(var8_3.split("\\$\\$\\$")[0]);
+            var6_4.append("......");
+            ** continue;
+            var6_4 = var6_4.toString();
+            var1_1.log((String)var6_4);
+            break block56;
+lbl223:
+            // 1 sources
+
+            if (var7_14.size() >= 1) break block56;
+            return "";
+        }
+        try {
+            var11_17.put("vod_play_from", var9_6);
+            var11_17.put("vod_play_url", var8_3);
+            var6_4 = new JSONObject();
+            var1_1 = new JSONArray();
+            var1_1.put(var11_17);
+            var6_4.put("list", (Object)var1_1);
+            var1_1 = var6_4.toString();
             return var1_1;
         }
 lbl239:
-        // 18 sources
+        // 20 sources
 
         catch (Exception var1_2) {
             if (this.m) {
-                var6_6 = new StringBuilder();
-                var6_6.append(this.G);
-                var6_6.append(cYh.d("8FE0C2B9F8CF4A6E3921133F1331283D14350924243F23BFE0EAA8C5CEB5DBCA"));
-                var6_6.append(var1_2.toString());
-                Init.show(var6_6.toString());
+                var6_4 = new StringBuilder();
+                var6_4.append(this.G);
+                var6_4.append("\u8c03\u8bd5->xpDetailContent\u51fa\u9519\uff1a");
+                var6_4.append(var1_2.toString());
+                Init.show(var6_4.toString());
             }
-            if ((var6_6 = this.I) != null) {
-                com.github.catvod.spider.merge.i.b.a(var1_2, com.github.catvod.spider.merge.d.d.b(cYh.d("1F200534233B0E3C023E392E023E35797EB3F3C9A9FEF8B5DBD16C7C69")), (SpiderApi)var6_6);
-            }
-            return "";
-        }
-    }
-
-    /*
-     * Unable to fully structure code
-     */
-    protected final String z(String var1_1) {
-        block17: {
-            block20: {
-                block19: {
-                    block16: {
-                        var13_3 = cYh.d("48");
-                        var7_4 = cYh.d("322324237A1B00352F25");
-                        var8_5 = cYh.d("27");
-                        var12_6 = cYh.d("35352734253F15");
-                        var6_7 = cYh.d("3B74");
-                        var5_8 = this.E(cYh.d("81C2ECB7C3E48FFFF6B7E6D882F4F5"), cYh.d("80CBF5B7D9FF81C2ECB7C3E480CBF5B8C4E48FF7C7B8F5CB8FFFF6B7E6D882F4F5"), cYh.d("173C202808320231253425"), "").trim();
-                        var2_9 = var5_8.length();
-                        var11_10 = cYh.d("44");
-                        var10_11 = cYh.d("43");
-                        var4_12 = var5_8;
-                        if (var2_9 <= 1) ** GOTO lbl17
-                        var4_12 = var5_8;
-                        if (var5_8.indexOf(var8_5) > 0) {
-                            var4_12 = var5_8.replace(var8_5, var10_11).replace(cYh.d("4176"), var11_10).replace(cYh.d("88ECDABEEBC1"), cYh.d("5C"));
-                        }
-lbl17:
-                        // 4 sources
-
-                        if (!var4_12.startsWith(cYh.d("1C")) || !var4_12.endsWith(cYh.d("1A"))) break block16;
-                        return var4_12;
-                    }
-                    var5_8 = new JSONObject();
-                    var9_13 = this.J((String)var4_12);
-                    var5_8.put(var7_4, (Object)var9_13);
-                    var2_9 = this.s.indexOf(cYh.d("24"));
-                    var8_5 = cYh.d("243F2E3A3E3F");
-                    if (var2_9 < 0) ** GOTO lbl32
-                    if (this.n(var1_1).length() > 1) {
-                        var5_8.put(var8_5, (Object)this.n(var1_1));
-                    }
-lbl32:
-                    // 4 sources
-
-                    if (var4_12.indexOf(var12_6) < 0 && this.s.indexOf(cYh.d("3561")) >= 0) break block19;
-                    if (var4_12.indexOf(var12_6) >= 0 || this.s.indexOf(cYh.d("35")) < 0) break block20;
-                    var14_14 = new StringBuilder();
-                    var15_15 = new StringBuilder();
-                    var15_15.append(var1_1);
-                    var15_15.append(var13_3);
-                    var14_14.append(var15_15.toString().replaceAll(cYh.d("497A6939232E17237E0D6D75480B1F7E0A714E7F6F7B"), cYh.d("4361")));
-                    var14_14.append(var13_3);
-                    var1_1 = var14_14.toString();
-                }
-                var5_8.put(var12_6, (Object)var1_1);
-            }
-            if ((var1_1 = var4_12.replaceAll(cYh.d("497AA6C5E2B2E3C162"), "").replaceAll(cYh.d("497AA7D8DCBCFBEA62"), "").replaceAll(cYh.d("497A1E041679"), "")).indexOf(var10_11) < 0) break block17;
-            for (String var1_1 : var1_1.split(var11_10)) {
-                block18: {
-                    if (var7_4.equals(var1_1.split(var6_7)[0]) && var9_13.length() > 0 || var8_5.equals(var1_1.split(var6_7)[0]) || cYh.d("043F2E3A3E3F").equals(var1_1.split(var6_7)[0])) continue;
-                    var10_11 = var1_1.split(var6_7)[0];
-                    if (!var1_1.split(var6_7)[1].equals(cYh.d("80F9FB"))) break block18;
-                    var1_1 = "";
-                    ** GOTO lbl60
-                }
-                var1_1 = var1_1.split(var6_7)[1];
-lbl60:
-                // 2 sources
-
-                var5_8.put(var10_11, (Object)var1_1);
-            }
-        }
-        try {
-            var1_1 = var5_8.toString();
-            return var1_1;
-        }
-        catch (JSONException var1_2) {
-            if (this.m) {
-                var4_12 = new StringBuilder();
-                var4_12.append(this.G);
-                var4_12.append(cYh.d("8FE0C2B9F8CF4A6E2634230A0B313819323B03353322B2DDDDB9D5C8B8E6FD"));
-                var4_12.append(var1_2.toString());
-                Init.show(var4_12.toString());
-            }
-            if ((var5_8 = this.I) != null) {
-                var4_12 = com.github.catvod.spider.merge.d.d.b(cYh.d("003535013B3B1E182430333F15236978BECEFEB8EEFEB8E6E67D6C6F"));
-                var4_12.append(var1_2.toString());
-                var5_8.log(var4_12.toString());
+            if ((var6_4 = this.I) != null) {
+                com.github.catvod.spider.merge.Dw.f.a(var1_2, com.github.catvod.spider.merge.ka.d.b("xpDetailContent()\u9519\u8bef\uff01-->"), (SpiderApi)var6_4);
             }
             return "";
         }

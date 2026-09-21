@@ -1,0 +1,27 @@
+/*
+ * Decompiled with CFR 0.152.
+ */
+package com.github.catvod.spider.merge;
+
+import com.github.catvod.spider.merge.SOY;
+import com.github.catvod.spider.merge.\u0155;
+import com.github.catvod.spider.merge.\u03aa;
+import com.github.catvod.spider.merge.\u07e0;
+import java.util.List;
+
+public class \u03af
+implements \u03aa {
+    @Override
+    public String name() {
+        return SOY.d("0926231F1A10573E3418130312");
+    }
+
+    @Override
+    public \u07e0 \u037f(\u0155 \u01552, List<\u07e0> list) {
+        if (list != null && list.size() != 0) {
+            return \u07e0.\u058f(list.get(0).\u052d().length());
+        }
+        return \u07e0.\u058f(0);
+    }
+}
+

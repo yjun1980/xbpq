@@ -1,44 +1,31 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.content.Context
+ *  android.util.AttributeSet
+ *  android.view.ViewGroup$LayoutParams
+ *  android.widget.LinearLayout$LayoutParams
  */
 package com.github.catvod.spider.merge.n;
 
-import com.github.catvod.spider.merge.n.a;
-import com.github.catvod.spider.merge.n.u;
-import com.github.catvod.spider.merge.n.x;
-import java.util.Set;
+import android.content.Context;
+import android.util.AttributeSet;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
-final class w
-extends a {
-    w() {
-        super((u)null);
+public class w
+extends LinearLayout.LayoutParams {
+    public w(int n2) {
+        super(n2, -2);
     }
 
-    /*
-     * Ignored method signature, as it can't be verified against descriptor
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
-    @Override
-    final void d(x x2, Set set) {
-        synchronized (x2) {
-            if (x.w(x2) == null) {
-                x.x(x2, set);
-            }
-            return;
-        }
+    public w(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
     }
 
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
-    final int e(x<?> x2) {
-        synchronized (x2) {
-            return x.y(x2);
-        }
+    public w(ViewGroup.LayoutParams layoutParams) {
+        super(layoutParams);
     }
 }
 

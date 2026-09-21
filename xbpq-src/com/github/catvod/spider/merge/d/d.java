@@ -1,20 +1,27 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.os.Parcel
+ *  android.os.Parcelable$Creator
  */
 package com.github.catvod.spider.merge.d;
 
-public final class d {
-    public static String a(String string, long l2) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(string);
-        stringBuilder.append(l2);
-        return stringBuilder.toString();
+import android.os.Parcel;
+import android.os.Parcelable;
+import com.github.catvod.spider.merge.d.f;
+
+final class d
+implements Parcelable.Creator<f> {
+    d() {
     }
 
-    public static StringBuilder b(String string) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(string);
-        return stringBuilder;
+    public final Object createFromParcel(Parcel parcel) {
+        return new f(parcel);
+    }
+
+    public final Object[] newArray(int n2) {
+        return new f[n2];
     }
 }
 

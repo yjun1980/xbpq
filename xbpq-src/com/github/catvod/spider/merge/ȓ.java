@@ -1,0 +1,33 @@
+/*
+ * Decompiled with CFR 0.152.
+ */
+package com.github.catvod.spider.merge;
+
+import com.github.catvod.spider.merge.SOY;
+import com.github.catvod.spider.merge.\u0130;
+import com.github.catvod.spider.merge.\u013a;
+import com.github.catvod.spider.merge.\u07e0;
+import com.github.catvod.spider.merge.\u0e33;
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+public class \u0213
+implements \u0130 {
+    @Override
+    public String name() {
+        return SOY.d("0A3323131A03");
+    }
+
+    @Override
+    public \u07e0 \u037f(\u0e33 object) {
+        LinkedList<\u013a> linkedList = new LinkedList<\u013a>();
+        \u0e33 \u0e332 = new \u0e33();
+        object = ((ArrayList)object).iterator();
+        while (object.hasNext()) {
+            linkedList.add(((\u013a)object.next()).\u08ad());
+        }
+        \u0e332.addAll(linkedList);
+        return \u07e0.\u058f(\u0e332);
+    }
+}
+

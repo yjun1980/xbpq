@@ -1,24 +1,34 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  com.google.gson.annotations.SerializedName
  */
 package com.github.catvod.spider.merge.O;
 
-import com.github.catvod.spider.merge.O.j;
+import com.github.catvod.spider.merge.G1.d;
+import com.github.catvod.spider.merge.O.b;
+import com.google.gson.annotations.SerializedName;
 
-public final class h
-implements j {
-    public static final h c = new h();
+public final class h {
+    @SerializedName(value="code")
+    private Integer a;
+    @SerializedName(value="message")
+    private String b;
+    @SerializedName(value="data")
+    private b c;
 
-    private h() {
+    public static h b(String string) {
+        return (h)d.a(string, h.class);
     }
 
-    @Override
-    public final int a() {
-        return 0;
-    }
-
-    @Override
-    public final void b() {
+    public final b a() {
+        b b2;
+        b b3 = b2 = this.c;
+        if (b2 == null) {
+            b3 = new b();
+        }
+        return b3;
     }
 }
 

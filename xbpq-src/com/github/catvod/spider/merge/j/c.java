@@ -2,27 +2,29 @@
  * Decompiled with CFR 0.152.
  * 
  * Could not load the following classes:
- *  android.content.DialogInterface
- *  android.content.DialogInterface$OnClickListener
+ *  androidx.vectordrawable.graphics.drawable.e
  */
 package com.github.catvod.spider.merge.j;
 
-import android.content.DialogInterface;
-import com.github.catvod.spider.merge.j.j;
-import com.github.catvod.spider.merge.j.k;
+import androidx.vectordrawable.graphics.drawable.e;
+import com.github.catvod.spider.merge.j.f;
 
-public final class c
-implements DialogInterface.OnClickListener {
-    public final String a;
-    public final j b;
+final class c
+extends f {
+    private final e a;
 
-    public /* synthetic */ c(String string, j j2) {
-        this.a = string;
-        this.b = j2;
+    c(e e2) {
+        this.a = e2;
     }
 
-    public final void onClick(DialogInterface dialogInterface, int n2) {
-        k.b(this.a, this.b, dialogInterface);
+    @Override
+    public final void c() {
+        this.a.start();
+    }
+
+    @Override
+    public final void d() {
+        this.a.stop();
     }
 }
 

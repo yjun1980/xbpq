@@ -3,11 +3,10 @@
  */
 package com.github.catvod.spider.merge.l;
 
-import com.github.catvod.spider.merge.l.g;
+@Deprecated
+public interface b {
+    public void b();
 
-abstract class b
-extends g {
-    b() {
-    }
+    public void c();
 }
 

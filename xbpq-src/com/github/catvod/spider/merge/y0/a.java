@@ -1,14 +1,23 @@
 /*
  * Decompiled with CFR 0.152.
- * 
- * Could not load the following classes:
- *  okhttp3.Response
  */
 package com.github.catvod.spider.merge.y0;
 
-import okhttp3.Response;
+import com.github.catvod.spider.merge.y.e;
+import com.github.catvod.spider.merge.y0.b;
+import com.github.catvod.spider.merge.y0.c;
 
-public interface a<T> {
-    public T onParse(Response var1);
+public final class a
+implements b {
+    private final String a;
+
+    public a(e e2) {
+        this.a = com.github.catvod.spider.merge.g.a.b(e2.u("correctedQuery"));
+    }
+
+    @Override
+    public final c type() {
+        return c.b;
+    }
 }
 

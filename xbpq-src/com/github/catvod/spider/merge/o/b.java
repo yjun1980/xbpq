@@ -3,11 +3,21 @@
  */
 package com.github.catvod.spider.merge.o;
 
-import com.github.catvod.spider.merge.o.a;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public final class b {
-    public static Throwable a(a a2) {
-        return a2.b();
+final class b
+implements ThreadFactory {
+    private final AtomicInteger a = new AtomicInteger(0);
+
+    b() {
+    }
+
+    @Override
+    public final Thread newThread(Runnable runnable) {
+        runnable = new Thread(runnable);
+        ((Thread)runnable).setName(String.format("arch_disk_io_%d", this.a.getAndIncrement()));
+        return runnable;
     }
 }
 

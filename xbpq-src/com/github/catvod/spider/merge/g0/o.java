@@ -1,52 +1,25 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.content.DialogInterface
+ *  android.content.DialogInterface$OnCancelListener
  */
 package com.github.catvod.spider.merge.g0;
 
-import com.github.catvod.spider.merge.P.D;
-import com.github.catvod.spider.merge.P.x;
-import com.github.catvod.spider.merge.T.c;
-import com.github.catvod.spider.merge.T.d;
-import com.github.catvod.spider.merge.g0.E;
-import com.github.catvod.spider.merge.g0.b;
+import android.content.DialogInterface;
+import com.github.catvod.spider.TgYunDouBanPan;
 
 public final class o
-extends x {
-    public D g;
+implements DialogInterface.OnCancelListener {
+    public final TgYunDouBanPan a;
 
-    public o(x x2, int n2) {
-        super(x2, n2);
+    public /* synthetic */ o(TgYunDouBanPan tgYunDouBanPan) {
+        this.a = tgYunDouBanPan;
     }
 
-    @Override
-    public final <T> T e(d<? extends T> d2) {
-        if (d2 instanceof E) {
-            return ((E)d2).w(this);
-        }
-        return d2.A(this);
-    }
-
-    @Override
-    public final int f() {
-        return 20;
-    }
-
-    @Override
-    public final void i(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).I();
-        }
-    }
-
-    @Override
-    public final void j(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).L();
-        }
-    }
-
-    public final o n() {
-        return (o)this.k(o.class);
+    public final void onCancel(DialogInterface dialogInterface) {
+        TgYunDouBanPan.q(this.a);
     }
 }
 

@@ -1,39 +1,30 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.content.Context
+ *  android.util.AttributeSet
+ *  android.view.ViewGroup$LayoutParams
+ *  android.view.ViewGroup$MarginLayoutParams
  */
 package com.github.catvod.spider.merge.n;
 
-import com.github.catvod.spider.merge.n.W;
-import com.github.catvod.spider.merge.n.e;
-import com.github.catvod.spider.merge.n.n;
-import com.github.catvod.spider.merge.n.o;
-import com.github.catvod.spider.merge.n.u;
-import com.github.catvod.spider.merge.n.x;
-import java.util.Set;
+import android.content.Context;
+import android.util.AttributeSet;
+import android.view.ViewGroup;
 
-abstract class a {
-    public /* synthetic */ a(W w2) {
+public final class a
+extends ViewGroup.MarginLayoutParams {
+    public a() {
+        super(-1, -1);
     }
 
-    public /* synthetic */ a(u u2) {
+    public a(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
     }
 
-    abstract boolean a(o var1, e var2, e var3);
-
-    abstract boolean b(o var1, Object var2, Object var3);
-
-    abstract boolean c(o var1, n var2, n var3);
-
-    abstract void d(x var1, Set var2);
-
-    abstract int e(x var1);
-
-    abstract e f(o var1);
-
-    abstract n g(o var1);
-
-    abstract void h(n var1, n var2);
-
-    abstract void i(n var1, Thread var2);
+    public a(ViewGroup.LayoutParams layoutParams) {
+        super(layoutParams);
+    }
 }
 

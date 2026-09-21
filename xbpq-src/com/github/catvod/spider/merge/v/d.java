@@ -3,44 +3,35 @@
  */
 package com.github.catvod.spider.merge.v;
 
-import com.github.catvod.spider.merge.v.c;
+public final class d
+extends Enum<d> {
+    public static final /* enum */ d a;
+    public static final /* enum */ d b;
+    public static final /* enum */ d c;
+    public static final /* enum */ d d;
+    public static final /* enum */ d e;
+    private static final d[] f;
 
-public final class d {
-    private final int a;
-    private final c[] b;
-
-    d(int n2, c ... cArray) {
-        this.a = n2;
-        this.b = cArray;
+    static {
+        d d2;
+        d d3;
+        d d4;
+        d d5;
+        d d6;
+        a = d6 = new d();
+        b = d5 = new d();
+        c = d4 = new d();
+        d = d3 = new d();
+        e = d2 = new d();
+        f = new d[]{d6, d5, d4, d3, d2};
     }
 
-    public final c[] a() {
-        return this.b;
+    public static d valueOf(String string) {
+        return Enum.valueOf(d.class, string);
     }
 
-    public final int b() {
-        return this.a;
-    }
-
-    public final int c() {
-        c[] cArray = this.b;
-        int n2 = cArray.length;
-        int n3 = 0;
-        for (int i2 = 0; i2 < n2; ++i2) {
-            n3 += cArray[i2].a();
-        }
-        return n3;
-    }
-
-    public final int d() {
-        int n2 = this.a;
-        c[] cArray = this.b;
-        int n3 = cArray.length;
-        int n4 = 0;
-        for (int i2 = 0; i2 < n3; ++i2) {
-            n4 += cArray[i2].a();
-        }
-        return n2 * n4;
+    public static d[] values() {
+        return (d[])f.clone();
     }
 }
 

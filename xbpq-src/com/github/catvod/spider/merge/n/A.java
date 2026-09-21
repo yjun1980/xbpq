@@ -1,38 +1,42 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.content.Context
+ *  android.content.res.Resources
+ *  android.content.res.Resources$Theme
+ *  android.graphics.drawable.Drawable
+ *  android.util.AttributeSet
+ *  android.util.Log
+ *  androidx.vectordrawable.graphics.drawable.e
+ *  org.xmlpull.v1.XmlPullParser
  */
 package com.github.catvod.spider.merge.n;
 
-import com.github.catvod.spider.merge.cYh;
-import java.util.concurrent.Executor;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.util.AttributeSet;
+import android.util.Log;
+import androidx.vectordrawable.graphics.drawable.e;
+import com.github.catvod.spider.merge.n.D;
+import org.xmlpull.v1.XmlPullParser;
 
 final class A
-extends Enum<A>
-implements Executor {
-    public static final /* enum */ A c;
-    private static final A[] d;
-
-    static {
-        A a2;
-        c = a2 = new A();
-        d = new A[]{a2};
-    }
-
-    public static A valueOf(String string) {
-        return Enum.valueOf(A.class, string);
-    }
-
-    public static A[] values() {
-        return (A[])d.clone();
+implements D {
+    A() {
     }
 
     @Override
-    public final void execute(Runnable runnable) {
-        runnable.run();
-    }
-
-    public final String toString() {
-        return cYh.d("2A3F33341222023334253828147E2538253F04240429323912242E237F73");
+    public final Drawable a(Context context, XmlPullParser xmlPullParser, AttributeSet attributeSet, Resources.Theme theme) {
+        try {
+            context = e.a((Context)context, (Resources)context.getResources(), (XmlPullParser)xmlPullParser, (AttributeSet)attributeSet, (Resources.Theme)theme);
+            return context;
+        }
+        catch (Exception exception) {
+            Log.e((String)"AvdcInflateDelegate", (String)"Exception while inflating <animated-vector>", (Throwable)exception);
+            return null;
+        }
     }
 }
 

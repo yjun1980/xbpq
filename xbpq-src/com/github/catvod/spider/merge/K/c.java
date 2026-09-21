@@ -1,24 +1,29 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  com.google.gson.annotations.SerializedName
  */
 package com.github.catvod.spider.merge.K;
 
-import com.github.catvod.spider.merge.E.f;
-import com.github.catvod.spider.merge.cYh;
-import java.nio.charset.Charset;
+import com.github.catvod.spider.merge.K.b;
+import com.github.catvod.spider.merge.i0.h;
+import com.google.gson.annotations.SerializedName;
+import java.util.List;
 
 public final class c {
-    public static final Charset a;
+    @SerializedName(value="key")
+    private String a;
+    @SerializedName(value="name")
+    private String b;
+    @SerializedName(value="value")
+    private List<b> c;
 
-    static {
-        Charset charset = Charset.forName(cYh.d("3204077C6F"));
-        f.d(charset, cYh.d("013F331F363702786304031C4A686378"));
-        a = charset;
-        f.d(Charset.forName(cYh.d("3204077C666C")), cYh.d("013F331F363702786304031C4A6177737E"));
-        f.d(Charset.forName(cYh.d("3204077C666C2515")), cYh.d("013F331F363702786304031C4A61771312784E"));
-        f.d(Charset.forName(cYh.d("3204077C666C2B15")), cYh.d("013F331F363702786304031C4A61771D12784E"));
-        f.d(Charset.forName(cYh.d("32036C1004192E19")), cYh.d("013F331F3637027863040477260302181E784E"));
-        f.d(Charset.forName(cYh.d("2E030E7C6F6252696C60")), cYh.d("013F331F36370278631804154A6879646E77567268"));
+    public c(String string, String string2, List<b> list) {
+        this.a = string;
+        int n2 = h.a;
+        this.b = string2;
+        this.c = list;
     }
 }
 

@@ -1,25 +1,25 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  com.google.gson.annotations.SerializedName
  */
 package com.github.catvod.spider.merge.O;
 
-import com.github.catvod.spider.merge.O.h;
-import com.github.catvod.spider.merge.O.j;
+import com.google.gson.annotations.SerializedName;
 
-public abstract class i
-implements Runnable {
-    public long c;
-    public j d;
+public final class i {
+    @SerializedName(value="Initialization")
+    private String a;
+    @SerializedName(value="indexRange")
+    private String b;
 
-    public i() {
-        h h2 = h.c;
-        this.c = 0L;
-        this.d = h2;
+    public final String a() {
+        return this.b;
     }
 
-    public i(long l2, j j2) {
-        this.c = l2;
-        this.d = j2;
+    public final String b() {
+        return this.a;
     }
 }
 

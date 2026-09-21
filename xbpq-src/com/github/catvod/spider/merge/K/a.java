@@ -1,26 +1,46 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  com.google.gson.annotations.SerializedName
  */
 package com.github.catvod.spider.merge.K;
 
-import com.github.catvod.spider.merge.H.c;
-import com.github.catvod.spider.merge.K.b;
-import com.github.catvod.spider.merge.cYh;
+import com.github.catvod.spider.merge.i0.h;
+import com.google.gson.annotations.SerializedName;
 
-public final class a
-extends b {
-    public static int b(int n2) {
-        Object object = new c(2, 36);
-        boolean bl = ((com.github.catvod.spider.merge.H.a)object).a() <= n2 && n2 <= ((com.github.catvod.spider.merge.H.a)object).b();
-        if (bl) {
-            return n2;
+public final class a {
+    @SerializedName(value="type_id")
+    private String a;
+    @SerializedName(value="type_name")
+    private String b;
+    @SerializedName(value="type_flag")
+    private String c;
+
+    public a(String string, String string2) {
+        this(string, string2, "");
+    }
+
+    public a(String string, String string2, String string3) {
+        this.a = string;
+        int n2 = h.a;
+        this.b = string2;
+        this.c = string3;
+    }
+
+    public final String a() {
+        return this.a;
+    }
+
+    public final boolean equals(Object object) {
+        if (this == object) {
+            return true;
         }
-        object = new StringBuilder();
-        ((StringBuilder)object).append(cYh.d("153125382F7A"));
-        ((StringBuilder)object).append(n2);
-        ((StringBuilder)object).append(cYh.d("47272022773408246138397A11312D38337A15312F36327A"));
-        ((StringBuilder)object).append(new c(2, 36));
-        throw new IllegalArgumentException(((StringBuilder)object).toString());
+        if (!(object instanceof a)) {
+            return false;
+        }
+        object = (a)object;
+        return this.a.equals(((a)object).a);
     }
 }
 

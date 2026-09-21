@@ -3,34 +3,83 @@
  */
 package com.github.catvod.spider.merge.i0;
 
-import com.github.catvod.spider.merge.cYh;
-import com.github.catvod.spider.merge.e0.g;
-import com.github.catvod.spider.merge.h0.a;
-import com.github.catvod.spider.merge.h0.e;
-import com.github.catvod.spider.merge.j.l;
-import java.util.AbstractCollection;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.github.catvod.spider.merge.C.a;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public final class i
-implements a {
-    @Override
+public final class i {
+    private String a;
+    private String b;
+    private String c;
+    private String d;
+    private int e = -1;
+
     public final String a() {
-        return cYh.d("013F2D3D382D0E3E267C2433053C283F30");
+        return this.d;
     }
 
-    @Override
-    public final e b(g g2) {
-        LinkedList<com.github.catvod.spider.merge.c0.l> linkedList = new LinkedList<com.github.catvod.spider.merge.c0.l>();
-        Iterator iterator = ((AbstractCollection)g2).iterator();
-        while (iterator.hasNext()) {
-            g2 = l.b((com.github.catvod.spider.merge.c0.l)iterator.next());
-            if (g2 == null) continue;
-            linkedList.addAll(g2);
+    public final String b() {
+        return this.c;
+    }
+
+    public final int c() {
+        return this.e;
+    }
+
+    public final String d() {
+        return this.a;
+    }
+
+    public final String e() {
+        return this.b;
+    }
+
+    public final boolean f(String object) {
+        if (object != null && !((String)object).isEmpty()) {
+            object = Pattern.compile("^(https?|socks[45]?):\\/\\/(?:([^:@\\s]+):([^@\\s]+)@)?([^:@\\s]+):(\\d+)$").matcher((CharSequence)object);
+            if (((Matcher)object).find()) {
+                this.a = ((Matcher)object).group(1);
+                this.b = ((Matcher)object).group(2);
+                this.c = ((Matcher)object).group(3);
+                this.d = ((Matcher)object).group(4);
+                try {
+                    this.e = Integer.parseInt(((Matcher)object).group(5));
+                    return true;
+                }
+                catch (NumberFormatException numberFormatException) {
+                    return false;
+                }
+            }
+            this.a = null;
+            this.b = null;
+            this.c = null;
+            this.d = null;
+            this.e = -1;
         }
-        g2 = new g();
-        ((AbstractCollection)g2).addAll(linkedList);
-        return new e(g2);
+        return false;
+    }
+
+    public final String toString() {
+        StringBuilder stringBuilder = com.github.catvod.spider.merge.C.a.c("UniversalProxyParser{scheme='");
+        stringBuilder.append(this.a);
+        stringBuilder.append('\'');
+        stringBuilder.append(", username='");
+        stringBuilder.append(this.b);
+        stringBuilder.append('\'');
+        stringBuilder.append(", password='");
+        String string = this.c != null ? "******" : "null";
+        stringBuilder.append(string);
+        stringBuilder.append('\'');
+        stringBuilder.append(", host='");
+        stringBuilder.append(this.d);
+        stringBuilder.append('\'');
+        stringBuilder.append(", port=");
+        stringBuilder.append(this.e);
+        stringBuilder.append(", hasCredentials=");
+        boolean bl = this.b != null && this.c != null;
+        stringBuilder.append(bl);
+        stringBuilder.append('}');
+        return stringBuilder.toString();
     }
 }
 

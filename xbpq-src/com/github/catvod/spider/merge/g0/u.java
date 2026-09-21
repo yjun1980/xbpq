@@ -3,43 +3,32 @@
  */
 package com.github.catvod.spider.merge.g0;
 
-import com.github.catvod.spider.merge.P.x;
-import com.github.catvod.spider.merge.T.c;
-import com.github.catvod.spider.merge.T.d;
-import com.github.catvod.spider.merge.g0.E;
-import com.github.catvod.spider.merge.g0.b;
+import com.github.catvod.spider.merge.B0.f;
+import com.github.catvod.spider.merge.q1.c;
+import java.util.List;
+import java.util.function.Consumer;
 
 public final class u
-extends x {
-    public u(x x2, int n2) {
-        super(x2, n2);
+implements Consumer {
+    public final int a;
+    public final Object b;
+
+    public /* synthetic */ u(Object object, int n2) {
+        this.a = n2;
+        this.b = object;
     }
 
-    @Override
-    public final <T> T e(d<? extends T> d2) {
-        if (d2 instanceof E) {
-            return ((E)d2).m(this);
+    public final void accept(Object object) {
+        switch (this.a) {
+            default: {
+                break;
+            }
+            case 0: {
+                ((List)this.b).add((f)object);
+                return;
+            }
         }
-        return d2.A(this);
-    }
-
-    @Override
-    public final int f() {
-        return 7;
-    }
-
-    @Override
-    public final void i(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).m();
-        }
-    }
-
-    @Override
-    public final void j(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).u();
-        }
+        ((c)this.b).d((com.github.catvod.spider.merge.s1.f)object);
     }
 }
 

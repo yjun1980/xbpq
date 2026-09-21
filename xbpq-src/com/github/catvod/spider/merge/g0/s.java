@@ -3,43 +3,24 @@
  */
 package com.github.catvod.spider.merge.g0;
 
-import com.github.catvod.spider.merge.P.x;
-import com.github.catvod.spider.merge.T.c;
-import com.github.catvod.spider.merge.T.d;
-import com.github.catvod.spider.merge.g0.E;
-import com.github.catvod.spider.merge.g0.b;
+import com.github.catvod.spider.TgYunPanLocal;
+import java.util.List;
+import java.util.function.Consumer;
 
 public final class s
-extends x {
-    public s(x x2, int n2) {
-        super(x2, n2);
+implements Consumer {
+    public final TgYunPanLocal a;
+    public final String b;
+    public final List c;
+
+    public /* synthetic */ s(TgYunPanLocal tgYunPanLocal, String string, List list) {
+        this.a = tgYunPanLocal;
+        this.b = string;
+        this.c = list;
     }
 
-    @Override
-    public final <T> T e(d<? extends T> d2) {
-        if (d2 instanceof E) {
-            return ((E)d2).p(this);
-        }
-        return d2.A(this);
-    }
-
-    @Override
-    public final int f() {
-        return 15;
-    }
-
-    @Override
-    public final void i(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).k();
-        }
-    }
-
-    @Override
-    public final void j(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).P();
-        }
+    public final void accept(Object object) {
+        TgYunPanLocal.o(this.a, this.b, this.c, (String)object);
     }
 }
 

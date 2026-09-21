@@ -1,15 +1,14 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.content.res.Resources
  */
 package com.github.catvod.spider.merge.n;
 
-final class K
-implements Runnable {
-    K() {
-    }
+import android.content.res.Resources;
 
-    @Override
-    public final void run() {
-    }
+final class K
+extends Resources {
 }
 

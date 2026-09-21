@@ -6,7 +6,6 @@
  *  android.text.TextUtils
  *  com.github.catvod.crawler.Spider
  *  com.github.catvod.crawler.SpiderDebug
- *  okhttp3.Response
  *  org.json.JSONArray
  *  org.json.JSONException
  *  org.json.JSONObject
@@ -17,44 +16,45 @@ import android.content.Context;
 import android.text.TextUtils;
 import com.github.catvod.crawler.Spider;
 import com.github.catvod.crawler.SpiderDebug;
-import com.github.catvod.spider.AppYsV2$1;
-import com.github.catvod.spider.merge.b.n;
-import com.github.catvod.spider.merge.cYh;
-import com.github.catvod.spider.merge.d.d;
-import com.github.catvod.spider.merge.j.m;
-import com.github.catvod.spider.merge.k.g;
+import com.github.catvod.spider.merge.SOY;
+import com.github.catvod.spider.merge.\u0786;
+import com.github.catvod.spider.merge.\u078c;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Pattern;
-import okhttp3.Response;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class AppYsV2
 extends Spider {
-    private static final Pattern d = Pattern.compile(cYh.d("0620280D792A0F206E7F7D6548262E35"));
-    private static final Pattern e;
-    private static final Pattern f;
-    protected static final Pattern[] g;
-    private String a = "";
-    protected final HashMap<String, ArrayList<String>> b = new HashMap();
-    private String[] c = null;
+    private static final Pattern \u037f = Pattern.compile(SOY.d("1B22382A5A0712227E585E4855243E12"));
+    private static final Pattern \u0528 = Pattern.compile(SOY.d("1B22382A5A0712227E585F48267C271910"));
+    private static final Pattern \u0529 = Pattern.compile(SOY.d("557C7A2A4B59516F"));
+    private static final Pattern \u052a = Pattern.compile(SOY.d("54787903061B06242D001D130622390628481336784B"));
+    private static final Pattern \u052b = Pattern.compile(SOY.d("122625060748407D7E2D2A582778"));
+    private static final Pattern[] \u052c = new Pattern[]{Pattern.compile(SOY.d("0A3E300F1105473C3401")), Pattern.compile(SOY.d("46363800541E1E6F73001D131F3D73")), Pattern.compile(SOY.d("46363800541E1E6F732D2A5527786E06181603372354")), Pattern.compile(SOY.d("557DB9D1F29ED8C3B8E5CA91F4F7")), Pattern.compile(SOY.d("323E223C072716332813062B52")), Pattern.compile(SOY.d("463B3704151A1F090D05282427786E05061447700A28562A516D73")), Pattern.compile(SOY.d("462438121118210E222A272A506D2204174A58090F54295C4570"))};
+    private final HashMap<String, ArrayList<String>> \u052d = new HashMap();
+    private String[] \u052e = null;
 
-    static {
-        Pattern.compile(cYh.d("0620280D792A0F206E7F7C653B7E373E33"));
-        Pattern.compile(cYh.d("487E6A0D68744C6D"));
-        e = Pattern.compile(cYh.d("497A692425361B263D273E3E1B2029210B650E34686C"));
-        f = Pattern.compile(cYh.d("0F24352124655D7F6E0A09753A7A"));
-        g = new Pattern[]{Pattern.compile(cYh.d("173C202832285A3E2426")), Pattern.compile(cYh.d("5B3428277733036D63273E3E023F63")), Pattern.compile(cYh.d("5B3428277733036D630A09783A7A7E213B3B1E353373")), Pattern.compile(cYh.d("487FA9F6D1B3C5C1A8C2E9BCE9F5")), Pattern.compile(cYh.d("2F3C321B240A0B31383425064F")), Pattern.compile(cYh.d("5B3927233637020B1D220B093A7A7E2225395A721A0F75074C6F63")), Pattern.compile(cYh.d("5B26283532353C0C320D04074D6F32233467450B1F730A715872"))};
+    private String \u037f(String string) {
+        if (!(string.contains(SOY.d("1B223858041F0A7D300604")) || string.contains(SOY.d("0235300604")) || string.contains(SOY.d("1C2034131F1614")))) {
+            if (!(string.contains(SOY.d("002133")) || string.contains(SOY.d("1C392905")) || string.contains(SOY.d("02332805")) || string.contains(SOY.d("02312805")) || string.contains(SOY.d("09282805")) || string.contains(SOY.d("1E2A2805")) || string.contains(SOY.d("03262805")) || string.contains(SOY.d("0B3C2805")))) {
+                if (string.contains(SOY.d("54243E12"))) {
+                    return SOY.d("15393902000755667F475A47");
+                }
+                return SOY.d("3E333D001D1C55607F475A47");
+            }
+            return SOY.d("3E3323025B45546364565C131B20254C1D1853");
+        }
+        return SOY.d("3E3323025B45546365565C131B20254C1D1853");
     }
 
-    private void b(JSONObject jSONObject, String string, ArrayList<JSONArray> arrayList) {
+    private void \u0529(JSONObject jSONObject, String string, ArrayList<JSONArray> arrayList) {
         Iterator iterator = jSONObject.keys();
         block3: while (iterator.hasNext()) {
             int n2;
@@ -65,7 +65,7 @@ extends Spider {
                     arrayList.add((JSONArray)object);
                 }
                 if (object instanceof JSONObject) {
-                    this.b((JSONObject)object, string, arrayList);
+                    this.\u0529((JSONObject)object, string, arrayList);
                     continue;
                 }
                 if (!(object instanceof JSONArray)) continue;
@@ -78,7 +78,7 @@ extends Spider {
             }
             while (true) {
                 if (n2 >= string2.length()) continue block3;
-                this.b(string2.getJSONObject(n2), string, arrayList);
+                this.\u0529(string2.getJSONObject(n2), string, arrayList);
                 ++n2;
                 continue;
                 break;
@@ -89,418 +89,389 @@ extends Spider {
     /*
      * Unable to fully structure code
      */
-    private void c(String var1_1, JSONObject var2_2, JSONObject var3_5, String var4_6) {
-        block35: {
-            block39: {
-                block37: {
-                    block36: {
-                        block34: {
-                            var15_7 = cYh.d("4B");
-                            var9_8 = new ArrayList<Object>();
-                            var11_9 = new ArrayList();
-                            var7_10 = var1_1.contains(cYh.d("0620287F2732177F20212775"));
-                            var8_11 = cYh.d("173133223205062028");
-                            var13_12 = cYh.d("09312C34");
-                            var14_13 = cYh.d("043F2534");
-                            var29_14 = cYh.d("113F250E22280B0F3638233238202D302E3F15");
-                            var19_15 = cYh.d("113F250E3436062332");
-                            var28_16 = cYh.d("03313530");
-                            var17_17 = cYh.d("132931340834063D24");
-                            var12_18 = cYh.d("33");
-                            var10_19 = cYh.d("12222D");
-                            var18_20 = cYh.d("113F250E34350924243F23");
-                            var20_21 = cYh.d("113F250E3333153522253828");
-                            var21_22 = cYh.d("113F250E3639133F33");
-                            var22_23 = cYh.d("113F250E253F0A31333A24");
-                            var23_24 = cYh.d("113F250E36280231");
-                            var25_25 = cYh.d("113F250E2E3F0622");
-                            var26_26 = cYh.d("113F250E393B0A35");
-                            var24_27 = cYh.d("113F250E273304");
-                            var27_28 = cYh.d("113F250E3E3E");
-                            if (!var7_10) break block34;
-                            var2_2 = var2_2.getJSONObject(var28_16);
-                            var1_1 = this.fixCover(var2_2.getString(var24_27), (String)var1_1);
-                            var3_5.put(var27_28, (Object)var2_2.optString(var27_28, (String)var4_6));
-                            var3_5.put(var26_26, (Object)var2_2.getString(var26_26));
-                            var3_5.put(var24_27, var1_1);
-                            var3_5.put((String)var17_17, (Object)var2_2.optString((String)var19_15));
-                            var3_5.put(var25_25, (Object)var2_2.optString(var25_25));
-                            var3_5.put(var23_24, (Object)var2_2.optString(var23_24));
-                            var3_5.put(var22_23, (Object)var2_2.optString(var22_23));
-                            var3_5.put(var21_22, (Object)var2_2.optString(var21_22));
-                            var3_5.put(var20_21, (Object)var2_2.optString(var20_21));
-                            var3_5.put(var18_20, (Object)var2_2.optString(var18_20));
-                            var15_7 = var2_2.getJSONArray(var29_14);
-                            for (var5_29 = 0; var5_29 < var15_7.length(); ++var5_29) {
-                                var2_2 = var15_7.getJSONObject(var5_29);
-                                var1_1 = var2_2.optString((String)var14_13).trim();
-                                if (var1_1.isEmpty()) {
-                                    var1_1 = var2_2.getString(var13_12).trim();
-                                }
-                                if (this.a.indexOf(var12_18) < 0) {
-                                    var11_9.add(var1_1);
-                                } else {
-                                    var11_9.add(var2_2.getString(var10_19));
-                                }
-                                var9_8.add(var2_2.getString(var10_19));
-                                var16_33 = var2_2.optString((String)var8_11).trim();
-                                var2_2 = var4_6 = this.b.get(var1_1);
-                                if (var4_6 == null) {
-                                    var2_2 = new ArrayList<E>();
-                                    this.b.put((String)var1_1, (ArrayList<String>)var2_2);
-                                }
-                                if (var16_33.isEmpty() || var2_2.contains(var16_33)) continue;
-                                var2_2.add(var16_33);
-                            }
-                            var1_1 = var9_8;
-                            var2_2 = var11_9;
-                            break block35;
+    private void \u052a(String var1_1, JSONObject var2_2, String var3_5, JSONObject var4_6, String var5_7) {
+        block32: {
+            block34: {
+                var3_5 = new ArrayList<E>();
+                var9_8 = new ArrayList<Object>();
+                var8_9 = var1_1.contains(SOY.d("1B223858041F0A7D30060458"));
+                var10_10 = SOY.d("14333C13");
+                var13_11 = SOY.d("0A33230511281B2238");
+                var12_12 = SOY.d("193D3513");
+                var24_13 = SOY.d("0C3D35290105160D261F001F25223D170D1208");
+                var19_14 = SOY.d("0C3D3529171B1B2122");
+                var23_15 = SOY.d("1E332517");
+                var11_16 = SOY.d("0F203D");
+                var15_17 = SOY.d("0E2B21132B191B3F34");
+                var14_18 = SOY.d("0C3D352917181426341800");
+                var16_19 = SOY.d("0C3D3529101E083732021B05");
+                var17_20 = SOY.d("0C3D352915140E3D23");
+                var18_21 = SOY.d("0C3D352906121733231D07");
+                var20_22 = SOY.d("0C3D352915051F33");
+                var21_23 = SOY.d("0C3D35290D121B20");
+                var22_24 = SOY.d("0C3D3529041E19");
+                var25_25 = SOY.d("0C3D35291A161737");
+                var26_26 = SOY.d("0C3D35291D13");
+                if (var8_9) {
+                    var1_1 = var2_2.getJSONObject(var23_15);
+                    var4_6.put(var26_26, (Object)var1_1.optString(var26_26, (String)var5_7));
+                    var4_6.put(var25_25, (Object)var1_1.getString(var25_25));
+                    var4_6.put(var22_24, (Object)var1_1.getString(var22_24));
+                    var4_6.put((String)var15_17, (Object)var1_1.optString(var19_14));
+                    var4_6.put(var21_23, (Object)var1_1.optString(var21_23));
+                    var4_6.put(var20_22, (Object)var1_1.optString(var20_22));
+                    var4_6.put(var18_21, (Object)var1_1.optString(var18_21));
+                    var4_6.put((String)var17_20, (Object)var1_1.optString((String)var17_20));
+                    var4_6.put(var16_19, (Object)var1_1.optString(var16_19));
+                    var4_6.put((String)var14_18, (Object)var1_1.optString((String)var14_18));
+                    var14_18 = var1_1.getJSONArray(var24_13);
+                    var6_27 = 0;
+                    while (true) {
+                        var2_2 = var3_5;
+                        var1_1 = var9_8;
+                        if (var6_27 >= var14_18.length()) break;
+                        var2_2 = var14_18.getJSONObject(var6_27);
+                        var1_1 = var2_2.optString(var12_12).trim();
+                        if (var1_1.isEmpty()) {
+                            var1_1 = var2_2.getString((String)var10_10).trim();
                         }
-                        var16_34 = var8_11;
-                        var8_11 = var9_8;
-                        var9_8 = var11_9;
-                        if (!var1_1.contains(cYh.d("1F37202127"))) break block36;
-                        var2_2 = var2_2.getJSONObject(var28_16).getJSONObject(cYh.d("113F250E3E34013F"));
-                        var1_1 = this.fixCover(var2_2.getString(var24_27), (String)var1_1);
-                        var3_5.put(var27_28, (Object)var2_2.optString(var27_28, (String)var4_6));
-                        var3_5.put(var26_26, (Object)var2_2.getString(var26_26));
-                        var3_5.put(var24_27, var1_1);
-                        var3_5.put((String)var17_17, (Object)var2_2.optString((String)var19_15));
-                        var3_5.put(var25_25, (Object)var2_2.optString(var25_25));
-                        var3_5.put(var23_24, (Object)var2_2.optString(var23_24));
-                        var3_5.put(var22_23, (Object)var2_2.optString(var22_23));
-                        var3_5.put(var21_22, (Object)var2_2.optString(var21_22));
-                        var3_5.put(var20_21, (Object)var2_2.optString(var20_21));
-                        var3_5.put(var18_20, (Object)var2_2.optString(var18_20));
-                        var11_9 = var2_2.getJSONArray(var29_14);
-                        for (var5_30 = 0; var5_30 < var11_9.length(); ++var5_30) {
-                            var2_2 = var11_9.getJSONObject(var5_30);
-                            var1_1 = var2_2.optString((String)var14_13).trim();
-                            if (var1_1.isEmpty()) {
-                                var1_1 = var2_2.getString(var13_12).trim();
-                            }
-                            if (this.a.indexOf(var12_18) < 0) {
-                                var9_8.add(var1_1);
-                            } else {
-                                var9_8.add(var2_2.getString(var10_19));
-                            }
-                            var8_11.add(var2_2.getString(var10_19));
-                            var15_7 = var2_2.optString((String)var16_34).trim();
-                            var2_2 = var4_6 = this.b.get(var1_1);
-                            if (var4_6 == null) {
-                                var2_2 = new ArrayList<E>();
-                                this.b.put((String)var1_1, (ArrayList<String>)var2_2);
-                            }
-                            if (var15_7.isEmpty() || var2_2.contains(var15_7)) continue;
-                            var2_2.add(var15_7);
+                        var9_8.add(var1_1);
+                        var3_5.add(var2_2.getString(var11_16));
+                        var15_17 = var2_2.optString((String)var13_11).trim();
+                        var2_2 = var5_7 = this.\u052d.get(var1_1);
+                        if (var5_7 == null) {
+                            var2_2 = new ArrayList<E>();
+                            this.\u052d.put((String)var1_1, (ArrayList<String>)var2_2);
                         }
-                        var1_1 = var8_11;
-                        var2_2 = var9_8;
-                        break block35;
+                        if (!var15_17.isEmpty() && !var2_2.contains(var15_17)) {
+                            var2_2.add(var15_17);
+                        }
+                        ++var6_27;
                     }
-                    if (!var1_1.contains(cYh.d("49262E35"))) break block37;
-                    var11_9 = var2_2.getJSONObject(var28_16);
-                    var2_2 = this.fixCover(var11_9.getString(var24_27), (String)var1_1);
-                    var3_5.put(var27_28, (Object)var11_9.optString(var27_28, (String)var4_6));
-                    var3_5.put(var26_26, (Object)var11_9.getString(var26_26));
-                    var3_5.put(var24_27, var2_2);
-                    var3_5.put((String)var17_17, (Object)var11_9.optString((String)var19_15));
-                    var3_5.put(var25_25, (Object)var11_9.optString(var25_25));
-                    var3_5.put(var23_24, (Object)var11_9.optString(var23_24));
-                    var3_5.put(var22_23, (Object)var11_9.optString(var22_23));
-                    var3_5.put(var21_22, (Object)var11_9.optString(var21_22));
-                    var3_5.put(var20_21, (Object)var11_9.optString(var20_21));
-                    var3_5.put(var18_20, (Object)var11_9.optString(var18_20));
-                    var13_12 = var11_9.getJSONArray(cYh.d("113F250E273606291E3D3E2913"));
-                    for (var5_31 = 0; var5_31 < var13_12.length(); ++var5_31) {
-                        block33: {
-                            var11_9 = var13_12.getJSONObject(var5_31);
-                            var16_34 = cYh.d("173C2028322838392F3738");
-                            var2_2 = var4_6 = var11_9.getJSONObject((String)var16_34).optString(cYh.d("01222E3C")).trim();
-                            if (var4_6.isEmpty()) {
-                                var2_2 = var11_9.getJSONObject((String)var16_34).optString(cYh.d("14382E26")).trim();
-                            }
-                            if (this.a.indexOf(var12_18) < 0) {
-                                var9_8.add(var2_2);
-                            } else {
-                                var9_8.add(var11_9.getString(var10_19));
-                            }
-                            var8_11.add(var11_9.getString(var10_19));
-                            var14_13 = new ArrayList();
-                            var4_6 = var11_9.getJSONObject((String)var16_34).optString(cYh.d("1731332232"));
-                            var4_6 = var4_6.split(var15_7);
-                            var11_9 = var11_9.getJSONObject((String)var16_34).optString(cYh.d("173133223268")).split(var15_7);
-                            var14_13.addAll(Arrays.asList(var4_6));
-                            var14_13.addAll(Arrays.asList(var11_9));
-                            var4_6 = var11_9 = this.b.get(var2_2);
-                            if (var11_9 != null) ** GOTO lbl182
-                            var4_6 = new ArrayList();
-                            this.b.put((String)var2_2, (ArrayList<String>)var4_6);
-lbl182:
-                            // 2 sources
-
-                            var14_13 = var14_13.iterator();
-                            while (var14_13.hasNext()) {
-                                var11_9 = (String)var14_13.next();
-                                if (!var11_9.contains(cYh.d("0F243521"))) ** GOTO lbl193
-                                var16_34 = AppYsV2.e.matcher((CharSequence)var11_9);
-                                var2_2 = var11_9;
-                            }
-                            continue;
-                            {
-                                if (var16_34.find()) {
-                                    var2_2 = var16_34.group(0);
-                                }
-                                ** GOTO lbl221
-lbl193:
-                                // 1 sources
-
-                                if (!var11_9.contains(cYh.d("487F"))) ** GOTO lbl206
-                                var16_34 = AppYsV2.e.matcher((CharSequence)var11_9);
-                                var2_2 = var11_9;
-                                if (!var16_34.find()) ** GOTO lbl221
-                                var11_9 = new StringBuilder();
-                                var11_9.append(cYh.d("0F2435216D"));
-                                var2_2 = var16_34.group(0);
-lbl202:
-                                // 2 sources
-
-                                while (true) {
-                                    var11_9.append((String)var2_2);
-                                    ** GOTO lbl220
-                                    break;
-                                }
-lbl206:
-                                // 1 sources
-
-                                var16_34 = AppYsV2.f.matcher((CharSequence)var1_1);
-                                var2_2 = var11_9;
-                                if (!var16_34.find()) ** GOTO lbl221
-                                var17_17 = AppYsV2.e.matcher((CharSequence)var1_1);
-                                var2_2 = var11_9;
-                                try {
-                                    block38: {
-                                        if (var17_17.find()) {
-                                            var11_9 = new StringBuilder();
-                                            var11_9.append(var16_34.group(0));
-                                            var2_2 = var17_17.group(0);
-                                            ** continue;
-                                        }
-                                        break block38;
-lbl220:
-                                        // 1 sources
-
-                                        var2_2 = var11_9.toString();
-                                    }
-                                    if ((var2_2 = var2_2.replace(cYh.d("497E"), cYh.d("49")).trim()).isEmpty() || var4_6.contains(var2_2)) continue;
-                                    var4_6.add(var2_2);
-                                    continue;
-                                }
-                                catch (Exception var2_3) {
-                                    break block33;
-                                    break;
-                                }
-                            }
-                            catch (Exception var2_4) {
-                                // empty catch block
-                            }
-                        }
-                        SpiderDebug.log((Throwable)var2_2);
+                    while (true) {
+                        var3_5 = var2_2;
+                        var2_2 = var1_1;
+                        var1_1 = var3_5;
+                        break block32;
+                        break;
                     }
-                    var1_1 = var8_11;
-                    var2_2 = var9_8;
-                    break block35;
                 }
-                if (!AppYsV2.d.matcher((CharSequence)var1_1).find()) break block39;
-                var1_1 = this.fixCover(var2_2.getString(cYh.d("0E3D260E22280B")), (String)var1_1);
-                var3_5.put(var27_28, (Object)var2_2.optString(var27_28, (String)var4_6));
-                var13_12 = cYh.d("1339353D32");
-                var3_5.put(var26_26, (Object)var2_2.getString(var13_12));
-                var3_5.put(var24_27, var1_1);
-                var3_5.put((String)var17_17, (Object)this.n(var2_2.optJSONArray(cYh.d("13293134"))));
-                var3_5.put(var25_25, (Object)var2_2.optString(cYh.d("172523253E3702")));
-                var3_5.put(var23_24, (Object)this.n(var2_2.optJSONArray(cYh.d("06222430"))));
-                var3_5.put(var22_23, (Object)var2_2.optString(cYh.d("1322343F3C")));
-                var3_5.put(var21_22, (Object)this.n(var2_2.optJSONArray(cYh.d("0633353E25"))));
-                var3_5.put(var20_21, (Object)this.n(var2_2.optJSONArray(cYh.d("03393334342E0822"))));
-                var3_5.put(var18_20, (Object)var2_2.optString(cYh.d("0E3E352338")));
-                var14_13 = var2_2.getJSONObject(cYh.d("1139253438360E2335"));
-                var1_1 = var14_13.keys();
-                var11_9 = var12_18;
-                while (var1_1.hasNext()) {
-                    var15_7 = (String)var1_1.next();
-                    var4_6 = var2_2 = this.b.get(var15_7);
-                    if (var2_2 == null) {
-                        var4_6 = new ArrayList<E>();
-                        this.b.put(var15_7, (ArrayList<String>)var4_6);
+                if (var1_1.contains(SOY.d("0235300604"))) {
+                    var1_1 = var2_2.getJSONObject(var23_15).getJSONObject(SOY.d("0C3D35291D191C3D"));
+                    var4_6.put(var26_26, (Object)var1_1.optString(var26_26, (String)var5_7));
+                    var4_6.put(var25_25, (Object)var1_1.getString(var25_25));
+                    var4_6.put(var22_24, (Object)var1_1.getString(var22_24));
+                    var4_6.put((String)var15_17, (Object)var1_1.optString(var19_14));
+                    var4_6.put(var21_23, (Object)var1_1.optString(var21_23));
+                    var4_6.put(var20_22, (Object)var1_1.optString(var20_22));
+                    var4_6.put(var18_21, (Object)var1_1.optString(var18_21));
+                    var4_6.put((String)var17_20, (Object)var1_1.optString((String)var17_20));
+                    var4_6.put(var16_19, (Object)var1_1.optString(var16_19));
+                    var4_6.put((String)var14_18, (Object)var1_1.optString((String)var14_18));
+                    var14_18 = var1_1.getJSONArray(var24_13);
+                    var6_28 = 0;
+                    while (true) {
+                        var2_2 = var3_5;
+                        var1_1 = var9_8;
+                        if (var6_28 >= var14_18.length()) ** continue;
+                        var2_2 = var14_18.getJSONObject(var6_28);
+                        var1_1 = var2_2.optString(var12_12).trim();
+                        if (var1_1.isEmpty()) {
+                            var1_1 = var2_2.getString((String)var10_10).trim();
+                        }
+                        var9_8.add(var1_1);
+                        var3_5.add(var2_2.getString(var11_16));
+                        var15_17 = var2_2.optString((String)var13_11).trim();
+                        var2_2 = var5_7 = this.\u052d.get(var1_1);
+                        if (var5_7 == null) {
+                            var2_2 = new ArrayList<E>();
+                            this.\u052d.put((String)var1_1, (ArrayList<String>)var2_2);
+                        }
+                        if (!var15_17.isEmpty() && !var2_2.contains(var15_17)) {
+                            var2_2.add(var15_17);
+                        }
+                        ++var6_28;
                     }
-                    var16_34 = var14_13.getJSONArray(var15_7);
-                    var17_17 = new ArrayList<E>();
-                    for (var5_32 = 0; var5_32 < var16_34.length(); ++var5_32) {
-                        block42: {
-                            block40: {
-                                block41: {
-                                    var2_2 = var16_34.getJSONObject(var5_32);
-                                    var12_18 = var2_2.getString(var10_19);
-                                    var19_15 = cYh.d("12222D6C");
-                                    var7_10 = var12_18.contains(var19_15);
-                                    var18_20 = cYh.d("43");
-                                    if (!var7_10) break block40;
-                                    var6_35 = var12_18.indexOf((String)var19_15) + 4;
-                                    if (!(var19_15 = var12_18.substring(0, var6_35).trim()).isEmpty() && !var4_6.contains(var19_15)) {
-                                        var4_6.add(var19_15);
-                                    }
-                                    if (this.a.indexOf((String)var11_9) >= 0) break block41;
-                                    var19_15 = new StringBuilder();
-                                    var19_15.append(var2_2.getString(var13_12));
-                                    var19_15.append(var18_20);
-                                    var19_15.append(var12_18.substring(var6_35).trim());
-                                    var2_2 = var19_15.toString();
-                                    break block42;
-                                }
-                                var2_2 = new StringBuilder();
-                                var2_2.append(var12_18.substring(var6_35).trim());
-                                var2_2.append(var18_20);
-                                var12_18 = var12_18.substring(var6_35).trim();
-                                ** GOTO lbl318
-                            }
-                            if (this.a.indexOf((String)var11_9) < 0) {
-                                var19_15 = new StringBuilder();
-                                var19_15.append(var2_2.getString(var13_12));
-                                var19_15.append(var18_20);
-                                var19_15.append(var12_18);
-                                var2_2 = var19_15.toString();
-                            } else {
-                                var2_2 = new StringBuilder();
-                                var2_2.append(var12_18);
-                                var2_2.append(var18_20);
-lbl318:
-                                // 2 sources
+                }
+                if (!var1_1.contains(SOY.d("54243E12"))) break block34;
+                var2_2 = var2_2.getJSONObject(var23_15);
+                var4_6.put(var26_26, (Object)var2_2.optString(var26_26, (String)var5_7));
+                var4_6.put(var25_25, (Object)var2_2.getString(var25_25));
+                var4_6.put(var22_24, (Object)var2_2.getString(var22_24));
+                var4_6.put((String)var15_17, (Object)var2_2.optString(var19_14));
+                var4_6.put(var21_23, (Object)var2_2.optString(var21_23));
+                var4_6.put(var20_22, (Object)var2_2.optString(var20_22));
+                var4_6.put(var18_21, (Object)var2_2.optString(var18_21));
+                var4_6.put((String)var17_20, (Object)var2_2.optString((String)var17_20));
+                var4_6.put(var16_19, (Object)var2_2.optString(var16_19));
+                var4_6.put((String)var14_18, (Object)var2_2.optString((String)var14_18));
+                var12_12 = var2_2.getJSONArray(SOY.d("0C3D3529041B1B2B0E1A1D040E"));
+                for (var6_29 = 0; var6_29 < var12_12.length(); ++var6_29) {
+                    block33: {
+                        var14_18 = var12_12.getJSONObject(var6_29);
+                        var10_10 = SOY.d("0A3E300F1105253B3F101B");
+                        var2_2 = var5_7 = var14_18.getJSONObject((String)var10_10).optString(SOY.d("1C203E1B")).trim();
+                        if (var5_7.isEmpty()) {
+                            var2_2 = var14_18.getJSONObject((String)var10_10).optString(SOY.d("093A3E01")).trim();
+                        }
+                        var9_8.add(var2_2);
+                        var3_5.add(var14_18.getString(var11_16));
+                        var13_11 = new ArrayList();
+                        var5_7 = var14_18.getJSONObject((String)var10_10).optString(SOY.d("0A33230511")).split(SOY.d("56"));
+                        var10_10 = var14_18.getJSONObject((String)var10_10).optString(SOY.d("0A3323051145")).split(SOY.d("56"));
+                        var13_11.addAll(Arrays.asList(var5_7));
+                        var13_11.addAll(Arrays.asList(var10_10));
+                        var5_7 = var10_10 = this.\u052d.get(var2_2);
+                        if (var10_10 != null) ** GOTO lbl168
+                        var5_7 = new ArrayList();
+                        this.\u052d.put((String)var2_2, (ArrayList<String>)var5_7);
+lbl168:
+                        // 2 sources
 
-                                var2_2.append(var12_18);
+                        var13_11 = var13_11.iterator();
+                        while (var13_11.hasNext()) {
+                            var10_10 = (String)var13_11.next();
+                            if (!var10_10.contains(SOY.d("12262506"))) ** GOTO lbl179
+                            var14_18 = AppYsV2.\u052a.matcher((CharSequence)var10_10);
+                            var2_2 = var10_10;
+                        }
+                        continue;
+                        {
+                            if (var14_18.find()) {
+                                var2_2 = var14_18.group(0);
+                            }
+                            ** GOTO lbl205
+lbl179:
+                            // 1 sources
+
+                            if (!var10_10.contains(SOY.d("557D"))) ** GOTO lbl191
+                            var14_18 = AppYsV2.\u052a.matcher((CharSequence)var10_10);
+                            var2_2 = var10_10;
+                            if (var14_18.find()) {
+                                var2_2 = new StringBuilder();
+                                var2_2.append(SOY.d("122625064E"));
+                                var2_2.append(var14_18.group(0));
                                 var2_2 = var2_2.toString();
                             }
+                            ** GOTO lbl205
+lbl191:
+                            // 1 sources
+
+                            var15_17 = AppYsV2.\u052b.matcher((CharSequence)var1_1);
+                            var2_2 = var10_10;
+                            if (!var15_17.find()) ** GOTO lbl205
+                            var14_18 = AppYsV2.\u052a.matcher((CharSequence)var1_1);
+                            var2_2 = var10_10;
+                            try {
+                                if (var14_18.find()) {
+                                    var2_2 = new StringBuilder();
+                                    var2_2.append(var15_17.group(0));
+                                    var2_2.append(var14_18.group(0));
+                                    var2_2 = var2_2.toString();
+                                }
+lbl205:
+                                // 6 sources
+
+                                if ((var2_2 = var2_2.replace(SOY.d("547C"), SOY.d("54")).trim()).isEmpty() || var5_7.contains(var2_2)) continue;
+                                var5_7.add(var2_2);
+                                continue;
+                            }
+                            catch (Exception var2_3) {
+                                break block33;
+                                break;
+                            }
                         }
-                        var17_17.add(var2_2);
+                        catch (Exception var2_4) {
+                            // empty catch block
+                        }
                     }
-                    var9_8.add(var15_7);
-                    var8_11.add(TextUtils.join((CharSequence)cYh.d("44"), (Iterable)var17_17));
+                    SpiderDebug.log((Throwable)var2_2);
+                }
+                var1_1 = var3_5;
+                var2_2 = var9_8;
+                break block32;
+            }
+            if (AppYsV2.\u037f.matcher((CharSequence)var1_1).find()) {
+                var4_6.put(var26_26, (Object)var2_2.optString(var26_26, (String)var5_7));
+                var10_10 = SOY.d("0E3B251A11");
+                var4_6.put(var25_25, (Object)var2_2.getString((String)var10_10));
+                var4_6.put(var22_24, (Object)var2_2.getString(SOY.d("133F3629010516")));
+                var4_6.put((String)var15_17, (Object)this.\u0784(var2_2.optJSONArray(SOY.d("0E2B2113"))));
+                var4_6.put(var21_23, (Object)var2_2.optString(SOY.d("0A2733021D1A1F")));
+                var4_6.put(var20_22, (Object)this.\u0784(var2_2.optJSONArray(SOY.d("1B203417"))));
+                var4_6.put(var18_21, (Object)var2_2.optString(SOY.d("0E2024181F")));
+                var4_6.put((String)var17_20, (Object)this.\u0784(var2_2.optJSONArray(SOY.d("1B31251906"))));
+                var4_6.put(var16_19, (Object)this.\u0784(var2_2.optJSONArray(SOY.d("1E3B231317031520"))));
+                var4_6.put((String)var14_18, (Object)var2_2.optString(SOY.d("133C25041B")));
+                var12_12 = var2_2.getJSONObject(SOY.d("0C3B35131B1B132125"));
+                var13_11 = var12_12.keys();
+                var2_2 = var11_16;
+                while (var13_11.hasNext()) {
+                    var11_16 = (String)var13_11.next();
+                    var5_7 = this.\u052d.get(var11_16);
+                    var1_1 = var5_7;
+                    if (var5_7 == null) {
+                        var1_1 = new ArrayList<E>();
+                        this.\u052d.put(var11_16, (ArrayList<String>)var1_1);
+                    }
+                    var14_18 = var12_12.getJSONArray(var11_16);
+                    var5_7 = new ArrayList<E>();
+                    for (var6_30 = 0; var6_30 < var14_18.length(); ++var6_30) {
+                        var16_19 = var14_18.getJSONObject(var6_30);
+                        var15_17 = var16_19.getString((String)var2_2);
+                        if (var15_17.contains(SOY.d("0F203D4B"))) {
+                            var7_31 = var15_17.indexOf(SOY.d("0F203D4B")) + 4;
+                            var17_20 = var15_17.substring(0, var7_31).trim();
+                            if (!var17_20.isEmpty() && !var1_1.contains(var17_20)) {
+                                var1_1.add((String)var17_20);
+                            }
+                            var17_20 = new StringBuilder();
+                            var17_20.append(var16_19.getString((String)var10_10));
+                            var17_20.append(SOY.d("5E"));
+                            var17_20.append(var15_17.substring(var7_31).trim());
+                            var5_7.add(var17_20.toString());
+                            continue;
+                        }
+                        var17_20 = new StringBuilder();
+                        var17_20.append(var16_19.getString((String)var10_10));
+                        var17_20.append(SOY.d("5E"));
+                        var17_20.append((String)var15_17);
+                        var5_7.add(var17_20.toString());
+                    }
+                    var9_8.add(var11_16);
+                    var3_5.add(TextUtils.join((CharSequence)SOY.d("59"), (Iterable)var5_7));
                 }
             }
-            var1_1 = var8_11;
             var2_2 = var9_8;
+            var1_1 = var3_5;
         }
-        var4_6 = cYh.d("437465");
-        var2_2 = TextUtils.join((CharSequence)var4_6, (Iterable)var2_2);
-        var3_5.put(cYh.d("113F250E273606291E3725350A"), var2_2);
-        var1_1 = TextUtils.join((CharSequence)var4_6, (Iterable)var1_1);
-        var3_5.put(cYh.d("113F250E273606291E242536"), var1_1);
+        var3_5 = SOY.d("5E7675");
+        var2_2 = TextUtils.join((CharSequence)var3_5, (Iterable)var2_2);
+        var4_6.put(SOY.d("0C3D3529041B1B2B0E10061817"), var2_2);
+        var1_1 = TextUtils.join((CharSequence)var3_5, (Iterable)var1_1);
+        var4_6.put(SOY.d("0C3D3529041B1B2B0E03061B"), var1_1);
     }
 
-    private String d() {
-        String[] stringArray = this.c;
+    private String \u052b() {
+        String[] stringArray = this.\u052e;
         if (stringArray != null && stringArray.length >= 1) {
             return stringArray[0].trim();
         }
         return "";
     }
 
-    private static HashMap<String, String> i(String string) {
+    private JSONObject \u058f(String string, ArrayList<String> patternArray, String string2) {
+        String string3;
+        Iterator<String> iterator = patternArray.iterator();
+        string = "";
+        while (true) {
+            int n2;
+            String string4;
+            block6: {
+                boolean bl = iterator.hasNext();
+                string3 = SOY.d("0F203D");
+                int n3 = 1;
+                patternArray = null;
+                if (!bl) break;
+                string4 = iterator.next();
+                if (string4.isEmpty() || string4.equals(SOY.d("14273D1A"))) continue;
+                CharSequence charSequence = new StringBuilder();
+                charSequence.append(string4);
+                charSequence.append(string2);
+                String string5 = this.\u0528(\u078c.\u058f(charSequence.toString(), null), (byte)4);
+                try {
+                    charSequence = \u0786.\u052d(string2, string5);
+                    patternArray = charSequence;
+                }
+                catch (Throwable throwable) {
+                    // empty catch block
+                }
+                if (patternArray != null && patternArray.has(string3) && patternArray.has((String)(charSequence = SOY.d("123730121105")))) {
+                    patternArray.put((String)charSequence, (Object)patternArray.getJSONObject((String)charSequence).toString());
+                    return patternArray;
+                }
+                if (!string5.contains(SOY.d("463A251B18"))) continue;
+                patternArray = \u052c;
+                int n4 = patternArray.length;
+                for (n2 = 0; n2 < n4; ++n2) {
+                    if (!patternArray[n2].matcher(string5).find()) continue;
+                    n2 = n3;
+                    break block6;
+                }
+                n2 = 0;
+            }
+            if (n2 == 0) continue;
+            string = string4;
+        }
+        if (!string.isEmpty()) {
+            patternArray = new JSONObject();
+            patternArray.put(SOY.d("0A33230511"), 1);
+            patternArray.put(SOY.d("0A3E300F210516"), (Object)string);
+            patternArray.put(string3, (Object)string2);
+            return patternArray;
+        }
+        return null;
+    }
+
+    private HashMap<String, String> \u0620(String string) {
         HashMap<String, String> hashMap = new HashMap<String, String>();
-        string = string.contains(cYh.d("113F257F6E3F57636F323837")) ? cYh.d("2A3F3B383B36067F747F677A4F1C283F22225C70003F3328083925716174576B611F322212236164771812392D357817351174691973471131213B3F3035231A3E2E4865726679695170691A1F0E2A1C6D713B330C35611632390C3F68711432153F2C34786B57636F61796A4960611C38380E3C2471043B01313338786F54676F6261") : (!(string.contains(cYh.d("0620287F2732177F202127")) || string.contains(cYh.d("1F37202127")) || string.contains(cYh.d("012224343C3B09"))) ? (!(string.contains(cYh.d("1D2323")) || string.contains(cYh.d("013B3922")) || string.contains(cYh.d("1F313822")) || string.contains(cYh.d("1F333822")) || string.contains(cYh.d("142A3822")) || string.contains(cYh.d("03283822")) || string.contains(cYh.d("1E243822")) || string.contains(cYh.d("163E3822"))) ? (string.contains(cYh.d("49262E35")) ? cYh.d("083B2925232A48646F60796A") : cYh.d("23312D273E3148626F60796A")) : cYh.d("233133257868496174717F3E0622356B3E354E")) : cYh.d("233133257868496175717F3E0622356B3E354E"));
-        hashMap.put(cYh.d("322324237A1B00352F25"), string);
+        string = this.\u037f(string);
+        hashMap.put(SOY.d("2F21340459361D373F02"), string);
         return hashMap;
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
-    private String l(String charSequence, String string) {
-        block9: {
-            CharSequence charSequence2;
-            String string2;
-            block7: {
-                block8: {
-                    boolean bl = ((String)charSequence).contains(cYh.d("49262E35"));
-                    string2 = cYh.d("412020363267");
-                    if (!bl) break block8;
-                    if (((String)charSequence).contains(cYh.d("0E3F31343923123E6F323837"))) {
-                        StringBuilder stringBuilder = new StringBuilder();
-                        stringBuilder.append((String)charSequence);
-                        charSequence2 = cYh.d("483C2822236510347C");
-                        charSequence = stringBuilder;
-                        break block7;
-                    } else {
-                        charSequence2 = new StringBuilder();
-                        ((StringBuilder)charSequence2).append((String)charSequence);
-                        String string3 = cYh.d("5827256C");
-                        charSequence = charSequence2;
-                        charSequence2 = string3;
-                    }
-                    break block7;
-                }
-                if (((String)charSequence).contains(cYh.d("0620287F2732177F202127")) || ((String)charSequence).contains(cYh.d("1F37202127"))) break block9;
-                if (!d.matcher(charSequence).find()) return "";
-                if (!(((String)charSequence).contains(cYh.d("0223243D3B3B12242E")) || ((String)charSequence).contains(cYh.d("567E7065796C547E706166")) || ((String)charSequence).contains(cYh.d("1D3A3822")) || ((String)charSequence).contains(cYh.d("033325")) || ((String)charSequence).contains(cYh.d("0B283434")) || ((String)charSequence).contains(cYh.d("10352425363349332F")) || ((String)charSequence).contains(cYh.d("0F312E3A36340D2570")) || ((String)charSequence).contains(cYh.d("0139356B6F")) || ((String)charSequence).contains(cYh.d("1D3A2B7F3B330135")) || ((String)charSequence).contains(cYh.d("0B3F37346E635F69")) || ((String)charSequence).contains(cYh.d("5F347920")) || ((String)charSequence).contains(cYh.d("0B3B6F212F2F09")) || ((String)charSequence).contains(cYh.d("0F373829")) || ((String)charSequence).contains(cYh.d("5262702962")) || ((String)charSequence).contains(cYh.d("0B2838282E")) || ((String)charSequence).contains(cYh.d("57687069232C")) || ((String)charSequence).contains(cYh.d("0339383E2233")) || ((String)charSequence).contains(cYh.d("03392D383C2E11")) || ((String)charSequence).contains(cYh.d("17203B3922")) || ((String)charSequence).contains(cYh.d("06393534242F043128")) || ((String)charSequence).contains(cYh.d("1D2A6F323E")) || ((String)charSequence).contains(cYh.d("0438393B3834")) || ((String)charSequence).contains(cYh.d("103135323F370E")) || ((String)charSequence).contains(cYh.d("1139313327")) || ((String)charSequence).contains(cYh.d("05383527")) || ((String)charSequence).contains(cYh.d("1F36383A3B")))) {
-                    charSequence2 = new StringBuilder();
-                    ((StringBuilder)charSequence2).append((String)charSequence);
-                    String string4 = cYh.d("5831226C3B331424672B3A67");
-                    charSequence = charSequence2;
-                    charSequence2 = string4;
-                } else {
-                    StringBuilder stringBuilder = new StringBuilder();
-                    stringBuilder.append((String)charSequence);
-                    charSequence2 = cYh.d("5831226C3B33142467263367");
-                    charSequence = stringBuilder;
-                }
+    private String \u0782(String string, String string2) {
+        boolean bl = string.contains(SOY.d("54243E12"));
+        CharSequence charSequence = SOY.d("5C223011114A");
+        if (bl) {
+            if (string.contains(SOY.d("133D21131A0E0F3C7F151B1A"))) {
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append(string);
+                stringBuilder.append(SOY.d("553E380500480D366C"));
+                stringBuilder.append(string2);
+                stringBuilder.append((String)charSequence);
+                return stringBuilder.toString();
             }
-            ((StringBuilder)charSequence).append((String)charSequence2);
-            ((StringBuilder)charSequence).append(string);
-            ((StringBuilder)charSequence).append(string2);
-            return ((StringBuilder)charSequence).toString();
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append(string);
+            stringBuilder.append(SOY.d("4525354B"));
+            stringBuilder.append(string2);
+            stringBuilder.append((String)charSequence);
+            return stringBuilder.toString();
         }
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append((String)charSequence);
-        stringBuilder.append(cYh.d("143520233432582424292367"));
-        stringBuilder.append(string);
-        stringBuilder.append(cYh.d("4120266C"));
-        charSequence = stringBuilder;
+        if (!string.contains(SOY.d("1B223858041F0A7D300604")) && !string.contains(SOY.d("0235300604"))) {
+            if (\u037f.matcher(string).find()) {
+                if (!(string.contains(SOY.d("1F21341A18160F263E")) || string.contains(SOY.d("4B7C60425A41497C604645")) || string.contains(SOY.d("00382805")) || string.contains(SOY.d("1E3135")) || string.contains(SOY.d("162A2413")) || string.contains(SOY.d("0D373402151E54313F")) || string.contains(SOY.d("12333E1D1519102760")) || string.contains(SOY.d("1C3B254C4C")) || string.contains(SOY.d("00383B58181E1C37")) || string.contains(SOY.d("163D27134D4E426B")) || string.contains(SOY.d("42366907")) || string.contains(SOY.d("16397F060C0214")) || string.contains(SOY.d("1235280E")) || string.contains(SOY.d("4F60600E41")) || string.contains(SOY.d("162A280F0D")) || string.contains(SOY.d("4A6A604E0001")) || string.contains(SOY.d("1E3B2819011E")) || string.contains(SOY.d("1E3B3D1F1F030C")) || string.contains(SOY.d("0A222B1E01")) || string.contains(SOY.d("1B3B25130702193338")) || string.contains(SOY.d("00287F151D")) || string.contains(SOY.d("193A291C1B19")) || string.contains(SOY.d("0D3325151C1A13")) || string.contains(SOY.d("0C3B211404")) || string.contains(SOY.d("183A2500")) || string.contains(SOY.d("0234281D18")))) {
+                    StringBuilder stringBuilder = new StringBuilder();
+                    stringBuilder.append(string);
+                    stringBuilder.append(SOY.d("4533324B181E0926770C194A"));
+                    stringBuilder.append(string2);
+                    stringBuilder.append((String)charSequence);
+                    return stringBuilder.toString();
+                }
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append(string);
+                stringBuilder.append(SOY.d("4533324B181E09267701104A"));
+                stringBuilder.append(string2);
+                stringBuilder.append((String)charSequence);
+                return stringBuilder.toString();
+            }
+            return "";
+        }
+        charSequence = new StringBuilder();
+        ((StringBuilder)charSequence).append(string);
+        ((StringBuilder)charSequence).append(SOY.d("09373004171F4526340E004A"));
+        ((StringBuilder)charSequence).append(string2);
+        ((StringBuilder)charSequence).append(SOY.d("5C22364B"));
         return ((StringBuilder)charSequence).toString();
     }
 
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
-    public static Object[] loadPic(Map<String, String> object) {
-        try {
-            Object object2 = (String)object.get(cYh.d("14393534"));
-            String string = (String)object.get(cYh.d("173922"));
-            object = AppYsV2.i((String)object2);
-            AppYsV2$1 appYsV2$1 = new AppYsV2$1();
-            com.github.catvod.spider.merge.k.g.c(com.github.catvod.spider.merge.k.g.b(), string, object, appYsV2$1);
-            if (((Response)appYsV2$1.getResult()).code() != 200) return null;
-            object = object2 = ((Response)appYsV2$1.getResult()).headers().get(cYh.d("243F2F253234137D1528273F"));
-            if (object2 == null) {
-                object = cYh.d("0620313D3E390624283E3975083335342377142433343637");
-            }
-            System.out.println(string);
-            System.out.println((String)object);
-            object2 = ((Response)appYsV2$1.getResult()).body().byteStream();
-            return new Object[]{200, object, object2};
-        }
-        catch (Throwable throwable) {
-            return null;
-        }
-    }
-
-    private boolean m(String string) {
-        boolean bl = this.a.indexOf(cYh.d("46")) >= 0 && (string.equals(cYh.d("83ECE7B6C7DC")) || string.equals(cYh.d("81D3C4B9DEE8")) || string.equals(cYh.d("80F6CEB4DFF3")));
+    private boolean \u0783(String string) {
+        boolean bl = string.equals(SOY.d("9EEEF791E4F1")) || string.equals(SOY.d("9CD1D49EFDC5")) || string.equals(SOY.d("9DF4DE93FCDE"));
         return bl;
     }
 
-    private String n(JSONArray object) {
+    private String \u0784(JSONArray object) {
         ArrayList<String> arrayList = new ArrayList<String>();
         int n2 = 0;
         while (true) {
@@ -511,7 +482,7 @@ lbl318:
             break;
         }
         try {
-            object = TextUtils.join((CharSequence)cYh.d("4B"), arrayList);
+            object = TextUtils.join((CharSequence)SOY.d("56"), arrayList);
             return object;
         }
         catch (JSONException jSONException) {
@@ -519,209 +490,181 @@ lbl318:
         }
     }
 
-    protected final String a(String string) {
-        String[] stringArray = this.c;
-        if (stringArray.length > 1) {
-            stringArray[1].equals(cYh.d("09363527"));
-        }
-        return string;
-    }
-
     /*
      * Unable to fully structure code
      * Could not resolve type clashes
      */
     public String categoryContent(String var1_1, String var2_6, boolean var3_7, HashMap<String, String> var4_8) {
-        block48: {
-            block47: {
-                block45: {
-                    block46: {
-                        block44: {
-                            block42: {
-                                block43: {
-                                    block41: {
-                                        block40: {
-                                            block39: {
-                                                block38: {
-                                                    block37: {
-                                                        block36: {
-                                                            block35: {
-                                                                block34: {
-                                                                    block33: {
-                                                                        block32: {
-                                                                            var14_9 = cYh.d("1E352023");
-                                                                            var15_10 = cYh.d("0B312F36");
-                                                                            var16_11 = cYh.d("06222430");
-                                                                            var17_12 = cYh.d("043C202224");
-                                                                            var10_13 = cYh.d("133F35303B2A063724");
-                                                                            var12_14 = cYh.d("0B392C3823");
-                                                                            var9_15 = cYh.d("113F250E3E3E");
-                                                                            var8_16 = cYh.d("133F35303B");
-                                                                            var13_17 = cYh.d("173126343435123E35");
-                                                                            var7_18 = cYh.d("0B393225");
-                                                                            var11_19 = cYh.d("03313530");
-                                                                            var19_20 = this.d();
-                                                                            var18_21 /* !! */  = new StringBuilder();
-                                                                            var18_21 /* !! */ .append(this.e(var19_20));
-                                                                            var18_21 /* !! */ .append(var1_1 /* !! */ );
-                                                                            var1_1 /* !! */  = !var19_20.contains(cYh.d("0620287F2732177F202127")) && !var19_20.contains(cYh.d("1F37202127")) ? (var19_20.contains(cYh.d("49262E35")) ? cYh.d("41332D3024295AB7ECCABEDAEE332D30242941313334366780FDDAB8D7D3062224307136063E266CB0F7FCB9C1D83B3B09376728323B156DA6FCCCB3E7D9383436284132386CB1D4F5B5FBDE71360E3D28256A6B5F763130303F5A73111F74") : cYh.d("41202036326744000F72713B1535206CB0F7FCB9C1D83628023167252E2A026DA6FCCCB3E7D9223D3629147632253628136DA6FCCCB3E7D938343628")) : cYh.d("41332D3024295AB7ECCABEDAEE332D30242941313334366780FDDAB8D7D3062224307136063E266CB0F7FCB9C1D83B3B09376728323B156DA6FCCCB3E7D938343628413C283C3E2E5A617977273D5A73111F74");
-                                                                            var18_21 /* !! */ .append(var1_1 /* !! */ );
-                                                                            var19_20 = var18_21 /* !! */ .toString().replace(cYh.d("44000F72"), var2_6);
-                                                                            var18_21 /* !! */  = cYh.d("80FDDAB8D7D3043C202224");
-                                                                            if (var4_8 /* !! */  == null) break block32;
-                                                                            if (!var4_8 /* !! */ .containsKey(var17_12)) break block32;
-                                                                            var1_1 /* !! */  = var4_8 /* !! */ .get(var17_12);
-                                                                            break block33;
-                                                                        }
-                                                                        var1_1 /* !! */  = "";
-                                                                    }
-                                                                    var17_12 = var19_20.replace(var18_21 /* !! */ , var1_1 /* !! */ );
-                                                                    var18_21 /* !! */  = cYh.d("80FDDAB8D7D306222430");
-                                                                    if (var4_8 /* !! */  == null) break block34;
-                                                                    if (!var4_8 /* !! */ .containsKey(var16_11)) break block34;
-                                                                    var1_1 /* !! */  = var4_8 /* !! */ .get(var16_11);
-                                                                    break block35;
+        block45: {
+            block43: {
+                block42: {
+                    block40: {
+                        block41: {
+                            block39: {
+                                block38: {
+                                    block37: {
+                                        block36: {
+                                            block35: {
+                                                block34: {
+                                                    block33: {
+                                                        block32: {
+                                                            block31: {
+                                                                block30: {
+                                                                    var14_9 = SOY.d("03373004");
+                                                                    var15_10 = SOY.d("16333F11");
+                                                                    var16_11 = SOY.d("1B203417");
+                                                                    var17_12 = SOY.d("193E300507");
+                                                                    var13_13 = SOY.d("0E3D251718071B3534");
+                                                                    var8_14 = SOY.d("163B3C1F00");
+                                                                    var7_15 = SOY.d("0C3D35291D13");
+                                                                    var9_16 = SOY.d("0E3D251718");
+                                                                    var10_17 = SOY.d("0A33361317180F3C25");
+                                                                    var11_18 = SOY.d("163B2202");
+                                                                    var12_19 = SOY.d("1E332517");
+                                                                    var19_20 = this.\u052b();
+                                                                    var18_21 = new StringBuilder();
+                                                                    var18_21.append(this.\u052c(var19_20));
+                                                                    var18_21.append((String)var1_1 /* !! */ );
+                                                                    var18_21.append(this.\u052d(var19_20));
+                                                                    var18_21 = var18_21.toString().replace(SOY.d("59021F55"), var2_6);
+                                                                    var19_20 = SOY.d("9DFFCA9FF4FE193E300507");
+                                                                    if (var4_8 /* !! */  == null) break block30;
+                                                                    if (!var4_8 /* !! */ .containsKey(var17_12)) break block30;
+                                                                    var1_1 /* !! */  = var4_8 /* !! */ .get(var17_12);
+                                                                    break block31;
                                                                 }
                                                                 var1_1 /* !! */  = "";
                                                             }
-                                                            var16_11 = var17_12.replace(var18_21 /* !! */ , var1_1 /* !! */ );
-                                                            var17_12 = cYh.d("80FDDAB8D7D30B312F36");
-                                                            if (var4_8 /* !! */  == null) break block36;
-                                                            if (!var4_8 /* !! */ .containsKey(var15_10)) break block36;
-                                                            var1_1 /* !! */  = var4_8 /* !! */ .get(var15_10);
-                                                            break block37;
+                                                            var17_12 = var18_21.replace(var19_20, (CharSequence)var1_1 /* !! */ );
+                                                            var18_21 = SOY.d("9DFFCA9FF4FE1B203417");
+                                                            if (var4_8 /* !! */  == null) break block32;
+                                                            if (!var4_8 /* !! */ .containsKey(var16_11)) break block32;
+                                                            var1_1 /* !! */  = var4_8 /* !! */ .get(var16_11);
+                                                            break block33;
                                                         }
                                                         var1_1 /* !! */  = "";
                                                     }
-                                                    var16_11 = var16_11.replace(var17_12, var1_1 /* !! */ );
-                                                    var15_10 = cYh.d("80FDDAB8D7D31E352023");
-                                                    if (var4_8 /* !! */  == null) break block38;
-                                                    if (!var4_8 /* !! */ .containsKey(var14_9)) break block38;
-                                                    var1_1 /* !! */  = var4_8 /* !! */ .get(var14_9);
-                                                    break block39;
+                                                    var17_12 = var17_12.replace(var18_21, (CharSequence)var1_1 /* !! */ );
+                                                    var16_11 = SOY.d("9DFFCA9FF4FE16333F11");
+                                                    if (var4_8 /* !! */  == null) break block34;
+                                                    if (!var4_8 /* !! */ .containsKey(var15_10)) break block34;
+                                                    var1_1 /* !! */  = var4_8 /* !! */ .get(var15_10);
+                                                    break block35;
                                                 }
                                                 var1_1 /* !! */  = "";
                                             }
-                                            var14_9 = var16_11.replace(var15_10, var1_1 /* !! */ );
-                                            var15_10 = cYh.d("81DED3B4EDD5");
-                                            if (var4_8 /* !! */  != null) {
-                                                if (!var4_8 /* !! */ .containsKey(var15_10)) break block40;
-                                                var1_1 /* !! */  = var4_8 /* !! */ .get(var15_10);
-                                                break block41;
-                                            }
+                                            var15_10 = var17_12.replace(var16_11, (CharSequence)var1_1 /* !! */ );
+                                            var16_11 = SOY.d("9DFFCA9FF4FE03373004");
+                                            if (var4_8 /* !! */  == null) break block36;
+                                            if (!var4_8 /* !! */ .containsKey(var14_9)) break block36;
+                                            var1_1 /* !! */  = var4_8 /* !! */ .get(var14_9);
+                                            break block37;
                                         }
                                         var1_1 /* !! */  = "";
                                     }
-                                    var14_9 = var14_9.replace(var15_10, var1_1 /* !! */ );
-                                    SpiderDebug.log((String)var14_9);
-                                    var1_1 /* !! */  = com.github.catvod.spider.merge.k.g.g(var14_9, AppYsV2.i(var14_9));
-                                    this.a(var1_1 /* !! */ );
-                                    var4_8 /* !! */  = new JSONObject(var1_1 /* !! */ );
-                                    if (var4_8 /* !! */ .has(var10_13) && var4_8 /* !! */ .get(var10_13) instanceof Integer) {
-                                        var5_22 = var4_8 /* !! */ .getInt(var10_13);
-                                        break block42;
-                                    }
-                                    if (var4_8 /* !! */ .has(var13_17) && var4_8 /* !! */ .get(var13_17) instanceof Integer) {
-                                        var5_22 = var4_8 /* !! */ .getInt(var13_17);
-                                        break block42;
-                                    }
-                                    if (!var4_8 /* !! */ .has(var11_19) || !(var4_8 /* !! */ .get(var11_19) instanceof JSONObject) || !var4_8 /* !! */ .getJSONObject(var11_19).has(var8_16) || !(var4_8 /* !! */ .getJSONObject(var11_19).get(var8_16) instanceof Integer) || !var4_8 /* !! */ .getJSONObject(var11_19).has(var12_14) || !(var4_8 /* !! */ .getJSONObject(var11_19).get(var12_14) instanceof Integer)) break block43;
-                                    var5_22 = var4_8 /* !! */ .getJSONObject(var11_19).getInt(var12_14);
-                                    var6_23 = var4_8 /* !! */ .getJSONObject(var11_19).getInt(var8_16);
-                                    if (var6_23 % var5_22 != 0) ** GOTO lbl98
-                                    try {
-                                        var5_22 = var6_23 / var5_22;
-                                        break block42;
-lbl98:
-                                        // 1 sources
-
-                                        var5_22 = var6_23 / var5_22;
-                                        ++var5_22;
-                                        break block42;
-                                    }
-                                    catch (Exception var1_2) {
-                                        SpiderDebug.log((Throwable)var1_2);
+                                    var14_9 = var15_10.replace(var16_11, (CharSequence)var1_1 /* !! */ );
+                                    var15_10 = SOY.d("9CDCC393CEF8");
+                                    if (var4_8 /* !! */  != null) {
+                                        if (!var4_8 /* !! */ .containsKey(var15_10)) break block38;
+                                        var1_1 /* !! */  = var4_8 /* !! */ .get(var15_10);
+                                        break block39;
                                     }
                                 }
-                                var5_22 = 0x7FFFFFFF;
+                                var1_1 /* !! */  = "";
                             }
-                            var10_13 = null;
-                            var15_10 = new JSONArray();
-                            if (!var4_8 /* !! */ .has(var7_18) || !(var4_8 /* !! */ .get(var7_18) instanceof JSONArray)) break block44;
-                            var1_1 /* !! */  = var4_8 /* !! */ ;
-                            ** GOTO lbl117
+                            var1_1 /* !! */  = var14_9.replace(var15_10, (CharSequence)var1_1 /* !! */ );
+                            SpiderDebug.log((String)var1_1 /* !! */ );
+                            var1_1 /* !! */  = this.\u0528(\u078c.\u058f((String)var1_1 /* !! */ , this.\u0620((String)var1_1 /* !! */ )), (byte)2);
+                            var14_9 = new JSONObject((String)var1_1 /* !! */ );
+                            if (var14_9.has(var13_13) && var14_9.get(var13_13) instanceof Integer) {
+                                var5_22 = var14_9.getInt(var13_13);
+                                break block40;
+                            }
+                            if (var14_9.has(var10_17) && var14_9.get(var10_17) instanceof Integer) {
+                                var5_22 = var14_9.getInt(var10_17);
+                                break block40;
+                            }
+                            if (!var14_9.has(var12_19) || !(var14_9.get(var12_19) instanceof JSONObject) || !var14_9.getJSONObject(var12_19).has(var9_16) || !(var14_9.getJSONObject(var12_19).get(var9_16) instanceof Integer) || !var14_9.getJSONObject(var12_19).has(var8_14) || !(var14_9.getJSONObject(var12_19).get(var8_14) instanceof Integer)) break block41;
+                            var5_22 = var14_9.getJSONObject(var12_19).getInt(var8_14);
+                            var6_23 = var14_9.getJSONObject(var12_19).getInt(var9_16);
+                            if (var6_23 % var5_22 != 0) ** GOTO lbl95
+                            try {
+                                var5_22 = var6_23 / var5_22;
+                                break block40;
+lbl95:
+                                // 1 sources
+
+                                var5_22 = var6_23 / var5_22;
+                                ++var5_22;
+                                break block40;
+                            }
+                            catch (Exception var1_2) {
+                                SpiderDebug.log((Throwable)var1_2);
+                            }
                         }
-                        if (!var4_8 /* !! */ .has(var11_19) || !(var4_8 /* !! */ .get(var11_19) instanceof JSONObject) || !var4_8 /* !! */ .getJSONObject(var11_19).has(var7_18) || !(var4_8 /* !! */ .getJSONObject(var11_19).get(var7_18) instanceof JSONArray)) break block46;
-                        var1_1 /* !! */  = var4_8 /* !! */ .getJSONObject(var11_19);
-lbl117:
-                        // 2 sources
-
-                        var1_1 /* !! */  = var1_1 /* !! */ .getJSONArray(var7_18);
-                        break block45;
+                        var5_22 = 0x7FFFFFFF;
                     }
-                    var1_1 /* !! */  = var10_13;
-                    if (!var4_8 /* !! */ .has(var11_19)) break block45;
-                    var1_1 /* !! */  = var10_13;
-                    if (!(var4_8 /* !! */ .get(var11_19) instanceof JSONArray)) break block45;
-                    var1_1 /* !! */  = var4_8 /* !! */ .getJSONArray(var11_19);
+                    var4_8 /* !! */  = null;
+                    var13_13 = new JSONArray();
+                    if (var14_9.has(var11_18) && var14_9.get(var11_18) instanceof JSONArray) {
+                        var1_1 /* !! */  = var14_9.getJSONArray(var11_18);
+                        break block42;
+                    }
+                    if (var14_9.has(var12_19) && var14_9.get(var12_19) instanceof JSONObject && var14_9.getJSONObject(var12_19).has(var11_18) && var14_9.getJSONObject(var12_19).get(var11_18) instanceof JSONArray) {
+                        var1_1 /* !! */  = var14_9.getJSONObject(var12_19).getJSONArray(var11_18);
+                        break block42;
+                    }
+                    var1_1 /* !! */  = var4_8 /* !! */ ;
+                    if (!var14_9.has(var12_19)) break block42;
+                    var1_1 /* !! */  = var4_8 /* !! */ ;
+                    if (!(var14_9.get(var12_19) instanceof JSONArray)) break block42;
+                    var1_1 /* !! */  = var14_9.getJSONArray(var12_19);
                 }
-                var10_13 = var8_16;
-                var11_19 = var7_18;
-                if (var1_1 /* !! */  == null) break block47;
+                if (var1_1 /* !! */  == null) break block43;
                 var6_23 = 0;
-                var4_8 /* !! */  = var8_16;
                 while (true) {
-                    var10_13 = var4_8 /* !! */ ;
-                    var11_19 = var7_18;
-                    if (var6_23 >= var1_1 /* !! */ .length()) break;
-                    var17_12 = var1_1 /* !! */ .getJSONObject(var6_23);
-                    var3_7 = var17_12.has(var9_15);
-                    var11_19 = cYh.d("113F250E253F0A31333A24");
-                    var8_16 = cYh.d("113F250E393B0A35");
-                    var16_11 = cYh.d("113F250E273304");
-                    if (!var3_7) ** GOTO lbl156
-                    var18_21 /* !! */  = this.fixCover(var17_12.getString(var16_11), var14_9);
-                    var10_13 = new JSONObject();
-                    var10_13.put(var9_15, (Object)var17_12.getString(var9_15));
-                    var10_13.put(var8_16, (Object)var17_12.getString(var8_16));
-                    var10_13.put(var16_11, (Object)var18_21 /* !! */ );
-                    var8_16 = var17_12.getString(var11_19);
-lbl154:
-                    // 2 sources
+                    block44: {
+                        if (var6_23 >= var1_1 /* !! */ .length()) break;
+                        var12_19 = var1_1 /* !! */ .getJSONObject(var6_23);
+                        var3_7 = var12_19.has(var7_15);
+                        var4_8 /* !! */  = SOY.d("0C3D352906121733231D07");
+                        var14_9 = SOY.d("0C3D3529041E19");
+                        var15_10 = SOY.d("0C3D35291A161737");
+                        if (!var3_7) ** GOTO lbl145
+                        var16_11 = new JSONObject();
+                        var16_11.put(var7_15, (Object)var12_19.getString(var7_15));
+                        var16_11.put(var15_10, (Object)var12_19.getString(var15_10));
+                        var16_11.put(var14_9, (Object)var12_19.getString(var14_9));
+                        var16_11.put((String)var4_8 /* !! */ , (Object)var12_19.getString((String)var4_8 /* !! */ ));
+                        var13_13.put((Object)var16_11);
+                        break block44;
+lbl145:
+                        // 1 sources
 
-                    while (true) {
-                        continue;
-                        break;
+                        var16_11 = new JSONObject();
+                        var16_11.put(var7_15, (Object)var12_19.getString(SOY.d("14372902181E1439")));
+                        var16_11.put(var15_10, (Object)var12_19.getString(SOY.d("0E3B251A11")));
+                        var16_11.put(var14_9, (Object)var12_19.getString(SOY.d("0A3B32")));
+                        var16_11.put((String)var4_8 /* !! */ , (Object)var12_19.getString(SOY.d("0926300211")));
+                        var13_13.put((Object)var16_11);
                     }
-lbl156:
-                    // 1 sources
-
-                    var18_21 /* !! */  = this.fixCover(var17_12.getString(cYh.d("173922")), var14_9);
-                    var10_13 = new JSONObject();
-                    var10_13.put(var9_15, (Object)var17_12.getString(cYh.d("093539253B33093B")));
-                    var10_13.put(var8_16, (Object)var17_12.getString(cYh.d("1339353D32")));
-                    var10_13.put(var16_11, (Object)var18_21 /* !! */ );
-                    var8_16 = var17_12.getString(cYh.d("1424202532"));
-                    ** continue;
-                    var10_13.put(var11_19, (Object)var8_16);
-                    var15_10.put((Object)var10_13);
                     ++var6_23;
                     continue;
                     break;
                 }
             }
             var1_1 /* !! */  = new JSONObject();
-            var1_1 /* !! */ .put(cYh.d("17312634"), (Object)var2_6);
-            var1_1 /* !! */ .put(var13_17, var5_22);
-            var1_1 /* !! */ .put(var12_14, 90);
-            var1_1 /* !! */ .put(var10_13, 0x7FFFFFFF);
-            var1_1 /* !! */ .put(var11_19, (Object)var15_10);
+            var1_1 /* !! */ .put(SOY.d("0A333613"), (Object)var2_6);
+            var1_1 /* !! */ .put(var10_17, var5_22);
+            var1_1 /* !! */ .put(var8_14, 90);
+            var1_1 /* !! */ .put(var9_16, 0x7FFFFFFF);
+            var1_1 /* !! */ .put(var11_18, (Object)var13_13);
             var1_1 /* !! */  = var1_1 /* !! */ .toString();
             return var1_1 /* !! */ ;
             {
                 catch (Exception var1_3) {}
             }
-            break block48;
+            break block45;
             catch (Exception var1_4) {
                 // empty catch block
             }
@@ -732,22 +675,21 @@ lbl156:
 
     public String detailContent(List<String> object) {
         try {
-            String string = this.d();
+            String string = this.\u052b();
             CharSequence charSequence = new StringBuilder();
-            charSequence.append(this.j(string));
+            charSequence.append(this.\u0780(string));
             charSequence.append(object.get(0));
             charSequence = charSequence.toString();
             SpiderDebug.log((String)charSequence);
-            String string2 = com.github.catvod.spider.merge.k.g.g((String)charSequence, AppYsV2.i((String)charSequence));
-            this.a(string2);
-            charSequence = new JSONObject(string2);
-            JSONObject jSONObject = new JSONObject();
-            string2 = new JSONObject();
-            this.c(string, (JSONObject)charSequence, (JSONObject)string2, object.get(0));
+            String string2 = this.\u0528(\u078c.\u058f((String)charSequence, this.\u0620((String)charSequence)), (byte)3);
+            JSONObject jSONObject = new JSONObject(string2);
+            JSONObject jSONObject2 = new JSONObject();
+            charSequence = new JSONObject();
+            this.\u052a(string, jSONObject, string2, (JSONObject)charSequence, object.get(0));
             object = new JSONArray();
-            object.put((Object)string2);
-            jSONObject.put(cYh.d("0B393225"), object);
-            object = jSONObject.toString();
+            object.put((Object)charSequence);
+            jSONObject2.put(SOY.d("163B2202"), object);
+            object = jSONObject2.toString();
             return object;
         }
         catch (Exception exception) {
@@ -756,551 +698,373 @@ lbl156:
         }
     }
 
-    final String e(String string) {
-        StringBuilder stringBuilder;
-        if (!string.contains(cYh.d("0620287F2732177F202127")) && !string.contains(cYh.d("1F37202127"))) {
-            if (string.contains(cYh.d("49262E35"))) {
-                if (string.contains(cYh.d("0E3F31343923123E"))) {
-                    stringBuilder = com.github.catvod.spider.merge.d.d.b(string);
-                    string = cYh.d("483C28222365132931346A");
-                } else {
-                    stringBuilder = com.github.catvod.spider.merge.d.d.b(string);
-                    string = cYh.d("582438213267");
+    /*
+     * Loose catch block
+     */
+    public String homeContent(boolean bl) {
+        Object object;
+        Object object2;
+        block117: {
+            int n2;
+            String[] stringArray;
+            Object object3;
+            Object object4;
+            Object object5;
+            String string;
+            Object object6;
+            String[] stringArray2;
+            String string2;
+            Object object7;
+            Object object8;
+            String string3;
+            Object object9;
+            Object object10;
+            block102: {
+                object10 = SOY.d("9DFFCA9FF4FE");
+                object9 = "";
+                string3 = SOY.d("1C3B3D02110509");
+                object8 = SOY.d("163B2202");
+                object7 = SOY.d("1E332517");
+                object2 = object9;
+                string2 = this.\u052e(this.\u052b());
+                object2 = object9;
+                boolean bl2 = string2.isEmpty();
+                stringArray2 = SOY.d("47");
+                object6 = SOY.d("2679");
+                string = SOY.d("70");
+                object = null;
+                object5 = SOY.d("0E2B21132B1E1E");
+                object4 = SOY.d("0E2B21132B191B3F34");
+                if (!bl2) {
+                    block103: {
+                        block101: {
+                            object2 = object9;
+                            SpiderDebug.log((String)string2);
+                            object2 = object9;
+                            object3 = this.\u0528(\u078c.\u058f(string2, this.\u0620(string2)), (byte)0);
+                            object2 = object9;
+                            object2 = object9;
+                            stringArray = new JSONObject((String)object3);
+                            object2 = object9;
+                            if (!stringArray.has((String)object8)) break block101;
+                            object2 = object9;
+                            if (!(stringArray.get((String)object8) instanceof JSONArray)) break block101;
+                            object2 = object9;
+                            object3 = stringArray.getJSONArray((String)object8);
+                            break block102;
+                        }
+                        object2 = object9;
+                        if (!stringArray.has((String)object7)) break block103;
+                        object2 = object9;
+                        if (!(stringArray.get((String)object7) instanceof JSONObject)) break block103;
+                        object2 = object9;
+                        if (!stringArray.getJSONObject((String)object7).has((String)object8)) break block103;
+                        object2 = object9;
+                        if (!(stringArray.getJSONObject((String)object7).get((String)object8) instanceof JSONArray)) break block103;
+                        object2 = object9;
+                        object3 = stringArray.getJSONObject((String)object7).getJSONArray((String)object8);
+                        break block102;
+                    }
+                    object3 = object;
+                    object2 = object9;
+                    if (!stringArray.has((String)object7)) break block102;
+                    object3 = object;
+                    object2 = object9;
+                    if (!(stringArray.get((String)object7) instanceof JSONArray)) break block102;
+                    object2 = object9;
+                    object3 = stringArray.getJSONArray((String)object7);
+                    break block102;
                 }
-            } else {
-                stringBuilder = com.github.catvod.spider.merge.d.d.b(string);
-                string = cYh.d("5831226C3B33142467323B3B14237C");
+                object2 = object9;
+                stringArray = this.\u052f(string2, null).split(string)[0].split((String)object6);
+                object2 = object9;
+                object2 = object9;
+                object = new JSONArray();
+                n2 = 1;
+                while (true) {
+                    block104: {
+                        object3 = object;
+                        object2 = object9;
+                        if (n2 >= stringArray.length) break;
+                        object2 = object9;
+                        object7 = stringArray[n2].trim().split((String)stringArray2);
+                        object2 = object9;
+                        if (((String[])object7).length < 2) break block104;
+                        object2 = object9;
+                        object2 = object9;
+                        object3 = new JSONObject();
+                        object2 = object9;
+                        object3.put((String)object4, (Object)object7[0].trim());
+                        object2 = object9;
+                        object3.put((String)object5, (Object)object7[1].trim());
+                        object2 = object9;
+                        object.put(object3);
+                    }
+                    ++n2;
+                }
             }
-        } else {
-            if (string.contains(cYh.d("03392B3836220E31"))) {
-                return cYh.d("0F2435216D7548273626793E0E3A28302F33067E223E3A750620287F2732177F202127751139253438651339256C");
+            object2 = object9;
+            object2 = object9;
+            JSONObject jSONObject = new JSONObject();
+            object2 = object9;
+            object2 = object9;
+            stringArray = new JSONArray();
+            object = SOY.d("193E300507");
+            object7 = object9;
+            String[] stringArray3 = stringArray;
+            object8 = object;
+            if (object3 != null) {
+                int n3 = 0;
+                Object object11 = object3;
+                object3 = object9;
+                object9 = object10;
+                while (true) {
+                    block105: {
+                        block116: {
+                            block106: {
+                                JSONArray jSONArray;
+                                String string4;
+                                block115: {
+                                    object7 = object3;
+                                    stringArray3 = stringArray;
+                                    object8 = object;
+                                    object2 = object3;
+                                    if (n3 >= object11.length()) break;
+                                    object2 = object3;
+                                    object7 = object11.getJSONObject(n3);
+                                    object2 = object3;
+                                    object8 = object7.getString((String)object4);
+                                    object2 = object3;
+                                    if (this.\u0783((String)object8)) {
+                                        object7 = object9;
+                                        object9 = object;
+                                        object = stringArray2;
+                                        object2 = object6;
+                                        stringArray2 = object4;
+                                        object4 = object7;
+                                        object6 = object;
+                                        object = object3;
+                                        object3 = object9;
+                                        break block105;
+                                    }
+                                    object2 = object3;
+                                    string4 = object7.getString((String)object5);
+                                    object2 = object3;
+                                    object2 = object3;
+                                    object10 = new JSONObject();
+                                    object2 = object3;
+                                    object10.put((String)object5, (Object)string4);
+                                    object2 = object3;
+                                    object10.put((String)object4, object8);
+                                    object2 = object3;
+                                    object7 = object7.optJSONObject(SOY.d("0E2B21132B120226341810"));
+                                    if (!bl) break block106;
+                                    object2 = object3;
+                                    stringArray3 = this.\u052f(string2, (JSONObject)object7).split(string);
+                                    object2 = object3;
+                                    object2 = object3;
+                                    jSONArray = new JSONArray();
+                                    object2 = object3;
+                                    n2 = string2.isEmpty() ? 1 : 0;
+                                    object7 = object5;
+                                    object8 = object6;
+                                    object5 = stringArray2;
+                                    stringArray2 = object;
+                                    object6 = object10;
+                                    while (true) {
+                                        block107: {
+                                            Object object12;
+                                            block110: {
+                                                block108: {
+                                                    block112: {
+                                                        block111: {
+                                                            block109: {
+                                                                object2 = object3;
+                                                                if (n2 >= stringArray3.length) break;
+                                                                object2 = object3;
+                                                                object = stringArray3[n2].trim();
+                                                                object2 = object3;
+                                                                if (((String)object).isEmpty()) {
+                                                                    object2 = object5;
+                                                                    object = object4;
+                                                                    object4 = object6;
+                                                                    object6 = object;
+                                                                    object = object3;
+                                                                    object3 = stringArray2;
+                                                                    break block107;
+                                                                }
+                                                                object2 = object3;
+                                                                object12 = ((String)object).split((String)object8);
+                                                                object2 = object3;
+                                                                object = object12[0].trim();
+                                                                object2 = object3;
+                                                                if (!((String)object).contains((CharSequence)object9)) break block108;
+                                                                object2 = object3;
+                                                                object10 = ((String)object).replace((CharSequence)object9, (CharSequence)object3);
+                                                                object2 = object3;
+                                                                if (!((String)object10).equals(stringArray2)) break block109;
+                                                                object2 = object3;
+                                                                object = SOY.d("9DE3EA93EAFC");
+                                                                break block110;
+                                                            }
+                                                            object2 = object3;
+                                                            if (!((String)object10).equals(SOY.d("1B203417"))) break block111;
+                                                            object2 = object3;
+                                                            object = SOY.d("9FCEE193F8CD");
+                                                            break block110;
+                                                        }
+                                                        object2 = object3;
+                                                        if (!((String)object10).equals(SOY.d("16333F11"))) break block112;
+                                                        object2 = object3;
+                                                        object = SOY.d("92FDFC9EDCF7");
+                                                        break block110;
+                                                    }
+                                                    object2 = object3;
+                                                    if (!((String)object10).equals(SOY.d("03373004"))) break block110;
+                                                    object2 = object3;
+                                                    object = SOY.d("9FEBE592CFCA");
+                                                    break block110;
+                                                }
+                                                object2 = object;
+                                                object10 = object;
+                                                object = object2;
+                                            }
+                                            object2 = object3;
+                                            object2 = object3;
+                                            JSONObject jSONObject2 = new JSONObject();
+                                            object2 = object3;
+                                            jSONObject2.put(SOY.d("113728"), object10);
+                                            object2 = object3;
+                                            jSONObject2.put(SOY.d("14333C13"), object);
+                                            object2 = object3;
+                                            object2 = object3;
+                                            JSONArray jSONArray2 = new JSONArray();
+                                            int n4 = 1;
+                                            object10 = object12;
+                                            while (true) {
+                                                block113: {
+                                                    JSONObject jSONObject3;
+                                                    block114: {
+                                                        object2 = object3;
+                                                        if (n4 >= ((Object)object10).length) break;
+                                                        object2 = object3;
+                                                        object2 = object3;
+                                                        jSONObject3 = new JSONObject();
+                                                        object2 = object3;
+                                                        object12 = ((String)object10[n4]).trim();
+                                                        object2 = object3;
+                                                        int n5 = ((String)object12).indexOf((String)object5);
+                                                        object = object3;
+                                                        String string5 = SOY.d("0C");
+                                                        object2 = SOY.d("14");
+                                                        if (n5 == -1) {
+                                                            object3 = object;
+                                                            if (this.\u0783((String)object12)) break block113;
+                                                            object3 = object;
+                                                            jSONObject3.put((String)object2, object12);
+                                                            object3 = object;
+                                                            jSONObject3.put(string5, object12);
+                                                            break block114;
+                                                        }
+                                                        object3 = object;
+                                                        String string6 = ((String)object12).substring(0, n5);
+                                                        object3 = object;
+                                                        if (this.\u0783(string6)) break block113;
+                                                        object3 = object;
+                                                        jSONObject3.put((String)object2, (Object)string6.trim());
+                                                        object3 = object;
+                                                        jSONObject3.put(string5, (Object)((String)object12).substring(n5 + 1).trim());
+                                                    }
+                                                    object3 = object;
+                                                    jSONArray2.put((Object)jSONObject3);
+                                                }
+                                                ++n4;
+                                                object3 = object;
+                                            }
+                                            object = object3;
+                                            object10 = object6;
+                                            object2 = object5;
+                                            object6 = object4;
+                                            object3 = object;
+                                            jSONObject2.put(SOY.d("0C333D0311"), (Object)jSONArray2);
+                                            object3 = object;
+                                            jSONArray.put((Object)jSONObject2);
+                                            object3 = stringArray2;
+                                            object4 = object10;
+                                        }
+                                        ++n2;
+                                        object5 = object4;
+                                        object4 = object6;
+                                        stringArray2 = object3;
+                                        object3 = object;
+                                        object6 = object5;
+                                        object5 = object2;
+                                    }
+                                    stringArray3 = object9;
+                                    object = object3;
+                                    object9 = stringArray2;
+                                    object10 = object5;
+                                    object2 = object8;
+                                    object5 = object7;
+                                    stringArray2 = object4;
+                                    object3 = object;
+                                    if (jSONObject.has(string3)) break block115;
+                                    object3 = object;
+                                    object3 = object;
+                                    object4 = new JSONObject();
+                                    object3 = object;
+                                    jSONObject.put(string3, object4);
+                                }
+                                object3 = object;
+                                jSONObject.getJSONObject(string3).put(string4, (Object)jSONArray);
+                                object7 = object6;
+                                object4 = stringArray3;
+                                object6 = object10;
+                                break block116;
+                            }
+                            object2 = object9;
+                            object7 = object3;
+                            object3 = object6;
+                            object9 = object;
+                            object = object7;
+                            object6 = stringArray2;
+                            stringArray2 = object4;
+                            object4 = object2;
+                            object2 = object3;
+                            object7 = object10;
+                        }
+                        object3 = object;
+                        stringArray.put(object7);
+                        object3 = object9;
+                    }
+                    ++n3;
+                    object9 = object4;
+                    object4 = stringArray2;
+                    stringArray2 = object;
+                    object = object3;
+                    object3 = stringArray2;
+                    stringArray2 = object6;
+                    object6 = object2;
+                }
             }
-            stringBuilder = com.github.catvod.spider.merge.d.d.b(string);
-            string = cYh.d("1139253438651339256C");
-        }
-        stringBuilder.append(string);
-        return stringBuilder.toString();
-    }
-
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
-    final String f(String string) {
-        StringBuilder stringBuilder;
-        if (!string.contains(cYh.d("0620287F2732177F202127")) && !string.contains(cYh.d("1F37202127"))) {
-            if (!string.contains(cYh.d("49262E35"))) return "";
-            if (string.contains(cYh.d("0E3F31343923123E6F323837"))) {
-                stringBuilder = com.github.catvod.spider.merge.d.d.b(string);
-                string = cYh.d("483C2822236513293134");
-            } else {
-                stringBuilder = com.github.catvod.spider.merge.d.d.b(string);
-                string = cYh.d("482438213229");
-            }
-        } else {
-            stringBuilder = com.github.catvod.spider.merge.d.d.b(string);
-            string = cYh.d("0931376E23350C352F6C");
-        }
-        stringBuilder.append(string);
-        return stringBuilder.toString();
-    }
-
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
-    public String fixCover(String string, String string2) {
-        block4: {
+            object3 = object7;
+            jSONObject.put((String)object8, (Object)stringArray3);
+            object3 = object7;
             try {
-                if (this.a.indexOf(cYh.d("13")) >= 0) break block4;
-                return string;
+                object = jSONObject.toString();
+                return object;
             }
             catch (Exception exception) {
-                return string;
+                object = object3;
+            }
+            break block117;
+            catch (Exception exception) {
+                object = object2;
+                object2 = exception;
             }
         }
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(cYh.d("17222E292E60487F253E6A3B172018220168412328253267"));
-        stringBuilder.append(string2);
-        stringBuilder.append(cYh.d("412028326A"));
-        stringBuilder.append(string);
-        string2 = stringBuilder.toString();
-        return string2;
-    }
-
-    final String g(String string, JSONObject object) {
-        String string2 = "";
-        CharSequence charSequence = string2;
-        if (object != null) {
-            Iterator iterator = object.keys();
-            charSequence = string2;
-            while (true) {
-                string2 = charSequence;
-                charSequence = string2;
-                if (!iterator.hasNext()) break;
-                String string3 = (String)iterator.next();
-                if (!(string3.equals(cYh.d("043C202224")) || string3.equals(cYh.d("06222430")) || string3.equals(cYh.d("0B312F36")))) {
-                    charSequence = string2;
-                    if (!string3.equals(cYh.d("1E352023"))) continue;
-                }
-                try {
-                    charSequence = new StringBuilder();
-                    ((StringBuilder)charSequence).append(string2);
-                    ((StringBuilder)charSequence).append(cYh.d("80FDDAB8D7D3"));
-                    ((StringBuilder)charSequence).append(string3);
-                    ((StringBuilder)charSequence).append(cYh.d("4CB5C4F9BED9CF6D6A"));
-                    ((StringBuilder)charSequence).append(object.getString(string3).replace(cYh.d("4B"), cYh.d("4C")));
-                    ((StringBuilder)charSequence).append(cYh.d("6D"));
-                    charSequence = ((StringBuilder)charSequence).toString();
-                }
-                catch (JSONException jSONException) {
-                    charSequence = string2;
-                }
-            }
-        }
-        if (string.contains(cYh.d("49262E35"))) {
-            object = n.a((String)charSequence, cYh.d("6DB6CFC3B2E0E87BA4D4FFB3E4F87C7AB1C6E7B6D7E16A2E0E3D247AB1C6E7B7C2FC6A320E24327ABFF5E3B5C9D76A29043F3334"));
-        } else {
-            object = charSequence;
-            if (!string.contains(cYh.d("0620287F2732177F202127"))) {
-                object = string.contains(cYh.d("1F37202127")) ? charSequence : cYh.d("82D8C7B6E6E14CB5C4F9BED9CF6D6AB6C3EF82EDF06C3A351139247ABFE5F9B7FAFCB2D3C06D3527273606296AB6ECE68FD9FB6C232C14382E267CBFEDF8A7EDFC67043F2C383471531B7C3C382C0E351E653C7183EDD2B9D5E85A242828225080FDDAB8D7D3043C2022247182D5E9B8D4F25A7BA4C7CBBFEEF76AB6DFEB81D3C47AB1DBF7B6C1C77CBFEDF8A5ECCB7180F7D0B4EEE14CB5C8F6B1D9E27BA7D9CFBEDDD96AB9FAFC82DCEB7AB0D0C8B7FCFB7CBFEDF8A6C5EC7182F5C6B4EEE14CB6ECF7B3E4C77BA4D7C5B3FEF96AB7C9F081D8D97AB1DBF7B6C1C77CBCE5FCA6C7C67181D3CBB7D5C04CB7FADEB2DFDF7BA8CCC5BCFFF56AB7C1DD8FD9FB7AB2E4C9B7D5E4B2E7D67BA4DEF3B2C4D56AB4D9DC82DFF37ABFE5F7B5CBF97CBFE1CCA7CCC67181D3CBB7D5C04CB6C2DBB1D8FD7BA5EDF1BDF7D66AB7D4DF8FD9F37AB0FCE8B5C9F87CBEDFD9A6EBF07182D4FEB6FCFF4CB7FCC0B0E1FBB7D5E4B2E7D65AA6FCCCB3E7D92023323B4CB5C4F9BED9CF6D6AB4F3FD8EC9C77ABEFCFEB6F9FE7CBFE8E0A7E8E97180EECFB4CCE74CB8CAE0B2C1DA7BA7E2C2BFFCED6AB7C0FF81CCED7ABEC5CEB5DAEC7CBFD9E7A4CAEA7181E3F1B4CCE74CB5CCE1B2E0C17BA9F4E8BDE8FDA6D8CE7182DAE1B7DCE582F4E67AB2DFD1B4FAC75DBDCACBA8D1DE230231337AB2DFCFB9C2F96A71556073637C685762707A656A55606A63676B5E7B736166624C6271606071556070677C685761747A656A56646A63676B547B736166684C6271606671556070617C685760787A656A57686A63676A507B7361676C4C6271616271556071657C685760727A656A57626A63676A567B7361676A");
-            }
-        }
+        SpiderDebug.log((Throwable)object2);
         return object;
-    }
-
-    /*
-     * Ignored method signature, as it can't be verified against descriptor
-     */
-    protected final JSONObject h(ArrayList object, String string) {
-        Pattern[] patternArray;
-        String string2;
-        String string3;
-        String string4;
-        Iterator iterator = object.iterator();
-        object = "";
-        while (true) {
-            int n2;
-            String string5;
-            block7: {
-                boolean bl = iterator.hasNext();
-                string4 = cYh.d("173C202802280B");
-                string3 = cYh.d("1731332232");
-                string2 = cYh.d("12222D");
-                patternArray = null;
-                int n3 = 1;
-                if (!bl) break;
-                string5 = (String)iterator.next();
-                if (string5.isEmpty() || string5.equals(cYh.d("09252D3D"))) continue;
-                String string6 = n.a(string5, string);
-                String string7 = com.github.catvod.spider.merge.k.g.g(string6, null);
-                this.a(string7);
-                if (string5.contains(cYh.d("53696F6364694964767F63685D6979686F"))) {
-                    object = new HashMap();
-                    com.github.catvod.spider.merge.k.g.j(string6, null, object);
-                    string = com.github.catvod.spider.merge.k.g.d(object);
-                    object = new JSONObject();
-                    object.put(string3, 0);
-                    object.put(string4, (Object)"");
-                    object.put(string2, (Object)string);
-                    return object;
-                }
-                try {
-                    string4 = m.e(string, string7);
-                    patternArray = string4;
-                }
-                catch (Throwable throwable) {
-                    // empty catch block
-                }
-                if (patternArray != null && patternArray.has(string2) && patternArray.has(string4 = cYh.d("0F3520353228"))) {
-                    patternArray.put(string4, (Object)patternArray.getJSONObject(string4).toString());
-                    return patternArray;
-                }
-                if (!string7.contains(cYh.d("5B38353C3B"))) continue;
-                patternArray = g;
-                int n4 = patternArray.length;
-                for (n2 = 0; n2 < n4; ++n2) {
-                    if (!patternArray[n2].matcher(string7).find()) continue;
-                    n2 = n3;
-                    break block7;
-                }
-                n2 = 0;
-            }
-            if (n2 == 0) continue;
-            object = string5;
-        }
-        if (!object.isEmpty()) {
-            patternArray = new JSONObject();
-            patternArray.put(string3, 1);
-            patternArray.put(string4, object);
-            patternArray.put(string2, (Object)string);
-            return patternArray;
-        }
-        return null;
-    }
-
-    /*
-     * Unable to fully structure code
-     * Could not resolve type clashes
-     */
-    public String homeContent(boolean var1_1) {
-        block120: {
-            block118: {
-                block103: {
-                    var22_2 = cYh.d("80FDDAB8D7D3");
-                    var14_3 /* !! */  = "";
-                    var24_4 = cYh.d("01392D25322814");
-                    var17_5 = cYh.d("0B393225");
-                    var15_6 = cYh.d("03313530");
-                    var9_7 /* !! */  = var14_3 /* !! */ ;
-                    var18_8 = this.f(this.d());
-                    var9_7 /* !! */  = var14_3 /* !! */ ;
-                    var6_9 = var18_8.isEmpty();
-                    var13_10 /* !! */  = cYh.d("5A");
-                    var12_11 /* !! */  = cYh.d("3B7B");
-                    var19_12 = cYh.d("6D");
-                    var8_13 /* !! */  = null;
-                    var11_15 /* !! */  = cYh.d("13293134083303");
-                    var10_16 = cYh.d("132931340834063D24");
-                    if (!var6_9) {
-                        block104: {
-                            block102: {
-                                var9_7 /* !! */  = var14_3 /* !! */ ;
-                                SpiderDebug.log((String)var18_8);
-                                var9_7 /* !! */  = var14_3 /* !! */ ;
-                                var7_17 /* !! */  = com.github.catvod.spider.merge.k.g.g(var18_8, AppYsV2.i(var18_8));
-                                var9_7 /* !! */  = var14_3 /* !! */ ;
-                                this.a((String)var7_17 /* !! */ );
-                                var9_7 /* !! */  = var14_3 /* !! */ ;
-                                var9_7 /* !! */  = var14_3 /* !! */ ;
-                                var16_19 /* !! */  = new JSONObject((String)var7_17 /* !! */ );
-                                var9_7 /* !! */  = var14_3 /* !! */ ;
-                                if (!var16_19 /* !! */ .has((String)var17_5)) break block102;
-                                var9_7 /* !! */  = var14_3 /* !! */ ;
-                                if (!(var16_19 /* !! */ .get((String)var17_5) instanceof JSONArray)) break block102;
-                                var9_7 /* !! */  = var14_3 /* !! */ ;
-                                var7_17 /* !! */  = var16_19 /* !! */ .getJSONArray((String)var17_5);
-                                break block103;
-                            }
-                            var9_7 /* !! */  = var14_3 /* !! */ ;
-                            if (!var16_19 /* !! */ .has((String)var15_6)) break block104;
-                            var9_7 /* !! */  = var14_3 /* !! */ ;
-                            if (!(var16_19 /* !! */ .get((String)var15_6) instanceof JSONObject)) break block104;
-                            var9_7 /* !! */  = var14_3 /* !! */ ;
-                            if (!var16_19 /* !! */ .getJSONObject((String)var15_6).has((String)var17_5)) break block104;
-                            var9_7 /* !! */  = var14_3 /* !! */ ;
-                            if (!(var16_19 /* !! */ .getJSONObject((String)var15_6).get((String)var17_5) instanceof JSONArray)) break block104;
-                            var9_7 /* !! */  = var14_3 /* !! */ ;
-                            var7_17 /* !! */  = var16_19 /* !! */ .getJSONObject((String)var15_6).getJSONArray((String)var17_5);
-                            break block103;
-                        }
-                        var7_17 /* !! */  = var8_13 /* !! */ ;
-                        var9_7 /* !! */  = var14_3 /* !! */ ;
-                        if (!var16_19 /* !! */ .has((String)var15_6)) break block103;
-                        var7_17 /* !! */  = var8_13 /* !! */ ;
-                        var9_7 /* !! */  = var14_3 /* !! */ ;
-                        if (!(var16_19 /* !! */ .get((String)var15_6) instanceof JSONArray)) break block103;
-                        var9_7 /* !! */  = var14_3 /* !! */ ;
-                        var7_17 /* !! */  = var16_19 /* !! */ .getJSONArray((String)var15_6);
-                        break block103;
-                    }
-                    var9_7 /* !! */  = var14_3 /* !! */ ;
-                    var15_6 = this.g(var18_8, null).split(var19_12)[0].split((String)var12_11 /* !! */ );
-                    var9_7 /* !! */  = var14_3 /* !! */ ;
-                    var9_7 /* !! */  = var14_3 /* !! */ ;
-                    var8_13 /* !! */  = new JSONArray();
-                    var2_20 = 1;
-                    while (true) {
-                        block105: {
-                            var7_17 /* !! */  = var8_13 /* !! */ ;
-                            var9_7 /* !! */  = var14_3 /* !! */ ;
-                            if (var2_20 >= ((String[])var15_6).length) break;
-                            var9_7 /* !! */  = var14_3 /* !! */ ;
-                            var7_17 /* !! */  = var15_6[var2_20].trim().split((String)var13_10 /* !! */ );
-                            var9_7 /* !! */  = var14_3 /* !! */ ;
-                            if (var7_17 /* !! */ .length < 2) break block105;
-                            var9_7 /* !! */  = var14_3 /* !! */ ;
-                            var9_7 /* !! */  = var14_3 /* !! */ ;
-                            var16_19 /* !! */  = new JSONObject();
-                            var9_7 /* !! */  = var14_3 /* !! */ ;
-                            var16_19 /* !! */ .put((String)var10_16, (Object)var7_17 /* !! */ [0].trim());
-                            var9_7 /* !! */  = var14_3 /* !! */ ;
-                            var16_19 /* !! */ .put((String)var11_15 /* !! */ , (Object)var7_17 /* !! */ [1].trim());
-                            var9_7 /* !! */  = var14_3 /* !! */ ;
-                            var8_13 /* !! */ .put((Object)var16_19 /* !! */ );
-                        }
-                        ++var2_20;
-                    }
-                }
-                var9_7 /* !! */  = var14_3 /* !! */ ;
-                var9_7 /* !! */  = var14_3 /* !! */ ;
-                var25_21 = new JSONObject();
-                var9_7 /* !! */  = var14_3 /* !! */ ;
-                var9_7 /* !! */  = var14_3 /* !! */ ;
-                var15_6 = new JSONArray();
-                var8_13 /* !! */  = cYh.d("043C202224");
-                var16_19 /* !! */  = var14_3 /* !! */ ;
-                var17_5 = var15_6;
-                var21_22 = var8_13 /* !! */ ;
-                if (var7_17 /* !! */  == null) break block118;
-                var3_23 = 0;
-                var20_24 /* !! */  = var7_17 /* !! */ ;
-                var7_17 /* !! */  = var14_3 /* !! */ ;
-                var14_3 /* !! */  = var22_2;
-                while (true) {
-                    block106: {
-                        block117: {
-                            block107: {
-                                block116: {
-                                    var16_19 /* !! */  = var7_17 /* !! */ ;
-                                    var17_5 = var15_6;
-                                    var21_22 = var8_13 /* !! */ ;
-                                    var9_7 /* !! */  = var7_17 /* !! */ ;
-                                    if (var3_23 >= var20_24 /* !! */ .length()) break;
-                                    var9_7 /* !! */  = var7_17 /* !! */ ;
-                                    var16_19 /* !! */  = var20_24 /* !! */ .getJSONObject(var3_23);
-                                    var9_7 /* !! */  = var7_17 /* !! */ ;
-                                    var17_5 = var16_19 /* !! */ .getString((String)var10_16);
-                                    var9_7 /* !! */  = var7_17 /* !! */ ;
-                                    if (this.m((String)var17_5)) {
-                                        var16_19 /* !! */  = var14_3 /* !! */ ;
-                                        var14_3 /* !! */  = var8_13 /* !! */ ;
-                                        var9_7 /* !! */  = var13_10 /* !! */ ;
-                                        var8_13 /* !! */  = var12_11 /* !! */ ;
-                                        var12_11 /* !! */  = var11_15 /* !! */ ;
-                                        var13_10 /* !! */  = var10_16;
-                                        var10_16 = var8_13 /* !! */ ;
-                                        var11_15 /* !! */  = var16_19 /* !! */ ;
-                                        var8_13 /* !! */  = var7_17 /* !! */ ;
-                                        var7_17 /* !! */  = var14_3 /* !! */ ;
-                                        break block106;
-                                    }
-                                    var9_7 /* !! */  = var7_17 /* !! */ ;
-                                    var26_28 = var16_19 /* !! */ .getString((String)var11_15 /* !! */ );
-                                    var9_7 /* !! */  = var7_17 /* !! */ ;
-                                    var9_7 /* !! */  = var7_17 /* !! */ ;
-                                    var22_2 = new JSONObject();
-                                    var9_7 /* !! */  = var7_17 /* !! */ ;
-                                    var22_2.put((String)var11_15 /* !! */ , (Object)var26_28);
-                                    var9_7 /* !! */  = var7_17 /* !! */ ;
-                                    var22_2.put((String)var10_16, var17_5);
-                                    var9_7 /* !! */  = var7_17 /* !! */ ;
-                                    var16_19 /* !! */  = var16_19 /* !! */ .optJSONObject(cYh.d("13293134083F1F24243F33"));
-                                    if (!var1_1) break block107;
-                                    var9_7 /* !! */  = var7_17 /* !! */ ;
-                                    var21_22 = this.g(var18_8, var16_19 /* !! */ ).split(var19_12);
-                                    var9_7 /* !! */  = var7_17 /* !! */ ;
-                                    var9_7 /* !! */  = var7_17 /* !! */ ;
-                                    var27_29 = new JSONArray();
-                                    var9_7 /* !! */  = var7_17 /* !! */ ;
-                                    var2_20 = var18_8.isEmpty() != false ? 1 : 0;
-                                    var16_19 /* !! */  = var11_15 /* !! */ ;
-                                    var17_5 = var12_11 /* !! */ ;
-                                    var11_15 /* !! */  = var13_10 /* !! */ ;
-                                    var12_11 /* !! */  = var22_2;
-                                    while (true) {
-                                        block108: {
-                                            block119: {
-                                                block109: {
-                                                    block111: {
-                                                        block113: {
-                                                            block112: {
-                                                                block110: {
-                                                                    var9_7 /* !! */  = var7_17 /* !! */ ;
-                                                                    if (var2_20 >= var21_22.length) break;
-                                                                    var9_7 /* !! */  = var7_17 /* !! */ ;
-                                                                    var13_10 /* !! */  = var21_22[var2_20].trim();
-                                                                    var9_7 /* !! */  = var7_17 /* !! */ ;
-                                                                    if (var13_10 /* !! */ .isEmpty()) {
-                                                                        var13_10 /* !! */  = var12_11 /* !! */ ;
-                                                                        var12_11 /* !! */  = var8_13 /* !! */ ;
-                                                                        var9_7 /* !! */  = var11_15 /* !! */ ;
-                                                                        var11_15 /* !! */  = var13_10 /* !! */ ;
-                                                                        var8_13 /* !! */  = var7_17 /* !! */ ;
-                                                                        var7_17 /* !! */  = var12_11 /* !! */ ;
-                                                                        break block108;
-                                                                    }
-                                                                    var9_7 /* !! */  = var7_17 /* !! */ ;
-                                                                    var23_27 = var13_10 /* !! */ .split((String)var17_5);
-                                                                    var9_7 /* !! */  = var7_17 /* !! */ ;
-                                                                    var13_10 /* !! */  = var23_27[0].trim();
-                                                                    var9_7 /* !! */  = var7_17 /* !! */ ;
-                                                                    if (!var13_10 /* !! */ .contains((CharSequence)var14_3 /* !! */ )) break block109;
-                                                                    var9_7 /* !! */  = var7_17 /* !! */ ;
-                                                                    var22_2 = var13_10 /* !! */ .replace((CharSequence)var14_3 /* !! */ , (CharSequence)var7_17 /* !! */ );
-                                                                    var9_7 /* !! */  = var7_17 /* !! */ ;
-                                                                    if (!var22_2.equals(var8_13 /* !! */ )) break block110;
-                                                                    var9_7 /* !! */  = var7_17 /* !! */ ;
-                                                                    var13_10 /* !! */  = cYh.d("80E1FAB4C9D1");
-                                                                    break block111;
-                                                                }
-                                                                var9_7 /* !! */  = var7_17 /* !! */ ;
-                                                                if (!var22_2.equals(cYh.d("06222430"))) break block112;
-                                                                var9_7 /* !! */  = var7_17 /* !! */ ;
-                                                                var9_7 /* !! */  = var13_10 /* !! */  = cYh.d("82CCF1B4DBE0");
-lbl232:
-                                                                // 3 sources
-
-                                                                while (true) {
-                                                                    var13_10 /* !! */  = var9_7 /* !! */ ;
-                                                                    break block111;
-                                                                    break;
-                                                                }
-                                                            }
-                                                            var9_7 /* !! */  = var7_17 /* !! */ ;
-                                                            if (!var22_2.equals(cYh.d("0B312F36"))) break block113;
-                                                            var9_7 /* !! */  = var7_17 /* !! */ ;
-                                                            var9_7 /* !! */  = var13_10 /* !! */  = cYh.d("8FFFECB9FFDA");
-                                                            ** GOTO lbl232
-                                                        }
-                                                        var9_7 /* !! */  = var7_17 /* !! */ ;
-                                                        if (!var22_2.equals(cYh.d("1E352023"))) break block111;
-                                                        var9_7 /* !! */  = var7_17 /* !! */ ;
-                                                        var9_7 /* !! */  = var13_10 /* !! */  = cYh.d("82E9F5B5ECE7");
-                                                        ** continue;
-                                                    }
-                                                    var9_7 /* !! */  = var22_2;
-                                                    var22_2 = var13_10 /* !! */ ;
-                                                    var13_10 /* !! */  = var9_7 /* !! */ ;
-                                                    break block119;
-                                                }
-                                                var22_2 = var13_10 /* !! */ ;
-                                            }
-                                            var9_7 /* !! */  = var7_17 /* !! */ ;
-                                            var9_7 /* !! */  = var7_17 /* !! */ ;
-                                            var28_30 = new JSONObject();
-                                            var9_7 /* !! */  = var7_17 /* !! */ ;
-                                            var28_30.put(cYh.d("0C3538"), (Object)var13_10 /* !! */ );
-                                            var9_7 /* !! */  = var7_17 /* !! */ ;
-                                            var28_30.put(cYh.d("09312C34"), var22_2);
-                                            var9_7 /* !! */  = var7_17 /* !! */ ;
-                                            var9_7 /* !! */  = var7_17 /* !! */ ;
-                                            var22_2 = new JSONArray();
-                                            var4_25 = 1;
-                                            var13_10 /* !! */  = var23_27;
-                                            while (true) {
-                                                block114: {
-                                                    block115: {
-                                                        var9_7 /* !! */  = var7_17 /* !! */ ;
-                                                        if (var4_25 >= var13_10 /* !! */ .length) break;
-                                                        var9_7 /* !! */  = var7_17 /* !! */ ;
-                                                        var9_7 /* !! */  = var7_17 /* !! */ ;
-                                                        var29_31 = new JSONObject();
-                                                        var9_7 /* !! */  = var7_17 /* !! */ ;
-                                                        var23_27 = var13_10 /* !! */ [var4_25].trim();
-                                                        var9_7 /* !! */  = var7_17 /* !! */ ;
-                                                        var5_26 = var23_27.indexOf((String)var11_15 /* !! */ );
-                                                        var9_7 /* !! */  = var7_17 /* !! */ ;
-                                                        var32_34 = cYh.d("11");
-                                                        var31_33 = cYh.d("09");
-                                                        if (var5_26 == -1) {
-                                                            var7_17 /* !! */  = var9_7 /* !! */ ;
-                                                            if (this.m((String)var23_27)) break block114;
-                                                            var7_17 /* !! */  = var9_7 /* !! */ ;
-                                                            var29_31.put(var31_33, var23_27);
-                                                            var7_17 /* !! */  = var9_7 /* !! */ ;
-                                                            var29_31.put(var32_34, var23_27);
-                                                            break block115;
-                                                        }
-                                                        var7_17 /* !! */  = var9_7 /* !! */ ;
-                                                        var30_32 = var23_27.substring(0, var5_26);
-                                                        var7_17 /* !! */  = var9_7 /* !! */ ;
-                                                        if (this.m(var30_32)) break block114;
-                                                        var7_17 /* !! */  = var9_7 /* !! */ ;
-                                                        var29_31.put(var31_33, (Object)var30_32.trim());
-                                                        var7_17 /* !! */  = var9_7 /* !! */ ;
-                                                        var29_31.put(var32_34, (Object)var23_27.substring(var5_26 + 1).trim());
-                                                    }
-                                                    var7_17 /* !! */  = var9_7 /* !! */ ;
-                                                    var22_2.put((Object)var29_31);
-                                                }
-                                                ++var4_25;
-                                                var7_17 /* !! */  = var9_7 /* !! */ ;
-                                            }
-                                            var7_17 /* !! */  = var9_7 /* !! */  = var7_17 /* !! */ ;
-                                            var28_30.put(cYh.d("11312D2432"), var22_2);
-                                            var7_17 /* !! */  = var9_7 /* !! */ ;
-                                            var27_29.put((Object)var28_30);
-                                            var7_17 /* !! */  = var8_13 /* !! */ ;
-                                            var8_13 /* !! */  = var9_7 /* !! */ ;
-                                            var9_7 /* !! */  = var11_15 /* !! */ ;
-                                            var11_15 /* !! */  = var12_11 /* !! */ ;
-                                        }
-                                        ++var2_20;
-                                        var12_11 /* !! */  = var8_13 /* !! */ ;
-                                        var8_13 /* !! */  = var7_17 /* !! */ ;
-                                        var7_17 /* !! */  = var12_11 /* !! */ ;
-                                        var12_11 /* !! */  = var11_15 /* !! */ ;
-                                        var11_15 /* !! */  = var9_7 /* !! */ ;
-                                    }
-                                    var9_7 /* !! */  = var7_17 /* !! */ ;
-                                    var21_22 = var8_13 /* !! */ ;
-                                    var8_13 /* !! */  = var11_15 /* !! */ ;
-                                    var13_10 /* !! */  = var10_16;
-                                    var7_17 /* !! */  = var9_7 /* !! */ ;
-                                    if (var25_21.has(var24_4)) break block116;
-                                    var7_17 /* !! */  = var9_7 /* !! */ ;
-                                    var7_17 /* !! */  = var9_7 /* !! */ ;
-                                    var10_16 = new JSONObject();
-                                    var7_17 /* !! */  = var9_7 /* !! */ ;
-                                    var25_21.put(var24_4, var10_16);
-                                }
-                                var7_17 /* !! */  = var9_7 /* !! */ ;
-                                var25_21.getJSONObject(var24_4).put(var26_28, (Object)var27_29);
-                                var22_2 = var12_11 /* !! */ ;
-                                var10_16 = var17_5;
-                                var11_15 /* !! */  = var14_3 /* !! */ ;
-                                var12_11 /* !! */  = var16_19 /* !! */ ;
-                                var14_3 /* !! */  = var8_13 /* !! */ ;
-                                var8_13 /* !! */  = var9_7 /* !! */ ;
-                                var9_7 /* !! */  = var21_22;
-                                break block117;
-                            }
-                            var16_19 /* !! */  = var14_3 /* !! */ ;
-                            var14_3 /* !! */  = var7_17 /* !! */ ;
-                            var7_17 /* !! */  = var12_11 /* !! */ ;
-                            var9_7 /* !! */  = var8_13 /* !! */ ;
-                            var8_13 /* !! */  = var14_3 /* !! */ ;
-                            var14_3 /* !! */  = var13_10 /* !! */ ;
-                            var13_10 /* !! */  = var10_16;
-                            var12_11 /* !! */  = var11_15 /* !! */ ;
-                            var11_15 /* !! */  = var16_19 /* !! */ ;
-                            var10_16 = var7_17 /* !! */ ;
-                        }
-                        var7_17 /* !! */  = var8_13 /* !! */ ;
-                        var15_6.put(var22_2);
-                        var7_17 /* !! */  = var9_7 /* !! */ ;
-                        var9_7 /* !! */  = var14_3 /* !! */ ;
-                    }
-                    ++var3_23;
-                    var16_19 /* !! */  = var10_16;
-                    var14_3 /* !! */  = var11_15 /* !! */ ;
-                    var11_15 /* !! */  = var12_11 /* !! */ ;
-                    var10_16 = var13_10 /* !! */ ;
-                    var12_11 /* !! */  = var8_13 /* !! */ ;
-                    var8_13 /* !! */  = var7_17 /* !! */ ;
-                    var7_17 /* !! */  = var12_11 /* !! */ ;
-                    var13_10 /* !! */  = var9_7 /* !! */ ;
-                    var12_11 /* !! */  = var16_19 /* !! */ ;
-                }
-            }
-            var7_17 /* !! */  = var16_19 /* !! */ ;
-            var25_21.put((String)var21_22, var17_5);
-            var7_17 /* !! */  = var16_19 /* !! */ ;
-            try {
-                var8_13 /* !! */  = var25_21.toString();
-                return var8_13 /* !! */ ;
-            }
-            catch (Exception var8_14) {
-                var9_7 /* !! */  = var7_17 /* !! */ ;
-            }
-            break block120;
-            catch (Exception var7_18) {
-                var8_13 /* !! */  = var7_18;
-            }
-        }
-        SpiderDebug.log((Throwable)var8_13 /* !! */ );
-        return var9_7 /* !! */ ;
     }
 
     /*
@@ -1310,69 +1074,66 @@ lbl232:
      */
     public String homeVideoContent() {
         int n2;
-        String string = this.d();
-        CharSequence charSequence = this.k(string);
+        String string = this.\u052b();
+        CharSequence charSequence = this.\u0781(string);
         boolean bl = ((String)charSequence).isEmpty();
         int n3 = 0;
         if (bl) {
             charSequence = new StringBuilder();
-            ((StringBuilder)charSequence).append(this.e(string));
-            ((StringBuilder)charSequence).append(cYh.d("0A3F3738327C173126346A6B41313334366741243821326741233530252E5A"));
+            ((StringBuilder)charSequence).append(this.\u052c(string));
+            ((StringBuilder)charSequence).append(SOY.d("173D271F11510A33361349465C332313154A5C262806114A5C212517060347"));
             charSequence = ((StringBuilder)charSequence).toString();
             n2 = 1;
         } else {
             n2 = 0;
         }
         SpiderDebug.log((String)charSequence);
-        string = com.github.catvod.spider.merge.k.g.g((String)charSequence, AppYsV2.i((String)charSequence));
-        this.a(string);
-        Object object = new JSONObject(string);
-        string = new JSONArray();
-        String string2 = cYh.d("113F250E253F0A31333A24");
-        String string3 = cYh.d("113F250E273304");
-        String string4 = cYh.d("113F250E393B0A35");
-        String string5 = cYh.d("113F250E3E3E");
+        charSequence = this.\u0528(\u078c.\u058f((String)charSequence, this.\u0620((String)charSequence)), (byte)1);
+        Object object = new JSONObject((String)charSequence);
+        charSequence = new JSONArray();
+        string = SOY.d("0C3D352906121733231D07");
+        String string2 = SOY.d("0C3D3529041E19");
+        String string3 = SOY.d("0C3D35291A161737");
+        String string4 = SOY.d("0C3D35291D13");
         if (n2 != 0) {
-            JSONArray jSONArray = object.getJSONArray(cYh.d("03313530"));
+            JSONArray jSONArray = object.getJSONArray(SOY.d("1E332517"));
             for (n2 = n3; n2 < jSONArray.length(); ++n2) {
-                JSONObject jSONObject = jSONArray.getJSONObject(n2);
-                object = this.fixCover(jSONObject.getString(cYh.d("173922")), (String)charSequence);
-                JSONObject jSONObject2 = new JSONObject();
-                jSONObject2.put(string5, (Object)jSONObject.getString(cYh.d("093539253B33093B")));
-                jSONObject2.put(string4, (Object)jSONObject.getString(cYh.d("1339353D32")));
-                jSONObject2.put(string3, object);
-                jSONObject2.put(string2, (Object)jSONObject.getString(cYh.d("1424202532")));
-                string.put((Object)jSONObject2);
+                object = jSONArray.getJSONObject(n2);
+                JSONObject jSONObject = new JSONObject();
+                jSONObject.put(string4, (Object)object.getString(SOY.d("14372902181E1439")));
+                jSONObject.put(string3, (Object)object.getString(SOY.d("0E3B251A11")));
+                jSONObject.put(string2, (Object)object.getString(SOY.d("0A3B32")));
+                jSONObject.put(string, (Object)object.getString(SOY.d("0926300211")));
+                charSequence.put((Object)jSONObject);
             }
         } else {
             Object object2 = new ArrayList();
-            this.b((JSONObject)object, cYh.d("113C282223"), (ArrayList<JSONArray>)object2);
+            this.\u0529((JSONObject)object, SOY.d("0C3E380500"), (ArrayList<JSONArray>)object2);
             if (((ArrayList)object2).isEmpty()) {
-                this.b((JSONObject)object, cYh.d("113F250E3B331424"), (ArrayList<JSONArray>)object2);
+                this.\u0529((JSONObject)object, SOY.d("0C3D3529181E0926"), (ArrayList<JSONArray>)object2);
             }
             object = new ArrayList();
-            Iterator<JSONArray> iterator = ((ArrayList)object2).iterator();
-            while (iterator.hasNext()) {
-                JSONArray jSONArray = iterator.next();
+            object2 = ((ArrayList)object2).iterator();
+            while (object2.hasNext()) {
+                JSONArray jSONArray = (JSONArray)object2.next();
                 for (n2 = 0; n2 < jSONArray.length(); ++n2) {
                     JSONObject jSONObject = jSONArray.getJSONObject(n2);
-                    String string6 = jSONObject.getString(string5);
-                    if (((ArrayList)object).contains(string6)) continue;
-                    ((ArrayList)object).add(string6);
-                    object2 = this.fixCover(jSONObject.getString(string3), (String)charSequence);
-                    JSONObject jSONObject3 = new JSONObject();
-                    jSONObject3.put(string5, (Object)string6);
-                    jSONObject3.put(string4, (Object)jSONObject.getString(string4));
-                    jSONObject3.put(string3, object2);
-                    jSONObject3.put(string2, (Object)jSONObject.getString(string2));
-                    string.put((Object)jSONObject3);
+                    String string5 = jSONObject.getString(string4);
+                    if (object.contains(string5)) continue;
+                    object.add(string5);
+                    JSONObject jSONObject2 = new JSONObject();
+                    jSONObject2.put(string4, (Object)string5);
+                    jSONObject2.put(string3, (Object)jSONObject.getString(string3));
+                    jSONObject2.put(string2, (Object)jSONObject.getString(string2));
+                    jSONObject2.put(string, (Object)jSONObject.getString(string));
+                    charSequence.put((Object)jSONObject2);
                 }
             }
         }
         try {
-            charSequence = new JSONObject();
-            charSequence.put(cYh.d("0B393225"), (Object)string);
-            return charSequence.toString();
+            string = new JSONObject();
+            string.put(SOY.d("163B2202"), (Object)charSequence);
+            return string.toString();
         }
         catch (Exception exception) {
             SpiderDebug.log((Throwable)exception);
@@ -1385,16 +1146,9 @@ lbl232:
      * Lifted jumps to return sites
      */
     public void init(Context context, String string) {
-        String string2 = cYh.d("5C6B");
-        String string3 = string;
-        if (string.indexOf(string2) >= 0) {
-            string3 = string.split(string2).length > 1 ? string.split(string2)[1] : "";
-            this.a = string3;
-            string3 = string.split(string2)[0];
-        }
-        super.init(context, string3);
+        super.init(context, string);
         try {
-            this.c = string3.split(cYh.d("447362"));
+            this.\u052e = string.split(SOY.d("597172"));
             return;
         }
         catch (Throwable throwable) {
@@ -1403,54 +1157,7 @@ lbl232:
     }
 
     public boolean isVideoFormat(String string) {
-        return m.c(string);
-    }
-
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
-    final String j(String string) {
-        StringBuilder stringBuilder;
-        if (!string.contains(cYh.d("0620287F2732177F202127")) && !string.contains(cYh.d("1F37202127"))) {
-            if (!string.contains(cYh.d("49262E35"))) return "";
-            if (string.contains(cYh.d("0E3F31343923123E"))) {
-                stringBuilder = com.github.catvod.spider.merge.d.d.b(string);
-                string = cYh.d("4834242536330B19056E2135030F28356A");
-            } else {
-                stringBuilder = com.github.catvod.spider.merge.d.d.b(string);
-                string = cYh.d("4834242536330B6F373E33050E347C");
-            }
-        } else {
-            if (string.contains(cYh.d("03392B3836220E31"))) {
-                return cYh.d("0F2435212460487F3626207403392B3836220E316F32383748313138792A0F206E30272A4826283532353834242536330B6F28356A");
-            }
-            if (string.contains(cYh.d("566070613323"))) {
-                return cYh.d("0F2435216D7548273626796B576171352E7404336E30273349202921783B17206E273E3E023F1E35322E06392D6E3E3E5A");
-            }
-            stringBuilder = com.github.catvod.spider.merge.d.d.b(string);
-            string = cYh.d("113925343805033535303E365839256C");
-        }
-        stringBuilder.append(string);
-        return stringBuilder.toString();
-    }
-
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
-    final String k(String string) {
-        StringBuilder stringBuilder;
-        if (!string.contains(cYh.d("0620287F2732177F202127")) && !string.contains(cYh.d("1F37202127"))) {
-            if (!string.contains(cYh.d("49262E35"))) return "";
-            stringBuilder = com.github.catvod.spider.merge.d.d.b(string);
-            string = cYh.d("48262E35073205112D3D");
-        } else {
-            stringBuilder = com.github.catvod.spider.merge.d.d.b(string);
-            string = cYh.d("0E3E25342F05113925343865133F2A343967");
-        }
-        stringBuilder.append(string);
-        return stringBuilder.toString();
+        return \u0786.\u052b(string);
     }
 
     public boolean manualVideoCheck() {
@@ -1458,48 +1165,45 @@ lbl232:
     }
 
     /*
-     * WARNING - Removed back jump from a try to a catch block - possible behaviour change.
-     * WARNING - void declaration
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
+     * Unable to fully structure code
      */
-    public String playerContent(String object, String string, List<String> list) {
-        boolean bl;
-        void var2_11;
+    public String playerContent(String var1_1, String var2_3, List<String> var3_4) {
         try {
-            bl = m.c((String)var2_11);
+            var5_5 = this.\u052d.get(var1_1);
+            var3_4 = var5_5;
+            if (var5_5 != null) ** GOTO lbl10
         }
-        catch (Exception exception) {
-            SpiderDebug.log((Throwable)exception);
+        catch (Exception var1_2) {
+            SpiderDebug.log((Throwable)var1_2);
             return "";
         }
-        String string2 = cYh.d("12222D");
-        String string3 = cYh.d("1731332232");
-        {
-            if (!bl && (m.d((String)var2_11) || this.a.indexOf(cYh.d("11")) < 0)) {
-                JSONObject jSONObject;
-                void var1_4;
-                ArrayList<String> arrayList;
-                ArrayList<String> arrayList2 = arrayList = this.b.get(object);
-                if (arrayList == null) {
-                    ArrayList arrayList3 = new ArrayList();
-                }
-                if (!var1_4.isEmpty() && (jSONObject = this.h((ArrayList)var1_4, (String)var2_11)) != null) {
-                    return jSONObject.toString();
-                }
-                JSONObject jSONObject2 = new JSONObject();
-                jSONObject2.put(string3, 1);
-                jSONObject2.put(cYh.d("0D28"), (Object)cYh.d("56"));
-                jSONObject2.put(string2, (Object)var2_11);
-                return jSONObject2.toString();
-            }
-            JSONObject jSONObject = new JSONObject();
-            jSONObject.put(string3, 0);
-            jSONObject.put(cYh.d("173C202802280B"), (Object)"");
-            jSONObject.put(string2, (Object)var2_11);
-            return jSONObject.toString();
-        }
+        var3_4 = new ArrayList();
+lbl10:
+        // 2 sources
+
+        if (var3_4.isEmpty() || (var1_1 = this.\u058f(var1_1, (ArrayList<String>)var3_4, var2_3)) == null) ** GOTO lbl13
+        return var1_1.toString();
+lbl13:
+        // 1 sources
+
+        var4_6 = \u0786.\u052b(var2_3);
+        var1_1 = SOY.d("0F203D");
+        var3_4 = SOY.d("0A33230511");
+        if (!var4_6) ** GOTO lbl26
+        var5_5 = new JSONObject();
+        var5_5.put((String)var3_4, 0);
+        var5_5.put(SOY.d("0A3E300F210516"), (Object)"");
+        var5_5.put(var1_1, (Object)var2_3);
+        return var5_5.toString();
+lbl26:
+        // 1 sources
+
+        var5_5 = new JSONObject();
+        var5_5.put((String)var3_4, 1);
+        var5_5.put(SOY.d("102A"), (Object)SOY.d("4B"));
+        var5_5.put(var1_1, (Object)var2_3);
+        var1_1 = var5_5.toString();
+        return var1_1;
     }
 
     /*
@@ -1507,74 +1211,66 @@ lbl232:
      * Could not resolve type clashes
      */
     public String searchContent(String var1_1, boolean var2_3) {
-        block13: {
-            block12: {
-                var7_4 = cYh.d("113F250E3E3E");
-                var6_5 = cYh.d("0B393225");
-                var5_6 = cYh.d("03313530");
-                var8_7 = this.l(this.d(), URLEncoder.encode(var1_1));
-                var1_1 = com.github.catvod.spider.merge.k.g.g(var8_7, AppYsV2.i(var8_7));
-                this.a(var1_1);
-                var10_8 /* !! */  = new JSONObject(var1_1);
-                var4_9 /* !! */  = null;
-                var9_10 = new JSONArray();
-                if (var10_8 /* !! */ .has(var6_5) && var10_8 /* !! */ .get(var6_5) instanceof JSONArray) {
-                    var1_1 = var10_8 /* !! */ .getJSONArray(var6_5);
-                    break block12;
+        block12: {
+            block11: {
+                var6_4 = SOY.d("0C3D35291D13");
+                var5_5 = SOY.d("163B2202");
+                var8_6 = SOY.d("1E332517");
+                var1_1 = this.\u0782(this.\u052b(), URLEncoder.encode(var1_1));
+                var1_1 = this.\u0528(\u078c.\u058f(var1_1, this.\u0620(var1_1)), (byte)5);
+                var9_7 /* !! */  = new JSONObject(var1_1);
+                var4_8 = null;
+                var7_9 = new JSONArray();
+                if (var9_7 /* !! */ .has(var5_5) && var9_7 /* !! */ .get(var5_5) instanceof JSONArray) {
+                    var1_1 = var9_7 /* !! */ .getJSONArray(var5_5);
+                    break block11;
                 }
-                if (var10_8 /* !! */ .has(var5_6) && var10_8 /* !! */ .get(var5_6) instanceof JSONObject && var10_8 /* !! */ .getJSONObject(var5_6).has(var6_5) && var10_8 /* !! */ .getJSONObject(var5_6).get(var6_5) instanceof JSONArray) {
-                    var1_1 = var10_8 /* !! */ .getJSONObject(var5_6).getJSONArray(var6_5);
-                    break block12;
+                if (var9_7 /* !! */ .has(var8_6) && var9_7 /* !! */ .get(var8_6) instanceof JSONObject && var9_7 /* !! */ .getJSONObject(var8_6).has(var5_5) && var9_7 /* !! */ .getJSONObject(var8_6).get(var5_5) instanceof JSONArray) {
+                    var1_1 = var9_7 /* !! */ .getJSONObject(var8_6).getJSONArray(var5_5);
+                    break block11;
                 }
-                var1_1 = var4_9 /* !! */ ;
-                if (!var10_8 /* !! */ .has(var5_6)) break block12;
-                var1_1 = var4_9 /* !! */ ;
-                if (!(var10_8 /* !! */ .get(var5_6) instanceof JSONArray)) break block12;
-                var1_1 = var10_8 /* !! */ .getJSONArray(var5_6);
+                var1_1 = var4_8;
+                if (!var9_7 /* !! */ .has(var8_6)) break block11;
+                var1_1 = var4_8;
+                if (!(var9_7 /* !! */ .get(var8_6) instanceof JSONArray)) break block11;
+                var1_1 = var9_7 /* !! */ .getJSONArray(var8_6);
             }
-            if (var1_1 == null) break block13;
-            var3_11 = 0;
+            if (var1_1 == null) break block12;
+            var3_10 = 0;
             while (true) {
-                if (var3_11 >= var1_1.length()) break;
-                var4_9 /* !! */  = var1_1.getJSONObject(var3_11);
-                var2_3 = var4_9 /* !! */ .has(var7_4);
-                var10_8 /* !! */  = cYh.d("113F250E253F0A31333A24");
-                var12_13 = cYh.d("113F250E393B0A35");
-                var11_12 = cYh.d("113F250E273304");
-                if (!var2_3) ** GOTO lbl50
-                var13_14 = this.fixCover(var4_9 /* !! */ .getString(var11_12), var8_7);
-                var5_6 = new JSONObject();
-                var5_6.put(var7_4, (Object)var4_9 /* !! */ .getString(var7_4));
-                var5_6.put(var12_13, (Object)var4_9 /* !! */ .getString(var12_13));
-                var5_6.put(var11_12, (Object)var13_14);
-                var4_9 /* !! */  = var4_9 /* !! */ .getString((String)var10_8 /* !! */ );
-lbl48:
-                // 2 sources
+                block13: {
+                    if (var3_10 >= var1_1.length()) break;
+                    var4_8 = var1_1.getJSONObject(var3_10);
+                    var2_3 = var4_8.has(var6_4);
+                    var9_7 /* !! */  = SOY.d("0C3D352906121733231D07");
+                    var8_6 = SOY.d("0C3D3529041E19");
+                    var10_11 = SOY.d("0C3D35291A161737");
+                    if (!var2_3) ** GOTO lbl49
+                    var11_12 = new JSONObject();
+                    var11_12.put(var6_4, (Object)var4_8.getString(var6_4));
+                    var11_12.put(var10_11, (Object)var4_8.getString(var10_11));
+                    var11_12.put(var8_6, (Object)var4_8.getString(var8_6));
+                    var11_12.put((String)var9_7 /* !! */ , (Object)var4_8.getString((String)var9_7 /* !! */ ));
+                    var7_9.put((Object)var11_12);
+                    break block13;
+lbl49:
+                    // 1 sources
 
-                while (true) {
-                    continue;
-                    break;
+                    var11_12 = new JSONObject();
+                    var11_12.put(var6_4, (Object)var4_8.getString(SOY.d("14372902181E1439")));
+                    var11_12.put(var10_11, (Object)var4_8.getString(SOY.d("0E3B251A11")));
+                    var11_12.put(var8_6, (Object)var4_8.getString(SOY.d("0A3B32")));
+                    var11_12.put((String)var9_7 /* !! */ , (Object)var4_8.getString(SOY.d("0926300211")));
+                    var7_9.put((Object)var11_12);
                 }
-lbl50:
-                // 1 sources
-
-                var13_14 = this.fixCover(var4_9 /* !! */ .getString(cYh.d("173922")), var8_7);
-                var5_6 = new JSONObject();
-                var5_6.put(var7_4, (Object)var4_9 /* !! */ .getString(cYh.d("093539253B33093B")));
-                var5_6.put(var12_13, (Object)var4_9 /* !! */ .getString(cYh.d("1339353D32")));
-                var5_6.put(var11_12, (Object)var13_14);
-                var4_9 /* !! */  = var4_9 /* !! */ .getString(cYh.d("1424202532"));
-                ** continue;
-                var5_6.put((String)var10_8 /* !! */ , (Object)var4_9 /* !! */ );
-                var9_10.put((Object)var5_6);
-                ++var3_11;
+                ++var3_10;
                 continue;
                 break;
             }
         }
         try {
             var1_1 = new JSONObject();
-            var1_1.put(var6_5, (Object)var9_10);
+            var1_1.put(var5_5, (Object)var7_9);
             var1_1 = var1_1.toString();
             return var1_1;
         }
@@ -1582,6 +1278,175 @@ lbl50:
             SpiderDebug.log((Throwable)var1_2);
             return "";
         }
+    }
+
+    protected String \u0528(String string, byte by) {
+        String[] stringArray = this.\u052e;
+        if (stringArray.length > 1) {
+            stringArray[1].equals(SOY.d("14342500"));
+        }
+        return string;
+    }
+
+    String \u052c(String charSequence) {
+        if (!((String)charSequence).contains(SOY.d("1B223858041F0A7D300604")) && !((String)charSequence).contains(SOY.d("0235300604"))) {
+            if (((String)charSequence).contains(SOY.d("54243E12"))) {
+                if (((String)charSequence).contains(SOY.d("133D21131A0E0F3C"))) {
+                    StringBuilder stringBuilder = new StringBuilder();
+                    stringBuilder.append((String)charSequence);
+                    stringBuilder.append(SOY.d("553E380500480E2B211349"));
+                    return stringBuilder.toString();
+                }
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append((String)charSequence);
+                stringBuilder.append(SOY.d("45262806114A"));
+                return stringBuilder.toString();
+            }
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append((String)charSequence);
+            stringBuilder.append(SOY.d("4533324B181E09267715181609216C"));
+            return stringBuilder.toString();
+        }
+        boolean bl = ((String)charSequence).contains(SOY.d("1E3B3B1F150F1333"));
+        String string = SOY.d("0C3B35131B480E3B354B");
+        if (bl) {
+            charSequence = new StringBuilder();
+            ((StringBuilder)charSequence).append(SOY.d("122625064E58552526015A13133838170C1E1B7C321919581B223858041F0A7D30060458"));
+            ((StringBuilder)charSequence).append(string);
+            return ((StringBuilder)charSequence).toString();
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append((String)charSequence);
+        stringBuilder.append(string);
+        return stringBuilder.toString();
+    }
+
+    String \u052d(String string) {
+        if (!string.contains(SOY.d("1B223858041F0A7D300604")) && !string.contains(SOY.d("0235300604"))) {
+            if (string.contains(SOY.d("54243E12"))) {
+                return SOY.d("5C313D17070447B5FCED9DF7F3313D1707045C332313154A9DFFCA9FF4FE1B203417521B1B3C364B93DAE1BBD1FF18161435770F1116086FB6DBEF9EFADB281315055C30284B92F9E8B7EBF9521B133F380249464274211713124771013857");
+            }
+            return SOY.d("5C223011114A59021F5552160837304B93DAE1BBD1FF15051F3377020D071F6FB6DBEF9EFADB321A15040974220215050E6FB6DBEF9EFADB28131505");
+        }
+        return SOY.d("5C313D17070447B5FCED9DF7F3313D1707045C332313154A9DFFCA9FF4FE1B203417521B1B3C364B93DAE1BBD1FF18161435770F1116086FB6DBEF9EFADB281315055C3E381B1D034763695004104771013857");
+    }
+
+    String \u052e(String string) {
+        if (!string.contains(SOY.d("1B223858041F0A7D300604")) && !string.contains(SOY.d("0235300604"))) {
+            if (string.contains(SOY.d("54243E12"))) {
+                if (string.contains(SOY.d("133D21131A0E0F3C7F151B1A"))) {
+                    StringBuilder stringBuilder = new StringBuilder();
+                    stringBuilder.append(string);
+                    stringBuilder.append(SOY.d("553E380500480E2B2113"));
+                    return stringBuilder.toString();
+                }
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append(string);
+                stringBuilder.append(SOY.d("552628061104"));
+                return stringBuilder.toString();
+            }
+            return "";
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(string);
+        stringBuilder.append(SOY.d("14332749001811373F4B"));
+        return stringBuilder.toString();
+    }
+
+    String \u052f(String charSequence, JSONObject object) {
+        String string = "";
+        CharSequence charSequence2 = string;
+        if (object != null) {
+            Iterator iterator = object.keys();
+            charSequence2 = string;
+            while (true) {
+                string = charSequence2;
+                charSequence2 = string;
+                if (!iterator.hasNext()) break;
+                String string2 = (String)iterator.next();
+                if (!(string2.equals(SOY.d("193E300507")) || string2.equals(SOY.d("1B203417")) || string2.equals(SOY.d("16333F11")))) {
+                    charSequence2 = string;
+                    if (!string2.equals(SOY.d("03373004"))) continue;
+                }
+                try {
+                    charSequence2 = new StringBuilder();
+                    ((StringBuilder)charSequence2).append(string);
+                    ((StringBuilder)charSequence2).append(SOY.d("9DFFCA9FF4FE"));
+                    ((StringBuilder)charSequence2).append(string2);
+                    ((StringBuilder)charSequence2).append(SOY.d("51B7D4DE9DF4D26F7A"));
+                    ((StringBuilder)charSequence2).append(object.getString(string2).replace(SOY.d("56"), SOY.d("51")));
+                    ((StringBuilder)charSequence2).append(SOY.d("70"));
+                    charSequence2 = ((StringBuilder)charSequence2).toString();
+                }
+                catch (JSONException jSONException) {
+                    charSequence2 = string;
+                }
+            }
+        }
+        if (((String)charSequence).contains(SOY.d("54243E12"))) {
+            charSequence = new StringBuilder();
+            ((StringBuilder)charSequence).append((String)charSequence2);
+            ((StringBuilder)charSequence).append(SOY.d("70B4DFE491CDF579B4F3DC9EF9FA6C5D92EBFAB4C7C64903133F345D92EBFAB5D2DB491F1326225D9CD8FEB7D9F04904193D2313"));
+            object = ((StringBuilder)charSequence).toString();
+        } else {
+            object = charSequence2;
+            if (!((String)charSequence).contains(SOY.d("1B223858041F0A7D300604"))) {
+                object = ((String)charSequence).contains(SOY.d("0235300604")) ? charSequence2 : SOY.d("9FDAD791C5CC51B7D4DE9DF4D26F7A91E0C29FEFE04B19180C3B345D9CC8E4B5EADB91FEDD6F2500041B1B2B7A91CFCB92DBEB4B0001093A3E015F92F0FAB7CADF4A193D3C1F175C4E196C1B1B0113370E421F5C9EEFC29EF6C54726380F017D9DFFCA9FF4FE193E3005075C9FD7F99FF7DF4779B4E0E892F3F57A91FCC69CD1D45D92F6EAB4D1E05F92F0FAB5CBE85C9DF5C093CDCC51B7D8D192F4FF79B7FEEC93C0DB7A9ED9D19FDEFB5D93FDD5B5ECDC5F92F0FAB6E2CF5C9FF7D693CDCC51B4FCD090C9DA79B4F0E69EE3FB7A90EADD9CDAC95D92F6EAB4D1E05F91F8FEB6E0E55C9CD1DB90F6ED51B5EAF991F2C279B8EBE691E2F77A90E2F092DBEB5D91C9D4B5C5C391CACB79B4F9D09FD9D77A93FAF19FDDE35D9CC8EAB7DBDE5F92FCCEB7EBE55C9CD1DB90F6ED51B4D2FC92F5E079B5CAD290EAD47A90F7F292DBE35D93D1F5B7D9DF5F93C2DBB6CCD35C9FD6EE91DFD251B5ECE793CCE6B5C5C391CACB58B6DBEF9EFADB3004111651B7D4DE9DF4D26F7A93D0D093CBD75D9DD1E3B4E9D95F92F5E2B7CFCA5C9DECDF93EFCA51BADAC791ECC779B7C5E192E1EF7A90E3D29CCEFD5D9DE8D3B7CACB5F92C4E5B4EDC95C9CE1E193EFCA51B7DCC691CDDC79B9D3CB90F5FFB6FFED5C9FD8F190FFC89FF6F65D91F2CCB6EAE07E90D7C9B8F6FD0E1F33235D91F2D2BBD2DE495C486263445F454A60605D464748627A44444643796346454F51606147435C486260405F454A63645D46474B667A44444649796346454551606147455C486260465F454A62685D46474A6A7A4444474D796346444151606146415C486261425F454A62625D46474A607A4444474B7963464447");
+            }
+        }
+        return object;
+    }
+
+    String \u0780(String charSequence) {
+        if (!((String)charSequence).contains(SOY.d("1B223858041F0A7D300604")) && !((String)charSequence).contains(SOY.d("0235300604"))) {
+            if (((String)charSequence).contains(SOY.d("54243E12"))) {
+                if (((String)charSequence).contains(SOY.d("133D21131A0E0F3C"))) {
+                    StringBuilder stringBuilder = new StringBuilder();
+                    stringBuilder.append((String)charSequence);
+                    stringBuilder.append(SOY.d("55363402151E161B154902181E0D381249"));
+                    return stringBuilder.toString();
+                }
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append((String)charSequence);
+                stringBuilder.append(SOY.d("55363402151E166D2719102813366C"));
+                return stringBuilder.toString();
+            }
+            return "";
+        }
+        boolean bl = ((String)charSequence).contains(SOY.d("1E3B3B1F150F1333"));
+        String string = SOY.d("0C3B35131B281E3725171D1B453B354B");
+        if (bl) {
+            charSequence = new StringBuilder();
+            ((StringBuilder)charSequence).append(SOY.d("12262506074D557D260103591E3B3B1F150F13337F151B1A5533211F5A0712227E17040755"));
+            ((StringBuilder)charSequence).append(string);
+            return ((StringBuilder)charSequence).toString();
+        }
+        if (((String)charSequence).contains(SOY.d("4B626046100E"))) {
+            charSequence = new StringBuilder();
+            ((StringBuilder)charSequence).append(SOY.d("122625064E58552526015A464A6361120D5919317E17041E542239065B160A227E"));
+            ((StringBuilder)charSequence).append(string);
+            return ((StringBuilder)charSequence).toString();
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append((String)charSequence);
+        stringBuilder.append(string);
+        return stringBuilder.toString();
+    }
+
+    String \u0781(String string) {
+        if (!string.contains(SOY.d("1B223858041F0A7D300604")) && !string.contains(SOY.d("0235300604"))) {
+            if (string.contains(SOY.d("54243E12"))) {
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append(string);
+                stringBuilder.append(SOY.d("55243E12241F18133D1A"));
+                return stringBuilder.toString();
+            }
+            return "";
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(string);
+        stringBuilder.append(SOY.d("133C35130C280C3B35131B480E3D3A131A4A"));
+        return stringBuilder.toString();
     }
 }
 

@@ -1,25 +1,37 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.content.Context
+ *  android.text.TextUtils
+ *  android.widget.Toast
  */
 package com.github.catvod.spider.merge.i0;
 
-import com.github.catvod.spider.merge.cYh;
-import com.github.catvod.spider.merge.e0.g;
-import com.github.catvod.spider.merge.h0.a;
-import com.github.catvod.spider.merge.h0.e;
+import android.content.Context;
+import android.text.TextUtils;
+import android.widget.Toast;
+import com.github.catvod.spider.Init;
+import com.github.catvod.spider.merge.i0.b;
 
-public final class c
-implements a {
-    @Override
-    public final String a() {
-        return cYh.d("062435233E38122424");
+public final class c {
+    private Toast a;
+
+    public static void a(String string) {
+        c c2 = b.a;
+        if (!TextUtils.isEmpty((CharSequence)string)) {
+            Toast toast = c2.a;
+            if (toast != null) {
+                toast.cancel();
+            }
+            string = Toast.makeText((Context)Init.context(), (CharSequence)string, (int)1);
+            c2.a = string;
+            string.show();
+        }
     }
 
-    @Override
-    public final e b(g object) {
-        object = new e(null);
-        ((e)object).h();
-        return object;
+    public static void b(String string) {
+        Init.run(new com.github.catvod.spider.merge.I.c(string, 4));
     }
 }
 

@@ -3,30 +3,9 @@
  */
 package com.github.catvod.spider.merge.i0;
 
-import com.github.catvod.spider.merge.c0.l;
-import com.github.catvod.spider.merge.cYh;
-import com.github.catvod.spider.merge.e0.g;
-import com.github.catvod.spider.merge.h0.a;
-import java.util.AbstractCollection;
-import java.util.HashSet;
+import java.util.regex.Pattern;
 
-public final class e
-implements a {
-    @Override
-    public final String a() {
-        return cYh.d("03353232323403312F257A35157D32343B3C");
-    }
-
-    @Override
-    public final com.github.catvod.spider.merge.h0.e b(g object) {
-        HashSet<l> hashSet = new HashSet<l>();
-        g g2 = new g();
-        object = ((AbstractCollection)object).iterator();
-        while (object.hasNext()) {
-            hashSet.addAll(((l)object.next()).V());
-        }
-        ((AbstractCollection)g2).addAll(hashSet);
-        return new com.github.catvod.spider.merge.h0.e(g2);
-    }
+public final class e {
+    public static final Pattern a = Pattern.compile("http((?!http).){12,}?\\.(m3u8|mp4|flv|avi|mkv|rm|wmv|mpg|m4a|mp3)\\?.*|http((?!http).){12,}\\.(m3u8|mp4|flv|avi|mkv|rm|wmv|mpg|m4a|mp3)|http((?!http).)*?video/tos*");
 }
 

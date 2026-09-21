@@ -3,23 +3,30 @@
  */
 package com.github.catvod.spider.merge.S;
 
-import com.github.catvod.spider.merge.cYh;
+import com.github.catvod.spider.merge.S.a;
+import com.github.catvod.spider.merge.i0.m;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
-public final class d<K, V> {
-    public final K a;
-    public V b;
-
-    public d(K k2, V v2) {
-        this.a = k2;
-        this.b = v2;
+public final class d
+implements Comparator<a> {
+    public static void a(List<a> list) {
+        Collections.sort(list, new d());
     }
 
-    public final String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(this.a.toString());
-        stringBuilder.append(cYh.d("5D"));
-        stringBuilder.append(this.b.toString());
-        return stringBuilder.toString();
+    @Override
+    public final int compare(Object object, Object object2) {
+        int n2;
+        object = (a)object;
+        a a2 = (a)object2;
+        try {
+            n2 = Integer.compare(Integer.parseInt(m.z(((a)object).n()).replaceAll("\\D+", "")), Integer.parseInt(m.z(a2.n()).replaceAll("\\D+", "")));
+        }
+        catch (NumberFormatException numberFormatException) {
+            n2 = ((a)object).k().compareToIgnoreCase(a2.k());
+        }
+        return n2;
     }
 }
 

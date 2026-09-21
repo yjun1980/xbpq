@@ -1,55 +1,54 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  okhttp3.Interceptor
+ *  okhttp3.Interceptor$Chain
+ *  okhttp3.Request
+ *  okhttp3.Response
  */
 package com.github.catvod.spider.merge.f0;
 
-import com.github.catvod.spider.merge.c0.l;
-import com.github.catvod.spider.merge.cYh;
-import com.github.catvod.spider.merge.e0.g;
-import com.github.catvod.spider.merge.f0.a;
-import java.util.LinkedList;
-import java.util.List;
+import java.io.IOException;
+import java.util.Random;
+import java.util.concurrent.Semaphore;
+import okhttp3.Interceptor;
+import okhttp3.Request;
+import okhttp3.Response;
 
-public final class b {
-    private Object a;
+public final class b
+implements Interceptor {
+    private final Semaphore a = new Semaphore(1);
+    private final Random b = new Random();
 
-    public b(Object object) {
-        this.a = object;
-    }
-
-    public final String a() {
-        Object object = this.a;
-        if (object instanceof String) {
-            return (String)object;
-        }
-        if (object instanceof l) {
-            l l2 = (l)object;
-            String string = l2.n0();
-            boolean bl = string == (object = cYh.d("2D081E05120233")) || string != null && string.equals(object);
-            if (bl) {
-                return l2.e0();
+    /*
+     * WARNING - Removed back jump from a try to a catch block - possible behaviour change.
+     * Loose catch block
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    public final Response intercept(Interceptor.Chain object) {
+        Throwable throwable2222222;
+        Request request = object.request();
+        String string = request.url().toString();
+        if (!string.contains("115cdn.com") && !string.contains("115.com")) return object.proceed(request);
+        this.a.acquire();
+        Thread.sleep(this.b.nextInt(300) + 600);
+        this.a.release();
+        return object.proceed(request);
+        {
+            catch (Throwable throwable2222222) {
             }
-            return l2.u();
+            catch (InterruptedException interruptedException) {}
+            {
+                Thread.currentThread().interrupt();
+                object = new IOException("Rate limit sleep interrupted", interruptedException);
+                throw object;
+            }
         }
-        return String.valueOf(object);
-    }
-
-    public final List<b> b(String string) {
-        if (!(this.a instanceof l)) {
-            return null;
-        }
-        return new a(new g((l)this.a)).a(string);
-    }
-
-    public final b c(String object) {
-        if ((object = this.b((String)object)) != null && ((LinkedList)(object = (LinkedList)object)).size() > 0) {
-            return (b)((LinkedList)object).get(0);
-        }
-        return null;
-    }
-
-    public final String toString() {
-        return this.a();
+        this.a.release();
+        throw throwable2222222;
     }
 }
 

@@ -1,40 +1,86 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  com.google.gson.annotations.SerializedName
  */
 package com.github.catvod.spider.merge.O;
 
-import com.github.catvod.spider.merge.L.e;
-import com.github.catvod.spider.merge.N.h;
-import com.github.catvod.spider.merge.O.d;
-import com.github.catvod.spider.merge.O.f;
-import com.github.catvod.spider.merge.cYh;
+import com.github.catvod.spider.merge.O.i;
+import com.google.gson.annotations.SerializedName;
 
-public final class c
-extends d {
-    private static final e e;
-    public static final c f;
+public final class c {
+    @SerializedName(value="id")
+    private String a;
+    @SerializedName(value="baseUrl")
+    private String b;
+    @SerializedName(value="bandwidth")
+    private String c;
+    @SerializedName(value="mimeType")
+    private String d;
+    @SerializedName(value="codecs")
+    private String e;
+    @SerializedName(value="width")
+    private String f;
+    @SerializedName(value="height")
+    private String g;
+    @SerializedName(value="frameRate")
+    private String h;
+    @SerializedName(value="sar")
+    private String i;
+    @SerializedName(value="startWithSap")
+    private String j;
+    @SerializedName(value="SegmentBase")
+    private i k;
+    @SerializedName(value="codecid")
+    private String l;
 
-    static {
-        c c2;
-        f = c2 = new c();
-        int n2 = h.a();
-        if (64 >= n2) {
-            n2 = 64;
-        }
-        e = new f(c2, h.d(cYh.d("0C3F353D3E341F7E223E25351224283F322949392E7F273B15312D3D32360E232C"), n2, 0, 0, 12));
+    public final String a() {
+        return this.c;
     }
 
-    private c() {
+    public final String b() {
+        return this.b;
     }
 
-    @Override
-    public final void close() {
-        throw new UnsupportedOperationException(cYh.d("23393221362E04382423247423352730223613702230393408246133327A043C2E22323E"));
+    public final String c() {
+        return this.l;
     }
 
-    @Override
-    public final String toString() {
-        return cYh.d("23393221362E04382423247423352730223613");
+    public final String d() {
+        return this.e;
+    }
+
+    public final String e() {
+        return this.h;
+    }
+
+    public final String f() {
+        return this.g;
+    }
+
+    public final String g() {
+        return this.a;
+    }
+
+    public final String h() {
+        return this.d;
+    }
+
+    public final String i() {
+        return this.i;
+    }
+
+    public final i j() {
+        return this.k;
+    }
+
+    public final String k() {
+        return this.j;
+    }
+
+    public final String l() {
+        return this.f;
     }
 }
 

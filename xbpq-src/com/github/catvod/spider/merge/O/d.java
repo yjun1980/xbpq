@@ -1,34 +1,24 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.text.TextUtils
+ *  com.google.gson.annotations.SerializedName
  */
 package com.github.catvod.spider.merge.O;
 
-import com.github.catvod.spider.merge.L.i;
-import com.github.catvod.spider.merge.L.s;
-import com.github.catvod.spider.merge.O.b;
-import com.github.catvod.spider.merge.O.j;
-import com.github.catvod.spider.merge.O.l;
-import com.github.catvod.spider.merge.cYh;
-import java.util.concurrent.RejectedExecutionException;
+import android.text.TextUtils;
+import com.google.gson.annotations.SerializedName;
 
-public class d
-extends s {
-    private b d;
+public final class d {
+    @SerializedName(value="mid")
+    private String a;
+    @SerializedName(value="name")
+    private String b;
 
-    public d() {
-        int n2 = l.b;
-        int n3 = l.c;
-        long l2 = l.d;
-        this.d = new b(n2, n3, l2, cYh.d("23352730223613142822273B1333293425"));
-    }
-
-    public final void c(Runnable runnable, j j2, boolean bl) {
-        try {
-            this.d.d(runnable, j2, bl);
-        }
-        catch (RejectedExecutionException rejectedExecutionException) {
-            i.j.i(this.d.b(runnable, j2));
-        }
+    public final String a() {
+        String string = TextUtils.isEmpty((CharSequence)this.a) ? "" : this.a;
+        return string;
     }
 }
 

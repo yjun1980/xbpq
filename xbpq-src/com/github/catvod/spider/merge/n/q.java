@@ -1,24 +1,27 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.text.StaticLayout$Builder
+ *  android.text.TextDirectionHeuristics
+ *  android.widget.TextView
  */
 package com.github.catvod.spider.merge.n;
 
-import com.github.catvod.spider.merge.m.c;
+import android.text.StaticLayout;
+import android.text.TextDirectionHeuristics;
+import android.widget.TextView;
+import com.github.catvod.spider.merge.n.s;
 import com.github.catvod.spider.merge.n.t;
 
-public final class q
-implements Runnable {
-    public final t c;
-    public final c d;
-
-    public /* synthetic */ q(t t2, c c2) {
-        this.c = t2;
-        this.d = c2;
+class q
+extends s {
+    q() {
     }
 
     @Override
-    public final void run() {
-        t.E(this.c, this.d);
+    void a(StaticLayout.Builder builder, TextView textView) {
+        builder.setTextDirection(t.j(textView, "getTextDirectionHeuristic", TextDirectionHeuristics.FIRSTSTRONG_LTR));
     }
 }
 

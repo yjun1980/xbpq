@@ -1,26 +1,29 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.text.StaticLayout$Builder
+ *  android.widget.TextView
  */
 package com.github.catvod.spider.merge.n;
 
-import com.github.catvod.spider.merge.n.M;
-import com.github.catvod.spider.merge.n.t;
+import android.text.StaticLayout;
+import android.widget.TextView;
+import com.github.catvod.spider.merge.n.q;
 
-public final class r
-implements Runnable {
-    public final t c;
-    public final M d;
-    public final int e;
-
-    public /* synthetic */ r(t t2, M m2, int n2) {
-        this.c = t2;
-        this.d = m2;
-        this.e = n2;
+final class r
+extends q {
+    r() {
     }
 
     @Override
-    public final void run() {
-        t.D(this.c, this.d, this.e);
+    void a(StaticLayout.Builder builder, TextView textView) {
+        builder.setTextDirection(textView.getTextDirectionHeuristic());
+    }
+
+    @Override
+    boolean b(TextView textView) {
+        return textView.isHorizontallyScrollable();
     }
 }
 

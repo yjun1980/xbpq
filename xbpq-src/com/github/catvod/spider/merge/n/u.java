@@ -3,6 +3,6 @@
  */
 package com.github.catvod.spider.merge.n;
 
-final class u {
+public interface u {
 }
 

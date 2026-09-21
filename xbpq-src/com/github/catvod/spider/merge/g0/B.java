@@ -3,51 +3,43 @@
  */
 package com.github.catvod.spider.merge.g0;
 
-import com.github.catvod.spider.merge.P.D;
-import com.github.catvod.spider.merge.P.x;
-import com.github.catvod.spider.merge.T.c;
-import com.github.catvod.spider.merge.T.d;
-import com.github.catvod.spider.merge.g0.E;
-import com.github.catvod.spider.merge.g0.b;
-import com.github.catvod.spider.merge.g0.t;
+import com.github.catvod.spider.Youtube;
+import com.github.catvod.spider.merge.H1.f;
+import com.github.catvod.spider.merge.H1.r;
+import com.github.catvod.utils.server.Server;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.function.Function;
 
 public final class B
-extends x {
-    public D g;
+implements Function {
+    public final Youtube a;
 
-    public B(x x2, int n2) {
-        super(x2, n2);
+    public /* synthetic */ B(Youtube youtube, String string) {
+        this.a = youtube;
     }
 
-    @Override
-    public final <T> T e(d<? extends T> d2) {
-        if (d2 instanceof E) {
-            return ((E)d2).f(this);
-        }
-        return d2.A(this);
-    }
-
-    @Override
-    public final int f() {
-        return 12;
-    }
-
-    @Override
-    public final void i(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).U();
-        }
-    }
-
-    @Override
-    public final void j(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).j();
-        }
-    }
-
-    public final t n() {
-        return (t)this.k(t.class);
+    public final Object apply(Object object) {
+        Object object2 = this.a;
+        object = (r)object;
+        int n2 = Youtube.u;
+        Objects.requireNonNull(object2);
+        String string = String.format(Locale.getDefault(), "height='%d' width='%d' frameRate='%d' maxPlayoutRate='1' startWithSAP='1'", ((r)object).h(), ((r)object).n(), ((r)object).g());
+        int n3 = ((r)object).m();
+        n2 = ((r)object).e();
+        object2 = ((r)object).f();
+        String string2 = ((f)object).d().c;
+        String string3 = Server.H(((f)object).c()).replace("&", "&amp;");
+        CharSequence charSequence = new StringBuilder();
+        charSequence.append(((r)object).l());
+        charSequence.append("-");
+        charSequence.append(((r)object).k());
+        charSequence = charSequence.toString();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(((r)object).j());
+        stringBuilder.append("-");
+        stringBuilder.append(((r)object).i());
+        return String.format("<AdaptationSet>\n<ContentComponent contentType=\"video\"/>\n<Representation id=\"%d\" bandwidth=\"%d\" codecs=\"%s\" mimeType=\"%s\" %s startWithSAP=\"1\">\n<BaseURL>%s</BaseURL>\n<SegmentBase indexRange=\"%s\">\n<Initialization range=\"%s\"/>\n</SegmentBase>\n</Representation>\n</AdaptationSet>\n", n3, n2, object2, string2, string, string3, stringBuilder.toString(), charSequence);
     }
 }
 

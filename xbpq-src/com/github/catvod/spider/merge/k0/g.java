@@ -3,66 +3,118 @@
  */
 package com.github.catvod.spider.merge.k0;
 
-import com.github.catvod.spider.merge.W.a;
-import com.github.catvod.spider.merge.c0.r;
-import com.github.catvod.spider.merge.c0.u;
-import com.github.catvod.spider.merge.cYh;
-import com.github.catvod.spider.merge.h0.c;
-import com.github.catvod.spider.merge.h0.d;
-import com.github.catvod.spider.merge.h0.e;
-import com.github.catvod.spider.merge.j.l;
 import com.github.catvod.spider.merge.k0.f;
-import java.util.AbstractCollection;
-import java.util.HashMap;
-import java.util.List;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.security.GeneralSecurityException;
+import java.util.LinkedList;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.X509TrustManager;
 
 public final class g
-implements c {
-    @Override
-    public final String a() {
-        return cYh.d("13353925");
+extends SSLSocketFactory {
+    static String[] b;
+    public static final X509TrustManager c;
+    private final SSLSocketFactory a;
+
+    static {
+        block6: {
+            String[] stringArray = (String[])SSLSocketFactory.getDefault().createSocket();
+            if (stringArray == null) break block6;
+            LinkedList<String> linkedList = new LinkedList<String>();
+            for (String string : stringArray.getSupportedProtocols()) {
+                if (string.toUpperCase().contains("SSL")) continue;
+                linkedList.add(string);
+            }
+            try {
+                b = linkedList.toArray(new String[linkedList.size()]);
+            }
+            catch (IOException iOException) {
+                throw new RuntimeException(iOException);
+            }
+        }
+        c = new f();
+    }
+
+    public g(X509TrustManager x509TrustManagerArray) {
+        SSLContext sSLContext;
+        block5: {
+            block4: {
+                try {
+                    sSLContext = SSLContext.getInstance("TLS");
+                    if (x509TrustManagerArray == null) break block4;
+                }
+                catch (GeneralSecurityException generalSecurityException) {
+                    throw new AssertionError();
+                }
+                X509TrustManager[] x509TrustManagerArray2 = new X509TrustManager[]{x509TrustManagerArray};
+                x509TrustManagerArray = x509TrustManagerArray2;
+                break block5;
+            }
+            x509TrustManagerArray = null;
+        }
+        sSLContext.init(null, x509TrustManagerArray, null);
+        this.a = sSLContext.getSocketFactory();
+    }
+
+    private void a(SSLSocket sSLSocket) {
+        String[] stringArray = b;
+        if (stringArray != null) {
+            sSLSocket.setEnabledProtocols(stringArray);
+        }
     }
 
     @Override
-    public final e b(d object) {
-        com.github.catvod.spider.merge.e0.g g2;
-        block6: {
-            Object object2 = ((d)object).a();
-            g2 = new com.github.catvod.spider.merge.e0.g();
-            if (object2 == null || ((AbstractCollection)object2).size() <= 0) break block6;
-            if (((d)object).f()) {
-                object2 = ((AbstractCollection)object2).iterator();
-                while (object2.hasNext()) {
-                    object = (com.github.catvod.spider.merge.c0.l)object2.next();
-                    a.c(new f(new HashMap(), g2), (r)object);
-                }
-            } else {
-                object = ((AbstractCollection)object2).iterator();
-                while (object.hasNext()) {
-                    r r2 = (com.github.catvod.spider.merge.c0.l)object.next();
-                    object2 = ((com.github.catvod.spider.merge.c0.l)r2).t();
-                    boolean bl = cYh.d("14333338272E").equals(object2);
-                    object2 = cYh.d("2D081E05120233");
-                    if (bl) {
-                        object2 = new com.github.catvod.spider.merge.c0.l((String)object2);
-                        ((com.github.catvod.spider.merge.c0.l)object2).o0(((com.github.catvod.spider.merge.c0.l)r2).T());
-                        l.f((com.github.catvod.spider.merge.c0.l)object2, 1);
-                        ((AbstractCollection)g2).add(object2);
-                        continue;
-                    }
-                    List<u> list = ((com.github.catvod.spider.merge.c0.l)r2).q0();
-                    int n2 = 0;
-                    while (n2 < list.size()) {
-                        r2 = list.get(n2);
-                        com.github.catvod.spider.merge.c0.l l2 = new com.github.catvod.spider.merge.c0.l((String)object2);
-                        l2.o0(((u)r2).L());
-                        l.f(l2, ++n2);
-                        ((AbstractCollection)g2).add(l2);
-                    }
-                }
-            }
+    public final Socket createSocket(String object, int n2) {
+        if ((object = this.a.createSocket((String)object, n2)) instanceof SSLSocket) {
+            this.a((SSLSocket)object);
         }
-        return new e(g2);
+        return object;
+    }
+
+    @Override
+    public final Socket createSocket(String object, int n2, InetAddress inetAddress, int n3) {
+        if ((object = this.a.createSocket((String)object, n2, inetAddress, n3)) instanceof SSLSocket) {
+            this.a((SSLSocket)object);
+        }
+        return object;
+    }
+
+    @Override
+    public final Socket createSocket(InetAddress object, int n2) {
+        if ((object = this.a.createSocket((InetAddress)object, n2)) instanceof SSLSocket) {
+            this.a((SSLSocket)object);
+        }
+        return object;
+    }
+
+    @Override
+    public final Socket createSocket(InetAddress object, int n2, InetAddress inetAddress, int n3) {
+        if ((object = this.a.createSocket((InetAddress)object, n2, inetAddress, n3)) instanceof SSLSocket) {
+            this.a((SSLSocket)object);
+        }
+        return object;
+    }
+
+    @Override
+    public final Socket createSocket(Socket socket, String string, int n2, boolean bl) {
+        if ((socket = this.a.createSocket(socket, string, n2, bl)) instanceof SSLSocket) {
+            this.a((SSLSocket)socket);
+        }
+        return socket;
+    }
+
+    @Override
+    public final String[] getDefaultCipherSuites() {
+        return null;
+    }
+
+    @Override
+    public final String[] getSupportedCipherSuites() {
+        return null;
     }
 }
 

@@ -1,50 +1,67 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  okhttp3.Response
  */
 package com.github.catvod.spider.merge.g0;
 
-import com.github.catvod.spider.merge.P.x;
-import com.github.catvod.spider.merge.T.c;
-import com.github.catvod.spider.merge.T.d;
-import com.github.catvod.spider.merge.g0.E;
-import com.github.catvod.spider.merge.g0.b;
-import com.github.catvod.spider.merge.g0.y;
+import com.github.catvod.spider.Jpys;
+import com.github.catvod.spider.merge.f0.d;
+import java.util.Map;
+import java.util.concurrent.CountDownLatch;
+import okhttp3.Response;
 
 public final class m
-extends x {
-    public m(x x2, int n2) {
-        super(x2, n2);
+implements Runnable {
+    public final String a;
+    public final Map b;
+    public final CountDownLatch c;
+
+    public /* synthetic */ m(String string, Map map, CountDownLatch countDownLatch) {
+        this.a = string;
+        this.b = map;
+        this.c = countDownLatch;
     }
 
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
     @Override
-    public final <T> T e(d<? extends T> d2) {
-        if (d2 instanceof E) {
-            return ((E)d2).o(this);
+    public final void run() {
+        Throwable throwable2;
+        CountDownLatch countDownLatch;
+        block12: {
+            String string = this.a;
+            Map map = this.b;
+            countDownLatch = this.c;
+            int n2 = Jpys.o;
+            try {
+                long l2 = System.currentTimeMillis();
+                Response response = d.d(string);
+                long l3 = System.currentTimeMillis();
+                if (response != null) {
+                    response.close();
+                }
+                synchronized (map) {
+                    map.put(string, l3 - l2);
+                }
+            }
+            catch (Throwable throwable2) {
+                break block12;
+            }
+            catch (Exception exception) {
+                synchronized (map) {
+                    map.put(string, Long.MAX_VALUE);
+                }
+            }
+            countDownLatch.countDown();
+            return;
         }
-        return d2.A(this);
-    }
-
-    @Override
-    public final int f() {
-        return 1;
-    }
-
-    @Override
-    public final void i(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).O();
-        }
-    }
-
-    @Override
-    public final void j(c c2) {
-        if (c2 instanceof b) {
-            ((b)c2).A();
-        }
-    }
-
-    public final y n() {
-        return (y)this.k(y.class);
+        countDownLatch.countDown();
+        throw throwable2;
     }
 }
 

@@ -1,11 +1,17 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  com.google.gson.reflect.TypeToken
  */
 package com.github.catvod.spider.merge.J;
 
-import java.util.Iterator;
+import com.google.gson.reflect.TypeToken;
+import java.util.Map;
 
-public interface b<T> {
-    public Iterator<T> iterator();
+class b
+extends TypeToken<Map<String, Object>> {
+    b() {
+    }
 }
 

@@ -1,0 +1,50 @@
+/*
+ * Decompiled with CFR 0.152.
+ */
+package com.github.catvod.spider.merge.Em;
+
+import com.github.catvod.spider.merge.Em.g;
+import com.github.catvod.spider.merge.Em.p;
+import com.github.catvod.spider.merge.Em.r;
+
+public final class f
+extends p {
+    public f(String string) {
+        this.f = string;
+    }
+
+    @Override
+    public final Object clone() {
+        return (f)super.j();
+    }
+
+    @Override
+    public final r j() {
+        return (f)super.j();
+    }
+
+    @Override
+    public final r m() {
+        return this;
+    }
+
+    @Override
+    public final String t() {
+        return "#data";
+    }
+
+    @Override
+    public final String toString() {
+        return this.u();
+    }
+
+    @Override
+    final void w(Appendable appendable, int n2, g g2) {
+        appendable.append(this.I());
+    }
+
+    @Override
+    final void x(Appendable appendable, int n2, g g2) {
+    }
+}
+

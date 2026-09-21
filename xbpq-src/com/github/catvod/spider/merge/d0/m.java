@@ -1,46 +1,50 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.content.Context
  */
 package com.github.catvod.spider.merge.d0;
 
-import com.github.catvod.spider.merge.c0.i;
-import com.github.catvod.spider.merge.d0.A;
-import com.github.catvod.spider.merge.d0.I;
-import com.github.catvod.spider.merge.d0.J;
-import com.github.catvod.spider.merge.d0.O;
-import com.github.catvod.spider.merge.d0.b;
-import com.github.catvod.spider.merge.d0.r;
+import android.content.Context;
+import com.github.catvod.en.BaseApi;
+import com.github.catvod.en.NetPan;
+import com.github.catvod.en.NetPan$TermuxService;
+import com.github.catvod.spider.merge.I.r;
+import com.github.catvod.spider.merge.d0.k;
+import com.github.catvod.spider.merge.d0.l;
+import java.io.File;
+import java.util.List;
+import java.util.regex.Pattern;
 
-final class m
-extends A {
+public final class m
+implements Runnable {
+    public final Context a;
+    public final NetPan$TermuxService b;
+    public final Boolean c;
+    public final File d;
+    public final List e;
+    public final String f;
+
+    public /* synthetic */ m(Context context, NetPan$TermuxService netPan$TermuxService, Boolean bl, File file, List list, String string) {
+        this.a = context;
+        this.b = netPan$TermuxService;
+        this.c = bl;
+        this.d = file;
+        this.e = list;
+        this.f = string;
+    }
+
     @Override
-    final boolean d(O o2, b b2) {
-        r r2;
-        block7: {
-            block6: {
-                block5: {
-                    r2 = A.d;
-                    if (A.a(o2)) {
-                        return true;
-                    }
-                    if (!o2.b()) break block5;
-                    b2.F((I)o2);
-                    break block6;
-                }
-                if (!o2.c()) break block7;
-                o2 = (J)o2;
-                i i2 = new i(b2.h.c(((J)o2).b.toString()), ((J)o2).d.toString(), ((J)o2).e.toString());
-                i2.L(((J)o2).c);
-                b2.d.L(i2);
-                if (((J)o2).f) {
-                    b2.d.v0();
-                }
-                b2.j0(r2);
-            }
-            return true;
-        }
-        b2.j0(r2);
-        return b2.c(o2);
+    public final void run() {
+        Context context = this.a;
+        NetPan$TermuxService netPan$TermuxService = this.b;
+        Boolean bl = this.c;
+        File file = this.d;
+        List list = this.e;
+        String string = this.f;
+        Pattern pattern = NetPan.a;
+        BaseApi.get().showInputWithOption("\u6d4b\u8bd5\u7248\u672c", new k(context, netPan$TermuxService, bl), new l(file, context, netPan$TermuxService, bl), r.c(new StringBuilder(), netPan$TermuxService.b, " \u8fd0\u884c\u547d\u4ee4"), "\u8bf7\u8f93\u5165\u8fd0\u884c\u547d\u4ee4", list, string);
     }
 }
 
