@@ -12,7 +12,7 @@ on:
         required: false
         default: 'xbpq.jar'
       output_dir:
-        description: '输出目录'
+        description: '输出目录（留空自动生成）'
         required: false
         default: ''
 
@@ -57,6 +57,8 @@ jobs:
           echo "jar_file=$JAR" >> $GITHUB_OUTPUT
           echo "out_dir=$OUT" >> $GITHUB_OUTPUT
           echo "is_manual=$IS_MANUAL" >> $GITHUB_OUTPUT
+          echo "📦 JAR: $JAR"
+          echo "📁 输出: $OUT"
 
   decompile:
     needs: detect
@@ -83,7 +85,7 @@ jobs:
           echo "JAR_FILE=$JAR_FILE" >> $GITHUB_ENV
           echo "OUT_DIR=$OUT_DIR" >> $GITHUB_ENV
 
-      # ---------- 校验 JAR ----------
+      # ---------- 1. 校验 JAR ----------
       - name: Validate JAR
         id: validate
         run: |
@@ -91,38 +93,66 @@ jobs:
           [ -f "$JAR_FILE" ] || { echo "❌ 找不到 JAR"; exit 1; }
           SIZE=$(stat -c%s "$JAR_FILE")
           echo "大小: $SIZE bytes"
-          echo "class_count=$(unzip -l "$JAR_FILE" | grep -c '\.class$' || true)" >> $GITHUB_OUTPUT
-          echo "dex_count=$(unzip -l "$JAR_FILE" | grep -c '\.dex$' || true)" >> $GITHUB_OUTPUT
-          echo "nested_count=$(unzip -l "$JAR_FILE" | grep -c '\.jar$' || true)" >> $GITHUB_OUTPUT
+          CLASS_COUNT=$(unzip -l "$JAR_FILE" | grep -c '\.class$' || true)
+          DEX_COUNT=$(unzip -l "$JAR_FILE" | grep -c '\.dex$' || true)
+          NESTED_COUNT=$(unzip -l "$JAR_FILE" | grep -c '\.jar$' || true)
+          echo "class: $CLASS_COUNT"
+          echo "dex:   $DEX_COUNT"
+          echo "nested: $NESTED_COUNT"
+          echo "class_count=$CLASS_COUNT" >> $GITHUB_OUTPUT
+          echo "dex_count=$DEX_COUNT" >> $GITHUB_OUTPUT
+          echo "nested_count=$NESTED_COUNT" >> $GITHUB_OUTPUT
 
-      # ---------- 如果 JAR 里是 DEX，先转 JAR ----------
-      - name: Convert DEX to JAR
-        id: dex2jar
-        if: steps.validate.outputs.dex_count > 0 && steps.validate.outputs.class_count == '0'
+      # ---------- 2. 判断类型 ----------
+      - name: Decide target
+        id: decide
+        run: |
+          CLASS_COUNT="${{ steps.validate.outputs.class_count }}"
+          DEX_COUNT="${{ steps.validate.outputs.dex_count }}"
+          if [ "$CLASS_COUNT" -gt 0 ]; then
+            echo "type=class" >> $GITHUB_OUTPUT
+            echo "✅ 是标准 JVM class 格式"
+          elif [ "$DEX_COUNT" -gt 0 ]; then
+            echo "type=dex" >> $GITHUB_OUTPUT
+            echo "✅ 是 Android DEX 格式"
+          else
+            echo "type=unknown" >> $GITHUB_OUTPUT
+            echo "❌ 无法识别格式"
+            exit 1
+          fi
+
+      # ---------- 3. 如果是 DEX，转 JAR ----------
+      - name: Download dex2jar
+        if: steps.decide.outputs.type == 'dex'
         run: |
           set -e
-          # 下载 dex2jar
           curl -fSL --retry 3 -o tools/dex2jar.zip \
             "https://github.com/pxb1988/dex2jar/releases/download/v${DEX2JAR_VERSION}/dex-tools-v${DEX2JAR_VERSION}.zip"
           unzip -q tools/dex2jar.zip -d tools/
-          D2J_DIR=$(find tools -maxdepth 2 -name "d2j-dex2jar.sh" | head -1 | xargs dirname)
-          chmod +x "$D2J_DIR"/*.sh
-          # 提取 classes.dex
+          find tools -name "d2j-dex2jar.sh" -exec chmod +x {} \;
+          echo "✅ dex2jar 下载完成"
+
+      - name: Convert DEX to JAR
+        id: dex2jar
+        if: steps.decide.outputs.type == 'dex'
+        run: |
+          set -e
           rm -rf dex_extract
           mkdir -p dex_extract
           cd dex_extract
-          unzip -o "../$JAR_FILE" "*.dex" || true
+          unzip -o "../$JAR_FILE" "*.dex" || unzip -o "../$JAR_FILE"
           cd ..
           DEX_FILES=$(find dex_extract -name "*.dex")
           echo "找到 DEX: $DEX_FILES"
-          # 转成 JAR
+          D2J=$(find tools -name "d2j-dex2jar.sh" | head -1)
+          chmod +x "$D2J"
           rm -f xbpq-classes.jar
-          "$D2J_DIR/d2j-dex2jar.sh" -o xbpq-classes.jar $DEX_FILES --force || \
-            "$D2J_DIR/d2j-dex2jar.sh" -o xbpq-classes.jar dex_extract/classes.dex --force
+          bash "$D2J" $(echo $DEX_FILES | head -1) -o xbpq-classes.jar --force
           ls -lh xbpq-classes.jar
+          echo "class 数: $(unzip -l xbpq-classes.jar | grep -c '\.class$' || true)"
           echo "converted=true" >> $GITHUB_OUTPUT
 
-      # ---------- 下载 CFR ----------
+      # ---------- 4. 下载 CFR ----------
       - name: Download CFR
         id: cfr
         run: |
@@ -133,14 +163,17 @@ jobs:
             "https://repo1.maven.org/maven2/org/benf/cfr/${CFR_VERSION}/cfr-${CFR_VERSION}.jar"
           )
           for url in "${URLS[@]}"; do
+            echo "尝试: $url"
             if curl -fSL --retry 3 --retry-delay 2 -o tools/cfr.jar "$url" && [ -s tools/cfr.jar ]; then
               echo "cfr_ok=true" >> $GITHUB_OUTPUT
+              echo "✅ CFR 下载成功"
               exit 0
             fi
           done
           echo "cfr_ok=false" >> $GITHUB_OUTPUT
+          echo "❌ CFR 下载失败"
 
-      # ---------- 选实际要反编译的文件 ----------
+      # ---------- 5. 选目标 ----------
       - name: Choose target
         id: target
         run: |
@@ -152,7 +185,7 @@ jobs:
             echo "✅ 使用原 JAR"
           fi
 
-      # ---------- CFR 反编译 ----------
+      # ---------- 6. CFR 反编译（最简参数，不报错） ----------
       - name: Decompile with CFR
         id: cfr_decompile
         if: steps.cfr.outputs.cfr_ok == 'true'
@@ -162,38 +195,36 @@ jobs:
           TARGET="${{ steps.target.outputs.target }}"
           rm -rf "$OUT_DIR"
           mkdir -p "$OUT_DIR"
-          java -Xmx4g -jar tools/cfr.jar "$TARGET" \
-            --outputdir "$OUT_DIR" \
-            --comments false \
-            --lenient true \
-            --lifting true \
-            --decodelambdas true \
-            --decodestringswitch true \
-            --decodeenumswitch true \
-            --decodefinally true \
-            --hidebridgemethods true \
-            --innerclasses true \
-            --caseinsensitivefs true \
-            --silent true || echo "CFR 有警告"
-          echo "CFR 文件数: $(find "$OUT_DIR" -name '*.java' | wc -l)"
+          echo "=== 反编译 $TARGET ==="
+          java -Xmx4g -jar tools/cfr.jar "$TARGET" --outputdir "$OUT_DIR" --silent true || echo "CFR 有警告"
+          COUNT=$(find "$OUT_DIR" -name "*.java" | wc -l)
+          echo "CFR 文件数: $COUNT"
+          echo "cfr_count=$COUNT" >> $GITHUB_OUTPUT
 
-      # ---------- Fallback Procyon ----------
-      - name: Procyon fallback
+      # ---------- 7. 如果 CFR 失败，用 Procyon ----------
+      - name: Download Procyon
         id: procyon
-        if: steps.cfr.outputs.cfr_ok != 'true' || steps.cfr_decompile.outcome != 'success'
+        if: steps.cfr_decompile.outputs.cfr_count == '0'
+        continue-on-error: true
+        run: |
+          set -e
+          curl -fSL -o tools/procyon.jar \
+            "https://github.com/mstrobel/procyon/releases/download/v0.6.0/procyon-decompiler-0.6.0.jar" || exit 0
+          echo "procyon_ok=true" >> $GITHUB_OUTPUT
+
+      - name: Decompile with Procyon
+        id: procyon_decompile
+        if: steps.procyon.outputs.procyon_ok == 'true'
         continue-on-error: true
         run: |
           set -e
           TARGET="${{ steps.target.outputs.target }}"
-          curl -fSL -o tools/procyon.jar \
-            "https://github.com/mstrobel/procyon/releases/download/v0.6.0/procyon-decompiler-0.6.0.jar" || exit 0
           rm -rf "${OUT_DIR}_procyon"
           mkdir -p "${OUT_DIR}_procyon"
           java -Xmx4g -jar tools/procyon.jar -jar "$TARGET" -o "${OUT_DIR}_procyon" || true
           echo "Procyon 文件数: $(find "${OUT_DIR}_procyon" -name '*.java' 2>/dev/null | wc -l)"
-          echo "procyon_done=true" >> $GITHUB_OUTPUT
 
-      # ---------- 选最佳 ----------
+      # ---------- 8. 选最佳 ----------
       - name: Pick best
         id: pick
         run: |
@@ -206,7 +237,10 @@ jobs:
               UNSUP=$(grep -rl "UnsupportedOperationException" "$dir" 2>/dev/null | wc -l || true)
               SCORE=$((COUNT - UNSUP * 10))
               echo "$dir: count=$COUNT unsup=$UNSUP score=$SCORE"
-              [ "$SCORE" -gt "$BEST_SCORE" ] && { BEST="$dir"; BEST_SCORE="$SCORE"; }
+              if [ "$SCORE" -gt "$BEST_SCORE" ]; then
+                BEST="$dir"
+                BEST_SCORE="$SCORE"
+              fi
             fi
           done
           [ -n "$BEST" ] || { echo "❌ 没结果"; exit 1; }
@@ -217,72 +251,90 @@ jobs:
             cp -r "$BEST" "$OUT_DIR"
           fi
 
-      # ---------- 深度检查 ----------
+      # ---------- 9. 深度检查 ----------
       - name: Deep check
         id: deep
         run: |
           set -e
+          echo "=== Java 文件总数: $(find "$OUT_DIR" -name '*.java' | wc -l) ==="
+          echo "=== 前 50 个 Java 文件 ==="
+          find "$OUT_DIR" -name "*.java" | head -50
+          echo ""
+          echo "=== 是否含 XBPQ.java ==="
           XBPQ_FILE=$(find "$OUT_DIR" -name "XBPQ.java" | head -1)
           if [ -z "$XBPQ_FILE" ]; then
-            echo "found=false" >> $GITHUB_OUTPUT
             echo "❌ 找不到 XBPQ.java"
-            echo "=== 现有 Java 文件 ==="
-            find "$OUT_DIR" -name "*.java" | head -30
+            echo "found=false" >> $GITHUB_OUTPUT
+            echo ""
+            echo "=== 全部 spider 相关类 ==="
+            find "$OUT_DIR" -path "*spider*" -name "*.java" | head -50
             exit 0
           fi
           LINES=$(wc -l < "$XBPQ_FILE")
           UNSUP=$(grep -c "UnsupportedOperationException" "$XBPQ_FILE" || true)
+          echo "📄 XBPQ.java: $LINES 行, $UNSUP 处缺失"
           echo "found=true" >> $GITHUB_OUTPUT
           echo "xbpq_file=$XBPQ_FILE" >> $GITHUB_OUTPUT
           echo "xbpq_lines=$LINES" >> $GITHUB_OUTPUT
           echo "xbpq_unsup=$UNSUP" >> $GITHUB_OUTPUT
-          echo "📄 XBPQ.java: $LINES 行, $UNSUP 处缺失"
+          echo ""
+          echo "=== 关键方法 ==="
+          for m in "W(" "detailContent(" "playerContent(" "searchContent(" "homeContent(" "categoryContent("; do
+            grep -q "$m" "$XBPQ_FILE" && echo "✅ $m" || echo "❌ $m"
+          done
 
-      # ---------- 报告 ----------
+      # ---------- 10. 报告 ----------
       - name: Report
         if: always()
         run: |
           {
             echo "# Decompile Report"
             echo ""
-            echo "## 输入"
+            echo "## 触发"
+            echo "- 方式: ${{ needs.detect.outputs.is_manual == 'true' && '手动' || '自动' }}"
             echo "- JAR: \`$JAR_FILE\`"
+            echo ""
+            echo "## 输入"
             echo "- 大小: $(stat -c%s "$JAR_FILE" 2>/dev/null || echo N/A) bytes"
             echo "- class 数: ${{ steps.validate.outputs.class_count }}"
             echo "- dex 数: ${{ steps.validate.outputs.dex_count }}"
             echo "- 嵌套 JAR: ${{ steps.validate.outputs.nested_count }}"
+            echo "- 类型: ${{ steps.decide.outputs.type }}"
             echo "- DEX 转换: ${{ steps.dex2jar.outputs.converted }}"
             echo ""
             echo "## 输出"
             echo "- 最佳目录: \`${{ steps.pick.outputs.best_dir }}\`"
             echo "- Java 文件数: $(find "$OUT_DIR" -name '*.java' 2>/dev/null | wc -l)"
             echo "- XBPQ.java: ${{ steps.deep.outputs.xbpq_lines }} 行"
-            echo "- UnsupportedOperationException: ${{ steps.deep.outputs.xbpq_unsup }}"
+            echo "- 缺失方法: ${{ steps.deep.outputs.xbpq_unsup }}"
             echo ""
             echo "## 时间"
             echo "- $(date -u)"
           } > DECOMPILE_REPORT.md
           cat DECOMPILE_REPORT.md
 
-      # ---------- 提交 ----------
+      # ---------- 11. 提交 ----------
       - name: Auto commit
         if: steps.deep.outputs.found == 'true'
         run: |
           set -e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "$OUT_DIR/"
-          git add DECOMPILE_REPORT.md
-          git diff --cached --quiet && echo "无变化" || {
-            git commit -m "🤖 [${{ needs.detect.outputs.is_manual == 'true' && '手动' || '自动' }}] DEX→JAR 反编译 $JAR_FILE"
+          git add "$OUT_DIR/" DECOMPILE_REPORT.md 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "无变化"
+          else
+            MODE="${{ needs.detect.outputs.is_manual == 'true' && '手动' || '自动' }}"
+            git commit -m "🤖 [$MODE] 反编译 $JAR_FILE $(date +%Y%m%d_%H%M%S)"
             git push
-          }
+            echo "✅ 已推送"
+          fi
 
-      # ---------- 上传 ----------
+      # ---------- 12. 打包上传 ----------
       - name: Zip
         if: always()
         run: |
-          zip -rq decompiled.zip "$OUT_DIR" DECOMPILE_REPORT.md || true
+          zip -rq decompiled.zip "$OUT_DIR" DECOMPILE_REPORT.md 2>/dev/null || true
           ls -lh decompiled.zip || true
 
       - name: Upload
