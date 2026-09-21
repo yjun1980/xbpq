@@ -1,0 +1,676 @@
+Summary for xbpq-classes.jar
+Decompiled with CFR 0.152
+
+
+com.github.catvod.parser.JsonBasic
+----------------------------
+
+parse(java.util.LinkedHashMap<java.lang.String, java.lang.String> java.lang.String )
+  Unable to fully structure code
+
+
+com.github.catvod.parser.JsonParallel
+----------------------------
+
+parse(java.util.LinkedHashMap<java.lang.String, java.lang.String> java.lang.String )
+  Loose catch block
+
+
+com.github.catvod.parser.JsonSequence
+----------------------------
+
+parse(java.util.LinkedHashMap<java.lang.String, java.lang.String> java.lang.String )
+  Unable to fully structure code
+
+
+com.github.catvod.parser.MixDemo
+----------------------------
+
+parse(java.util.LinkedHashMap<java.lang.String, java.util.HashMap<java.lang.String, java.lang.String>> java.lang.String java.lang.String java.lang.String )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [1[TRYBLOCK]], but top level block is 13[UNCONDITIONALDOLOOP]
+
+
+com.github.catvod.parser.MixWeb
+----------------------------
+
+parse(java.util.LinkedHashMap<java.lang.String, java.util.HashMap<java.lang.String, java.lang.String>> java.lang.String java.lang.String java.lang.String )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [1[TRYBLOCK]], but top level block is 11[UNCONDITIONALDOLOOP]
+
+
+com.github.catvod.spider.AppYs
+----------------------------
+
+b(java.lang.String org.json.JSONObject org.json.JSONObject java.lang.String )
+  Could not resolve type clashes
+  Unable to fully structure code
+h(java.lang.String java.lang.String )
+  Unable to fully structure code
+categoryContent(java.lang.String java.lang.String boolean java.util.HashMap<java.lang.String, java.lang.String> )
+  Unable to fully structure code
+  Could not resolve type clashes
+homeContent(boolean )
+  Unable to fully structure code
+  Could not resolve type clashes
+searchContent(java.lang.String boolean )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+com.github.catvod.spider.merge.k.c
+----------------------------
+
+b()
+  Ignored method signature, as it can't be verified against descriptor
+
+
+com.github.catvod.spider.AppYsV2
+----------------------------
+
+c(java.lang.String org.json.JSONObject org.json.JSONObject java.lang.String )
+  Unable to fully structure code
+categoryContent(java.lang.String java.lang.String boolean java.util.HashMap<java.lang.String, java.lang.String> )
+  Unable to fully structure code
+  Could not resolve type clashes
+h(java.util.ArrayList java.lang.String )
+  Ignored method signature, as it can't be verified against descriptor
+homeContent(boolean )
+  Unable to fully structure code
+  Could not resolve type clashes
+searchContent(java.lang.String boolean )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+com.github.catvod.spider.Proxy
+----------------------------
+
+proxy(java.util.Map<java.lang.String, java.lang.String> )
+  Unable to fully structure code
+
+
+com.github.catvod.spider.XBPQ
+----------------------------
+
+A(java.lang.String java.lang.String java.lang.String java.lang.String )
+  Could not resolve type clashes
+  Unable to fully structure code
+M()
+  Unable to fully structure code
+O(java.lang.String java.lang.String java.lang.String )
+  Unable to fully structure code
+P(java.lang.String java.lang.String )
+  Unable to fully structure code
+W(java.lang.String java.lang.String boolean )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 67[TRYBLOCK] [101 : 3991->3999)] java.lang.Throwable
+Y(java.lang.String java.lang.String java.lang.String )
+  Could not resolve type clashes
+  Unable to fully structure code
+Z(java.lang.String java.lang.String java.lang.String )
+  Unable to fully structure code
+a0(java.lang.String java.lang.String )
+  Unable to fully structure code
+  Could not resolve type clashes
+e(java.lang.String java.lang.String boolean java.util.HashMap<java.lang.String, java.lang.String> )
+  Unable to fully structure code
+g(java.lang.String java.lang.String java.lang.String java.lang.String java.lang.String )
+  Unable to fully structure code
+l()
+  Unable to fully structure code
+m(java.lang.String java.lang.String )
+  Unable to fully structure code
+o(java.lang.String java.lang.String java.lang.String )
+  Unable to fully structure code
+q()
+  Unable to fully structure code
+s(int java.lang.String java.lang.String )
+  Could not resolve type clashes
+  Unable to fully structure code
+t(java.lang.String java.lang.String )
+  Unable to fully structure code
+  Could not resolve type clashes
+u(java.lang.String java.lang.String )
+  Unable to fully structure code
+  Could not resolve type clashes
+x(java.lang.String java.lang.String boolean java.util.HashMap<java.lang.String, java.lang.String> )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 3[TRYBLOCK] [3 : 928->1063)] java.lang.Exception
+y(java.lang.String boolean )
+  Unable to fully structure code
+J(java.lang.String )
+  Unable to fully structure code
+d0(java.lang.String java.lang.String java.lang.String java.lang.String )
+  Unable to fully structure code
+detailContent(java.util.List<java.lang.String> )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 2[TRYBLOCK] [2 : 104->166)] java.lang.Exception
+homeContent(boolean )
+  Unable to fully structure code
+homeVideoContent()
+  Unable to fully structure code
+  Could not resolve type clashes
+init(android.content.Context java.lang.String )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [8[SIMPLE_IF_TAKEN]], but top level block is 1[TRYBLOCK]
+j(java.lang.String )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Statement already marked as first in another block
+playerContent(java.lang.String java.lang.String java.util.List<java.lang.String> )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 129[TRYBLOCK] [147 : 3847->3856)] java.lang.Exception
+searchContent(java.lang.String boolean )
+  Unable to fully structure code
+xpDetailContent(java.util.List<java.lang.String> )
+  Unable to fully structure code
+  Could not resolve type clashes
+z(java.lang.String )
+  Unable to fully structure code
+
+
+com.github.catvod.spider.merge.D.d
+----------------------------
+
+a()
+  Ignored method signature, as it can't be verified against descriptor
+
+
+com.github.catvod.spider.merge.K.i
+----------------------------
+
+d(java.lang.CharSequence java.lang.CharSequence int int boolean boolean )
+  Unable to fully structure code
+
+
+com.github.catvod.spider.merge.N.j
+----------------------------
+
+c()
+  Ignored method signature, as it can't be verified against descriptor
+
+
+com.github.catvod.spider.merge.N.a
+----------------------------
+
+g(java.util.LinkedHashMap )
+  Unable to fully structure code
+
+
+com.github.catvod.spider.merge.N.e
+----------------------------
+
+f()
+  Unable to fully structure code
+
+
+com.github.catvod.spider.merge.N.f
+----------------------------
+
+<clinit>()
+  Loose catch block
+
+
+com.github.catvod.spider.merge.N.h
+----------------------------
+
+b(java.lang.String long long long )
+  Unable to fully structure code
+
+
+com.github.catvod.spider.merge.O.a
+----------------------------
+
+<init>(com.github.catvod.spider.merge.O.b int )
+  Ignored method signature, as it can't be verified against descriptor
+a(boolean )
+  Unable to fully structure code
+
+
+com.github.catvod.spider.merge.T.d
+----------------------------
+
+a()
+  Ignored method signature, as it can't be verified against descriptor
+q()
+  Ignored method signature, as it can't be verified against descriptor
+
+
+com.github.catvod.spider.merge.P.x
+----------------------------
+
+k(java.lang.Class )
+  Ignored method signature, as it can't be verified against descriptor
+
+
+com.github.catvod.spider.merge.Q.S
+----------------------------
+
+g(com.github.catvod.spider.merge.Q.b com.github.catvod.spider.merge.Q.f java.util.Set<com.github.catvod.spider.merge.Q.b> boolean boolean int boolean )
+  Unable to fully structure code
+h(com.github.catvod.spider.merge.Q.f int boolean )
+  Unable to fully structure code
+l(com.github.catvod.spider.merge.R.b com.github.catvod.spider.merge.R.e com.github.catvod.spider.merge.P.G int com.github.catvod.spider.merge.P.x )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+com.github.catvod.spider.merge.Q.X
+----------------------------
+
+g(com.github.catvod.spider.merge.Q.X com.github.catvod.spider.merge.Q.X boolean com.github.catvod.spider.merge.S.c<com.github.catvod.spider.merge.Q.X, com.github.catvod.spider.merge.Q.X, com.github.catvod.spider.merge.Q.X> )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+
+
+com.github.catvod.spider.merge.S.b
+----------------------------
+
+<init>(com.github.catvod.spider.merge.O.m int )
+  Ignored method signature, as it can't be verified against descriptor
+
+
+com.github.catvod.spider.merge.Q.k
+----------------------------
+
+b(char[] )
+  Could not resolve type clashes
+  Unable to fully structure code
+
+
+com.github.catvod.spider.merge.Q.y
+----------------------------
+
+a(com.github.catvod.spider.merge.Q.m com.github.catvod.spider.merge.Q.X com.github.catvod.spider.merge.S.j java.util.Set java.util.BitSet )
+  Ignored method signature, as it can't be verified against descriptor
+
+
+com.github.catvod.spider.merge.S.a
+----------------------------
+
+<init>(com.github.catvod.spider.merge.S.b java.lang.Object[] )
+  Ignored method signature, as it can't be verified against descriptor
+
+
+com.github.catvod.spider.merge.U.f
+----------------------------
+
+a(java.lang.CharSequence int java.io.Writer )
+  Unable to fully structure code
+
+
+com.github.catvod.spider.merge.U.h
+----------------------------
+
+e(java.lang.Iterable<?> java.lang.String )
+  Handled impossible loop by duplicating code
+
+
+com.github.catvod.spider.merge.U.j
+----------------------------
+
+a(java.lang.Object java.lang.Object[] )
+  Ignored method signature, as it can't be verified against descriptor
+
+
+com.github.catvod.spider.merge.V.i
+----------------------------
+
+g(java.lang.StringBuffer java.util.Map )
+  Ignored method signature, as it can't be verified against descriptor
+k(java.lang.StringBuffer java.lang.String java.lang.Object boolean )
+  Unable to fully structure code
+
+
+com.github.catvod.spider.merge.V.c
+----------------------------
+
+g(java.lang.StringBuffer java.util.Map )
+  Ignored method signature, as it can't be verified against descriptor
+
+
+com.github.catvod.spider.merge.X.i
+----------------------------
+
+a(java.lang.CharSequence int java.io.Writer )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+com.github.catvod.spider.merge.Y.N
+----------------------------
+
+<init>(java.lang.String java.util.TimeZone java.util.Locale )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [15[CASE], 1[CASE]], but top level block is 21[SWITCH]
+
+
+com.github.catvod.spider.merge.Y.t
+----------------------------
+
+b(com.github.catvod.spider.merge.Y.t char int java.util.Calendar )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [1[CASE], 8[CASE]], but top level block is 20[SWITCH]
+j(java.lang.StringBuilder java.lang.String )
+  Unable to fully structure code
+
+
+com.github.catvod.spider.merge.b.p
+----------------------------
+
+p(java.lang.String )
+  Loose catch block
+y(java.lang.String )
+  Loose catch block
+z(java.lang.String java.lang.String )
+  Unable to fully structure code
+
+
+com.github.catvod.spider.merge.c0.r
+----------------------------
+
+a(java.lang.String )
+  Loose catch block
+
+
+com.github.catvod.spider.merge.c0.h
+----------------------------
+
+o0(java.lang.String )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [1[DOLOOP]], but top level block is 2[SIMPLE_IF_TAKEN]
+
+
+com.github.catvod.spider.merge.c0.n
+----------------------------
+
+d(java.lang.Appendable java.lang.String com.github.catvod.spider.merge.c0.g boolean boolean boolean )
+  Unable to fully structure code
+
+
+com.github.catvod.spider.merge.d0.P
+----------------------------
+
+a(char char )
+  Unable to fully structure code
+
+
+com.github.catvod.spider.merge.d0.T
+----------------------------
+
+g(com.github.catvod.spider.merge.d0.Q com.github.catvod.spider.merge.d0.a )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+com.github.catvod.spider.merge.d0.a
+----------------------------
+
+d()
+  Unable to fully structure code
+
+
+com.github.catvod.spider.merge.d0.b
+----------------------------
+
+K(com.github.catvod.spider.merge.c0.r )
+  Unable to fully structure code
+a0()
+  Unable to fully structure code
+
+
+com.github.catvod.spider.merge.d0.s0
+----------------------------
+
+g(com.github.catvod.spider.merge.d0.Q com.github.catvod.spider.merge.d0.a )
+  Unable to fully structure code
+
+
+com.github.catvod.spider.merge.d0.t0
+----------------------------
+
+g(com.github.catvod.spider.merge.d0.Q com.github.catvod.spider.merge.d0.a )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+com.github.catvod.spider.merge.d0.u0
+----------------------------
+
+g(com.github.catvod.spider.merge.d0.Q com.github.catvod.spider.merge.d0.a )
+  Unable to fully structure code
+
+
+com.github.catvod.spider.merge.d0.v0
+----------------------------
+
+g(com.github.catvod.spider.merge.d0.Q com.github.catvod.spider.merge.d0.a )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+com.github.catvod.spider.merge.d0.w
+----------------------------
+
+d(com.github.catvod.spider.merge.d0.O com.github.catvod.spider.merge.d0.b )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [1[CASE]], but top level block is 12[SWITCH]
+
+
+com.github.catvod.spider.merge.d0.z0
+----------------------------
+
+g(com.github.catvod.spider.merge.d0.Q com.github.catvod.spider.merge.d0.a )
+  Unable to fully structure code
+
+
+com.github.catvod.spider.merge.e.f
+----------------------------
+
+compare(java.lang.Object java.lang.Object )
+  Unable to fully structure code
+
+
+com.github.catvod.spider.merge.e0.P
+----------------------------
+
+d(boolean boolean )
+  Unable to fully structure code
+g()
+  Unable to fully structure code
+
+
+com.github.catvod.spider.merge.g0.D
+----------------------------
+
+E()
+  Unable to fully structure code
+I()
+  Unable to fully structure code
+P()
+  Unable to fully structure code
+R()
+  Unable to fully structure code
+T()
+  Unable to fully structure code
+
+
+com.github.catvod.spider.merge.h.b
+----------------------------
+
+e(java.util.Map )
+  Ignored method signature, as it can't be verified against descriptor
+i(okhttp3.OkHttpClient java.lang.String java.lang.String java.util.Map java.util.Map java.util.Map )
+  Ignored method signature, as it can't be verified against descriptor
+
+
+com.github.catvod.spider.merge.h.c
+----------------------------
+
+<init>(java.lang.String java.lang.String java.util.Map )
+  Ignored method signature, as it can't be verified against descriptor
+
+
+com.github.catvod.spider.merge.h0.f
+----------------------------
+
+e(com.github.catvod.spider.merge.g0.z )
+  Unable to fully structure code
+
+
+com.github.catvod.spider.merge.j.g
+----------------------------
+
+shouldOverrideUrlLoading(android.webkit.WebView java.lang.String )
+  Loose catch block
+
+
+com.github.catvod.spider.merge.k.d
+----------------------------
+
+<init>(java.lang.String java.lang.String java.util.Map com.github.catvod.spider.merge.k.c )
+  Ignored method signature, as it can't be verified against descriptor
+
+
+com.github.catvod.spider.merge.k.g
+----------------------------
+
+c(okhttp3.OkHttpClient java.lang.String java.util.Map com.github.catvod.spider.merge.k.c )
+  Ignored method signature, as it can't be verified against descriptor
+i(okhttp3.OkHttpClient java.lang.String java.lang.String java.util.Map java.util.Map )
+  Ignored method signature, as it can't be verified against descriptor
+
+
+com.github.catvod.spider.merge.l.h
+----------------------------
+
+a(java.lang.StringBuilder java.lang.Iterable<? extends java.lang.Object> )
+  Unable to fully structure code
+
+
+com.github.catvod.spider.merge.l.q
+----------------------------
+
+hasNext()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[DOLOOP]], but top level block is 1[WHILELOOP]
+
+
+com.github.catvod.spider.merge.l.t
+----------------------------
+
+<clinit>()
+  Unable to fully structure code
+
+
+com.github.catvod.spider.merge.m.g
+----------------------------
+
+j()
+  Ignored method signature, as it can't be verified against descriptor
+
+
+com.github.catvod.spider.merge.n.o
+----------------------------
+
+s(com.github.catvod.spider.merge.n.n )
+  Unable to fully structure code
+
+
+com.github.catvod.spider.merge.n.G
+----------------------------
+
+a(java.util.concurrent.Callable )
+  Ignored method signature, as it can't be verified against descriptor
+
+
+com.github.catvod.spider.merge.n.U
+----------------------------
+
+<init>(com.github.catvod.spider.merge.n.V java.util.concurrent.Callable )
+  Ignored method signature, as it can't be verified against descriptor
+
+
+com.github.catvod.spider.merge.n.f
+----------------------------
+
+f(com.github.catvod.spider.merge.n.o )
+  Ignored method signature, as it can't be verified against descriptor
+g(com.github.catvod.spider.merge.n.o )
+  Ignored method signature, as it can't be verified against descriptor
+
+
+com.github.catvod.spider.merge.n.h
+----------------------------
+
+f(com.github.catvod.spider.merge.n.o )
+  Ignored method signature, as it can't be verified against descriptor
+g(com.github.catvod.spider.merge.n.o )
+  Ignored method signature, as it can't be verified against descriptor
+
+
+com.github.catvod.spider.merge.n.m
+----------------------------
+
+f(com.github.catvod.spider.merge.n.o )
+  Ignored method signature, as it can't be verified against descriptor
+g(com.github.catvod.spider.merge.n.o )
+  Ignored method signature, as it can't be verified against descriptor
+
+
+com.github.catvod.spider.merge.n.t
+----------------------------
+
+<init>(com.github.catvod.spider.merge.m.c )
+  Ignored method signature, as it can't be verified against descriptor
+D(com.github.catvod.spider.merge.n.t com.github.catvod.spider.merge.n.M int )
+  Unable to fully structure code
+F()
+  Ignored method signature, as it can't be verified against descriptor
+
+
+com.github.catvod.spider.merge.n.v
+----------------------------
+
+d(com.github.catvod.spider.merge.n.x java.util.Set )
+  Ignored method signature, as it can't be verified against descriptor
+
+
+com.github.catvod.spider.merge.n.w
+----------------------------
+
+d(com.github.catvod.spider.merge.n.x java.util.Set )
+  Ignored method signature, as it can't be verified against descriptor
+
+
+com.github.catvod.spider.merge.n.y
+----------------------------
+
+<init>(com.github.catvod.spider.merge.n.z java.util.concurrent.Callable )
+  Ignored method signature, as it can't be verified against descriptor
+
+
+com.github.catvod.spider.merge.n.z
+----------------------------
+
+<init>(com.github.catvod.spider.merge.m.c java.util.concurrent.Callable )
+  Ignored method signature, as it can't be verified against descriptor
+
+
+com.github.catvod.spider.merge.n0.c
+----------------------------
+
+a()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 1[TRYBLOCK] [8 : 45->70)] java.lang.Throwable
+g()
+  Loose catch block
+
+
+com.github.catvod.spider.merge.t.b
+----------------------------
+
+toString()
+  Unable to fully structure code
+
+
+com.github.catvod.spider.merge.w.c
+----------------------------
+
+c(java.lang.String int java.util.Map )
+  Ignored method signature, as it can't be verified against descriptor
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+com.github.catvod.spider.merge.w.e
+----------------------------
+
+a(com.github.catvod.spider.merge.s.a int com.github.catvod.spider.merge.v.e int com.github.catvod.spider.merge.w.b )
+  Unable to fully structure code
+  Could not resolve type clashes
