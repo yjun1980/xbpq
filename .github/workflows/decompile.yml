@@ -1,10 +1,10 @@
-name: Decompile XBPQ
+name: Decompile xbpq
 
 on:
-  workflow_dispatch:   # ★ 只手动触发，不自动跑
+  workflow_dispatch:
 
 permissions:
-  contents: write      # ★ 允许 push 回仓库
+  contents: write
 
 jobs:
   decompile:
@@ -19,10 +19,11 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Check XBPQ.jar
+      # ★ 用 xbpq.jar（小写）
+      - name: Check xbpq.jar
         run: |
-          ls -lh XBPQ.jar
-          file XBPQ.jar
+          ls -lh xbpq.jar
+          file xbpq.jar
 
       - name: Download jadx
         run: |
@@ -31,11 +32,11 @@ jobs:
           chmod +x jadx/bin/jadx
           ./jadx/bin/jadx --version
 
-      # ★ 反编译到项目根目录的 xbpq-src/
+      # ★ 反编译 xbpq.jar → xbpq-src/
       - name: Decompile
         run: |
           rm -rf xbpq-src
-          ./jadx/bin/jadx -d xbpq-src XBPQ.jar
+          ./jadx/bin/jadx -d xbpq-src xbpq.jar
           echo "=== 反编译结果 ==="
           find xbpq-src -name "*.java" | head -30
           echo "=== 总文件数 ==="
@@ -47,16 +48,15 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "actions@github.com"
           git add xbpq-src/
-          git commit -m "反编译 XBPQ.jar 源码 $(date +%Y%m%d_%H%M%S)" || echo "no changes"
+          git commit -m "反编译 xbpq.jar 源码 $(date +%Y%m%d_%H%M%S)" || echo "no changes"
           git push
 
-      # 同时上传 Artifact（方便下载）
       - name: Zip
-        run: zip -r XBPQ-decompiled.zip xbpq-src
+        run: zip -r xbpq-decompiled.zip xbpq-src
 
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          name: XBPQ-decompiled
-          path: XBPQ-decompiled.zip
+          name: xbpq-decompiled
+          path: xbpq-decompiled.zip
           retention-days: 30
