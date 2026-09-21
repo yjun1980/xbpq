@@ -1,42 +1,66 @@
-name: Decompile xbpq
+name: Decompile xbpq (Auto)
 
 on:
-  workflow_dispatch:
-    inputs:
-      jar_file:
-        description: '要反编译的 JAR 文件名'
-        required: false
-        default: 'xbpq.jar'
-      output_dir:
-        description: '输出目录'
-        required: false
-        default: 'xbpq-src'
   push:
     paths:
-      - '*.jar'
+      - '**/*.jar'
       - '.github/workflows/decompile.yml'
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 env:
-  JAR_FILE: ${{ github.event.inputs.jar_file || 'xbpq.jar' }}
-  OUT_DIR: ${{ github.event.inputs.output_dir || 'xbpq-src' }}
   CFR_VERSION: '0.152'
   PROCYON_VERSION: '0.6.0'
-  FERNFLOWER_URL: 'https://github.com/fesh0r/fernflower/releases/download/v1.0.0/fernflower.jar'
 
 jobs:
-  decompile:
+  detect:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
-
+    outputs:
+      jar_file: ${{ steps.find.outputs.jar_file }}
+      out_dir: ${{ steps.find.outputs.out_dir }}
     steps:
-      # ==================== 1. 环境准备 ====================
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
+
+      - name: Find JAR
+        id: find
+        run: |
+          set -e
+          # 优先 xbpq.jar，其次任意 jar
+          if [ -f "xbpq.jar" ]; then
+            JAR="xbpq.jar"
+          else
+            JAR=$(find . -maxdepth 2 -name "*.jar" ! -path "./tools/*" | head -1)
+          fi
+          if [ -z "$JAR" ]; then
+            echo "❌ 没找到 JAR"
+            exit 1
+          fi
+          # 输出目录
+          OUT="$(basename "$JAR" .jar)-src"
+          echo "jar_file=$JAR" >> $GITHUB_OUTPUT
+          echo "out_dir=$OUT" >> $GITHUB_OUTPUT
+          echo "找到 JAR: $JAR"
+          echo "输出目录: $OUT"
+
+  decompile:
+    needs: detect
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      JAR_FILE: ${{ needs.detect.outputs.jar_file }}
+      OUT_DIR: ${{ needs.detect.outputs.out_dir }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -47,31 +71,25 @@ jobs:
 
       - name: Setup workspace
         run: |
-          echo "JAR_FILE=$JAR_FILE"
-          echo "OUT_DIR=$OUT_DIR"
           mkdir -p tools
-          mkdir -p "$OUT_DIR"
           echo "JAR_FILE=$JAR_FILE" >> $GITHUB_ENV
           echo "OUT_DIR=$OUT_DIR" >> $GITHUB_ENV
 
-      # ==================== 2. 校验 JAR ====================
+      # ---------- 校验 JAR ----------
       - name: Validate JAR
         id: validate
         run: |
           set -e
           if [ ! -f "$JAR_FILE" ]; then
             echo "❌ 找不到 $JAR_FILE"
-            ls -la
             exit 1
           fi
           SIZE=$(stat -c%s "$JAR_FILE")
           echo "JAR 大小: $SIZE bytes"
           if [ "$SIZE" -lt 1000 ]; then
-            echo "❌ JAR 文件太小，可能无效"
+            echo "❌ JAR 太小"
             exit 1
           fi
-          file "$JAR_FILE"
-          # 校验是不是合法 zip
           if ! unzip -l "$JAR_FILE" > /dev/null 2>&1; then
             echo "❌ JAR 不是合法 zip"
             exit 1
@@ -79,8 +97,8 @@ jobs:
           echo "✅ JAR 校验通过"
           echo "class_count=$(unzip -l "$JAR_FILE" | grep -c '\.class$' || true)" >> $GITHUB_OUTPUT
 
-      # ==================== 3. 下载反编译工具 ====================
-      - name: Download CFR (with fallback)
+      # ---------- 下载 CFR（多源 fallback） ----------
+      - name: Download CFR
         id: cfr
         run: |
           set -e
@@ -90,34 +108,26 @@ jobs:
             "https://repo1.maven.org/maven2/org/benf/cfr/${CFR_VERSION}/cfr-${CFR_VERSION}.jar"
           )
           for url in "${URLS[@]}"; do
-            echo "尝试下载: $url"
+            echo "尝试: $url"
             if curl -fSL --retry 3 --retry-delay 2 --connect-timeout 10 \
-              -o tools/cfr.jar "$url"; then
-              if [ -s tools/cfr.jar ]; then
-                echo "✅ CFR 下载成功: $url"
-                echo "cfr_ok=true" >> $GITHUB_OUTPUT
-                exit 0
-              fi
+              -o tools/cfr.jar "$url" && [ -s tools/cfr.jar ]; then
+              echo "✅ CFR 下载成功"
+              echo "cfr_ok=true" >> $GITHUB_OUTPUT
+              exit 0
             fi
           done
           echo "❌ CFR 下载失败"
           echo "cfr_ok=false" >> $GITHUB_OUTPUT
 
-      - name: Verify CFR
-        if: steps.cfr.outputs.cfr_ok == 'true'
-        run: |
-          java -jar tools/cfr.jar --version 2>&1 | head -5 || true
-
-      # ==================== 4. 反编译（CFR 优先） ====================
+      # ---------- CFR 反编译 ----------
       - name: Decompile with CFR
-        id: decompile_cfr
+        id: cfr_decompile
         if: steps.cfr.outputs.cfr_ok == 'true'
         continue-on-error: true
         run: |
           set -e
           rm -rf "$OUT_DIR"
           mkdir -p "$OUT_DIR"
-          echo "=== 开始 CFR 反编译 ==="
           java -Xmx4g -jar tools/cfr.jar "$JAR_FILE" \
             --outputdir "$OUT_DIR" \
             --comments false \
@@ -131,35 +141,28 @@ jobs:
             --innerclasses true \
             --caseinsensitivefs true \
             --silent true || echo "CFR 有警告，继续"
-          echo "=== CFR 完成 ==="
-          echo "Java 文件数: $(find "$OUT_DIR" -name '*.java' | wc -l)"
-          echo "cfr_done=true" >> $GITHUB_OUTPUT
+          echo "CFR Java 文件数: $(find "$OUT_DIR" -name '*.java' | wc -l)"
 
-      # ==================== 5. 检查 CFR 结果 ====================
+      # ---------- CFR 结果校验 ----------
       - name: Check CFR result
         id: check_cfr
-        if: steps.decompile_cfr.outputs.cfr_done == 'true'
+        if: steps.cfr_decompile.outcome == 'success'
         run: |
           set -e
-          JAVA_COUNT=$(find "$OUT_DIR" -name '*.java' | wc -l)
-          echo "CFR 生成的 Java 文件数: $JAVA_COUNT"
-          if [ "$JAVA_COUNT" -lt 5 ]; then
-            echo "❌ CFR 生成文件太少"
+          COUNT=$(find "$OUT_DIR" -name '*.java' | wc -l)
+          if [ "$COUNT" -lt 5 ]; then
             echo "cfr_good=false" >> $GITHUB_OUTPUT
             exit 0
           fi
-          UNSUPPORTED=$(grep -rl "UnsupportedOperationException" "$OUT_DIR" 2>/dev/null | wc -l || true)
-          echo "UnsupportedOperationException 文件数: $UNSUPPORTED"
-          if [ "$UNSUPPORTED" -gt 0 ]; then
-            echo "⚠️ CFR 有 $UNSUPPORTED 个文件含 UnsupportedOperationException"
+          UNSUP=$(grep -rl "UnsupportedOperationException" "$OUT_DIR" 2>/dev/null | wc -l || true)
+          if [ "$UNSUP" -gt 0 ]; then
             echo "cfr_good=partial" >> $GITHUB_OUTPUT
           else
-            echo "✅ CFR 反编译完整"
             echo "cfr_good=true" >> $GITHUB_OUTPUT
           fi
 
-      # ==================== 6. Fallback: Procyon ====================
-      - name: Download Procyon (fallback)
+      # ---------- Fallback: Procyon ----------
+      - name: Download Procyon
         id: procyon
         if: steps.check_cfr.outputs.cfr_good != 'true'
         continue-on-error: true
@@ -167,184 +170,112 @@ jobs:
           set -e
           URL="https://github.com/mstrobel/procyon/releases/download/v${PROCYON_VERSION}/procyon-decompiler-${PROCYON_VERSION}.jar"
           if curl -fSL --retry 3 --retry-delay 2 -o tools/procyon.jar "$URL"; then
-            echo "✅ Procyon 下载成功"
             echo "procyon_ok=true" >> $GITHUB_OUTPUT
           else
-            echo "❌ Procyon 下载失败"
             echo "procyon_ok=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Decompile with Procyon (fallback)
-        id: decompile_procyon
+      - name: Decompile with Procyon
+        id: procyon_decompile
         if: steps.procyon.outputs.procyon_ok == 'true' && steps.check_cfr.outputs.cfr_good != 'true'
         continue-on-error: true
         run: |
           set -e
           rm -rf "${OUT_DIR}_procyon"
           mkdir -p "${OUT_DIR}_procyon"
-          echo "=== 开始 Procyon 反编译 ==="
-          java -Xmx4g -jar tools/procyon.jar -jar "$JAR_FILE" \
-            -o "${OUT_DIR}_procyon" || echo "Procyon 有警告，继续"
+          java -Xmx4g -jar tools/procyon.jar -jar "$JAR_FILE" -o "${OUT_DIR}_procyon" || true
           echo "Procyon Java 文件数: $(find "${OUT_DIR}_procyon" -name '*.java' | wc -l)"
-          echo "procyon_done=true" >> $GITHUB_OUTPUT
 
-      # ==================== 7. Fallback: Fernflower ====================
-      - name: Download Fernflower (fallback)
-        id: fernflower
-        if: |
-          steps.check_cfr.outputs.cfr_good != 'true' &&
-          steps.decompile_procyon.outputs.procyon_done != 'true'
-        continue-on-error: true
-        run: |
-          set -e
-          if curl -fSL --retry 3 --retry-delay 2 -o tools/fernflower.jar "$FERNFLOWER_URL"; then
-            echo "✅ Fernflower 下载成功"
-            echo "fernflower_ok=true" >> $GITHUB_OUTPUT
-          else
-            echo "❌ Fernflower 下载失败"
-            echo "fernflower_ok=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Decompile with Fernflower (fallback)
-        id: decompile_fernflower
-        if: steps.fernflower.outputs.fernflower_ok == 'true' && steps.check_cfr.outputs.cfr_good != 'true'
-        continue-on-error: true
-        run: |
-          set -e
-          rm -rf "${OUT_DIR}_fernflower"
-          mkdir -p "${OUT_DIR}_fernflower"
-          echo "=== 开始 Fernflower 反编译 ==="
-          java -Xmx4g -jar tools/fernflower.jar "$JAR_FILE" "${OUT_DIR}_fernflower/" || echo "Fernflower 有警告，继续"
-          echo "Fernflower 文件数: $(find "${OUT_DIR}_fernflower" -name '*.java' | wc -l)"
-          echo "fernflower_done=true" >> $GITHUB_OUTPUT
-
-      # ==================== 8. 选择最佳结果 ====================
-      - name: Pick best result
+      # ---------- 选最佳结果 ----------
+      - name: Pick best
         id: pick
         run: |
           set -e
           BEST=""
-          BEST_COUNT=0
-          for dir in "$OUT_DIR" "${OUT_DIR}_procyon" "${OUT_DIR}_fernflower"; do
+          BEST_SCORE=-999999
+          for dir in "$OUT_DIR" "${OUT_DIR}_procyon"; do
             if [ -d "$dir" ]; then
               COUNT=$(find "$dir" -name '*.java' | wc -l)
               UNSUP=$(grep -rl "UnsupportedOperationException" "$dir" 2>/dev/null | wc -l || true)
-              echo "目录 $dir: $COUNT 个 Java 文件, $UNSUP 个文件含 UnsupportedOperationException"
-              # 优先级：文件多 + 缺失少
               SCORE=$((COUNT - UNSUP * 10))
-              if [ "$SCORE" -gt "$BEST_COUNT" ]; then
+              echo "$dir: count=$COUNT unsup=$UNSUP score=$SCORE"
+              if [ "$SCORE" -gt "$BEST_SCORE" ]; then
                 BEST="$dir"
-                BEST_COUNT="$SCORE"
+                BEST_SCORE="$SCORE"
               fi
             fi
           done
           if [ -z "$BEST" ]; then
-            echo "❌ 没有可用的反编译结果"
+            echo "❌ 没结果"
             exit 1
           fi
-          echo "✅ 最佳结果: $BEST"
           echo "best_dir=$BEST" >> $GITHUB_OUTPUT
-          # 把最佳结果重命名为 OUT_DIR
           if [ "$BEST" != "$OUT_DIR" ]; then
             rm -rf "${OUT_DIR}_old"
             mv "$OUT_DIR" "${OUT_DIR}_old" 2>/dev/null || true
             cp -r "$BEST" "$OUT_DIR"
           fi
 
-      # ==================== 9. 深度检查 ====================
-      - name: Deep check XBPQ
-        id: deep_check
+      # ---------- 深度检查 ----------
+      - name: Deep check
+        id: deep
         run: |
           set -e
           XBPQ_FILE=$(find "$OUT_DIR" -name "XBPQ.java" | head -1)
           if [ -z "$XBPQ_FILE" ]; then
-            echo "❌ 找不到 XBPQ.java"
             echo "found=false" >> $GITHUB_OUTPUT
             exit 0
           fi
-          echo "XBPQ.java: $XBPQ_FILE"
           LINES=$(wc -l < "$XBPQ_FILE")
-          echo "总行数: $LINES"
           echo "found=true" >> $GITHUB_OUTPUT
           echo "xbpq_file=$XBPQ_FILE" >> $GITHUB_OUTPUT
           echo "xbpq_lines=$LINES" >> $GITHUB_OUTPUT
+          echo "XBPQ.java: $XBPQ_FILE ($LINES 行)"
 
-          echo ""
-          echo "=== 关键方法检查 ==="
-          for method in "W(" "detailContent(" "playerContent(" "searchContent(" "homeContent(" "categoryContent("; do
-            if grep -q "$method" "$XBPQ_FILE"; then
-              echo "✅ $method 存在"
-            else
-              echo "❌ $method 缺失"
-            fi
-          done
-
-          echo ""
-          echo "=== 缺失方法检查 ==="
-          MISSING=$(grep -c "UnsupportedOperationException" "$XBPQ_FILE" || true)
-          echo "UnsupportedOperationException 数量: $MISSING"
-          if [ "$MISSING" -gt 0 ]; then
-            echo "⚠️ XBPQ.java 有 $MISSING 处缺失"
-          else
-            echo "✅ XBPQ.java 完整"
-          fi
-
-      # ==================== 10. 生成报告 ====================
-      - name: Generate report
+      # ---------- 生成报告 ----------
+      - name: Report
         if: always()
         run: |
           {
             echo "# Decompile Report"
             echo ""
-            echo "## 输入"
             echo "- JAR: \`$JAR_FILE\`"
-            echo "- JAR 大小: $(stat -c%s "$JAR_FILE" 2>/dev/null || echo 'N/A') bytes"
-            echo "- class 数量: ${{ steps.validate.outputs.class_count }}"
-            echo ""
-            echo "## 结果"
-            echo "- 最佳反编译目录: \`${{ steps.pick.outputs.best_dir }}\`"
+            echo "- 大小: $(stat -c%s "$JAR_FILE" 2>/dev/null || echo N/A) bytes"
+            echo "- class 数: ${{ steps.validate.outputs.class_count }}"
+            echo "- 最佳目录: \`${{ steps.pick.outputs.best_dir }}\`"
             echo "- Java 文件数: $(find "$OUT_DIR" -name '*.java' 2>/dev/null | wc -l)"
-            echo "- XBPQ.java 行数: ${{ steps.deep_check.outputs.xbpq_lines }}"
-            echo "- UnsupportedOperationException 数量: $(grep -c 'UnsupportedOperationException' "${{ steps.deep_check.outputs.xbpq_file }}" 2>/dev/null || echo 'N/A')"
-            echo ""
-            echo "## 工具"
+            echo "- XBPQ.java 行数: ${{ steps.deep.outputs.xbpq_lines }}"
             echo "- CFR: ${{ steps.cfr.outputs.cfr_ok }}"
             echo "- Procyon: ${{ steps.procyon.outputs.procyon_ok }}"
-            echo "- Fernflower: ${{ steps.fernflower.outputs.fernflower_ok }}"
-            echo ""
-            echo "## 目录结构"
-            echo '```'
-            find "$OUT_DIR" -name '*.java' 2>/dev/null | head -50
-            echo '```'
+            echo "- 时间: $(date -u)"
           } > DECOMPILE_REPORT.md
           cat DECOMPILE_REPORT.md
 
-      # ==================== 11. 提交回仓库 ====================
-      - name: Commit
-        if: steps.deep_check.outputs.found == 'true'
+      # ---------- 自动提交回仓库 ----------
+      - name: Auto commit and push
+        if: steps.deep.outputs.found == 'true'
         run: |
           set -e
           git config user.name "github-actions[bot]"
-          git config user.email "actions@github.com"
-          git add "$OUT_DIR/" DECOMPILE_REPORT.md 2>/dev/null || true
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$OUT_DIR/"
+          git add DECOMPILE_REPORT.md
           if git diff --cached --quiet; then
             echo "没有变化，跳过提交"
           else
-            git commit -m "CFR 反编译 $JAR_FILE $(date +%Y%m%d_%H%M%S)"
+            git commit -m "🤖 自动反编译 $JAR_FILE $(date +%Y%m%d_%H%M%S)"
             git push
+            echo "✅ 已推送"
           fi
 
-      # ==================== 12. 打包上传 ====================
+      # ---------- 上传 artifact ----------
       - name: Zip
         if: always()
         run: |
-          if [ -d "$OUT_DIR" ]; then
-            zip -rq decompiled.zip "$OUT_DIR" DECOMPILE_REPORT.md 2>/dev/null || \
-              zip -rq decompiled.zip "$OUT_DIR"
-          fi
+          zip -rq decompiled.zip "$OUT_DIR" DECOMPILE_REPORT.md || true
           ls -lh decompiled.zip || true
 
-      - name: Upload artifact
+      - name: Upload
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -354,10 +285,10 @@ jobs:
             DECOMPILE_REPORT.md
           retention-days: 30
 
-      - name: Upload XBPQ.java only
-        if: steps.deep_check.outputs.found == 'true'
+      - name: Upload XBPQ.java
+        if: steps.deep.outputs.found == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: XBPQ-java-${{ github.run_id }}
-          path: ${{ steps.deep_check.outputs.xbpq_file }}
+          path: ${{ steps.deep.outputs.xbpq_file }}
           retention-days: 30
